@@ -200,7 +200,7 @@ public class MainFrame extends JFrame {
 		                
 		                if(moduleName.equals(""))
 		                	continue;
-		                System.out.println(moduleName+"=="+moduleId);
+//		                System.out.println(moduleName+"=="+moduleId);
 		                Connector.getConnector().addModule(moduleName, moduleId);
 		            }
 		            document = null;
@@ -632,8 +632,8 @@ public class MainFrame extends JFrame {
 					//地图行走指令
 					
 					if(moduleId == -4){
-						int x = (int)(Math.random()*100);
-						int y = (int)(Math.random()*100);
+						int x = (int)(Math.random()*2000);
+						int y = (int)(Math.random()*2000);
 						c.write1(moduleId,x,y);
 					}else{
 						c.write(moduleId,sendData);
