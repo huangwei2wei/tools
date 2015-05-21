@@ -644,6 +644,7 @@ public class MainFrame extends JFrame {
 				} catch (Exception e) {
 					appendMessage(e.toString());
 					e.printStackTrace();
+					return;
 				}
 			}
 		}

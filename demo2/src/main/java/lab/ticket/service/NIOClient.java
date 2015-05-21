@@ -41,7 +41,7 @@ public class NIOClient implements Runnable{
 	private  ByteBuffer receivebuffer = ByteBuffer.allocate(BLOCK);
 	private  SocketChannel socketChannel = null;
 	private InetSocketAddress SERVER_ADDRESS = null;
-	private static final String loginStr = "{\"fd_user_id\":0,\"fun\":\"login\",\"module\":\"api.login\",\"parameter\":[\"jd808\",\"mUG958FxpBwGXXbQ\",0,{\"identifier\":\"21232f297a57a5a743894a0e4a801fc3\",\"server_id\":1,\"channel_id\":1,\"user_id\":0,\"seqid\":0,\"pfkey\":\"\"}],\"return\":\"\",\"sys\":false,\"type\":\"python\"}";
+	private static final String loginStr = "{\"fd_user_id\":0,\"fun\":\"login\",\"module\":\"api.login\",\"parameter\":[\"jd808\",\"mUG958FxpBwGXXbQ\",0,{\"identifier\":\"21232f297a57a5a743894a0e4a801fc3\",\"server_id\":2,\"channel_id\":1,\"user_id\":0,\"seqid\":0,\"pfkey\":\"\"}],\"return\":\"\",\"sys\":false,\"type\":\"python\"}";
 	
 	public Lock lock = new ReentrantLock();
 	private int playerCount = 0;
@@ -158,7 +158,7 @@ public class NIOClient implements Runnable{
 					                buffer.get(dates);
 					                String str = new String(dates, "utf-8");
 					                //玩家登录成功数量
-					                System.out.println("模块ID："+moduleId+" 数据："+str);
+//					                System.out.println("模块ID："+moduleId+" 数据："+str);
 					                if(moduleId == 0){
 					                	long num = Connector.getConnector().getPlayerCount().incrementAndGet();
 					                	frame.appendMessage("玩家成功登录数量： "+num);
@@ -283,7 +283,7 @@ public class NIOClient implements Runnable{
 		ByteListUtil2.addInt(byteList, moduleid);
 		ByteListUtil2.addInt(byteList, getCode(str));
 		ByteListUtil2.addInt(byteList, 1);
-		ByteListUtil2.addInt(byteList, 1);
+		ByteListUtil2.addInt(byteList, 2);
 		ByteListUtil2.addBytes(byteList,datas);
 		return byteList;
 	}
