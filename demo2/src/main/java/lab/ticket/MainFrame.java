@@ -632,8 +632,8 @@ public class MainFrame extends JFrame {
 					//地图行走指令
 					
 					if(moduleId == -4){
-						int x = (int)(Math.random()*2000);
-						int y = (int)(Math.random()*2000);
+						int x = (int)(Math.random()*800);
+						int y = (int)(Math.random()*800);
 						c.write1(moduleId,x,y);
 					}else{
 						c.write(moduleId,sendData);
