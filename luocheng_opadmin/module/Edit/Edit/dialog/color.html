@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE> Color </TITLE>
+<style>
+body{
+margin:0px;
+padding:0px;
+background-color:#BDD9BE;
+}
+td{
+	font-size:12px;
+}
+.text{
+	border:1px #94B58E solid;
+	background-color:#E1F4E8;
+}
+.button{
+	border:0px;
+	background-color:#8BB988;
+	color:white;
+}
+</style>
+<link href="button.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function setColor(color){
+		var returnVal=color;
+		if(returnVal==""){
+			alert('颜色不能为空!');
+			return;
+		}
+		if(document.all){
+			if(dialogArguments.colorType=="foreColor"){
+				if(document.getElementById("glowBox").checked){
+					returnVal+="|true";
+				}
+			}
+			window.returnValue=returnVal;
+		}
+		else{
+			opener.setColor(color);
+		}
+		window.close();
+	}
+	function checkBox(obj){
+		if(!document.all){
+			alert('非IE浏览器无法用此功能!');
+			obj.checked=false;
+		}
+	}
+	window.onload=function(){
+		if(document.all && dialogArguments.colorType!="foreColor"){
+			var obj=document.getElementById("glow");
+			obj.parentNode.removeChild(obj);
+		}
+	}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<!--
+	<input type="checkbox" id="filter"><span style="width:100px;filter:Glow(color:green,strength:5);">发光</span>
+	<br>
+-->
+	<table border="0" cellpadding="0" cellspacing="1" class="color" style="table-layout :fixed;">
+			<tr id="glow">
+			  <td width="240" height="18" colspan="16" align="left" valign="middle" style="cursor: pointer;">发光:
+		      <input name="" type="checkbox" value="" onClick="checkBox(this)" id="glowBox"></td>
+	  		</tr>
+			<tr>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FDDFD7" onClick="setColor('#FDDFD7');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FDE6D9" onClick="setColor('#FDE6D9');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FEEEDC" onClick="setColor('#FEEEDC');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FFFDE0" onClick="setColor('#FFFDE0');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#EEF5E1" onClick="setColor('#EEF5E1');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#E4F2E2" onClick="setColor('#E4F2E2');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#D9EFE2" onClick="setColor('#D9EFE2');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#D7F0EE" onClick="setColor('#D7F0EE');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#D3F1FD" onClick="setColor('#D3F1FD');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#D8E4F3" onClick="setColor('#D8E4F3');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#D9DFEF" onClick="setColor('#D9DFEF');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#DBD9EB" onClick="setColor('#DBD9EB');">&nbsp;</td>
+				
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#E3DBEB" onClick="setColor('#E3DBEB');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#EBDCEB" onClick="setColor('#EBDCEB');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FCE1EC" onClick="setColor('#FCE1EC');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FCE0E2" onClick="setColor('#FCE0E2');">&nbsp;</td>                        
+			</tr>
+			<tr>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#F79700" onClick="setColor('#F79700');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FBAD82" onClick="setColor('#FBAD82');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FDC68C" onClick="setColor('#FDC68C');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FFF799" onClick="setColor('#FFF799');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#C6DF9C" onClick="setColor('#C6DF9C');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#A4D49D" onClick="setColor('#A4D49D');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#81CA9D" onClick="setColor('#81CA9D');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#7BCDC9" onClick="setColor('#7BCDC9');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#6CCFF7" onClick="setColor('#6CCFF7');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#7CA6D8" onClick="setColor('#7CA6D8');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#8293CA" onClick="setColor('#8293CA');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#8881BE" onClick="setColor('#8881BE');">&nbsp;</td>
+				
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#A286BD" onClick="setColor('#A286BD');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#BC8CBF" onClick="setColor('#BC8CBF');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#F49BC1" onClick="setColor('#F49BC1');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#F5999D" onClick="setColor('#F5999D');">&nbsp;</td>                
+		  </tr>
+			  <tr>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#F16C4D" onClick="setColor('#F16C4D');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#F68E54" onClick="setColor('#F68E54');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#FBAF00" onClick="setColor('#FBAF00');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#FFF467" onClick="setColor('#FFF467');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#ACD372" onClick="setColor('#ACD372');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#7DC473" onClick="setColor('#7DC473');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#39B778" onClick="setColor('#39B778');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#17BCB4" onClick="setColor('#17BCB4');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#00BFF3" onClick="setColor('#00BFF3');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#438CCB" onClick="setColor('#438CCB');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#5573B7" onClick="setColor('#5573B7');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#5E5CA7" onClick="setColor('#5E5CA7');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#855FA8" onClick="setColor('#855FA8');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#A763A9" onClick="setColor('#A763A9');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#EF6EA8" onClick="setColor('#EF6EA8');">&nbsp;</td>
+				  <td width="15" height="15" style="cursor: pointer;"  bgcolor="#F16D7E" onClick="setColor('#F16D7E');">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#EE1D24" onClick="setColor('#EE1D24');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#F16522" onClick="setColor('#F16522');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#F7941D" onClick="setColor('#F7941D');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#FFF100" onClick="setColor('#FFF100');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#8FC63D" onClick="setColor('#8FC63D');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#37B400" onClick="setColor('#37B400');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#00A650" onClick="setColor('#00A650');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#00A99E" onClick="setColor('#00A99E');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#00AEEF" onClick="setColor('#00AEEF');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#0072BC" onClick="setColor('#0072BC');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#0054A5" onClick="setColor('#0054A5');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#2F3192" onClick="setColor('#2F3192');">&nbsp;</td>				
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#652C91" onClick="setColor('#652C91');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#91278F" onClick="setColor('#91278F');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#ED008C" onClick="setColor('#ED008C');">&nbsp;</td>
+				<td width="15" height="15" style="cursor: pointer;"  bgcolor="#EE1000" onClick="setColor('#EE1000');">&nbsp;</td>               
+		  </tr>
+			<tr>
+			  <td height="25" colspan="15" style="font-size:12px;" align="left">其它颜色:<input type="text" id="color" size="10" id="color" class="text">&nbsp;<input type="button" onClick="setColor(document.getElementById('color').value)" value="确 定"/></td>
+			  <td height="25" style="font-size:12px;" align="left" valign="bottom"><img src="../img/close.jpg" alt="关闭" width="17" height="17" onClick="window.close()"/></td>
+			</tr>
+		</table>
+</BODY>
+</HTML>

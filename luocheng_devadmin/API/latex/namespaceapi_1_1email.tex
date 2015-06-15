@@ -1,0 +1,217 @@
+\hypertarget{namespaceapi_1_1email}{\section{api.\-email 命名空间参考}
+\label{namespaceapi_1_1email}\index{api.\-email@{api.\-email}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1email_a68691a07d494c080e6f8baac68273c99}{send}
+\item 
+def \hyperlink{namespaceapi_1_1email_a7df560a32073c46124e19159338d5bad}{email\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1email_a6d9690a8e09861fb5dbbe79180e119ed}{email\-\_\-send}
+\item 
+def \hyperlink{namespaceapi_1_1email_a3f6d0264379dfd5f0a43770acccca050}{email\-\_\-update}
+\item 
+def \hyperlink{namespaceapi_1_1email_a20403faad925bf765349732070874808}{email\-\_\-del}
+\item 
+def \hyperlink{namespaceapi_1_1email_a4db61f8cf4d9d89a072ca2156e0faf6d}{notice}
+\item 
+def \hyperlink{namespaceapi_1_1email_a5519aa8d4ece44885a6627f453c47599}{award}
+\item 
+def \hyperlink{namespaceapi_1_1email_a25a5d0d279ba1326b8fb01c5e7a3eb78}{award\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1email_a4fca38451988a83e93116b39d719f4f7}{set\-\_\-read\-\_\-state}
+\item 
+def \hyperlink{namespaceapi_1_1email_a502d947bfcbcad6b1d73ea9f9481a9cb}{flowers}
+\item 
+def \hyperlink{namespaceapi_1_1email_a9e32942877f7970826b5c2550e553a5a}{flowers\-\_\-award}
+\item 
+def \hyperlink{namespaceapi_1_1email_a5f98224254badc3cc47870acc90fd5a5}{test\-\_\-mail}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1email_aade8d3be9c6c1e1189c6a86006c0321c}{email} = user\-\_\-email.\-email()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1email_a5519aa8d4ece44885a6627f453c47599}{\index{api\-::email@{api\-::email}!award@{award}}
+\index{award@{award}!api::email@{api\-::email}}
+\subsubsection[{award}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-award (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{mtype = {\ttfamily 0}, }
+\item[{}]{m\-\_\-id = {\ttfamily 0}, }
+\item[{}]{user\-\_\-hero\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a5519aa8d4ece44885a6627f453c47599}
+\begin{DoxyVerb}*
+* 领奖接口
+* @param int mtype 奖励类型  0 所有 ( 1系统邮件 2玩家邮件 3运营奖励 4GM邮件 5 玩家建议邮件 6 公会邮件  7竞技排行奖励  8运营奖励 ) 此参数为0时,一定要制定m_id
+* @param int|arr mid 邮件ID 如果为空,就领取这个类型的所有奖励
+* @param int user_hero_id 给这个武将加经验  mtype==17生效
+* @return   {"module": "api.email", "fun": "award", "type": "return", "parameter": [4, 1], "sys": false, "fd_user_id": 111, "_return": {"res": true, "msg": [{"mid": 1, "info": {"goods_ext_id": 211, "goods_num": 5}}]}, "all": 1}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a25a5d0d279ba1326b8fb01c5e7a3eb78}{\index{api\-::email@{api\-::email}!award\-\_\-list@{award\-\_\-list}}
+\index{award\-\_\-list@{award\-\_\-list}!api::email@{api\-::email}}
+\subsubsection[{award\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-award\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{mtype}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a25a5d0d279ba1326b8fb01c5e7a3eb78}
+\begin{DoxyVerb}*
+* 奖励列表
+*@param  user_id 用户ID
+*@param  mtype 奖励类型  (1系统邮件 2玩家邮件 3运营奖励 4GM邮件 5 玩家建议邮件 6 公会邮件  7竞技排行奖励  8运营奖励 )
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a20403faad925bf765349732070874808}{\index{api\-::email@{api\-::email}!email\-\_\-del@{email\-\_\-del}}
+\index{email\-\_\-del@{email\-\_\-del}!api::email@{api\-::email}}
+\subsubsection[{email\-\_\-del}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-email\-\_\-del (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{m\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a20403faad925bf765349732070874808}
+\begin{DoxyVerb}*
+* 删除邮件
+* @param integer m_id 邮件id
+* @return {"parameter": [2], "_return": {"res": true, "msg": "ok"}, "all": 1, "fun": "email_del", "module": "api.email", "sys": false, "fd_user_id": 111, "type": "return"}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a7df560a32073c46124e19159338d5bad}{\index{api\-::email@{api\-::email}!email\-\_\-list@{email\-\_\-list}}
+\index{email\-\_\-list@{email\-\_\-list}!api::email@{api\-::email}}
+\subsubsection[{email\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-email\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{m\-\_\-id = {\ttfamily 0}, }
+\item[{}]{read\-\_\-state = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a7df560a32073c46124e19159338d5bad}
+\begin{DoxyVerb}*
+* 邮件列表
+* @param integer m_id    邮件id
+* @param integer read_state 0为未读，1为已读 ,2已领取, 这个参数可以传递数组，比如[0,1,2]这样组合
+* @return {"fun": "email_list", "parameter": [], "module": "api.email", "sys": false, "_return": {"msg": [{"module_id": 21, "ip_from": false, "nickname": "\u6635\u79f0\u54c8\u54c8", "id": 4, "text": "", "info": "{\"goods_ext_id\":211,\"goods_num\":5}", "read_state": 0, "send_id": 18, "send_time": 1421650003, "title": "title", "get_id": 111, "type": 2}], "res": true}, "fd_user_id": 111, "type": "return", "all": 1}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a6d9690a8e09861fb5dbbe79180e119ed}{\index{api\-::email@{api\-::email}!email\-\_\-send@{email\-\_\-send}}
+\index{email\-\_\-send@{email\-\_\-send}!api::email@{api\-::email}}
+\subsubsection[{email\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-email\-\_\-send (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{nickname, }
+\item[{}]{title, }
+\item[{}]{info, }
+\item[{}]{types = {\ttfamily 2}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a6d9690a8e09861fb5dbbe79180e119ed}
+\begin{DoxyVerb}*
+* 发送邮件
+*  @param integer nickname 接收者昵称
+*  @param string title         信息标题
+*  @param string info          信息内容
+*  @param integer type 信息类型(1系统信件 2玩家信件)
+*  @return boolen
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a3f6d0264379dfd5f0a43770acccca050}{\index{api\-::email@{api\-::email}!email\-\_\-update@{email\-\_\-update}}
+\index{email\-\_\-update@{email\-\_\-update}!api::email@{api\-::email}}
+\subsubsection[{email\-\_\-update}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-email\-\_\-update (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{m\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a3f6d0264379dfd5f0a43770acccca050}
+\begin{DoxyVerb}*
+* 更新邮件状态
+* @param  integer m_id  邮件id
+* @return boolen  false|true 
+{"_return": {"msg": "ok", "res": true}, "parameter": [1], "fun": "email_update", "all": 1, "fd_user_id": 111, "type": "return", "sys": false, "module": "api.email"}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a502d947bfcbcad6b1d73ea9f9481a9cb}{\index{api\-::email@{api\-::email}!flowers@{flowers}}
+\index{flowers@{flowers}!api::email@{api\-::email}}
+\subsubsection[{flowers}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-flowers (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a502d947bfcbcad6b1d73ea9f9481a9cb}
+\begin{DoxyVerb}*
+* 送花列表
+*@param  user_id 用户ID
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a9e32942877f7970826b5c2550e553a5a}{\index{api\-::email@{api\-::email}!flowers\-\_\-award@{flowers\-\_\-award}}
+\index{flowers\-\_\-award@{flowers\-\_\-award}!api::email@{api\-::email}}
+\subsubsection[{flowers\-\_\-award}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-flowers\-\_\-award (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{mid, }
+\item[{}]{double}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a9e32942877f7970826b5c2550e553a5a}
+\begin{DoxyVerb}*
+* 送花奖励
+*@param  user_id 用户ID
+*@param  mid 邮件
+*@param  double 0 直接领取 1号香囊 2号香囊 3号香囊
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a4db61f8cf4d9d89a072ca2156e0faf6d}{\index{api\-::email@{api\-::email}!notice@{notice}}
+\index{notice@{notice}!api::email@{api\-::email}}
+\subsubsection[{notice}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-notice (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{nid}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a4db61f8cf4d9d89a072ca2156e0faf6d}
+\begin{DoxyVerb}*
+* 公告数据
+* @param integer nid 公告ID
+* @return str
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a68691a07d494c080e6f8baac68273c99}{\index{api\-::email@{api\-::email}!send@{send}}
+\index{send@{send}!api::email@{api\-::email}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-send (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{nickname, }
+\item[{}]{title, }
+\item[{}]{info, }
+\item[{}]{etype = {\ttfamily 2}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a68691a07d494c080e6f8baac68273c99}
+\begin{DoxyVerb}@info 普通用户写信
+@param int nickname 对方昵称
+@param int title 写信标题
+@param int info 信件内容
+@param int etype 信件类型 1系统 2用户
+@return {"all": 1, "_return": {"msg": 0, "res": true}, "type": "return", "fd_user_id": 111, "module": "api.email", "sys": false, "fun": "send", "parameter": ["\u6635\u79f0\u54c8\u54c8", "title", "{\"goods_ext_id\":211,\"goods_num\":5}", 2]}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a4fca38451988a83e93116b39d719f4f7}{\index{api\-::email@{api\-::email}!set\-\_\-read\-\_\-state@{set\-\_\-read\-\_\-state}}
+\index{set\-\_\-read\-\_\-state@{set\-\_\-read\-\_\-state}!api::email@{api\-::email}}
+\subsubsection[{set\-\_\-read\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-set\-\_\-read\-\_\-state (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{mtype, }
+\item[{}]{m\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a4fca38451988a83e93116b39d719f4f7}
+\begin{DoxyVerb}*
+* 将邮件设置为已读
+* @param int mtype 奖励类型  (1系统邮件 2玩家邮件 3运营奖励 4GM邮件 5 玩家建议邮件 6 公会邮件  7竞技排行奖励  8运营奖励 ) 此参数为0时,一定要制定m_id
+* @param int|arr mid 邮件ID 如果为空,就将此状态下的所有邮件设置为已读
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1email_a5f98224254badc3cc47870acc90fd5a5}{\index{api\-::email@{api\-::email}!test\-\_\-mail@{test\-\_\-mail}}
+\index{test\-\_\-mail@{test\-\_\-mail}!api::email@{api\-::email}}
+\subsubsection[{test\-\_\-mail}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-email.\-test\-\_\-mail (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1email_a5f98224254badc3cc47870acc90fd5a5}
+
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1email_aade8d3be9c6c1e1189c6a86006c0321c}{\index{api\-::email@{api\-::email}!email@{email}}
+\index{email@{email}!api::email@{api\-::email}}
+\subsubsection[{email}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-email.\-email = user\-\_\-email.\-email()}}\label{namespaceapi_1_1email_aade8d3be9c6c1e1189c6a86006c0321c}

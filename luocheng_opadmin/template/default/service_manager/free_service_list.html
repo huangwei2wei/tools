@@ -1,0 +1,37 @@
+<gettemplet file="default/head.html"/>
+<style>
+li {
+	float:left;
+	border:1px solid #5d9cdf;
+	background-color:#0FF;
+	height:20px;
+	line-height:20px;
+	margin:0px 2px;
+	padding:0px 6px;
+}
+</style>
+
+<div>
+  <!--?
+if($free_service_list){
+    foreach ($free_service_list as $key => $value)
+    {
+    
+  ?-->
+    <li><a href="javascript:select_service(<echo>$value['operators_id']</echo>,<echo>$value['server_id']</echo>);"><echo>$value["server_name"]</echo>-(<echo>$value["server_id"]</echo>)</a></li>
+  <!--?
+}}
+  ?-->
+</div>
+<script>
+function select_service(operators_id,server_id)
+{
+	var url="/?module=service_manager&methods=select_service&operators_id="+operators_id+"&server_id="+server_id+"&mainid="+<echo>$mainid</echo>;
+	ajax_ultimate(url,"reload_parent_page","get");	
+}
+
+function reload_parent_page()
+{
+	parent.location.reload();
+}
+</script>

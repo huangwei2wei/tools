@@ -1,0 +1,481 @@
+<gettemplet file="default/head.html"/>
+<style>
+p {
+	margin:0px;
+	padding:0px;
+}
+.divkk {
+	border:1px dashed #000;
+}
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:125px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:125px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+</style>
+<script type="text/javascript">
+var message=document.getElementById("message");
+
+var mySelect=document.getElementById("mySelect")
+
+function test()
+{
+	message.value = mySelect[mySelect.selectedIndex].text;
+
+}
+   
+function initformation()
+{
+	document.getElementById("formation").value="1:0:0,2:1:2,3:0:0,4:0:0,5:0:0,6:0:0,7:0:0,8:0:0,9:0:0";
+}
+
+function add_hero_tmp(obj)
+{
+	if(document.getElementById("hero_id").value.length>0)
+	{
+		document.getElementById("hero_id").value+=","+obj.value+":0:1";
+	}else{
+		document.getElementById("hero_id").value=obj.value+":0:1";
+	}
+}
+
+function add_goods(obj)
+{
+	if(document.getElementById("goods_ext_id").value.length>0)
+	{
+		document.getElementById("goods_ext_id").value+=","+obj.value+":0:1";
+	}else{
+		document.getElementById("goods_ext_id").value=obj.value+":0:1";
+	}
+}
+
+function select_monster(ni,obj)
+{
+	url="/?module=monster&methods=get_monster_lv&id="+obj.value;
+	ajax_ultimate(url,'select_monster_','','',ni);	
+}
+
+function select_monster_(msg,ni)
+{
+	Delhtml("mons"+ni+"x");
+	
+	var cObj = document.createElement('select');
+	cObj.name="mons"+ni+"x";
+	cObj.id="mons"+ni+"x";
+	document.getElementById("add_mons"+ni+"x").appendChild(cObj);
+	addobj=document.getElementById("mons"+ni+"x");
+	msg=json_x(msg);
+	for(i=0;i<msg.length;i++)
+	{
+		add_select_item(addobj,msg[i]["lv"],msg[i]["lv"]);	
+	}
+}
+
+function add_monster_id()
+{
+	mselect5=document.getElementById("select5").value;
+	mselect4=document.getElementById("select4").value;
+	
+	if(document.getElementById("monster_id").value.length>0)
+	{
+		document.getElementById("monster_id").value+=","+mselect4+":0:"+mselect5;
+	}else{
+		document.getElementById("monster_id").value=mselect4+":0:"+mselect5;
+	}
+}
+
+
+function updata_tmp(obj,id,tab)
+{
+	var url="/?module=mall&methods=upmall&id="+id+"&field="+tab+"&value="+obj.value;
+	ajax_ultimate(url,"updata_tmp_","get");	
+}
+
+function updata_tmp_(string)
+{
+	if(string)
+	{
+		//alert("保存成功");
+	}else{
+		//alert("保存失败");
+	}
+}
+
+function addmons(ni)
+{
+	movediv("/?module=monster&methods=addmons&ni="+ni,"","move_div",1);
+}
+
+function delegoods(gid)
+{
+	var url="/?module=mall&methods=delmall&gid="+gid;
+	ajax_ultimate(url,"delegoods_","get");	
+}
+
+function delegoods_(string)
+{
+	location.reload();	
+}
+
+function removemons(ni)
+{
+	document.getElementById("pi"+ni).value="";
+	document.getElementById("p"+ni).innerHTML=""	
+}
+</script>
+
+<table width="114" border="1" align="left">
+  <tr>
+    <td width="52"><a href="/?module=monster&methods=monster_list_views">列表</a></td>
+    <td width="46">添加</td>
+  </tr>
+</table>
+<p>
+<hr>
+</p>
+<form id="form1" name="form1" method="post" action="/?module=monster&methods=add_monster_list">
+<table width="800" height="366" border="1" align="center">
+          <tr>
+            <td width="160" height="120">怪物
+              <select name="mons7" id="mons7" onchange="select_monster(7,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[7][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons7x">
+              <select name="mons7x" id="mons7x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[7][1]])){
+              	echo '<option value="'.$monster_id[$formation[7][1]][1].'">'.$monster_id[$formation[7][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td width="165">怪物
+              <select name="mons4" id="mons4" onchange="select_monster(4,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[4][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons4x">
+              <select name="mons4x" id="mons4x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[4][1]])){
+              	echo '<option value="'.$monster_id[$formation[4][1]][1].'">'.$monster_id[$formation[4][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td width="153">怪物
+              <select name="mons1" id="mons1" onchange="select_monster(1,this)">
+              	<option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[1][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons1x">
+              <select name="mons1x" id="mons1x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[1][1]])){
+              	echo '<option value="'.$monster_id[$formation[1][1]][1].'">'.$monster_id[$formation[1][1]][1].'</option>';
+              }
+              ?-->
+              </select>
+              </span></td>
+          </tr>
+          <tr>
+            <td height="121">怪物
+              <select name="mons8" id="mons8" onchange="select_monster(8,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[8][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons8x">
+              <select name="mons8x" id="mons8x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[8][1]])){
+              	echo '<option value="'.$monster_id[$formation[8][1]][1].'">'.$monster_id[$formation[8][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td>怪物
+              <select name="mons5" id="mons5" onchange="select_monster(5,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[5][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons5x">
+              <select name="mons5x" id="mons5x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[5][1]])){
+              	echo '<option value="'.$monster_id[$formation[5][1]][1].'">'.$monster_id[$formation[5][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td>怪物
+              <select name="mons2" id="mons2" onchange="select_monster(2,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[2][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons2x">
+              <select name="mons2x" id="mons2x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[2][1]])){
+              	echo '<option value="'.$monster_id[$formation[2][1]][1].'">'.$monster_id[$formation[2][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+          </tr>
+          <tr>
+            <td height="115">怪物
+              <select name="mons9" id="mons9" onchange="select_monster(9,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[9][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons9x">
+              <select name="mons9x" id="mons9x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[9][1]])){
+              	echo '<option value="'.$monster_id[$formation[9][1]][1].'">'.$monster_id[$formation[9][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td>怪物
+              <select name="mons6" id="mons6" onchange="select_monster(6,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[6][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons6x">
+              <select name="mons6x" id="mons6x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[6][1]])){
+              	echo '<option value="'.$monster_id[$formation[6][1]][1].'">'.$monster_id[$formation[6][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+            <td>怪物
+              <select name="mons3" id="mons3" onchange="select_monster(3,this)">
+              <option value="0">无</option>
+                <variable data="$monster_views">
+                  <loop list="$i">
+                    <option <echo>(isset($formation) and $formation[3][1]==$monster_views[$i]['id'])?'selected':""</echo> value="<echo>$monster_views[$i]['id']</echo>">
+                    <echo>$monster_views[$i]['name']</echo>
+                    </option>
+                  </loop>
+                </variable>
+              </select>
+              <br>
+              等级 <span id="add_mons3x">
+              <select name="mons3x" id="mons3x">
+              <!--?
+              if(isset($formation) and isset($monster_id[$formation[3][1]])){
+              	echo '<option value="'.$monster_id[$formation[3][1]][1].'">'.$monster_id[$formation[3][1]][1].'</option>';
+              }
+              ?-->
+              </select></span></td>
+          </tr>
+        </table>
+  <table width="657" border="1" align="center">
+    <tr>
+      <td width="141" align="right">怪物集合名</td>
+      <td width="190"><input name="monster_name" type="text" id="monster_name" value="<echo>isset($monster_list_data)?$monster_list_data['monster_name']:''</echo>" /></td>
+      <td width="304"><input name="edit" type="hidden" id="edit" value="<echo>isset($get['id'])?$get['id']:0</echo>" /></td>
+    </tr>
+    <tr>
+      <td align="right">颜色</td>
+      <td><input type="text" name="color" id="color" value="<echo>isset($monster_list_data)?$monster_list_data['color']:''</echo>"/></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <!--
+      <td align="right">怪物ID和等级列表</td>
+      <td><input type="text" name="monster_id" id="monster_id" value="<echo>isset($monster_list_data)?$monster_list_data['monster_id']:''</echo>"/></td>
+      <td>怪物
+        <select name="select4" id="select4" onchange="select_monster(this)">
+          <variable data="$monster_views">
+            <loop list="$i">
+              <option value="<echo>$monster_views[$i]['id']</echo>">
+              <echo>$monster_views[$i]['name']</echo>
+              </option>
+            </loop>
+          </variable>
+        </select>
+        等级 <span id="add_select5">
+        <select name="select5" id="select5">
+        </select>
+        </span>
+        <input type="button" name="button2" id="button2" value="添加"  onclick="add_monster_id()"/></td>
+    </tr>
+    <tr>
+      <td align="right"> 使用的阵形</td>
+      <td colspan="2"><input name="formation" type="text" id="formation" value="<echo>isset($monster_list_data)?$monster_list_data['formation']:''</echo>" size="50"/>
+        <input type="button" name="button3" id="button3" value="初始值"  onclick="initformation()"/></td>
+        -->
+    </tr>
+    <tr>
+      <td align="right">无双阶</td>
+      <td><input type="text" name="warriors_lv" id="warriors_lv" value="<echo>isset($monster_list_data)?$monster_list_data['warriors_lv']:'1'</echo>"/></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">无双段</td>
+      <td><input type="text" name="warriors_rank" id="warriors_rank" value="<echo>isset($monster_list_data)?$monster_list_data['warriors_rank']:'1'</echo>"/></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="right">
+      <td colspan="3" align="center" bgcolor="#99CCFF"><strong>掉落</strong></td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF">铜币</td>
+      <td bgcolor="#99CCFF"><input type="text" name="copper" id="copper" value="<echo>isset($monster_list_data)?$monster_list_data['copper']:'0'</echo>"/></td>
+      <td bgcolor="#99CCFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF">经验</td>
+      <td bgcolor="#99CCFF"><input type="text" name="experience" id="experience" value="<echo>isset($monster_list_data)?$monster_list_data['experience']:'0'</echo>"/></td>
+      <td bgcolor="#99CCFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF">物品</td>
+      <td bgcolor="#99CCFF"><input type="text" name="goods_ext_id" id="goods_ext_id" value="<echo>isset($monster_list_data)?$monster_list_data['goods_ext_id']:''</echo>"/></td>
+      <td bgcolor="#99CCFF"><select name="select3" id="select3">
+          <variable data="$goods_views">
+            <loop list="$i">
+              <option value="<echo>$goods_views[$i]['goods_ext_id']</echo>">
+              <echo>$goods_views[$i]['goods_name']</echo>
+              </option>
+            </loop>
+          </variable>
+        </select>
+        <input type="button" name="button4" id="button4" value="添加"  onclick="add_goods(document.getElementById('select3'))"/></td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF">武将</td>
+      <td bgcolor="#99CCFF"><input type="text" name="hero_id" id="hero_id" value="<echo>isset($monster_list_data)?$monster_list_data['hero_id']:''</echo>"/></td>
+      <td bgcolor="#99CCFF"><select name="select2" id="select2">
+          <variable data="$hero_views">
+            <loop list="$i">
+              <option value="<echo>$hero_views[$i]['id']</echo>">
+              <echo>$hero_views[$i]['name']</echo>
+              </option>
+            </loop>
+          </variable>
+        </select>
+        <input type="button" name="button5" id="button5" value="添加"  onclick="add_hero_tmp(document.getElementById('select2'))"/></td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF">声望</td>
+      <td bgcolor="#99CCFF"><input type="text" name="sports" id="sports" value="<echo>isset($monster_list_data)?$monster_list_data['sports']:'0'</echo>"/></td>
+      <td bgcolor="#99CCFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+<div id='movediv' style="display:none;"></div>

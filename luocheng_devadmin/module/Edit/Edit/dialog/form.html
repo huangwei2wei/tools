@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="button.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>按钮</title>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(oForm){
+	var n,action,method
+	n=oForm.n.value;
+	action=oForm.action.value;
+	var obj=oForm.type;
+	method=obj.options[obj.selectedIndex].value;
+	var str="<form name='"+n+"' method='"+method+"' action='"+action+"'>&nbsp;</form>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+</head>
+
+<body>
+<table width="231" height="134" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#009900">
+  <form>
+  <tr>
+    <td width="72">名称</td>
+    <td width="159"><input name="n" type="text" class="text" id="n" size="15" /></td>
+  </tr>
+  <tr>
+    <td>动作:</td>
+    <td><input name="action" type="text" class="text" id="action" size="15" /></td>
+  </tr>
+  <tr>
+    <td>方法:</td>
+    <td><select name="type" id="type">
+      <option value="get">get</option>
+      <option value="post">post</option>
+    </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input name="Submit" type="button" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="button" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr></form>
+</table>
+</body>
+</html>

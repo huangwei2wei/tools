@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td colspan="4" bgcolor="#CCCCCC"><form id="form1" name="form1" method="post" action="/?module=money&methods=queryrecharge">
+        <label for="textfield"></label>
+        昵称：
+        <input type="text" name="nickname" id="nickname" />
+        <input type="submit" name="button" id="button" value="提交" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<echo>$_POST["nickname"]</echo>
+    </form></td>
+  </tr>
+  <!--?
+  $zrecharge=0;
+  foreach($queryrecharge as $key=>$value)
+  {
+  $zrecharge+=$value["money"];
+  ?-->
+  <tr>
+    <td width="21%"><echo>date("Y-m-d H:i:s",$value["ts"])</echo></td>
+    <td width="37%"><echo>$value["money"]/10</echo></td>
+    <td width="37%"><echo>$value["timecount"]</echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+  <tr>
+    <td colspan="3">总充值:<echo>$zrecharge/10</echo></td>
+  </tr>
+</table>
+</body>
+</html>

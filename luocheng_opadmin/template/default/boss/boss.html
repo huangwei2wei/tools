@@ -1,0 +1,15 @@
+<gettemplet file="default/head.html"/>
+<form method="post" action="/?module=boss&methods=boss_list_views">
+ <p></p>
+ 输入运营商名称:<input type="text" value="<echo>isset($post['d_name'])?$post['d_name']:''</echo>" name="d_name"/>
+
+ <input type="submit" name="query" value="查询运营商"/>
+
+ <a href="/?module=boss&amp;methods=add_boss_list_views">【添加】</a>
+ <input type="hidden" name="submittype" value="分辨初次加载页面"/>
+</form>
+<echo>$html</echo>
+
+<script>
+select_tr("bosslist")
+</script>

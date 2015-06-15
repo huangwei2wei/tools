@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<TITLE>FLASH</TITLE>
+<link href="button.css" rel="stylesheet" type="text/css" />
+<style>
+td{
+	font-size:13px;
+}
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function checkout(obj){
+		var returnVal;
+		returnVal=obj.url.value;
+		if(returnVal=="http://" || returnVal==""){
+			alert('路径不能为空!');
+			obj.url.focus();
+			return;
+		}
+		if(isNaN(obj.width.value) || isNaN(obj.height.value)){
+			alert("高度或宽度应该是数字!");
+			obj.width.focus();
+			return;
+		}
+		returnVal+="|"+obj.width.value+"|"+obj.height.value;
+		window.returnValue=returnVal;
+		window.close();
+	}
+	function upFile(sName){
+		var obj=document.getElementById("form1");
+		sName+="|"+obj.width.value+"|"+obj.height.value;
+		window.returnValue=sName;
+		window.close();
+	}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+
+  <table width="390" height="106" border="0" cellpadding="0" cellspacing="0">
+  <form id="form1">
+    <tr>
+      <td width="66"><span>本地文件:</span></td>
+      <td width="324"><iframe src="../upLoad.aspx" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:25px;width:310px;padding:0px;margin:0px;"></iframe></td>
+    </tr>
+    <tr>
+      <td>网络地址:</td>
+      <td><input name="text" type="text" class="text" id="url" value="http://" size=30></td>
+    </tr>
+    <tr>
+      <td>媒体尺寸:</td>
+      <td>宽:
+        <input name="width" type="text" class="text" id="width" value="500" size=9>
+        高:
+        <input name="height" type="text" class="text" id="height" value="300" size=9></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input name="button" type="button" class="button"  onClick="checkout(this.form)" value="确 定">
+      &nbsp;&nbsp;
+        <input name="button" type="reset" class="button" onClick="window.close()" value="取 消"></td>
+    </tr>
+    </form>
+</table>
+</BODY>
+</HTML>

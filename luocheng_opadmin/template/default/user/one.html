@@ -1,0 +1,155 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1" align="center">
+  <tr>
+    <td align="center"><strong>基本数据</strong></td>
+  </tr>
+</table>
+<br />
+<table  width="80%" bgcolor="#999999" border="0" align=center cellpadding="0" cellspacing="1" style="text-align:center;">
+  <tr >
+    <td width="5%"  bgcolor="#CCFFFF"><strong>下载激活总数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>注册玩家总数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>实时在线人数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>今日新增（人）</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>今日收入</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>今日付费玩家数</strong></td>
+  </tr>
+  <tr bgcolor="<echo>$c</echo>"> 　　
+    <td width="5%"><echo>$act_user_sum</echo></td>
+    <td width="5%"><echo>$reg_user_sum</echo></td>
+    <td width="5%"><echo>$online_count</echo></td>
+    <td width="5%"><echo>$reg_user_sum_day[1]</echo></td>
+    <td width="5%"><echo>$day_money[0]</echo></td>
+    <td width="5%"><echo>$day_money[1]</echo></td>
+  </tr>
+</table>
+<table  width="100%" bgcolor="#999999" border="0" align=center cellpadding="0" cellspacing="1" style="text-align:center;">
+  <tr>
+    <td width="5%" colspan=6>数据概览</td>
+  </tr>
+  <tr>
+    <td width="50%" colspan=3><echo>$user_active_count_data</echo></td>
+    <td width="50%" colspan=3><echo>$acu_pcu</echo></td>
+  </tr>
+</table>
+<table  width="100%" bgcolor="#999999" border="0" align=center cellpadding="0" cellspacing="1" style="text-align:center;">
+  <tr>
+    <td width="5%" colspan=6>数据概览</td>
+  </tr>
+  <tr>
+    <td width="50%" colspan=3><echo>$user_active_count_data</echo></td>
+    <td width="50%" colspan=3><echo>$acu_pcu</echo></td>
+  </tr>
+</table>
+<table id="rechlist" width="100%" bgcolor="#999999" border="0" align=center cellpadding="0" cellspacing="1" style="text-align:center;">
+  <tr>
+    <td colspan="11"  bgcolor="#CCFFFF"><strong>基础数据</strong></td>
+    <td colspan="3"  bgcolor="#CCFFFF"><strong>ARPPU值</strong></td>
+    <td colspan="8"  bgcolor="#CCFFFF"><strong>设备留存</strong></td>
+  </tr>
+  <tr>
+    <td width="10%"  bgcolor="#CCFFFF"><strong>时间</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日总登陆设备</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日新增设备激活</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日创建角色数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日角色转化率</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日新增注册数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日设备激活率</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日新增账户</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日付费玩家数</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>日充值总额</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>当日累计活跃玩家数（含新增）</strong></td>
+    <td width="2%"  bgcolor="#CCFFFF"><strong>日</strong></td>
+    <td width="2%"  bgcolor="#CCFFFF"><strong>7日</strong></td>
+    <td width="2%"  bgcolor="#CCFFFF"><strong>30日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>次日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>3日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>4日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>5日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>6日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>7日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>15日</strong></td>
+    <td width="5%"  bgcolor="#CCFFFF"><strong>30日</strong></td>
+  </tr>
+  <!--?
+  foreach($get_data as $value)
+  {?-->
+  <tr> 　　
+    <td><strong>
+      <echo>date("Y-m-d", strtotime(strval($value["today"]))); </echo>
+      </strong></td>
+    <td><strong>
+      <echo>$value["today_login_sum"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>$value["activation"] </echo>
+      </strong> </strong></td>
+      
+    <td><strong>
+      <echo>$value["today_reg"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>($value["activation"]==0)?0:round($value["today_reg"]/$value["activation"],3)*100 </echo>
+      %</strong> </strong></td>
+      
+    <td><strong>
+      <echo>$value["activation_login"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>($value["activation"]==0)?0:round($value["activation_login"]/$value["activation"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>$value["today_reg"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>$value["pay_number_people"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>$value["pay_money"] </echo>
+      </strong></td>
+    <td><strong>
+      <echo>$value["today_login_count"] </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>($value["pay_number_people"]==0)?0:round($value["pay_money"]/$value["pay_number_people"],3) </echo>
+      </strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_pay_count7"]==0)?0:round($value["today_pay7"]/$value["today_pay_count7"],3) </echo>
+      </strong></strong></td>
+    <td><strong>
+      <echo>($value["today_pay_count30"]==0)?0:round($value["today_pay30"]/$value["today_pay_count30"],3) </echo>
+      </strong></strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax2"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax3"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax4"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax5"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax6"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax7"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax15"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+    <td><strong>
+      <echo>($value["today_login_count"]==0)?0:round($value["todayloginmax30"]/$value["today_login_count"],3)*100 </echo>
+      %</strong> </strong></td>
+  </tr>
+  <!--?
+    }
+    ?-->
+  
+</table>
+<script>
+select_tr("rechlist")
+</script>
+</BODY></HTML>

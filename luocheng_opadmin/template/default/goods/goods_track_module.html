@@ -1,0 +1,52 @@
+<gettemplet file="default/head.html"/>
+<p>
+<!--?
+$parameter_url=array();
+$parameter_url[]=array("url"=>"/?module=".$obj->get['module']."&methods=goods_track_module&type=1","name"=>"模块发放");
+$parameter_url[]=array("url"=>"/?module=".$obj->get['module']."&methods=goods_track_user&type=2","name"=>"物品情况");
+echo create_url($parameter_url,$obj->get['type']==1?"模块发放":"物品情况");
+?-->
+</p>
+<form id="form1" name="form1" method="post" action="">
+<table width="100%" border="1">
+  <tr>
+    <td width="6%">搜索</td>
+    <td><select name="module" id="module">
+    <!--?
+    foreach($get_base_module_sub as $value)
+    {
+    ?-->
+      <option <echo>$value['id']==$_POST['module']?'selected':''</echo> value="<echo>$value['id']</echo>"><echo>$value['sub_module_name']</echo></option>
+    <!--?
+    }
+    ?-->
+      </select>
+      &nbsp;&nbsp;用户昵称:
+		<input name="nickname" type="text" id="nickname" value="<echo>isset($_POST['nickname'])?$_POST['nickname']:''</echo>" size="12" /> 
+&nbsp;&nbsp;
+<input name="time1" type="text" class="Wdate"  id="time1" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<echo>isset($_POST['time1'])?$_POST['time1']:date('Y-m-d',time())</echo>" size="12"/>
+&nbsp;&nbsp;
+<input name="time2" type="text" class="Wdate"  id="time2" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<echo>isset($_POST['time2'])?$_POST['time2']:date('Y-m-d',time())</echo>" size="12"/>
+<input type="submit" name="button" id="button" value="查询" /></td>
+    </tr>
+</table>
+</form>
+<table width="100%" border="1">
+  <tr>
+    <td width="25%" bgcolor="#CCCCCC">时间</td>
+    <td width="25%"  bgcolor="#CCCCCC">物品名</td>
+    <td width="25%"  bgcolor="#CCCCCC">数量</td>
+    <td width="25%"  bgcolor="#CCCCCC">状态</td>
+  </tr>
+  <!--?
+  foreach($rundata as $value){
+  	$info=isset($value["info"])?$value["info"]:"";
+  ?-->
+  <tr>
+    <td><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+    <td ><echo>$value["goods_usre_name"]</echo></td>
+    <td ><echo>$value["max"]</echo></td>
+    <td ><echo>$value["e"].$info</echo></td>
+  </tr>
+  <!--?}?-->
+</table>

@@ -1,0 +1,81 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></label>
+            <label for="Platform">平台</label>
+            <select name="Platform" id="Platform">
+              <option value="0" <echo>$select_value == '0' ? 'selected' : ''</echo> >全部</option>
+              <option value="ios" <echo>$select_value == 'ios' ? 'selected' : ''</echo> >ios</option>
+              <option value="android" <echo>$select_value == 'android' ? 'selected' : ''</echo> >android</option>
+            </select>
+            <label for="Platform1">选择服务器</label>
+            <select name="Platform1" id="Platform1">
+              <option value="0" <echo>$select_serv == '0' ? 'selected' : ''</echo> >全部</option>
+              <option value="1"  <echo>$select_serv == '1' ? 'selected' : ''</echo> >1</option>
+            </select>
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">服务器名称</td>
+    <td  bgcolor="#CCCCCC">开服时间</td>
+    <td  bgcolor="#CCCCCC">注册角色数</td>
+    <td  bgcolor="#CCCCCC">日新增注册数</td>
+    <td  bgcolor="#CCCCCC">日活跃数</td>
+    <td  bgcolor="#CCCCCC">当日收入</td>
+    <td  bgcolor="#CCCCCC">累计收入</td>
+    <td  bgcolor="#CCCCCC">付费玩家数</td>
+  </tr>
+   <!--?
+   		if (is_array($service_list))
+	    {
+			foreach ($service_list as $key => $value)
+			{
+        ?-->
+  <tr>
+    <td><echo>$value['server_name']</echo></td>
+    <td><echo>$value['open_service_time']?date('Y-m-d H:i:s',$value['open_service_time']):''</echo></td>
+  <!--? 
+  			}
+  			
+          	if(isset($other_list[$value["server_id"]]))
+          	{
+          	 	$reg_total = $other_list[$value["server_id"]][1];
+          	 	$today_info = $other_list[$value["server_id"]][2];
+          	 	$total_info = $other_list[$value["server_id"]][0];
+  ?-->
+    <td><echo>$reg_total</echo></td>
+
+    <td><echo>$today_info["activation_login"]?$today_info["activation_login"]:0</echo></td>
+    <td><echo>$today_info["today_login_count"]?$today_info["today_login_count"]:0</echo></td>
+    <td><echo>$today_info["pay_money"]?$today_info["pay_money"]:0</echo></td>
+    <!--? 
+         		$total_money = 0;
+         		foreach($total_info as $key=>$val)
+         		{
+         			$total_money += $val;
+         		}
+  ?-->
+    <td><echo>$total_money</echo></td>
+    <td><echo>count($total_info)</echo></td>
+  </tr>
+  <!--?
+  }}
+  ?-->
+<tr>
+    <td colspan=8><echo>isset($pages)?$pages:""</echo></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

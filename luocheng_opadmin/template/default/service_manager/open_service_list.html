@@ -1,0 +1,78 @@
+<gettemplet file="default/head.html"/>
+<!--?
+ if($_SESSION["purview"]==99){
+ ?--> 
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td height="31" bgcolor="#CCCCCC"><a href="/?module=boss&amp;methods=boss_list_views">【返回运营商列表】</a> &nbsp;&nbsp;<a href="/?module=service_manager&methods=add_server_show&operators_id=<echo>$operators_id</echo>">【添加】</a> </td>
+    </tr>
+   <tr>
+     <td height="31" bgcolor="#CCCCCC">开服列表 &nbsp;&nbsp;<a href="/?module=service_manager&methods=combined_service_list&operators_id=<echo>$operators_id</echo>">合服列表</a> </td>
+    </tr>
+</table>
+ <br>&nbsp;
+<!--?}?-->
+
+<table align="center" id="openserver" style="width:100%">
+  <tr>
+    <td width="16%" bgcolor="#CCCCCC" ><strong>开服ID</strong></td>
+    <td width="22%" bgcolor="#CCCCCC" ><strong>开服名称</strong></td>
+    <td width="26%" bgcolor="#CCCCCC"  ><strong>开服时间</strong></td>
+    <td width="18%" bgcolor="#CCCCCC"  ><strong>状态</strong></td>
+    <td width="18%" bgcolor="#CCCCCC"  ><strong>操作</strong></td>
+  </tr>
+  <!--?
+        if (is_array($service_list))
+	    {
+			foreach ($service_list as $key => $value)
+			{
+        ?-->
+  <tr>
+    <td ><echo>$value['server_id']</echo></td>
+    <td  id="<echo>$key</echo>" data="<echo>$value['server_name']</echo>" ondblclick="editdata(this,'/?module=service_manager&methods=upservice_data','server_name','id',<echo>$value['id']</echo>,10)"><echo>$value['server_name']</echo></td>
+    <td ><input name="open_service_time[]" type="text" id="open_service_time_<echo>$key</echo>" size="20" value="<echo>$value['open_service_time']?date('Y-m-d H:i:s',$value['open_service_time']):''</echo>" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+    <input type="submit" name="button" id="button" value="修改" onclick="upopen_service_time('open_service_time_<echo>$key</echo>',<echo>$value['operators_id']</echo>,<echo>$value['server_id']</echo>)" /></td>
+    <td >
+    <!--?
+        if($value["status"]==1)
+        {
+        	echo "状态：正常&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/?module=service_manager&methods=upsestatus&operators_id=".$value['operators_id']."&server_id=".$value['server_id']."&e=0\">【停止】</a>";
+        }else{
+        	echo "状态：停止&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/?module=service_manager&methods=upsestatus&operators_id=".$value['operators_id']."&server_id=".$value['server_id']."&e=1\">【启动】</a>";
+        }
+      ?-->
+    </td>
+    <td >
+    <a href="/?module=service_manager&methods=create_combined&operators_id=<echo>$value['operators_id']</echo>&server_id=<echo>$value['server_id']</echo>">【创建合服】</a>
+    <!--?
+ if($_SESSION["purview"]==99){
+ ?--> <a href="/?module=service_manager&methods=game_show&view_id=<echo>$value['operators_id']</echo>&view_id2=<echo>$value['server_id']</echo>">【编辑】</a>
+ <!--? }else{echo "--";}?--></td>
+  </tr>
+  <!--?
+       }
+			}
+        ?-->
+  <tr>
+    <td colspan=8><echo>isset($page_string)?$page_string:""</echo></td>
+  </tr>
+</table>
+
+<script>
+select_tr("openserver")
+function upopen_service_time(id,operators_id,server_id)
+{
+	var opstime=document.getElementById(id).value;
+	ajax_ultimate("/?module=service_manager&methods=upopen_service_time&time="+opstime+"&operators_id="+operators_id+"&server_id="+server_id,"upopen_service_time_");
+	
+}
+
+function upopen_service_time_(obj)
+{
+	if(obj=="ok"){
+		alert("修改成功");
+	}else{
+		alert("修改失败");
+	}
+}
+</script>

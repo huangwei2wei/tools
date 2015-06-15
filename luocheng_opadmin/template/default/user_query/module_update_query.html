@@ -1,0 +1,137 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="100%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr >
+      <td colspan="2" bordercolor="#000000" bgcolor="#CCCCCC"><form name="form1" method="post" action="">
+          用户名：
+          <input name="user_name" type="text" id="user_name" value="<echo>$_POST['user_name']</echo>" size="40">
+          &nbsp;&nbsp;&nbsp;
+          <input type="submit" name="button" id="button" value="提交">
+        </form></td>
+    </tr>
+    <tr >
+      <td width="19%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>模块</strong></td>
+      <td width="81%" bordercolor="#000000" bgcolor="#FFCC00"><strong>今天是否重置</strong></td>
+    </tr>
+    <tr>
+      <td width="19%" align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>过关斩将</strong></td>
+      <td width="81%" align="left" bordercolor="#000000" bgcolor="#9999FF"><!--?
+      foreach((array)$module_list_name["过关斩将"] as $key=>$value)
+      {
+      	echo "ID:".$value["id"]."&nbsp;====&nbsp;时间:".$value["time"]."&nbsp;====&nbsp;状态:";
+        if($value["time"]==date("Ymd",time()))
+        {
+        	echo "<font color='#FF0000'>已打</font>";
+        }else{
+        	echo "未打";
+        }
+        echo "<br>";
+      }
+      ?--></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>悬赏任务</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>黄钻-每日礼包</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$diamond_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>官阶-每日俸禄</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$salary_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>竞技场-挑战次数-购买次数</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>英雄副本</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>藏宝阁-摇铜钱-摇宝石</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>每日签到</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$sign==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>将魂殿-免费使用一次</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><!--?
+      foreach((array)$up_hotel_time as $key=>$value)
+      {
+      	if($key==1)$keyname="蓝色";
+        if($key==2)$keyname="紫色";
+        if($key==3)$keyname="金色";
+     	if($value[1]==date("Ymd",time()))
+        {
+        	if($up_hotel[$key][1]==0)
+            {
+            	echo $keyname.": 有一次免费机会<br>";
+            }else{
+        		echo $keyname.": 已玩<br>";
+            }
+        }else{
+        	echo $keyname.": 有一次免费机会<br>";
+        }
+     }
+      ?--></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>胖子挖龙脉-次数-购买次数-免费领取玄铁</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>掠夺-次数-刷新次数</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>天命-9星连珠</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>无双-军令锻造</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>军团-上香-城池奖励</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>VIP-礼包</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>世界BOSS-一键战斗-鼓舞</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$today_act_count_time==date("Ymd",time())?"已更新":"未更新"</echo></td>
+    </tr>
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><strong>领取精力</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><!--?
+      if(isset($energy_time["12"]))
+      {
+      	if($energy_time["12"][1]==date("Ymd",time()))
+        {
+        	echo "12点已领取";
+        }else{
+        	echo "12点未领取";
+        }
+      }
+      
+      if(isset($energy_time["18"]))
+      {
+      	if($energy_time["18"][1]==date("Ymd",time()))
+        {
+        	echo "18点已领取";
+        }else{
+        	echo "18点未领取";
+        }
+      }
+      ?--></td>
+    </tr>
+  </tbody>
+</TABLE>
+</BODY></HTML>

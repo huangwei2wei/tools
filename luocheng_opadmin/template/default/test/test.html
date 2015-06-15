@@ -1,0 +1,71 @@
+<gettemplet file="default/head.html"/>
+<style type="text/css">
+  #container {
+	width : 600px;
+	height: 400px;
+	margin: 8px auto;
+  }
+</style>
+
+<form name="form1" method="post" action="/?module=test&methods=index">
+  <table width="271" border="1">
+    <tr>
+      <td colspan="2">
+      <p><a href="/?module=test&methods=delgoods">删除掉不合法物品</a></p>
+      <p><a href="/?module=test&methods=first_recharge">修正首充值</a></p>
+      <p><a href="/?module=test&methods=first_recharge">更新用户登录时间</a></p>
+       <p><a href="/?module=test&methods=hero_team">更新将星录</a></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="25">md5</td>
+      <td width="230"><input type="text" name="md5" id="md5">
+      <input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<echo>$md5</echo>
+<a href="http://opadmin.test.com/?module=test&methods=bar">aaaaa</a>
+<echo>$showpie3</echo>
+
+<!--一下是衡向柱条图-->
+<div id="container"></div>
+<script type="text/javascript">
+(function basic_bars(container) {
+
+  var
+    d1 = [],                                  // First data series
+    point,                                    // Data point variable declaration
+    i;
+
+  for (i = 0; i < 40; i++) {
+	point = [Math.ceil(Math.random()*10), i];
+    d1.push(point);
+  };
+     	     
+  // Draw the graph
+  Flotr.draw(
+    container,
+    [d1],
+    {
+      bars : {
+        show : true,
+        horizontal : true,	//横着进度条 false 是竖着的
+        shadowSize : 0,
+        barWidth : 0.5
+      },
+      mouse : {
+        track : true,
+        relative : true
+      },
+      yaxis : {
+        min : 0,
+        autoscaleMargin : 1
+      }
+    }
+  );
+})(document.getElementById("container"));
+
+    </script>
+</BODY>
+</HTML>

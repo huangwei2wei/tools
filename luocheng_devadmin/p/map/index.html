@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  style="height:100%; width:100%;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>地图编辑器</title>
+<script src="./public.js"></script>
+<style>
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:370px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:370px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+</style>
+</head>
+
+<body style="height:100%; width:100%;">
+<form id="form1" name="form1" method="post" action="">
+  <!--<input type="button" name="button" onclick="shouji()" id="button" value="提交到数据库" />-->
+  <textarea name="mapdata" id="mapdata" style="display:none;"></textarea>
+  地图ID
+  <select onchange="areatohuabu(this)" name="map_id" id="map_id">
+    <option>请选择</option>
+  </select>
+ &nbsp;&nbsp;&nbsp;&nbsp;使用mongo数据源
+  <input name="mongo" type="checkbox" id="mongo" value="1" />
+</form>
+<div style="float:left; width:1000px; height:600px; overflow:hidden; position:relative; background-color:#6FF;">
+  <div id="map" style="width:600px; height:600px; position:absolute; left:6px; top:9px; overflow:hidden;">
+   <!-- <div style="width:100%; height:100%;">
+    	<div style="width:100%; height:100%;" id="map_s">1</div>
+        <div style="width:100%; height:100%;" id="map_building">2</div>
+    </div>-->
+    <div id="gezi"></div>
+    <div id="building"></div>
+    <div id="tishi" style="width:100px; height:70px; background-color:#F9F; display: none; position:absolute; left:6px; top:9px;">
+      <div id="bres_edit" onclick="edits()" style="height:22px;">编辑</div>
+      <div onclick="deles()" style="height:22px;">删除</div>
+      <div onclick="moveout()" style="height:22px;">取消</div>
+    </div>
+  </div>
+</div>
+<script language="JavaScript" type="text/javascript">
+//地图六边格平铺
+var gw=100;
+var gh=120;
+
+function map_(map_id,w,h)
+{
+	document.getElementById(map_id).innerHTML="";
+	//取得宽度循环数
+	var strhtml="";
+	var map_strhtml="";
+	var top=0;
+	var left=0;
+	var sum=Math.ceil(h/(gh+(gh/2))*2);
+	var sumh=Math.ceil(w/gw)+1;
+	var id="";
+	
+	
+	for(var i=0;i<sumh;i++)
+	{
+		for(var j=0;j<sum;j++)
+		{
+			left=lefts(j+1,i+1);
+			top=tops(j+1);
+			id=i+":"+j;
+			strhtml+='<div id="'+id+'" title="'+id+'" ondblclick="shuangji(this)"  style="background-image:url(a.png);position:absolute; left:'+left+'px; top:'+top+'px; width:'+gw+'px; height:'+gh+'px;"></div>';
+			
+			//map_strhtml+='<div style="background-image:url(2.png);position:absolute; left:'+left+'px; top:'+top+'px; width:'+gw+'px; height:'+gh+'px;"></div>';
+		}
+	}
+	
+	document.getElementById(map_id).innerHTML=strhtml;
+	//document.getElementById("map_s").innerHTML=map_strhtml;
+}
+
+function lefts(lesum,sum)
+{
+	var top=-gw;
+	for(var i=0;i<sum;i++)
+	{
+		if(lesum%2==0)
+		{
+			if(i==0)
+			{
+				top+=gw/2;
+			}else{
+				top+=gw;
+			}
+		}else{
+			top+=gw;
+		}
+	}
+	
+	return top-1;
+}
+
+function tops(sum)
+{
+	if(sum==1){return -gh/4;}
+	
+	var left=0;
+	for(var i=0;i<sum;i++)
+	{
+		if(i%2)
+		{
+			if(i==1)
+			{
+				left+=(gh-(gh/2));
+			}else{
+				left+=(gh-(gh/4));
+			}
+		}else if(i){
+			left+=gh-(gh/4);
+		}
+	}
+	return (left+1);
+}
+
+// 使用方式如下：
+dragdrop.registerDragdropHandler("map","map");
+
+
+function shuangji(obj)
+{
+	if(document.getElementById("movediv") && document.getElementById("movediv").style.display!="none")
+	{
+		obj.style.backgroundImage = "url(c.png)";
+		var iframe=document.getElementsByTagName("iframe");
+		
+		var fr_doc = iframe[0].contentWindow.document;    
+		
+		fr_doc.getElementById("gezi").value+=(","+obj.id);
+	}else{
+		var aa=obj.style.backgroundImage.split("a.png");
+		if(aa.length==2)
+		{
+			obj.style.backgroundImage = "url(c.png)";
+			movediv("./a.html?gezi="+obj.id,"","move_div",1);
+			dragdrop.registerDragdropHandler("movediv_","movediv_");
+		}
+	}
+}
+
+function sel(obj)
+{	
+	document.getElementById("tishi").setAttribute("data",obj.id);
+	//坐标
+	var left=parseInt(obj.style.left.replace("px",""));
+	var top=parseInt(obj.style.top.replace("px",""));
+	document.getElementById("tishi").style.left=(left+78)+"px";
+	document.getElementById("tishi").style.top=top+"px";
+	
+	var bres_type=parseInt(obj.getAttribute("bres_type"));
+
+	if(bres_type==0)
+	{
+		document.getElementById("bres_edit").style.display="none";
+	}else{
+		document.getElementById("bres_edit").style.display="block";
+	}
+	
+	document.getElementById("tishi").style.display="block";
+}
+
+function moveout()
+{
+	document.getElementById("tishi").style.display="none";
+}
+
+function edits()
+{
+	movediv("./a.html?edit=1&imgdivid="+document.getElementById("tishi").getAttribute("data")+"&data_map_id="+document.getElementById("tishi").getAttribute("id"),"","move_div",1);
+	dragdrop.registerDragdropHandler("movediv_","movediv_");
+	moveout();
+}
+
+function deles()
+{
+	var id=document.getElementById("tishi").getAttribute("data");
+	var gezi=document.getElementById(id).getAttribute("data");
+	var gezis=gezi.split(",");
+	for(var i=0;i<gezis.length;i++)
+	{
+		if(parent.document.getElementById(gezis[i]))
+		{
+			parent.document.getElementById(gezis[i]).style.backgroundImage = "url(a.png)";
+		}
+	}
+
+	ajax_ultimate("./res.php?e=delbres&data_map_id="+id+"&map_id="+document.getElementById("map_id").value);
+	Delhtml(id);
+	moveout();
+}
+
+function shouji()
+{
+	var data="";
+	var imgp="";
+	var xy="";
+	var newdata="";
+		
+	var building=document.getElementById("building");
+	var tag=building.getElementsByTagName("div");
+	
+	for(var i=0;i<tag.length;i++)
+	{
+		data=tag[i].getAttribute("data");
+		imgp=tag[i].getAttribute("imgp");
+		xy=tag[i].style.left.replace("px","")+":"+tag[i].style.top.replace("px","");
+		newdata+=data+"@"+imgp+"@"+xy+";";
+	}
+	
+	document.getElementById("mapdata").value=newdata;
+	ajax_ultimate("./act.php","shouji_","post","form1");
+}
+
+function shouji_(str)
+{
+	alert(str);
+}
+ajax_ultimate("./res.php?e=word","words");
+
+function words(string)
+{
+	string=json_x(string);
+	for(var i=0;i<string.length;i++)
+	{
+		add_select_item(document.getElementById("map_id"), string[i]["name"], string[i]["id"]);
+	}
+}
+/*
+function wordtoarea(obj)
+{
+		ajax_ultimate("./res.php?e=area&mapid="+obj.value,"wordtoarea_");
+}
+
+function wordtoarea_(string)
+{
+	string=json_x(string);
+	Delhtml("area_id");
+	document.getElementById("select_area").innerHTML=' <select onchange="areatohuabu(this)" name="area_id" id="area_id"><option>请选择</option></select>';
+	for(var i=0;i<string.length;i++)
+	{
+		add_select_item(document.getElementById("area_id"), string[i]["name"], string[i]["id"]);
+	}
+}
+*/
+
+function areatohuabu(obj)
+{
+	var mongo=0;
+	document.getElementById("building").innerHTML="";
+	document.getElementById("gezi").innerHTML="";
+	var map_id=document.getElementById("map_id").value;
+	if(document.getElementById("mongo").checked)
+	{
+		mongo=document.getElementById("mongo").value;
+	}
+	document.getElementById("map").style.backgroundImage = "url(./map/"+map_id+".jpg)";
+	//地图大小处理
+	var img = new Image();
+	img.onload = function(){
+		document.getElementById("map").style.width=this.width+"px";
+		document.getElementById("map").style.height=this.height+"px";
+		map_("gezi",this.width,this.height);
+		ajax_ultimate("./res.php?e=datamap&map_id="+map_id+"&mongo="+mongo,"areatohuabu_");
+	}
+	img.src ="./map/"+obj.value+".jpg";
+}
+
+function areatohuabu_(string)
+{
+	var timestamp = Date.parse(new Date());
+	var str='<div bres_type="[bres_type]" imgp="[imgp]" data="[data]" id="[id]" ondblclick="sel(this)" style="background-image:url(./bres/png/[N].png);position:absolute; left:[left]px; top:[top]px; width:[width]px; height:[height]px;" dataw="0" datah="0" ></div>';
+	var tmp="";
+	var html="";
+	
+	string=json_x(string);
+	
+	for(var i=0;i<string.length;i++)
+	{
+		tmp=str;
+		tmp=tmp.replace("[imgp]",string[i]["bres_id"]);
+		tmp=tmp.replace("[id]",string[i]["id"]);
+		tmp=tmp.replace("[N]",string[i]["bres_id"]);
+		var xy=string[i]["xy"].split(":");
+		tmp=tmp.replace("[left]",xy[0]);
+		tmp=tmp.replace("[top]",xy[1]);
+		tmp=tmp.replace("[data]",string[i]["grid"]);
+		
+		tmp=tmp.replace("[width]",string[i]["width"]);
+		tmp=tmp.replace("[height]",string[i]["height"]);
+		
+		tmp=tmp.replace("[bres_type]",string[i]["bres_type"]);
+		
+		var gridarr=string[i]["grid"].split(",");
+		for(var j=0;j<gridarr.length;j++)
+		{
+			if(gridarr[j] && document.getElementById(gridarr[j]))
+			{
+				document.getElementById(gridarr[j]).style.backgroundImage = "url(./b.png)";
+			}
+		}
+		html+=tmp;
+	}
+	document.getElementById("building").innerHTML+=html;
+}
+</script>
+</body>
+</html>

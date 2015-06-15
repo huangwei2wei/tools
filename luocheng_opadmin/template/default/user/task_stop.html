@@ -1,0 +1,44 @@
+<gettemplet file="default/head.html"/>
+    <table id="reglist" width="100%" border="0" cellpadding="0" cellspacing="1">
+      <tr>
+        <td align="center" colspan="101" bgcolor="#977C00">
+        <form name="form1" method="post" action="">
+              时间:<select name="field" id="field">
+              	<option value="today_3"<!--?  if($_POST["field"]=="today_3"){  echo "selected='selected'"; } ?--> >3日</option>
+                <option value="today_7"<!--?  if($_POST["field"]=="today_7"){  echo "selected='selected'"; } ?--> >7日</option>
+                <option value="today_14" <!--?  if($_POST["field"]=="today_14"){ echo "selected='selected'"; } ?--> >14日</option>
+                <option value="today_30" <!--?  if($_POST["field"]=="today_30"){ echo "selected='selected'"; } ?--> >30日</option>
+            </select>
+				<input type="submit" name="button" id="button" value="查询">
+          </form>
+          </td>
+      </tr>
+      <tr >
+      </tr>
+  </table>
+
+<table align="center" width="100%" border="1">
+  <tr>
+    <td width="8%"><strong>任务ID</strong></td>
+    <td width="22%"><strong>任务名称</strong></td>
+    <td width="21%"><strong>关卡人数</strong></td>
+    <td width="21%"><strong>流失人数</strong></td>
+    <td width="49%"><strong>流失比例</strong></td>
+  </tr>
+<!--?
+     foreach($taskstop as $value){
+?-->
+  <tr>
+    <td><echo>$value["task_id"]</echo></td>
+    <td><echo>$value["task_name"]</echo></td>
+    <td><echo>$value["player_num"]</echo></td>
+    <td><echo>$value["ls_player_num"]</echo></td>
+    <td>
+    <echo>($reg_user_sum==0)?0:round($value["ls_player_num"]/$reg_user_sum,3)*100 </echo>
+    </td>
+  </tr>
+<!--?
+	  }
+?-->
+</table>
+</BODY></HTML>

@@ -1,0 +1,64 @@
+<gettemplet file="default/head.html"/>
+<!--?
+ if($_SESSION["operators_id"]==1){
+ ?--> 
+ <div style="height:30px; background-color:#9CF; padding:5px; margin:0;">
+ <a href="/?module=boss&amp;methods=boss_list_views">【返回运营商列表】</a> &nbsp;&nbsp;<a href="/?module=boss&methods=game_addshow&view_id=<echo>$view_id</echo>&view_id2=<echo>$view_id2</echo>">【添加】</a> 
+ <br>
+ <a href="/?module=boss&amp;methods=boss_list_views">开服列表</a> &nbsp;&nbsp;合服列表
+</div>
+<!--?}?-->
+
+<table align="center" id="openserver" style="width:100%">
+  <tr>
+    <td width="15%" bgcolor="#CCCCCC" ><strong>开服ID</strong></td>
+    <td width="20%" bgcolor="#CCCCCC" ><strong>开服名称</strong></td>
+    <td width="20%" bgcolor="#CCCCCC"  ><strong>游戏地址</strong></td>
+    <td width="19%" bgcolor="#CCCCCC"  ><strong>芒果数据库</strong></td>
+    <td width="14%" bgcolor="#CCCCCC"  ><strong>状态</strong></td>
+    <td width="12%" bgcolor="#CCCCCC"  ><strong>操作</strong></td>
+  </tr>
+  <!--?
+        if (is_array($goods_page))
+	    {
+			foreach ($goods_page['content'] as $key => $value)
+			{
+        ?-->
+  <tr>
+    <td ><echo>$value['server_id']</echo></td>
+    <td ><echo>$value['server_name']</echo></td>
+    <td ><echo>$value['game_web']</echo></td>
+    <td ><echo>$value['mongo_db']</echo></td>
+    <td >
+    <!--?
+        if(isset($server_list[$value['server_id']]) and $server_list[$value['server_id']]["status"]==1)
+        {
+        	if($server_list[$value['server_id']]["combined_service"]>0){
+            	echo "状态：合服&nbsp;&nbsp;&nbsp;&nbsp;主服：".$server_list[$value['server_id']]["combined_service"];
+            }else{
+        		echo "状态：正常&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/?module=boss&methods=upsestatus&view_id=".$value['operators_id']."&view_id2=".$value['server_id']."&view_id3=0\">【停止】</a>";
+            }
+        }elseif(isset($server_list[$value['server_id']]) and $server_list[$value['server_id']]["status"]==0){
+        	echo "状态：停止&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/?module=boss&methods=upsestatus&view_id=".$value['operators_id']."&view_id2=".$value['server_id']."&view_id3=1\">【启动】</a>";
+        }else{
+        	echo "状态：未知";
+        }
+      ?-->
+    </td>
+    <td >
+    <!--?
+ if($_SESSION["operators_id"]==1){
+ ?--> <a href="/?module=boss&methods=game_show&view_id=<echo>$value['operators_id']</echo>&view_id2=<echo>$value['server_id']</echo>">【编辑】</a>
+ <!--? }else{echo "--";}?--></td>
+  </tr>
+  <!--?
+       }
+			}
+        ?-->
+  <tr>
+    <td colspan=7><echo>$page_string</echo></td>
+  </tr>
+</table>
+<script>
+select_tr("openserver")
+</script>

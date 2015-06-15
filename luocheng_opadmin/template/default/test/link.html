@@ -1,0 +1,40 @@
+<gettemplet file="default/head.html"/>
+<style>
+html,body {height:100%; width:100%;} 
+</style>
+<form id="form1" name="form1" method="post" action="">
+  ID:<input name="errid" type="text" id="errid" value="<echo>isset($_POST['errid'])?$_POST['errid']:''</echo>" />
+  <input type="submit" name="button2" id="button2" value="导入" />
+</form>
+<textarea name="edit_link" id="edit_link" style="display:none"><echo>$error</echo></textarea>
+<echo>$edit</echo>
+<script>
+function took()
+{
+	var edit_link=document.getElementById("edit_link").value;
+	edit_link=edit_link.replace(/\<\/font\>/g,"{/font}");
+	edit_link=edit_link.replace(/\<\/u\>/g,"{/u}");
+	edit_link=edit_link.replace(/\<\/a\>/g,"{/a}");
+	edit_link=edit_link.replace(/\<\/b\>/g,"{/b}");
+	edit_link=edit_link.replace(/\<\/i\>/g,"{/i}");
+	
+	edit_link=edit_link.replace(/\<b\>/g,"{b}");
+	edit_link=edit_link.replace(/\<u\>/g,"{u}");
+	edit_link=edit_link.replace(/\<i\>/g,"{i}");
+	
+	edit_link=edit_link.replace(/\<font color/g,"{font~color");
+	edit_link=edit_link.replace(/\<a href/g,"{a~href");
+	
+	edit_link=edit_link.replace(/\>/g,"}");
+	document.getElementById("okedit").value=edit_link;
+}
+</script>
+<form id="form1" name="form1" method="post" action="/?module=test&methods=uplink">
+<input type="button" name="button" id="button" value="生成可用格式" onclick="took()" />
+
+<textarea name="okedit" cols="80" rows="6" id="okedit"></textarea>
+<input type="submit" name="button" id="button" value="导进数据库" />
+<input name="id" type="hidden" id="id" value="<echo>isset($_POST['errid'])?$_POST['errid']:0</echo>" />
+</form>
+</BODY>
+</HTML>

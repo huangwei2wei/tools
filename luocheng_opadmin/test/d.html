@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+    #divBall
+    {
+        position:absolute;
+        top:100px;
+        left:0px;
+    }
+    #divX
+    {
+        position:absolute;
+        top:100px;
+        background-color:Red;
+        height:1px;
+        overflow:hidden;
+        width:800px;
+        left:0px;
+    }
+    </style>
+</head>
+<body>
+<div id="divLine"></div>
+<div id="divBall">*</div>
+<div id="divX"></div>
+<div id="asdfdsf" style="margin-top:200px;"></div>
+<script language="javascript" type="text/javascript">
+var ball = document.getElementById("divBall");
+var line = document.getElementById("divLine");
+var x = 0;
+var y = 0;
+var angle = 270;
+var s=false;
+var fudu=6;
+var zhuan=0;
+var sinarr=new Array();
+function Run(maxs)
+{
+	x += fudu;
+	angle += fudu;
+	if(x>250 && x<296 && zhuan==0)
+	{
+		zhuan=1;
+		angle=30;	
+	}
+	
+	if (x >296){return false;}
+	if (angle > 360) angle = 0;
+	sinarr[y] = ((Math.sin(Math.PI / 180 * angle) * (maxs*100)+100)/200);
+	
+	ball.style.left = x + "px";
+	ball.style.top =(sinarr[y]*200) + "px";
+	//添加运动轨迹
+	var p = ball.cloneNode(true);
+	line.appendChild(p);
+	
+	y=y+1;
+	Run(maxs)
+}
+Run(1);
+var aa=new Array();
+var base_sin=sinarr[0];
+for(var k=0;k<sinarr.length;k++)
+{
+	//sinarr[k]=sinarr[k]-base_sin;
+	
+	document.getElementById("asdfdsf").innerHTML+=(k+":"+sinarr[k])+"<br>";
+}
+</script>
+</body>
+</html>

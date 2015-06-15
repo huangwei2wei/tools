@@ -1,0 +1,191 @@
+<gettemplet file="default/head.html"/>
+<script type="text/javascript">
+var message=document.getElementById("message");
+
+var mySelect=document.getElementById("mySelect")
+
+function test()
+{
+	message.value = mySelect[mySelect.selectedIndex].text;
+
+   }
+</script>
+
+<table width="398" border="1" align="left">
+  <tr>
+    <td width="59">列表</td>
+    <td width="65"><a href="/?module=monster&methods=add_monster_list_views">添加</a></td>
+    <td width="75" bgcolor="#FF0000">距离错误</td>
+    <td width="94" bgcolor="#FF00FF">怪物不存在</td>
+    <td width="30" bgcolor="#00FF00">正常</td>
+  </tr>
+</table>
+<p>
+<hr>
+</p>
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="2%" bgcolor="#CCCCCC">ID</td>
+    <td width="10%" bgcolor="#CCCCCC">怪物集合名</td>
+    <td width="5%" bgcolor="#CCCCCC">颜色</td>
+    <td width="25%" bgcolor="#CCCCCC">怪物ID和等级列表</td>
+    <td width="26%" bgcolor="#CCCCCC">使用的阵形</td>
+    <td width="10%" bgcolor="#CCCCCC">无双</td>
+    <td width="15%" bgcolor="#CCCCCC">掉落</td>
+    <td width="7%" bgcolor="#CCCCCC">操作</td>
+  </tr>
+  <variable data="$monster_list_data">
+    <loop list="$i">
+    <?php $formation=arrayed($monster_list_data[$i]["formation"]); ?>
+     <!--?
+     	$echos1="";
+        $echos2="";
+        foreach($monster_list_data[$i]["monster_id"] as $kk=>$va)
+        {
+        	$echos1.=$kk.':'.$va[0].":".$va[1].",";
+        	$echos2.='<font color="#0000FF">'.$kk.'</font>('.$monster_views[$kk][$va[1]].'):'.$va[0].":".$va[1].",";
+        }
+        ?-->
+        
+      <tr bgcolor="<?php if($i%2==0){echo '#FFCCFF';}else{echo '#FFffFF';} ?>">
+        <td ><?php echo $monster_list_data[$i]["id"]?></td>
+        <td ><?php echo $monster_list_data[$i]["monster_name"]?></td>
+        <td ><?php echo $monster_list_data[$i]["color"]?></td>
+        <td >
+        <span id="<echo>$i</echo>_mo" data="<?php echo $echos1?>" ondblclick="editdata(this,'/?module=monster&methods=upformation1','1','id',<?php echo $monster_list_data[$i]["id"]?>,50)">
+        <!--?
+        echo $echos1;
+        ?-->
+        </span><br>
+        <!--?
+        echo $echos2;
+        ?-->
+        </td>
+        <td>
+          <table width="100%" border="1">
+            <tr>
+              <td width="30%" height="30" bgcolor="<?php 
+    if($formation[1][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[1][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[1][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[1][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">1:<span id="<echo>$i</echo>_1" data="<?php echo $formation[1][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','1','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[1][1]?></span></td>
+              <td width="30%" height="30" bgcolor="<?php 
+    if($formation[4][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[4][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[4][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[4][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">4:<span id="<echo>$i</echo>_4" data="<?php echo $formation[4][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','4','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[4][1]?></span></td>
+              <td width="30%" height="30" bgcolor="<?php 
+    if($formation[7][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[7][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[7][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[7][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">7:<span id="<echo>$i</echo>_7" data="<?php echo $formation[7][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','7','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[7][1]?></span></td>
+            </tr>
+            <tr>
+              <td height="30" bgcolor="<?php 
+    if($formation[2][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[2][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[2][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[2][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">2:<span id="<echo>$i</echo>_2" data="<?php echo $formation[2][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','2','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[2][1]?></span></td>
+              <td height="30" bgcolor="<?php 
+    if($formation[5][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[5][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[5][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[5][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">5:<span id="<echo>$i</echo>_5" data="<?php echo $formation[5][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','5','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[5][1]?></span></td>
+              <td height="30" bgcolor="<?php 
+    if($formation[8][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[8][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[8][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[8][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">8:<span id="<echo>$i</echo>_8" data="<?php echo $formation[8][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','8','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[8][1]?></span></td>
+            </tr>
+            <tr>
+              <td height="30" bgcolor="<?php 
+    if($formation[3][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[3][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[3][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[3][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">3:<span id="<echo>$i</echo>_3" data="<?php echo $formation[3][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','3','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[3][1]?></span></td>
+              <td height="30" bgcolor="<?php 
+    if($formation[6][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[6][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[6][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[6][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">6:<span id="<echo>$i</echo>_6" data="<?php echo $formation[6][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','6','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[6][1]?></span></td>
+              <td height="30" bgcolor="<?php 
+    if($formation[9][0]==0)
+    {
+    	echo '#FFffff';
+    }elseif($formation[9][0]==1){
+    	echo '#00FF00';
+    }elseif($formation[9][0]==-1){
+    	echo '#FF0000';
+    }elseif($formation[9][0]==-2){
+    	echo '#FF00FF';
+    }
+     ?>">9:<span id="<echo>$i</echo>_9" data="<?php echo $formation[9][1]?>" ondblclick="editdata(this,'/?module=monster&methods=upformation','9','id',<?php echo $monster_list_data[$i]["id"]?>,10)"><?php echo $formation[9][1]?></span></td>
+            </tr>
+        </table></td>
+        <td ><?php echo $monster_list_data[$i]["warriors"]?></td>
+        <td >铜钱：<?php echo $monster_list_data[$i]["copper"]?><br>
+          经验：<?php echo $monster_list_data[$i]["experience"]?><br>
+          物品：<?php echo $monster_list_data[$i]["goods_ext_id"]?><br>
+          武将：<?php echo $monster_list_data[$i]["hero_id"]?><br>
+          声望：<?php echo $monster_list_data[$i]["sports"]?></td>
+        <td ><a href="/?module=monster&methods=add_monster_list_views&id=<echo>$monster_list_data[$i]['id']</echo>">编辑</a>&nbsp;<a href="/?module=monster&methods=del_monster_list_views&id=<echo>$monster_list_data[$i]['id']</echo>">删除</a></td>
+      </tr>
+    </loop>
+  </variable>
+</table>

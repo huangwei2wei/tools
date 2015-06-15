@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td width="50" height="28" colspan="2" align="center"  valign="middle" bgcolor="#CCCCCC"  ><div align="center"> <span >定时器管理</span> </div></td>
+  </tr>
+</table>
+<table id="paylist" width="100%" border="1">
+ 	<tr>
+        <td width="18%" bgcolor="#CCCCCC"><strong>类项</strong></td>
+        <td width="24%" bgcolor="#CCCCCC"><strong>执行时间</strong></td>
+        <td width="20%" bgcolor="#CCCCCC"><strong>理论执行时间</strong></td>
+        <td width="21%" bgcolor="#CCCCCC"><strong>执行结果</strong></td>
+        <td width="17%" bgcolor="#CCCCCC"><strong>是否人工执行</strong></td>
+      </tr>
+      
+  <variable data="$management">
+    <loop list="$i">
+     
+      <tr>
+        <td><echo>$management[$i]["typename"]</echo></td>
+        <td><echo>$management[$i]["todayH"]</echo></td>
+        <td><echo>$management[$i]["H"]</echo></td>
+        <td><echo>$management[$i]["e"]</echo></td>
+        <td><a href="/?module=timer&methods=artificial&idmd5=<echo>$management[$i]['md5']</echo>" target="_blank">人工执行一次</a></td>
+      </tr>
+    </loop>
+  </variable>
+</table>
+<script>
+select_tr("paylist")
+</script>

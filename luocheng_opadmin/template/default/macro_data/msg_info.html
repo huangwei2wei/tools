@@ -1,0 +1,51 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+<form method="post" action="/?module=macro_data&methods=key_list">
+<p> <div align="center"><span class="style1">过滤词语</span></div>
+    <tr>
+      <td align="center"> 输入要封的KEY：:
+        <input type="text" value="<echo>$key</echo>" name="key" size="20" id="key" />
+        &nbsp; (多个IP&quot;;&quot;隔开)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;替换:
+<input name="replace" type="text" id="replace"  value="***" /></td>
+    </tr>
+
+ 
+
+      </p>
+
+    <tr> 
+      <td align="center"><input type="submit" name="add" value="添加到KEY列表"></td> 
+    </tr>
+</form>
+<hr>
+<table width="100%">
+  <tr>
+    <td bgcolor="#CCCCCC">KEY</td>
+    <td bgcolor="#CCCCCC">替换后的词语</td>
+    <td bgcolor="#CCCCCC">操作</td>
+  </tr>
+  <variable data="$prohibit_speech">
+    <loop list="$i">
+      <tr>
+        <td><echo>$prohibit_speech[$i]["key"]</echo></td>
+        <td><echo>$prohibit_speech[$i]["replace"]</echo></td>
+        <td><a href="/?module=macro_data&methods=del_key&key=<echo>$prohibit_speech[$i]['key']</echo>">解除封锁</a></td>
+      </tr>
+    </loop>
+  </variable>
+</table>

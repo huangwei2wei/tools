@@ -1,0 +1,22 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td height="28" colspan="2" align="center"  valign="middle" bgcolor="#CCCCCC"  ><div align="center"> <span style="color: rgb(0, 153, 204); font-family: 宋体, serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; display: inline !important; float: none; ">删除用户</span> </div></td>
+  </tr>
+  <tr>
+    <td width="50%" height="478" valign="top"><form  align="center" method="post" action="/?module=macro_data&methods=querynickname_act">
+        <p align="center"><span class="style3">用户昵称</span>：
+          <input type="text3" value="" name="nickname" id="nickname">
+        </p>
+        <input type="submit" name="query" value="查询" />
+      </form>
+      
+      <!--? if(isset($user_name)){ ?-->
+      
+      <p>用户名:
+        <echo>$user_name</echo>
+      </p>
+      
+      <!--? } ?--></td>
+  </tr>
+</table>

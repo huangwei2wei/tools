@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>sin</title>
+<style type="text/css">
+#test {
+   border:solid 1px #FF0000;
+   height:200px;
+   width:800px;
+   overflow:hidden;
+   text-align:left;
+   position:absolute;
+   left:0;
+   top:0;
+}
+.dot {
+   background:#FF0000;
+   width:2px;
+   height:2px;
+   line-height:0;
+   font-size:0px;
+   position:absolute;
+}
+</style>
+</head>
+
+<body>
+<div id="test"><span class="dot"></span></div>
+<div id="asdfdsf"></div>
+<script type="text/javascript">
+var test = $("test");
+var s;
+var i=0;
+var j=0;
+function move(maxs)
+{
+   var d1 = addpoint();
+   test.appendChild(d1);
+   d1.style.top=((Math.sin(i+2))*(maxs*100)+100)+"px";
+   d1.style.left=j+"px";
+   s = setTimeout("move("+maxs+")",20);
+   j=j+1;
+   i=(0.05)*j+2;
+
+   if(j>(70)){
+    clearTimeout(s);
+   }
+}
+move(0.5);
+
+/*
+var sinarr=new Array();
+function move(maxs)
+{
+	sinarr[j]=((Math.sin(i))*(maxs*100));
+
+	j=j+1;
+	i=(0.05)*j+2;
+	if(j<(70)){move(maxs);}
+}
+*/
+//move(0.8);
+/*
+var aa=new Array();
+for(var k=0;k<sinarr.length;k++)
+{
+	//aa[k]=sinarr[k]-sinarr[0];
+	
+	document.getElementById("asdfdsf").innerHTML+=(k+":"+(sinarr[k]))+"<br>";
+}*/
+//alert(aa);
+
+
+function $(id) {
+   return document.getElementById(id);
+}
+function addpoint() {
+   var dot = document.createElement("span");
+   dot.className="dot";
+   return dot;
+}
+
+</script>
+</body>
+</html>

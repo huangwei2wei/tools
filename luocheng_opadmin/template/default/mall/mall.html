@@ -1,0 +1,163 @@
+<gettemplet file="default/head.html"/>
+<style>
+p{ margin:0px; padding:0px;}
+.divkk{border:1px dashed #000;}
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:125px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:125px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+
+#pagelist{
+	height:25px;
+}
+#pagelist li{
+	list-style:none;
+	float:left;
+	margin:5px;
+}
+
+</style>
+
+<table width="100%" border="1">
+  <tr>
+    <td align="center"><strong>
+      <echo>$arr[$_GET["type"]]</echo>
+    </strong></td>
+  </tr>
+  <tr>
+    <td height="304" valign="top"><table width="100%" border="1">
+    <tr>
+    	<td width="10%">排序</td>
+        <td width="10%">物品扩展ID</td>
+        <td width="10%">名称</td>
+        <td width="10%">状态 1热卖 2新 0无状态</td>
+        <td width="10%">价格</td>
+        <td width="10%">折扣</td>
+        <td width="10%">数量</td>
+        <!--?if($_GET["type"]==8){?-->
+        <td width="10%">用户数量</td>
+        <td width="10%">出现概率</td>
+        <!--?}?-->
+        <td width="10%">操作</td>
+      </tr>
+     <!--?
+    foreach($mall as $value)
+    {
+    ?-->
+      <tr>
+      	<td id="a_<echo>$value['id']</echo>" data="<echo>$value['sort']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','sort','id',<echo>$value['id']</echo>,<echo>strlen($value['sort'])</echo>)"><echo>$value["sort"]</echo></td>
+        <td id="b_<echo>$value['id']</echo>" data="<echo>$value['goods_ext_id']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','goods_ext_id','id',<echo>$value['id']</echo>,<echo>strlen($value['goods_ext_id'])</echo>)"><echo>$value["goods_ext_id"]</echo></td>
+        <td><echo>$goodsname[$value["goods_ext_id"]]</echo></td>
+        <td id="c_<echo>$value['id']</echo>" data="<echo>$value['status']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','status','id',<echo>$value['id']</echo>,<echo>strlen($value['status'])</echo>)"><echo>$value["status"]</echo></td>
+        <td id="d_<echo>$value['id']</echo>" data="<echo>$value['money']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','money','id',<echo>$value['id']</echo>,<echo>strlen($value['money'])</echo>)"><echo>$value["money"]</echo><echo>$value["money_type"]</echo></td>
+        <td id="e_<echo>$value['id']</echo>" data="<echo>$value['rebate']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','rebate','id',<echo>$value['id']</echo>,<echo>strlen($value['rebate'])</echo>)"><echo>$value["rebate"]</echo></td>
+        <td id="f_<echo>$value['id']</echo>" data="<echo>$value['sum']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','sum','id',<echo>$value['id']</echo>,<echo>strlen($value['sum'])</echo>)"><echo>$value["sum"]</echo></td>
+        <!--?if($_GET["type"]==8){?-->
+        <td id="g_<echo>$value['id']</echo>" data="<echo>$value['stint_sum']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','stint_sum','id',<echo>$value['id']</echo>,<echo>strlen($value['stint_sum'])</echo>)"><echo>$value["stint_sum"]</echo></td>
+        
+        <td id="h_<echo>$value['id']</echo>" data="<echo>$value['rand_p']</echo>"  ondblclick="editdata(this,'/?module=mall&methods=upmall','rand_p','id',<echo>$value['id']</echo>,<echo>strlen($value['rand_p'])</echo>)"><echo>$value["rand_p"]</echo></td>
+        <!--?}?-->
+        <td><a href='/?module=mall&methods=delmall&type=<echo>$type</echo>&gid=<echo>$value["id"]</echo>'>删除</a></td>
+      </tr>
+      <!--?
+    }
+    ?-->
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><echo>$p</echo></td>
+  </tr>
+</table>
+<div id='movediv' style="display:none;"></div>
+<script>
+function updata_tmp(obj,id,tab)
+{
+	var url="/?module=mall&methods=upmall&id="+id+"&field="+tab+"&value="+obj.value;
+	ajax_ultimate(url,"updata_tmp_","get");	
+}
+
+function updata_tmp_(string)
+{
+	if(string)
+	{
+		//alert("保存成功");
+	}else{
+		//alert("保存失败");
+	}
+}
+
+function addmall(mall_id)
+{
+	movediv("/?module=mall&methods=uiaddmall&type=<echo>$type</echo>&mall_id="+mall_id,"","move_div",1);
+}
+
+function delegoods(gid)
+{
+	var url="/?module=mall&methods=delmall&gid="+gid;
+	ajax_ultimate(url,"delegoods_","get");	
+}
+
+function delegoods_(string)
+{
+	location.reload();	
+}
+</script>

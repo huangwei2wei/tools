@@ -1,0 +1,35 @@
+<gettemplet file="default/head.html"/>
+<div align="center">
+    <!--?
+    $parameter_url=array();
+    $parameter_url[]=array("url"=>"/?module=user&methods=".$obj->get['methods']."&type=1","name"=>"等级");
+    $parameter_url[]=array("url"=>"/?module=user&methods=".$obj->get['methods']."&type=2","name"=>"战力");
+    echo create_url($parameter_url,$obj->get['type']==1?"等级":"战力");
+    ?-->
+</div>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <tr >
+  	<td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>排名</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>昵称</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>等级</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>战力</strong></td>
+  </tr>
+  
+  <!--?
+  $i=1;
+  foreach($ranking[0] as $value)
+  {
+  ?-->
+  <tr>
+  <td width="20%" ><echo>$i</echo></td>
+    <td width="20%" ><echo>$ranking[1][$value['user_id']]</echo></td>
+    <td width="20%" <echo>$obj->get['type']==1?'bgcolor="#9999FF"':''</echo>><echo>$value['user_lv']</echo></td>
+    <td width="20%" <echo>$obj->get['type']==2?'bgcolor="#9999FF"':''</echo>><echo>$value['force']</echo></td>
+  </tr>
+    <!--?
+    $i++;
+    }
+    ?-->
+</TABLE>
+
+</BODY></HTML>

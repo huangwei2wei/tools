@@ -1,0 +1,57 @@
+<gettemplet file="default/head.html"/>
+ 
+
+<table id="rechlist" width="100%" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+    <td colspan="26" bgcolor="#FFFFFF">
+      <form id="form1" name="form1" method="post" action="">
+<!--    日期：
+    <input name="time1" type="text" id="time1" size="12" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/> 
+    -
+    <input name="time2" type="text" id="time2" size="12" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>&nbsp;&nbsp;&nbsp;</label>
+-->关卡：<select name="type" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($sele as $key=>$value){
+							$select = "";
+    						if($_POST["type"] == $key){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$key</echo>"  <echo>$select</echo> ><echo>$value</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+            <label>
+    &nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="提交" />
+    </form></td>
+  </tr>
+  <tr>
+    <td width="9%" bgcolor="#CCCCCC"><strong>关卡名称</strong></td>
+    <td width="10%" bgcolor="#CCCCCC"><strong>类型</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>加入次数</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>失败次数</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>失败率</strong></td>
+  </tr>
+  <!--?
+  foreach($checkpoint as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><!--?echo $checkpoint["copy_name"][$value["copy_base_id"]];?--></td>
+    <td><!--?echo $value["copy_type"];?--></td>
+    <td><!--?echo $value["cg"]+$value["sb"];?--></td>
+    <td><!--?echo $value["sb"];?--></td>
+    <td><echo>(($value["cg"]+$value["sb"])==0)?0:round($value["sb"]/$value["cg"]+$value["sb"],3)*100 </echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<script>
+select_tr("rechlist")
+</script>
+</body>
+</html>

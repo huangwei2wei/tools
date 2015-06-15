@@ -1,0 +1,83 @@
+<gettemplet file="default/head.html"/>
+<div align="center">
+    <table border="1" align="center">
+  	<tr>
+   	 	<td width="100"><a href="/?module=money&methods=resource_consumption&type=1">钻石消费统计</a></td>
+    	<td width="100"><a href="/?module=money&methods=resource_consumption&type=2">金币消耗统计</a></td>
+    	<td width="100"><a href="/?module=money&methods=resource_consumption&type=4">商城消耗统计</a></td>
+    	<td width="100">产出消耗统计</td>
+  	</tr>
+	</table>
+</div>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">请选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>&nbsp;&nbsp;&nbsp;</label>
+            <label for="Platform"></label>
+            <select name="Platform" id="Platform">
+              <option value="0" <echo>$select_value == '0' ? 'selected' : ''</echo> >全部</option>
+              <option value="ios" <echo>$select_value == 'ios' ? 'selected' : ''</echo> >ios</option>
+              <option value="android" <echo>$select_value == 'android' ? 'selected' : ''</echo> >android</option>
+            </select>
+     
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+</form>
+
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">道具名称</td>
+    <td  bgcolor="#CCCCCC">产出总量</td>
+    <td  bgcolor="#CCCCCC">参与人数</td>
+    <td  bgcolor="#CCCCCC">人均产出量</td>
+    <td  bgcolor="#CCCCCC">消耗总量</td>
+    <td  bgcolor="#CCCCCC">使用人数</td>
+    <td  bgcolor="#CCCCCC">人均消耗量</td>
+  </tr>
+  <!--?
+  if (count($resource_consumption)) {
+  $t_c_sum = 0;
+  $t_c_user_num = 0;
+  $t_x_sum = 0;
+  $t_x_user_num = 0;
+  foreach($resource_consumption[0] as $key=>$value)
+  {
+  	$t_c_sum += $value["c_sum"]?$value["c_sum"]:0;
+  	$t_c_user_num += $value["c_user_num"]?$value["c_user_num"]:0;
+  	$t_x_sum += $value["x_sum"]?$value["x_sum"]:0;
+  	$t_x_user_num += $value["x_user_num"]?$value["x_user_num"]:0;
+  ?-->
+  <tr>
+    <td><echo>$resource_consumption[1][$key]</echo></td>
+    <td><echo>$value["c_sum"]?$value["c_sum"]:0</echo></td>
+    <td><echo>$value["c_user_num"]?$value["c_user_num"]:0</echo></td>
+    <td><echo>$value["c_user_num"]?round($value["c_sum"]/$value["c_user_num"],2):0</echo></td>
+    <td><echo>$value["x_sum"]?$value["x_sum"]:0</echo></td>
+    <td><echo>$value["x_user_num"]?$value["x_user_num"]:0</echo></td>
+    <td><echo>$value["x_user_num"]?round($value["x_sum"]/$value["x_user_num"],2):0</echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+  <tr>
+    <td bgcolor="#FFDAB9">合计</td>
+    <td bgcolor="#FFDAB9"><echo>$t_c_sum</echo></td>
+    <td bgcolor="#FFDAB9"><echo>$t_c_user_num</echo></td>
+    <td bgcolor="#FFDAB9"><echo>$t_c_user_num?round($t_c_sum/$t_c_user_num,2):0</echo></td>
+    <td bgcolor="#FFDAB9"><echo>$t_x_sum</echo></td>
+    <td bgcolor="#FFDAB9"><echo>$t_x_user_num</echo></td>
+    <td bgcolor="#FFDAB9"><echo>$t_x_user_num?round($t_x_sum/$t_x_user_num,2):0</echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+</body></html>

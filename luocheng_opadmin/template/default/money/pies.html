@@ -1,0 +1,63 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td align="center"  valign="middle"height="28" colspan="2"  ><div align="center">
+    <!--?
+    $parameter_url=array();
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=".$obj->get['type']."&e=add","name"=>"加入");
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=".$obj->get['type']."&e=del","name"=>"消耗");
+    echo create_url($parameter_url,$obj->get['e']=="add"?"加入":"消耗");
+    ?-->
+    </div></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><form id="form2" name="form2" method="post" action="/?module=money&methods=pies&type=<echo>$obj->get['type']</echo>&e=<echo>$obj->get['e']</echo>">
+        <table width="200" border="1">
+          <tr>
+            <td><span class="style3">请输入查询某时间段的统计:</span></td>
+          </tr>
+          <tr>
+            <td><input name="time1" type="text" id="time1" class="Wdate" value="<echo>$time1</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+          </tr>
+          <tr>
+            <td><input name="time2" type="text" id="time2" class="Wdate" value="<echo>$time2</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+          </tr>
+          <tr>
+            <td ><div align="center">
+                <input  type="submit" align="right" name="button2" id="button2" value="     查询       " />
+                <p>( 注:如果你没选择查询的时间段,饼图统计则是游戏开始到"今天"的数据)</p>
+              </div></td>
+          </tr>
+        </table>
+        <p class="style1"width="200"> 加入:
+        <p align="center"class="style3">统计每个模块对应的增加情况.</p>
+        </p>
+        <p class="style1"width="200"> 消耗:
+        <p align="center"class="style3">统计每个模块对应的消耗情况. </p>
+        </p>
+      </form></td>
+    <td width="82%" height="478" valign="top"><script type="text/javascript" src="/template/flash/swfobject/swfobject.js"></script>
+      <div id="flashcontent"></div>
+      <script type="text/javascript"> 
+					var flashvars = false;
+					var params = {};
+					params.quality = "high";
+					params.allowFullScreen = "true";
+					params.FlashVars = "data-file=%2F%3Fmodule%3Dmoney%26methods%3Dmodule_count2%26e%3D-";
+					swfobject.embedSWF("/template/flash/open-flash-chart.swf", "flashcontent", "100%", "500", "9.0.0", "/template/flash/swfobject/expressInstall.swf", flashvars, params);
+				</script>
+      <noscript>
+      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
+width="100%" height="500" id="ie_chart" align="middle">
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="movie" value="/kernel/open-flash-chart-2/open-flash-chart.swf?ofc=%2F%3Fmodule%3Dmoney%26methods%3Dmodule_count2%26e%3D-" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#FFFFFF" />
+        <embed src="/template/flash/open-flash-chart.swf?ofc=%2F%3Fmodule%3Dmoney%26methods%3Dmodule_count2%26e%3D-" quality="high" bgcolor="#FFFFFF" width="100%" height="500" name="chart" align="middle" allowScriptAccess="sameDomain" 
+type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" id="chart"/>
+      </object>
+      </noscript></td>
+  </tr>
+</table>
+<echo>$showpie3</echo>
+</body></html>

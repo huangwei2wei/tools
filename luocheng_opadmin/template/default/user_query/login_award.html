@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<form name="form1" method="post" action="">
+  <table width="486" border="1" align="center">
+    <tr>
+      <td width="64">昵称</td>
+      <td width="175"><input name="nickname" type="text" id="nickname" value="<echo>$_POST['nickname']</echo>"/></td>
+      <td width="42"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<table align=center style="text-align:center;"width="80%">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr >
+      <td width="49%" bordercolor="#000000" bgcolor="#9933CC"><strong>物品</strong></td>
+      <td width="51%" bordercolor="#000000" bgcolor="#9933CC"><strong>注册时间</strong></td>
+    </tr>
+    <!--?
+  foreach($login_award as $key=>$value)
+  {
+  ?-->
+    <tr>
+      <td width="49%" bordercolor="#000000" bgcolor="#9999FF"><echo>$tmplogin_award["goods_name"][$value[0]]</echo></td>
+      <td width="51%" bordercolor="#000000" bgcolor="#9999FF"><echo>date("Ymd")==$riqi?"已领":"未领"</echo></td>
+    </tr>
+    <!--? 
+ }
+  ?-->
+  </tbody>
+</TABLE>
+</BODY></HTML>

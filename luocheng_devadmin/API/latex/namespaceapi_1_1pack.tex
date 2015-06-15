@@ -1,0 +1,150 @@
+\hypertarget{namespaceapi_1_1pack}{\section{api.\-pack 命名空间参考}
+\label{namespaceapi_1_1pack}\index{api.\-pack@{api.\-pack}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1pack_ab6b54f30a116993db8d6ea772822ae0d}{picks}
+\item 
+def \hyperlink{namespaceapi_1_1pack_a9f1424664f9c3b003da1077bc3bf1cc4}{pack\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1pack_a65100890662612778b52dd84d153dafd}{add\-\_\-fast}
+\item 
+def \hyperlink{namespaceapi_1_1pack_acff16cc1d358a4eb91be62f989dcc6dd}{del\-\_\-fast}
+\item 
+def \hyperlink{namespaceapi_1_1pack_abfe7466b92a3b2a6c91c8211b11a0bcb}{get\-\_\-fast}
+\item 
+def \hyperlink{namespaceapi_1_1pack_abd6a8a5e0ed26ebc489aa6ab6a788571}{mover\-\_\-inner}
+\item 
+def \hyperlink{namespaceapi_1_1pack_a292d61a9581a330c85a557ab0101a919}{pack\-\_\-add}
+\item 
+def \hyperlink{namespaceapi_1_1pack_a6c049c6fa5fbb79bbb07e4af6a314eaf}{pack\-\_\-arrange}
+\item 
+def \hyperlink{namespaceapi_1_1pack_ad27bc1994b2de1834b9144ad3557320f}{drop}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1pack_aa51273a8afd491941b18fd6eb2629bab}{pack} = pack\-\_\-.\-pack()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1pack_a65100890662612778b52dd84d153dafd}{\index{api\-::pack@{api\-::pack}!add\-\_\-fast@{add\-\_\-fast}}
+\index{add\-\_\-fast@{add\-\_\-fast}!api::pack@{api\-::pack}}
+\subsubsection[{add\-\_\-fast}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-add\-\_\-fast (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{types, }
+\item[{}]{ids, }
+\item[{}]{place = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_a65100890662612778b52dd84d153dafd}
+\begin{DoxyVerb}@添加快捷栏某项
+@param int user_id 用户ID
+@param int types 类型 1物品|2技能
+@param int ids    物品就是 sub_type字段值（通常goods_type是药品类） 技能就是技能ID
+@param int lattice_id    快捷栏位置 通常药品是0 1 技能是 2 3 4 5 7 8 9 10 11
+@return bool 物品信息
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_acff16cc1d358a4eb91be62f989dcc6dd}{\index{api\-::pack@{api\-::pack}!del\-\_\-fast@{del\-\_\-fast}}
+\index{del\-\_\-fast@{del\-\_\-fast}!api::pack@{api\-::pack}}
+\subsubsection[{del\-\_\-fast}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-del\-\_\-fast (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{ids, }
+\item[{}]{place}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_acff16cc1d358a4eb91be62f989dcc6dd}
+\begin{DoxyVerb}将药品从快捷栏移动到背包
+* @param integer place 位置 5  6
+* @param int ids    物品就是 sub_type字段值（通常goods_type是药品类） 技能就是技能ID
+* @return True False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_ad27bc1994b2de1834b9144ad3557320f}{\index{api\-::pack@{api\-::pack}!drop@{drop}}
+\index{drop@{drop}!api::pack@{api\-::pack}}
+\subsubsection[{drop}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-drop (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{sums = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_ad27bc1994b2de1834b9144ad3557320f}
+\begin{DoxyVerb}* 丢弃物品*
+* @param integer goods_user_id 用户物品ID
+* @param integer sum    数量
+* @return bool  True False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_abfe7466b92a3b2a6c91c8211b11a0bcb}{\index{api\-::pack@{api\-::pack}!get\-\_\-fast@{get\-\_\-fast}}
+\index{get\-\_\-fast@{get\-\_\-fast}!api::pack@{api\-::pack}}
+\subsubsection[{get\-\_\-fast}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-get\-\_\-fast (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_abfe7466b92a3b2a6c91c8211b11a0bcb}
+\begin{DoxyVerb}*获取快捷栏物品
+* @return array False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_abd6a8a5e0ed26ebc489aa6ab6a788571}{\index{api\-::pack@{api\-::pack}!mover\-\_\-inner@{mover\-\_\-inner}}
+\index{mover\-\_\-inner@{mover\-\_\-inner}!api::pack@{api\-::pack}}
+\subsubsection[{mover\-\_\-inner}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-mover\-\_\-inner (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{lattice\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_abd6a8a5e0ed26ebc489aa6ab6a788571}
+\begin{DoxyVerb}用户背包内自由移动
+* @param integer goods_user_id 用户ID
+* @param integer lattice_id 要移动到的方格号
+* @return bool  True False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_a292d61a9581a330c85a557ab0101a919}{\index{api\-::pack@{api\-::pack}!pack\-\_\-add@{pack\-\_\-add}}
+\index{pack\-\_\-add@{pack\-\_\-add}!api::pack@{api\-::pack}}
+\subsubsection[{pack\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-pack\-\_\-add (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_a292d61a9581a330c85a557ab0101a919}
+\begin{DoxyVerb}* 背包扩充  返回True 扩充成功，False 失败*
+* @return boolen 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_a6c049c6fa5fbb79bbb07e4af6a314eaf}{\index{api\-::pack@{api\-::pack}!pack\-\_\-arrange@{pack\-\_\-arrange}}
+\index{pack\-\_\-arrange@{pack\-\_\-arrange}!api::pack@{api\-::pack}}
+\subsubsection[{pack\-\_\-arrange}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-pack\-\_\-arrange (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_a6c049c6fa5fbb79bbb07e4af6a314eaf}
+\begin{DoxyVerb}* 用户背包的整理 *
+* @return integer
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_a9f1424664f9c3b003da1077bc3bf1cc4}{\index{api\-::pack@{api\-::pack}!pack\-\_\-list@{pack\-\_\-list}}
+\index{pack\-\_\-list@{pack\-\_\-list}!api::pack@{api\-::pack}}
+\subsubsection[{pack\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-pack\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_a9f1424664f9c3b003da1077bc3bf1cc4}
+\begin{DoxyVerb}用户背包列表 返回数组中key为pack_state =1时已扩充,pack_state =0没扩充
+* @param  goods_user_id 玩家物品ｉｄ
+* @return   {"fd_user_id": 111, "module": "api.pack", "parameter": [], "sys": false, "type": "return", "fun": "pack_list", "_return": {"pack_grade": 64, "pack_info": {"1": {"property": "bd:0:2,be:0:2,ay:1:2", "goods_id": 211, "module_id": 21, "goods_type": 1, "base_gem_ids": "", "pack_show": 1, "name": "\u827a\u4eba\u9762\u7f69", "goods_ext_id": 211, "goods_user_id": 1, "quality": 1, "goods_state": 0, "goods_num": 5, "user_id": 111, "time": 1421638150, "binding": 0, "sub_type": 1, "lattice_id": 1}}, "res": true}, "all": 1}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1pack_ab6b54f30a116993db8d6ea772822ae0d}{\index{api\-::pack@{api\-::pack}!picks@{picks}}
+\index{picks@{picks}!api::pack@{api\-::pack}}
+\subsubsection[{picks}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-pack.\-picks (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1pack_ab6b54f30a116993db8d6ea772822ae0d}
+\begin{DoxyVerb}* 获取用户的背包物品列表
+*
+* @return bool
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1pack_aa51273a8afd491941b18fd6eb2629bab}{\index{api\-::pack@{api\-::pack}!pack@{pack}}
+\index{pack@{pack}!api::pack@{api\-::pack}}
+\subsubsection[{pack}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-pack.\-pack = pack\-\_\-.\-pack()}}\label{namespaceapi_1_1pack_aa51273a8afd491941b18fd6eb2629bab}

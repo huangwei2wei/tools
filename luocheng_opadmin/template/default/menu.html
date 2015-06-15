@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="JavaScript" src="/template/default/f/js/jquery-1.3.2.js"></script>
+<style type="text/css">
+
+ul {
+	margin:0;
+	list-style:none;
+	padding:0;
+	font-size:12px;
+}
+ul li {
+	line-height:18px;
+}
+.base_npc1 {
+	padding:5px 20px;
+}
+.base_npc2 {
+	padding:5px 20px;
+}
+.base_npc3 {
+	padding:5px 20px;
+}
+.base_npc4 {
+	padding:5px 20px;
+}
+.base_npc5 {
+	padding:5px 20px;
+}
+.base_npc6 {
+	padding:5px 20px;
+}
+.base_npc7 {
+	padding:5px 20px;
+}
+.base_npc8 {
+	padding:5px 20px;
+}
+.base_npc9 {
+	padding:5px 20px;
+}
+body {
+	background-color: #CCCCCC;
+}
+</style>
+<SCRIPT language="javascript">
+    $(document).ready(function(){
+      $("a").click(function(){      
+         var classname = $(this).attr("class");
+         if(classname){
+           var i =classname.substring(6);
+           $(".base_npc"+i).toggle();          
+         }
+      });
+
+    });
+	
+</SCRIPT>
+</head>
+<body>
+<?php
+ require('../islogin.php');
+?>
+<div align="left">
+  <div style="background-color:#CCC;">
+<ul>
+<!-- 宏观数据管理 -->
+  <li style="text-align:center; background-color:#408080; font-size:16px;"><strong>宏观数据管理</strong></li>
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="注意：这个操作需要很谨慎" href="/?module=macro_data&methods=query_user_info" target="main">◆用户数据修改</a></li>
+  
+<!-- <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="禁止用户发言" href="/?module=macro_data&methods=id_list" target="main">◆禁言ID</a></li> --> 
+   
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="封IP" href="/?module=macro_data&methods=iplist" target="main">◆封IP</a></li>
+ <!--  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=macro_data&methods=iplist" target="main">◆禁言</a></li>  -->
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="封用户帐号" href="/?module=macro_data&methods=id_list" target="main">◆封ID</a></li>
+
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a  href="/?module=macro_data&methods=gag_list" target="main">◆禁言用户</a></li> 
+  <!--li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="屏蔽关键字" href="/?module=macro_data&methods=key_list" target="main">◆词语过滤</a></li-->
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a title="广播" href="/?module=macro_data&methods=notice_list" target="main">◆公告编辑</a></li>
+  
+
+ 
+</ul>
+<hr>
+<ul>
+  <!-- 系统数据管理 -->
+  <li style="text-align:center; background-color:#408080; font-size:16px;"><strong>系统数据管理</strong></li>
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="../log.php" target="main">◆查看日志</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=user&methods=user_map" target="main">◆人物分布统计</a></li>
+  
+
+
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action8" href="javascript:void(0)" target="main">★人物统计</a></li>
+  <div class="base_npc8" style="display:none;">
+    <ul>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=user" target="main">◆人物在线统计</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=user&methods=user_count" target="main">◆人物等级统计</a></li>
+    </ul>
+  </div>
+  <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action9" href="javascript:void(0)" target="main">★玩家状态</a></li>
+  <div class="base_npc9" style="display:none;">
+    <ul>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_rmb" target="main">◆人民币玩家</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_active" target="main">◆活跃玩家</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_pt" target="main">◆普通玩家</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_ld" target="main">◆冷淡玩家</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_kefei" target="main">◆可废弃玩家</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=player&methods=play_die" target="main">◆死用户</a></li>
+    </ul>
+    
+  </div>
+   <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action7" href="javascript:void(0)" target="main">★金额管理系统</a></li>
+    <div class="base_npc7" style="display:none;">
+    
+    <ul>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../money_manage.php?type=gold&g_init=g_init" target="main">◆金币管理</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../money_manage.php?type=copper&c_init=c_init" target="main">◆铜币管理</a></li>
+      <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../money_manage.php?type=jingji&j_init=j_init" target="main">◆竞技点管理</a></li>
+    </ul>
+  </div>
+  
+  
+  
+  
+<hr>
+<div style="background-color:#CCC;">
+  <ul>
+    <!-- 文件数据管理 -->
+    <li style="text-align:center; background-color:#408080; font-size:16px;"><strong>文件数据管理</strong></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=files&methods=base" target="main">◆基表转文件</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=files&methods=initialization" target="main">◆游戏初始化</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=files&methods=zip" target="main">◆生成zip</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=files&methods=copyzip" target="main">◆复制zip文件</a></li>
+  </ul>
+  <hr>
+  <ul>
+                <!-- 基表数据管理 -->
+    <li style="text-align:center; background-color:#408080; font-size:16px;"><b>基表数据管理1</b></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=goods&methods=base" target="main">◆物品基表管理</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=goods&methods=ext&type=1" target="main">◆物品扩展表管理</a></li>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a href="/?module=monster&methods=monster_list_views" target="main">◆怪物集合</a></li>
+  </ul>
+  <hr>
+  <ul>
+    <li style="text-align:center; background-color:#408080; font-size:16px;"><b>基表数据管理2</b></li>
+    <li onmouseover="this.style.backgroundColor='#CCC'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action1" href="javascript:void(0)" target="main">★商店物品查询</a></li>
+    <div class="base_npc1" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=100" target="main">◆装备店</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=101" target="main">◆药品店</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=102" target="main">◆杂货店</a></li>
+      </ul>
+    </div>
+     <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action2" href="javascript:void(0)" target="main">★商城物品查询RPG</a></li>
+    <div class="base_npc2" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=2" target="main">◆材料</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=3" target="main">◆消耗</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=4" target="main">◆宝石</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=5" target="main">◆宝物</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall&methods=index&type=7" target="main">◆种子</a></li>
+      </ul>
+    </div>
+    
+    <li onmouseover="this.style.backgroundColor='#CCC'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action3" href="javascript:void(0)" target="main">★商城物品查询SLG</a></li>
+    <div class="base_npc3" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=6" target="main">◆武器</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=1" target="main">◆防具</a></li>
+
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=2" target="main">◆坐骑</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=3" target="main">◆披风</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=4" target="main">◆秘籍</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=5" target="main">◆兵符</a></li>
+         <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="/?module=mall1&methods=index&type=6" target="main">◆稀有物品</a></li>
+      </ul>
+    </div>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action4" href="javascript:void(0)" target="main">★其它物品</a></li>
+    <div class="base_npc4" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../view_goods.php?estate=3" target="main">◆任务物品</a></li>
+      </ul>
+    </div>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action5" href="javascript:void(0)" target="main">★怪物管理</a></li>
+    <div class="base_npc5" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_monster" target="main">◆怪物管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_monster_list" target="main">◆怪物集合管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_monster_lv" target="main">◆怪物等级管理</a></li>
+      </ul>
+    </div>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action6" href="javascript:void(0)" target="main">★忍术管理</a></li>
+    <div class="base_npc6" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_ninjutsu" target="main">◆忍术管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_ninjutsu_lv" target="main">◆忍术等级管理</a></li>
+      </ul>
+    </div>
+    <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;">&nbsp;<a class="action7" href="javascript:void(0)" target="main">★其它表管理</a></li>
+    <div class="base_npc7" style="display:none;">
+      <ul>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_map_nexus" target="main">◆地图关系管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_npc" target="main">◆NPC信息管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_properties" target="main">◆基本属性管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_qihai_lv" target="main">◆气海管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_qmdj" target="main">◆奇门遁甲管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_quality" target="main">◆品质管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_task" target="main">◆任务管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_user_lv" target="main">◆人物等级管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_soldier" target="main">◆兵种管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_technology" target="main">◆科技管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_national_policy" target="main">◆国策管理</a></li>
+        <li onmouseover="this.style.backgroundColor='#6CF'" onmouseout="this.style.backgroundColor='#CCC'" style="background-color:#CCC;"><a href="../public_manage.php?tab=base_hero" target="main">◆英雄管理</a></li>
+      </ul>
+    </div>
+  </ul>
+</div>
+</body>
+</html>

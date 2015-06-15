@@ -1,0 +1,56 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td colspan="2" align="center" bgcolor="#CCCCCC">用户信息</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">新老用户</td>
+    <td><echo>(isset($user_info["user_info"]["old_server"]) and $user_info["user_info"]["old_server"]>0)?$user_info["user_info"]["old_server"]:'新用户'</echo></td>
+  </tr>
+  <tr>
+    <td width="9%" bgcolor="#CCCCCC">昵称</td>
+    <td width="91%"><echo>$user_info["user_hero"]["name"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">等级</td>
+    <td><echo>$user_info["user_hero"]["lv"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">注册日期</td>
+    <td><echo>date("Y-m-d H:i:s",$user_info["user_info"]["createtime"])</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">登录次数</td>
+    <td><echo>$user_info["user_info"]["login_sum"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">武将数</td>
+    <td><echo>$user_info["user_hero_count"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">物品数</td>
+    <td><echo>$user_info["user_goods_count"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">总充值额</td>
+    <td><echo>$user_info["pay_log_count"]/10</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余军令</td>
+    <td><echo>$user_info["user_info"]["gold"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余铜币</td>
+    <td><echo>$user_info["user_info"]["copper"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余精力</td>
+    <td><echo>$user_info["user_info"]["energy"]</echo></td>
+  </tr>
+   <tr>
+    <td bgcolor="#CCCCCC">下线时间</td>
+    <td><echo>date("Y-m-d H:i:s",$user_info["user_info"]["downtime"])</echo></td>
+  </tr>
+</table>
+</body>
+</html>

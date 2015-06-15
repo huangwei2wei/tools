@@ -1,0 +1,80 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><form action="/?module=servercount&methods=pay" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+        <input name="server_id" type="hidden" id="server_id" value="<echo>$get['server_id']</echo>">
+        日期：
+        <input name="time" type="text" id="time" value="<echo>$get['time']</echo>" size="40" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM'})">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="button2" id="button2" value="查询">
+      </form></td>
+  </tr>
+</table>
+<!--?
+function  huizong($server_list,$paylist,$i)
+{
+	$hz=0;
+	foreach($server_list as $value)
+    {
+		if(isset($paylist[$value["server_id"]]) and isset($paylist[$value["server_id"]][$i]))
+        {
+        	$hz+=$paylist[$value["server_id"]][$i];
+        }
+    }
+    return $hz;
+}
+$huizong=0;
+$serverhuizong=array();
+?-->
+<table id="paylist" align=center style="text-align:center;"width="100%" border="1">
+  <tbody id="tablelsw2">
+    <tr >
+      <td width="80"  bgcolor="#CCCCCC"><strong>日期</strong></td>
+      <td width="50"  bgcolor="#CCCCCC"><strong>汇总</strong></td>
+      <!--?foreach($server_list as $value){?-->
+      <td width="50"  bgcolor="#CCCCCC"><strong><echo>str_replace("封测","f",str_replace("双线","s",str_replace("服","",$value["server_name"])))</echo></strong></td>
+      <!--? }?--> 
+    </tr>
+    <!--?for($i=1;$i<=$maxdate;$i++){?-->
+    <tr>
+      <td align="left"  ><echo>$get['time']</echo>-<echo>$i</echo></td>
+      <td align="left"  ><!--?
+      $tmp=huizong($server_list,$paylist,$i);
+      echo $tmp/10;
+      $huizong+=$tmp;
+      ?--></td>
+      <!--?foreach($server_list as $value){?-->
+      <td align="left"  ><!--?
+          if(isset($paylist[$value["server_id"]]) and isset($paylist[$value["server_id"]][$i]))
+          {
+            echo $paylist[$value["server_id"]][$i]/10;
+            if(isset($serverhuizong[$value["server_id"]])){
+            	$serverhuizong[$value["server_id"]]+=$paylist[$value["server_id"]][$i];
+            }else{
+            	$serverhuizong[$value["server_id"]]=$paylist[$value["server_id"]][$i];
+            }
+          }else{
+          	echo 0;
+          }
+          ?--></td>
+      <!--? }?--> 
+    </tr>
+    <!--?}?-->
+    
+    <tr>
+      <td align="left"  bgcolor="#FF66FF"><strong>总充值</strong></td>
+      <td align="left"  bgcolor="#FF66FF"><strong>
+        <echo>$huizong/10</echo>
+        </strong></td>
+      <!--?foreach($server_list as $value){?-->
+      <td align="left"  bgcolor="#FF66FF"><strong>
+        <echo>$serverhuizong[$value["server_id"]]/10</echo>
+        </strong></td>
+      <!--? }?--> 
+    </tr>
+  </tbody>
+</TABLE>
+<script>
+select_tr("paylist")
+</script>
+</BODY></HTML>

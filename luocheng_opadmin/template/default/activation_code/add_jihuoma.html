@@ -1,0 +1,81 @@
+<gettemplet file="default/head.html"/>
+<script>function addres1(info,tmpres,ressum)
+{
+	if(ressum.value=="" || ressum.value==0){
+		alert("请输入数量");
+		return false;	
+	}
+	
+	var resdata=new Array();
+	resdata=json_x(info.value);
+	
+	if(resdata==false){
+		resdata=new Array();
+	}
+
+	for(var i=0;i<resdata.length;i++){
+		if(resdata[i][tmpres.value]){//如果存在，就直接在这里处理
+			resdata[i][tmpres.value]=ressum.value;
+			var jsonstr=JSON.stringify(resdata);
+			info.innerText=jsonstr;
+			return true;
+		}
+	}
+	
+	var addres=Object();
+	addres[tmpres.value]=ressum.value;
+	resdata.push(addres);
+
+	var jsonstr=JSON.stringify(resdata);
+	info.innerText=jsonstr;
+}
+
+</script>
+</head>
+
+<body>
+<p align="center" style="text-align:center;">批量激活码添加 </p>
+<div align="center">
+<form id="xxform1" name="xxform1" method="post" action="/?module=activation&methods=building_code">
+  <table width="48%" border="1">
+    <tr>
+      <td align="left">
+            数量：<input name="mymax" type="text" id="mymax" size="15" />
+        </td>
+    </tr>
+    <tr>
+      <td align="left">礼包名称:<input name="spree_name" type="text" id="spree_name" size="15" /></td>
+    </tr>
+    <tr>
+      <td align="left">激活码：
+        <input  name="type" type="radio" id="type" value="1" checked="checked" />&nbsp;&nbsp;
+        普通礼包：<input type="radio" name="type" id="type" value="2" /></td>
+    </tr>
+    <tr>
+      <td align="left">开始时间:<input name="time1" type="text" id="time1" size="15" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"/>
+          &nbsp;&nbsp;结束时间:<input name="time2" type="text" id="time2" size="15" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"/> &nbsp;不填时间就是不限制</td>
+    </tr>
+    <tr>
+      <td align="left"><textarea name="spree_data" cols="40" rows="8" id="spree_data"></textarea></td>
+    </tr>
+    <tr>
+      <td align="left">
+            <select onChange="select_goods_type(this)"  name="goods_id" id="goods_id"  >
+              <variable data="$get_goods_list">
+                <loop list="$i">
+                  <option value="<echo>$get_goods_list[$i]['goods_ext_id']</echo>">
+                  <echo>$get_goods_list[$i]['name']</echo>
+                  </option>
+                </loop>
+              </variable>
+            </select>&nbsp;<input name="goods_sum" type="text" id="goods_sum" value="1" size="10" />&nbsp;
+          <input type="button" name="button2" id="button2" value="添加"  onclick="addres1(document.getElementById('spree_data'),document.getElementById('goods_id'),document.getElementById('goods_sum'))"/></td>
+    </tr>
+    <tr>
+      <td align="center"><input  type="submit" name="button" id="button" value="生成" /></td>
+    </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td height="28" colspan="2" align="center"  valign="middle" bgcolor="#CCCCCC"  ><div align="center"> <span >用户物品查询[背包]</span> </div></td>
+  </tr>
+  <tr>
+    <td width="50%" height="95" valign="top"><form  align="center" method="post" action="/?module=macro_data&methods=user_goods_list_act">
+        <p align="center"><span class="style3">用户昵称</span>：
+          <input type="text3" value="" name="nickname" id="nickname">
+          &nbsp;物品名称：
+          <input type="text" name="goods_name" id="goods_name" />
+        </p>
+        <input type="submit" name="query" value="查询" />
+      </form></td>
+  </tr>
+</table>
+<table width="100%" border="1">
+ <tr>
+        <td bgcolor="#CCCCCC">物品名称</td>
+        <td bgcolor="#CCCCCC">数量</td>
+    <td bgcolor="#CCCCCC">加入时间</td>
+  </tr>
+  <variable data="$goods_list">
+    <loop list="$i">
+     
+      <tr>
+        <td><echo>$goods_list[$i]["name"]</echo></td>
+        <td><echo>$goods_list[$i]["goods_num"]</echo></td>
+        <td><echo>$goods_list[$i]["time"]==0?0:date("Y-m-d H:i:s",$goods_list[$i]["time"])</echo></td>
+      </tr>
+    </loop>
+  </variable>
+</table>

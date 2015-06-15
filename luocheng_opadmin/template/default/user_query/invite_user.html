@@ -1,0 +1,30 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td><form id="form1" name="form1" method="post" action="">
+      邀请人昵称或开放ID：
+          <input type="text" name="user_name" id="user_name" />
+      <input type="submit" name="button" id="button" value="提交" />
+    </form></td>
+  </tr>
+</table>
+<table align="center" width="100%" border="1">
+  <tr>
+    <td width="9%"><strong>被邀请昵称</strong></td>
+    <td width="18%"><strong>邀请时间</strong></td>
+    <td width="73%"><strong>邀请人</strong></td>
+  </tr>
+  <!--?
+      foreach((array)$invite_user as $key=>$value)
+	  {
+	  ?-->
+  <tr>
+    <td><echo>$value[0]</echo></td>
+    <td><echo>date("Y-m-d",$value[1])</echo></td>
+    <td><echo>$value[3]</echo></td>
+  </tr>
+  <!--?
+	  }
+	  ?-->
+</table>
+</BODY></HTML>

@@ -1,0 +1,26 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1" align="left">
+  <tr>
+    <td width="88">时曲线</td>
+    <td width="96"><a href="/?module=user_query&methods=user_active1">日曲线</a></td>
+  </tr>
+</table>
+
+<table width="100%" border="1" align="center">
+    <tr>
+      <td align="center"><strong>等级通过率</strong></td>
+    </tr>
+  </table>
+<form name="form1" method="post" action="">
+  <table width="478" border="1" align="center">
+    <tr>
+      <td width="34">日期</td>
+      <td width="184"><input name="time1" type="text" id="time1" class="Wdate" value="<echo>$_POST['time1']</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="180"><input name="time2" type="text" id="time2" class="Wdate" value="<echo>$_POST['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="52"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<br />
+<echo>$showpie3</echo>
+</BODY></HTML>

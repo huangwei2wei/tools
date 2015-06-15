@@ -1,0 +1,253 @@
+\hypertarget{namespaceapi_1_1sys}{\section{api.\-sys 命名空间参考}
+\label{namespaceapi_1_1sys}\index{api.\-sys@{api.\-sys}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a4a80a092a67b2e55fe7cd1f7b927c68d}{recover\-\_\-energy}
+\item 
+def \hyperlink{namespaceapi_1_1sys_ab3d204940ebf91b91f8abdb0b2249350}{nickname\-\_\-query}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a027dfd6a748fd345fabdaa8405a8b014}{receive\-\_\-login\-\_\-award}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a983e14deadee6fd5aab739637c991caa}{module\-\_\-count}
+\item 
+def \hyperlink{namespaceapi_1_1sys_aeae2696ad1b78ae1a5a75140a9a0a338}{err\-\_\-collect}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a8a41a9df8683463754021f3bd584e3d7}{qqis\-\_\-login}
+\item 
+def \hyperlink{namespaceapi_1_1sys_af7cecfeb6bada0ccad0d74c7f830b9ca}{send\-\_\-t}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a7a89b8cedbee9110200d5e085608589d}{send\-\_\-pict}
+\item 
+def \hyperlink{namespaceapi_1_1sys_aea3709bc6b8e312a236a963ec89012ab}{merger\-\_\-serve}
+\item 
+def \hyperlink{namespaceapi_1_1sys_af33ac47cbd036c232485bc495acdfefc}{get\-\_\-on\-\_\-line\-\_\-time}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a04c8318a641130f6b7a7a9723f4fe0d6}{refresh\-\_\-res}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a0ec1e06a897e047ece794baa36462601}{test\-\_\-res}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a2bd3c6c00951bce1441261ae95837ba5}{test\-\_\-addgoods}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a6a8a8b5fb474a33bb085473997b936bf}{test\-\_\-pro}
+\item 
+def \hyperlink{namespaceapi_1_1sys_a8e5b3541699742a521c847458e9615f3}{test\-\_\-mongo}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1sys_a4fb3f8082d5b5ac55d673ef010c14651}{role} = role\-\_\-api.\-role\-\_\-api()
+\item 
+tuple \hyperlink{namespaceapi_1_1sys_a35dfffc39f2bccc0e01df7507dd2e632}{merger\-\_\-server} = user\-\_\-merger\-\_\-server.\-merger\-\_\-server()
+\item 
+tuple \hyperlink{namespaceapi_1_1sys_a669f331c595e524207724ec55d268bfe}{bp} = \-\_\-base\-\_\-properties.\-properties()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1sys_aeae2696ad1b78ae1a5a75140a9a0a338}{\index{api\-::sys@{api\-::sys}!err\-\_\-collect@{err\-\_\-collect}}
+\index{err\-\_\-collect@{err\-\_\-collect}!api::sys@{api\-::sys}}
+\subsubsection[{err\-\_\-collect}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-err\-\_\-collect (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{key, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_aeae2696ad1b78ae1a5a75140a9a0a338}
+\begin{DoxyVerb}* 前端错误收集
+* @param integer module_id 模块ID
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_af33ac47cbd036c232485bc495acdfefc}{\index{api\-::sys@{api\-::sys}!get\-\_\-on\-\_\-line\-\_\-time@{get\-\_\-on\-\_\-line\-\_\-time}}
+\index{get\-\_\-on\-\_\-line\-\_\-time@{get\-\_\-on\-\_\-line\-\_\-time}!api::sys@{api\-::sys}}
+\subsubsection[{get\-\_\-on\-\_\-line\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-get\-\_\-on\-\_\-line\-\_\-time (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_af33ac47cbd036c232485bc495acdfefc}
+\begin{DoxyVerb}* 获取连续在线时间
+* @param int user_id         用户id
+* @return                 返回累积在线的小时数
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_aea3709bc6b8e312a236a963ec89012ab}{\index{api\-::sys@{api\-::sys}!merger\-\_\-serve@{merger\-\_\-serve}}
+\index{merger\-\_\-serve@{merger\-\_\-serve}!api::sys@{api\-::sys}}
+\subsubsection[{merger\-\_\-serve}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-merger\-\_\-serve (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{operators\-\_\-id, }
+\item[{}]{from\-\_\-server\-\_\-id, }
+\item[{}]{old\-\_\-user\-\_\-id, }
+\item[{}]{to\-\_\-server\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_aea3709bc6b8e312a236a963ec89012ab}
+\begin{DoxyVerb}* 合服
+* @param int operators_id    运营商id
+* @param int from_server_id  目前用户所在服id
+* @param int server_user_id  目前用户所在服的用户id
+* @param int to_server_id    目标服地址id
+* @param int user_id         用户id
+* @return   int              返回迁服后的用户id
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a983e14deadee6fd5aab739637c991caa}{\index{api\-::sys@{api\-::sys}!module\-\_\-count@{module\-\_\-count}}
+\index{module\-\_\-count@{module\-\_\-count}!api::sys@{api\-::sys}}
+\subsubsection[{module\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-module\-\_\-count (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{module\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a983e14deadee6fd5aab739637c991caa}
+\begin{DoxyVerb}* 模块使用统计
+* @param integer module_id 模块ID
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_ab3d204940ebf91b91f8abdb0b2249350}{\index{api\-::sys@{api\-::sys}!nickname\-\_\-query@{nickname\-\_\-query}}
+\index{nickname\-\_\-query@{nickname\-\_\-query}!api::sys@{api\-::sys}}
+\subsubsection[{nickname\-\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-nickname\-\_\-query (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{nickname}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_ab3d204940ebf91b91f8abdb0b2249350}
+\begin{DoxyVerb}* 通过昵称查询用户信息
+*
+* @param str nickname     昵称
+* @return dict
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a8a41a9df8683463754021f3bd584e3d7}{\index{api\-::sys@{api\-::sys}!qqis\-\_\-login@{qqis\-\_\-login}}
+\index{qqis\-\_\-login@{qqis\-\_\-login}!api::sys@{api\-::sys}}
+\subsubsection[{qqis\-\_\-login}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-qqis\-\_\-login (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-name, }
+\item[{}]{pwd, }
+\item[{}]{channel}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a8a41a9df8683463754021f3bd584e3d7}
+\begin{DoxyVerb}* 前端定时调用
+* @param integer user_name 用户名
+* @param integer pwd 密码
+* @param integer channel 渠道
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a027dfd6a748fd345fabdaa8405a8b014}{\index{api\-::sys@{api\-::sys}!receive\-\_\-login\-\_\-award@{receive\-\_\-login\-\_\-award}}
+\index{receive\-\_\-login\-\_\-award@{receive\-\_\-login\-\_\-award}!api::sys@{api\-::sys}}
+\subsubsection[{receive\-\_\-login\-\_\-award}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-receive\-\_\-login\-\_\-award (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a027dfd6a748fd345fabdaa8405a8b014}
+\begin{DoxyVerb}* 领取登录奖励
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a4a80a092a67b2e55fe7cd1f7b927c68d}{\index{api\-::sys@{api\-::sys}!recover\-\_\-energy@{recover\-\_\-energy}}
+\index{recover\-\_\-energy@{recover\-\_\-energy}!api::sys@{api\-::sys}}
+\subsubsection[{recover\-\_\-energy}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-recover\-\_\-energy (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a4a80a092a67b2e55fe7cd1f7b927c68d}
+\begin{DoxyVerb}* 体力恢复
+* @return dict {"res":True,"msg":100}  100表示恢复体力后有100点,前端用100-前端当前值就是这次添加值
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a04c8318a641130f6b7a7a9723f4fe0d6}{\index{api\-::sys@{api\-::sys}!refresh\-\_\-res@{refresh\-\_\-res}}
+\index{refresh\-\_\-res@{refresh\-\_\-res}!api::sys@{api\-::sys}}
+\subsubsection[{refresh\-\_\-res}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-refresh\-\_\-res (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a04c8318a641130f6b7a7a9723f4fe0d6}
+\begin{DoxyVerb}* 刷新资源
+* @return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a7a89b8cedbee9110200d5e085608589d}{\index{api\-::sys@{api\-::sys}!send\-\_\-pict@{send\-\_\-pict}}
+\index{send\-\_\-pict@{send\-\_\-pict}!api::sys@{api\-::sys}}
+\subsubsection[{send\-\_\-pict}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-send\-\_\-pict (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-name, }
+\item[{}]{pwd, }
+\item[{}]{channel, }
+\item[{}]{content}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a7a89b8cedbee9110200d5e085608589d}
+\begin{DoxyVerb}* 微博发送
+*
+* @param string user_name    用户名
+* @param string pwd    密码
+* @param string channel    平台
+* @param string content    内容
+* @return 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_af7cecfeb6bada0ccad0d74c7f830b9ca}{\index{api\-::sys@{api\-::sys}!send\-\_\-t@{send\-\_\-t}}
+\index{send\-\_\-t@{send\-\_\-t}!api::sys@{api\-::sys}}
+\subsubsection[{send\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-send\-\_\-t (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-name, }
+\item[{}]{pwd, }
+\item[{}]{channel, }
+\item[{}]{content}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_af7cecfeb6bada0ccad0d74c7f830b9ca}
+\begin{DoxyVerb}* 微博发送
+*
+* @param string user_name    用户名
+* @param string pwd    密码
+* @param string channel    平台
+* @param string content    内容
+* @return 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a2bd3c6c00951bce1441261ae95837ba5}{\index{api\-::sys@{api\-::sys}!test\-\_\-addgoods@{test\-\_\-addgoods}}
+\index{test\-\_\-addgoods@{test\-\_\-addgoods}!api::sys@{api\-::sys}}
+\subsubsection[{test\-\_\-addgoods}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-test\-\_\-addgoods (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a2bd3c6c00951bce1441261ae95837ba5}
+\begin{DoxyVerb}* 测试添加物品,检查性能
+* @return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1sys_a8e5b3541699742a521c847458e9615f3}{\index{api\-::sys@{api\-::sys}!test\-\_\-mongo@{test\-\_\-mongo}}
+\index{test\-\_\-mongo@{test\-\_\-mongo}!api::sys@{api\-::sys}}
+\subsubsection[{test\-\_\-mongo}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-test\-\_\-mongo (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a8e5b3541699742a521c847458e9615f3}
+\hypertarget{namespaceapi_1_1sys_a6a8a8b5fb474a33bb085473997b936bf}{\index{api\-::sys@{api\-::sys}!test\-\_\-pro@{test\-\_\-pro}}
+\index{test\-\_\-pro@{test\-\_\-pro}!api::sys@{api\-::sys}}
+\subsubsection[{test\-\_\-pro}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-test\-\_\-pro (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a6a8a8b5fb474a33bb085473997b936bf}
+\hypertarget{namespaceapi_1_1sys_a0ec1e06a897e047ece794baa36462601}{\index{api\-::sys@{api\-::sys}!test\-\_\-res@{test\-\_\-res}}
+\index{test\-\_\-res@{test\-\_\-res}!api::sys@{api\-::sys}}
+\subsubsection[{test\-\_\-res}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-sys.\-test\-\_\-res (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{tab, }
+\item[{}]{key1, }
+\item[{}]{key2 = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1sys_a0ec1e06a897e047ece794baa36462601}
+\begin{DoxyVerb}* 测试资源是否更新
+* @param str tab     表名
+* @param str key1    字段1
+* @param str key2    字段2
+* @return
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1sys_a669f331c595e524207724ec55d268bfe}{\index{api\-::sys@{api\-::sys}!bp@{bp}}
+\index{bp@{bp}!api::sys@{api\-::sys}}
+\subsubsection[{bp}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-sys.\-bp = \-\_\-base\-\_\-properties.\-properties()}}\label{namespaceapi_1_1sys_a669f331c595e524207724ec55d268bfe}
+\hypertarget{namespaceapi_1_1sys_a35dfffc39f2bccc0e01df7507dd2e632}{\index{api\-::sys@{api\-::sys}!merger\-\_\-server@{merger\-\_\-server}}
+\index{merger\-\_\-server@{merger\-\_\-server}!api::sys@{api\-::sys}}
+\subsubsection[{merger\-\_\-server}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-sys.\-merger\-\_\-server = user\-\_\-merger\-\_\-server.\-merger\-\_\-server()}}\label{namespaceapi_1_1sys_a35dfffc39f2bccc0e01df7507dd2e632}
+\hypertarget{namespaceapi_1_1sys_a4fb3f8082d5b5ac55d673ef010c14651}{\index{api\-::sys@{api\-::sys}!role@{role}}
+\index{role@{role}!api::sys@{api\-::sys}}
+\subsubsection[{role}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-sys.\-role = role\-\_\-api.\-role\-\_\-api()}}\label{namespaceapi_1_1sys_a4fb3f8082d5b5ac55d673ef010c14651}

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<script language="javascript" type="text/javascript" src="/template/default/f/js/function.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/public.js"></script>
+<script language="JavaScript" type="text/javascript" src="/template/default/f/js/My97DatePicker/WdatePicker.js"></script>
+<html>
+<head>
+<title>激活码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="/template/default/f/css/game.css" type="text/css">
+<style type="text/css">
+<!--
+.style1 {
+	color: #FFFFFF
+}
+-->
+</style>
+</head>
+<BODY>
+<form align="center" action="" method="get" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+  <table  align="center" width="100%" border="1">
+    <tr>
+      <td align="center" colspan="100%" bgcolor="#977C00"><!--  <a style="TEXT-DECORATION:none " href="/?module=files&methods=generate&tab=base4_code&acc=1">【导进游戏】</a>&nbsp;&nbsp; <a style="TEXT-DECORATION:none " href="/?module=files&methods=deletecode">【清除游戏激活码】<echo>$user_code_count[0]</echo></a>&nbsp;&nbsp; <a style="TEXT-DECORATION:none " href="/?module=files&methods=deletemysql">【删除MYSQL】<echo>$user_code_count[1]</echo></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> <a style="TEXT-DECORATION:none " href="/?module=activation&methods=add_activation_code">【新增】</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a style="TEXT-DECORATION:none " href="/?module=activation&methods=down_excel">【下载】</a></td>
+    </tr>
+    <tr bgcolor="#CCCCCC"> </tr>
+  </table>
+  <table  id="reglist" align="center" width="100%" border="1">
+    <tr>
+      <td align=center bgcolor="#CCCCCC"><b>礼包名</b></td>
+      <td align=center bgcolor="#CCCCCC"><b>类型</b></td>
+      <td align=center bgcolor="#CCCCCC"><b>开始时间</b></td>
+      <td align=center bgcolor="#CCCCCC"><b>结束时间</b></td>
+      <td align=center bgcolor="#CCCCCC"><b>礼包数量/领取数量</b></td>
+      <td align=center bgcolor="#CCCCCC"><b>游戏操作</b></td>
+    </tr>  
+   <!--?
+  foreach($code_list as $key=>$value)
+  {
+  ?-->
+    <tr>
+          <td><echo>$value["spree_name"]</echo></td>
+          <td><echo>$value["type"]=='1'?'激活码':'普通礼包'</echo></td>
+          <td><echo>$value["time1"]?date("Y-m-d H:i:s",$value["time1"]):0</echo></td>
+          <td><echo>$value["time2"]?date("Y-m-d H:i:s",$value["time2"]):0</echo></td>
+          <td><echo>$value["total_count"].'/'.($value["used_count"]?$value["used_count"]:0)</echo></td>
+          <td> <a href="/?module=activation&methods=code_list&spree_name=<echo>$value['spree_name']</echo>" >【查看礼包列表】</a><a href="/?module=activation&methods=append_code&spree_name=<echo>$value['spree_name']</echo>">【追加礼包】</a> <a href="/?module=activation&methods=code_delete&spree_name=<echo>$value['spree_name']</echo>"  onclick="return confirm('确定要删除吗？')">【删除】</a></td>
+      </tr>
+  <!--?
+  }
+  ?-->
+  </table>
+</form>
+<echo>$pa</echo>
+<script>
+select_tr("reglist")
+</script>
+</BODY>
+</HTML>

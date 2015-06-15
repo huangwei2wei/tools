@@ -1,0 +1,62 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1" align="center">
+    <tr>
+      <td align="center"><strong>等级通过率</strong></td>
+    </tr>
+  </table>
+<form name="form1" method="post" action="">
+  <table width="600" border="1" align="center">
+    <tr>
+      <td width="50">日期</td>
+      <td width="184"><input name="time1" type="text" id="time1" class="Wdate" value="<echo>$_POST['time1']</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="180"><input name="time2" type="text" id="time2" class="Wdate" value="<echo>$_POST['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="100">
+	<select name="mobile_platforms" id="Platform">
+              <option value="All">所有</option>
+              <option value="Android">Android</option>
+              <option value="IOS">IOS</option>
+            </select>
+	  </td>
+      <td width="52"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<br />
+<table id="rechlist" width="80%" bgcolor="#999999" border="0" align=center cellpadding="0" cellspacing="1" style="text-align:center;">
+  <tbody id="tablelsw">
+    <tr >
+      <td width="16%"  bgcolor="#CCFFFF"><strong>等级</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>玩家数</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>滞留数</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>升级时长(分)</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>等级停滞率</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>付费次数</strong></td>
+      <td width="16%"  bgcolor="#CCFFFF"><strong>付费金额</strong></td>
+    </tr>
+    <!--?
+  $i=0;
+  foreach($user_lv_list as $key=>$value)
+  {
+      $c="#E6E6E6";
+      $i++;
+      if($i%2){$c="#ffffff";}
+  ?-->
+    <tr bgcolor="<echo>$c</echo>">
+      <td width="16%"><echo>$key</echo></td>
+      <td width="16%"><echo>$value["player_num"]</echo></td>
+      <td width="16%"><echo>$value["stop_player_num"]</echo></td>
+      <td width="16%"><echo>round(intval($value["average_use_time"])/60,2)</echo></td>
+      <td width="16%"><echo>intval($value["stop_player_total_num"])==0?0:round(intval($value["stop_player_num"])/intval($value["stop_player_total_num"]),2)</echo></td>
+      <td width="16%"><echo>$value["log_pay_num"]</echo></td>
+      <td width="16%"><echo>$value["log_pay_money"]</echo></td>
+    </tr>
+    <tr> </tr>
+    
+    <!--? }
+  ?-->
+  </tbody>
+</TABLE>
+<script>
+select_tr("rechlist")
+</script>
+</BODY></HTML>

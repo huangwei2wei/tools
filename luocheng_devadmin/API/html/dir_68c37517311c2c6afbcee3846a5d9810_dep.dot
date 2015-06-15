@@ -1,0 +1,9 @@
+digraph "/home/jd808/workspace/backstage_code/api" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7081102e3dcc9a1f34a8d98d3765314d {
+    graph [ bgcolor="#ddddee", pencolor="black", label="backstage_code" fontname="Helvetica", fontsize="10", URL="dir_7081102e3dcc9a1f34a8d98d3765314d.html"]
+  dir_68c37517311c2c6afbcee3846a5d9810 [shape=box, label="api", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_68c37517311c2c6afbcee3846a5d9810.html"];
+  }
+}

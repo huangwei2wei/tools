@@ -1,0 +1,162 @@
+<gettemplet file="default/head.html"/>
+<style>
+p{ margin:0px; padding:0px;}
+.divkk{border:1px dashed #000;}
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:125px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:125px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+
+#pagelist{
+	height:25px;
+}
+#pagelist li{
+	list-style:none;
+	float:left;
+	margin:5px;
+}
+
+</style>
+
+<table width="100%" border="1">
+  <tr>
+    <td align="center"><strong>
+      <echo>$arr[$_GET["type"]]</echo>
+    </strong></td>
+  </tr>
+  <tr>
+    <td height="304" valign="top">
+    <div style="height:380px; width:850px;">
+    <!--?
+    for($i=0;$i<12;$i++)
+    {
+    	if(isset($mall[$i]) && $mall[$i]["goods_ext_id"]>0)
+        {
+    ?-->
+    	<div class="divkk" style="width:230px; height:120px; float:left; margin:5px;">
+        <div style="float:left;"><img src="/res/goods_images/90/<echo>$mall[$i]['goods_id']</echo>.jpg" alt="" name="ss" width="90" height="90" id="ss" /></div>
+        <div style="float:left; width:120px;">
+          <p>&nbsp;名称:<echo>$mall[$i]['goods_name']</echo></p>
+          <p>
+            &nbsp;类:<select onblur="updata_tmp(this,<echo>$mall[$i]['mall_id']</echo>,'money_type')" name="select" id="select">
+    <option  <!--? echo $mall[$i]['money_type']==1?"selected":"";?--> value="1">元宝</option>
+    <option <!--? echo  $mall[$i]['money_type']==2?"selected":"";?--> value="2">铜币</option>
+    <option <!--? echo $mall[$i]['money_type']==4?"selected":"";?--> value="4">将玉</option>
+    <option <!--? echo $mall[$i]['money_type']==5?"selected":"";?--> value="5">军资</option>
+    <option <!--? echo $mall[$i]['money_type']==9?"selected":"";?--> value="9">蓝虎符</option>
+    <option <!--? echo $mall[$i]['money_type']==10?"selected":"";?--> value="10">紫虎符</option>
+    <option <!--? echo $mall[$i]['money_type']==11?"selected":"";?--> value="11">金虎符</option>
+    <option <!--? echo $mall[$i]['money_type']==12?"selected":"";?--> value="12">碎片</option>
+    <option <!--? echo $mall[$i]['money_type']==13?"selected":"";?--> value="13">荣誉点</option>
+            </select></p>
+            <p>&nbsp;价: <input onblur="updata_tmp(this,<echo>$mall[$i]['mall_id']</echo>,'money')" name="textfield" type="text" id="textfield" value="<echo>$mall[$i]['money']</echo>" size="5" />
+            </p>
+              <p align="right"> <input type="submit" value="清除" onclick="delegoods(<echo>$mall[$i]['mall_id']</echo>)" ></p>
+        </div>
+    	</div>
+    <!--?
+    	}else{?-->
+        <div  class="divkk" style="width:230px; height:120px; float:left; margin:5px;"><a href="#" onclick="addmall(<echo>$mall[$i]['mall_id']</echo>)">添加</a></div>
+            
+        <!--?}
+    }
+    ?-->
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><echo>$p</echo></td>
+  </tr>
+</table>
+<div id='movediv' style="display:none;"></div>
+<script>
+function updata_tmp(obj,id,tab)
+{
+	var url="/?module=mall&methods=upmall&id="+id+"&field="+tab+"&value="+obj.value;
+	ajax_ultimate(url,"updata_tmp_","get");	
+}
+
+function updata_tmp_(string)
+{
+	if(string)
+	{
+		//alert("保存成功");
+	}else{
+		//alert("保存失败");
+	}
+}
+
+function addmall(mall_id)
+{
+	movediv("/?module=mall&methods=uiaddmall&type=<echo>$type</echo>&mall_id="+mall_id,"","move_div",1);
+}
+
+function delegoods(gid)
+{
+	var url="/?module=mall&methods=delmall&gid="+gid;
+	ajax_ultimate(url,"delegoods_","get");	
+}
+
+function delegoods_(string)
+{
+	location.reload();	
+}
+</script>

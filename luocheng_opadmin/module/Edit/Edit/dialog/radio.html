@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="button.css" rel="stylesheet" type="text/css" />
+<title>单选框</title>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(oForm){
+	var str="<input type=\"radio\" name=\""+oForm.n.value+"\" value=\""+oForm.v.value+"\"";
+	if(oForm.a[0].checked){
+		str+=" checked";
+	}
+	str+="/>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+</head>
+
+<body>
+<table width="268" height="122" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#009900"><form>
+  <tr>
+    <td width="89">名称(name):</td>
+    <td width="179"><input name="n" type="text" class="text" id="n" size="15" /></td>
+  </tr>
+  <tr>
+    <td>值(value):</td>
+    <td><input name="v" type="text" class="text" id="v" size="15" /></td>
+  </tr>
+  <tr>
+    <td>状态:</td>
+    <td><input name="a" type="radio" value="radiobutton" checked="checked" />已选中 
+      <input type="radio" name="a" value="radiobutton" />未选中</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="middle"><input name="Submit" type="submit" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="submit" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr></form>
+</table>
+</body>
+</html>

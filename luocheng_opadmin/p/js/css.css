@@ -1,0 +1,90 @@
+/*==========全局量=============*/
+body{ font-size:12px; color:#ff0000; font-family:“宋体”,”Arial”}
+* { word-break: break-all; word-wrap: break-word; }
+body,img {border:0px;}
+body,form,img {margin: 0px; padding: 0px;}
+ul li{ list-style-type:none; } 
+a:link, a:visited{color:#fff; text-decoration:none;}
+a:hover{font-size:12px;color:#ff9600;text-decoration: underline;}
+
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/.movediv{background:url(/template/default/f/image/open/sys/move/bg2.jpg) repeat-x;}
+
+/*整个背景*/#movediv_{repeat-x;overflow:hidden;}
+
+/*=========弹出窗=========*/
+.frame{ width:624px; height:415px;}
+	.frame-a{ width:624px; height:16px;} .frame-a div{ height:16px; float:left;}
+		.frame-a .w24{ width:24px;}
+		.frame-a .f-am1{ width:576px; background-image:url(/template/default/f/image/open/frame/top-2bg.gif);}
+		.frame-a .f-am2{ width:576px; background-image:url(/template/default/f/image/open/frame/bot-2bg.gif);}
+	.frame-b{ width:624px; height:383px;} 
+	.frame-b .f-bl, .frame-b .f-br, .f-bm{ height:383px; float:left;}
+		.f-bl{ width:24px; background-image:url(/template/default/f/image/open/frame/mid-l.gif);}
+		.f-br{ width:24px; background-image:url(/template/default/f/image/open/frame/mid-r.gif);}
+		.f-bm{ width:576px; background-color:#dfdfcd;}
+	/*迷你弹出窗*/	
+	.min-wod{ width:241px; height:138px; position: absolute;Z-INDEX: 998; } 
+		.min-wod-a ,.min-wod-b{ width:241px; clear:both;}
+		.min-wod-a{ height:9px; font-size:1px;}
+		.min-wod-b{ height:120px; background-image:url(/template/default/f/image/open/bg-min-mid.gif); text-align:center;}
+				.min-wod-b .wod-b1{ width:60%; margin:5px auto;}
+				.min-wod-b .wod-b3{ width:88%; height:80px; padding:0 3px; line-height:25px; margin:auto; text-align:left;}
+				.lh20{ width:100%; height:20px; clear:both; font-size:1px;}
+				.min-wod-b .wod-b3k{ width:100%; margin:auto;}
+					.wod-b3k div{ width:70px; height:25px; margin-left:28px;_margin-left:14px; float:left;}
+			.wod-b2{width:100%; text-align:left;}
+			.wod-b3-divx{float:right; margin-right:13px;_margin-right:4px; margin-top:5px;}
+			.wod-b3-diva,.wod-b3-divb{float:left;margin-left:33px; _margin-left:20px;margin-top:5px;}
+			.wod-b3-diva{ _margin-left:10px;}
+			
+/* 用户自定义*/
+.move_div{ Z-INDEX: 999; position:absolute; width:624px; height:415px;}
+.mini_move_div{ Z-INDEX: 999; position:absolute; width:241; height:138px;}
+.move_div1{ Z-INDEX: 999; position:absolute;}
+.move_t{ Z-INDEX: 999; position:absolute; width:500px; height:310px;}
+.derss_choice{ Z-INDEX: 999; position:absolute; width:453px; height:450px;}
+
+/*载入*/.loading{ width:100%; height:100%; text-align:center; background-color:#CCC; filter:Alpha(Opacity=50);}
+
+/*========临时显示*/
+#text {margin:50px auto; width:500px}
+.hotspot {color:#900; padding-bottom:1px; border-bottom:1px dotted #900; cursor:pointer}
+
+#tt,#tttop,#ttcont,#ttbot{ display:block;}
+#tttop,#ttbot{ height:5px; margin-left:5px;}
+
+#tt { position:absolute; background:url(/template/default/f/image/open/sys/tmpshow/tt_left.gif) top left no-repeat}
+#tttop { background:url(/template/default/f/image/open/sys/tmpshow/tt_top.gif) top right no-repeat; overflow:hidden}
+#ttcont { padding:2px 12px 3px 7px; margin-left:5px; background:#666; color:#FFF}
+#ttbot { background:url(/template/default/f/image/open/sys/tmpshow/tt_bottom.gif) top right no-repeat; overflow:hidden}
+
+.clew{z-index:999;position:absolute;width:115px;height:25px; line-height:25px;background-color:#000;color:#929292; border:1px solid #404040; text-align:center; margin:auto; filter:alpha(opacity=70); opacity:0.7; -zom-opacity:0.7;}
+
+/*分页样式*/
+#pagelist {
+	width:100%;
+	/*margin:5px auto;*/
+	/*padding:6px 0px;*/
+	height:20px;
+	font-size:12px;
+	font-family:Verdana;
+}
+#pagelist ul li {
+	float:left;
+	border:1px solid #5b5b5b;
+	height:20px;
+	line-height:20px;
+	margin:0px 2px;
+	padding:0px 6px;
+}
+#pagelist ul li a, .pageinfo {
+	cursor:pointer;
+	text-decoration:none;
+	color:#fef66a;
+	display:block;
+}
+.pageinfo {color:#757575;}
+.current { background:#000; display:block; padding:0px 6px; font-weight:bold;}
+/*分页样式END*/

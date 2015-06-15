@@ -1,0 +1,27 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td colspan="4" bgcolor="#CCCCCC">竞技场100名充值情况&nbsp;&nbsp;&nbsp;100人总充值额:<b><font color="#FF0000" size="+1"><echo>$rechargelv100[1]</echo></font></b></td>
+  </tr>
+  <tr>
+    <td width="18%" bgcolor="#CCCCCC">排名</td>
+    <td width="27%" bgcolor="#CCCCCC">昵称</td>
+    <td width="25%" bgcolor="#CCCCCC">是否老用户</td>
+    <td width="30%" bgcolor="#CCCCCC">金额</td>
+  </tr>
+  <!--?
+  foreach($rechargelv100[0] as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><echo>$key</echo></td>
+    <td><echo>$value["name"]</echo></td>
+    <td><echo>(isset($value["old"]) and $value["old"]>0)?$value["old"]:'新用户'</echo></td>
+    <td><echo>$value["money"]/10</echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+</body>
+</html>

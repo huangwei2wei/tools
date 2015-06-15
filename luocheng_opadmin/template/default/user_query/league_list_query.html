@@ -1,0 +1,61 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr>
+      <td align="center" colspan="100" bgcolor="#977C00"><form name="form1" method="post" action="">
+          公会昵称：
+          <input name="leaguename" type="text" id="leaguename" value="<echo>$_POST['leaguename']</echo>">
+          &nbsp;&nbsp;&nbsp;
+          <input type="submit" name="button" id="button" value="提交">
+        </form></td>
+    </tr>
+    <tr >
+      <td width="33%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>公会成员</strong></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#FF00FF"><strong>状态</strong></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#FFCC00"><strong>加入时间</strong></td>
+    </tr>
+    <!--?
+function statetoname($state)
+{
+	if($state==9){
+    	return "申请中";
+    }
+    
+    if($state==1){
+    	return "创建者";
+    }
+    
+    if($state==2){
+    	return "副会长";
+    }
+    if($state==3){
+    	return "长老";
+    }
+    if($state==4){
+    	return "精英";
+    }
+    if($state==5){
+    	return "普通成员";
+    }
+}
+$sum=0;
+  foreach($league_list_query as $key=>$value)
+  {
+  	if($value["state"]!=9)$sum++;
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#990066"><echo>$value["nickname"]</echo></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#990066"><echo>statetoname($value["user_type"])</echo></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#990066"><echo>date("Y-m-d H:i:s",$value["join_time"])</echo></td>
+    </tr>
+    <!--? }
+  ?-->
+    
+    <tr>
+      <td colspan="3" bordercolor="#000000" bgcolor="#990066">总人数：
+        <echo>$sum</echo></td>
+    </tr>
+  </tbody>
+</TABLE>
+</BODY></HTML>

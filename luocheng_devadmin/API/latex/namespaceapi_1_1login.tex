@@ -1,0 +1,59 @@
+\hypertarget{namespaceapi_1_1login}{\section{api.\-login 命名空间参考}
+\label{namespaceapi_1_1login}\index{api.\-login@{api.\-login}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1login_ac78210be6692d456bd73a28ff3f70892}{login}
+\item 
+def \hyperlink{namespaceapi_1_1login_a95e1a4f41fc242a03b1c5e72ca4f5104}{down}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1login_a285c09905a1027ad1c586bdd2184e860}{logins} = user\-\_\-login.\-login()
+\item 
+tuple \hyperlink{namespaceapi_1_1login_a9c96b35f70f6582337b5eb19ec58eeab}{login\-\_\-act} = user\-\_\-login\-\_\-act.\-login\-\_\-act()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1login_a95e1a4f41fc242a03b1c5e72ca4f5104}{\index{api\-::login@{api\-::login}!down@{down}}
+\index{down@{down}!api::login@{api\-::login}}
+\subsubsection[{down}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-login.\-down (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1login_a95e1a4f41fc242a03b1c5e72ca4f5104}
+\begin{DoxyVerb}* 用户下线
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1login_ac78210be6692d456bd73a28ff3f70892}{\index{api\-::login@{api\-::login}!login@{login}}
+\index{login@{login}!api::login@{api\-::login}}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-login.\-login (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user, }
+\item[{}]{pwd, }
+\item[{}]{login\-\_\-type, }
+\item[{}]{login\-\_\-json, }
+\item[{}]{datarun = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1login_ac78210be6692d456bd73a28ff3f70892}
+\begin{DoxyVerb}* 注册还是登陆
+* @param string user 用户名
+* @param string pwd 密码
+* @param int login_type 0本地调试 1本地正常 2本地需要对加密串进行解压 3腾讯
+* @param string login_json 参数表
+* @param bool datarun 是否将数据返回出去 方便测试使用
+* @return arr
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1login_a9c96b35f70f6582337b5eb19ec58eeab}{\index{api\-::login@{api\-::login}!login\-\_\-act@{login\-\_\-act}}
+\index{login\-\_\-act@{login\-\_\-act}!api::login@{api\-::login}}
+\subsubsection[{login\-\_\-act}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-login.\-login\-\_\-act = user\-\_\-login\-\_\-act.\-login\-\_\-act()}}\label{namespaceapi_1_1login_a9c96b35f70f6582337b5eb19ec58eeab}
+\hypertarget{namespaceapi_1_1login_a285c09905a1027ad1c586bdd2184e860}{\index{api\-::login@{api\-::login}!logins@{logins}}
+\index{logins@{logins}!api::login@{api\-::login}}
+\subsubsection[{logins}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-login.\-logins = user\-\_\-login.\-login()}}\label{namespaceapi_1_1login_a285c09905a1027ad1c586bdd2184e860}

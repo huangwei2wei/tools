@@ -1,0 +1,73 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+
+<form method="post" action="/?module=macro_data&methods=add_id">
+  <p>封ID的用户昵称:
+  <input type="text" value="<echo>$user_name</echo>" name="user_name" size="50" />
+    &nbsp;禁言时间:
+    <select name="time" id="time">
+      <option selected="selected" value="-1">永久</option> <!-- -（1永久封锁）-->
+      
+      <option value="10800">3小时</option>
+      <option value="18000">5小时</option>
+      <option value="86400">1天</option>
+      <option value="172800">2天</option>
+      <option value="432000">5天</option>
+      <option value="1728000">20天</option>
+      <option value="2678400">1个月</option>
+      <option value="5356800">2个月</option>
+      <option value="8035200">3个月</option>
+    </select>
+    (时)
+ 
+ </p>
+  <div> <input type="submit" name="add" value="添加到禁ID列表"> (多个用户昵称&quot;;&quot;隔开) 
+ </div> 
+ 
+ 
+</form>
+
+<hr>
+<table width="100%">
+  <tr>
+    <td bgcolor="#CCCCCC">用户base_ID</td>
+    <td bgcolor="#CCCCCC">用户昵称</td>
+    <td bgcolor="#CCCCCC">等级</td>
+    <td bgcolor="#CCCCCC">在线</td>
+    <td bgcolor="#CCCCCC">累计充值</td>
+    <td bgcolor="#CCCCCC">累计在线时长</td>
+    <td bgcolor="#CCCCCC">截止时间</td>
+    <td bgcolor="#CCCCCC">操作</td>
+  </tr>
+  <variable data="$prohibit_speech">
+    <loop list="$i">
+   <tr>
+    <td><echo>$prohibit_speech[$i]["id"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["nickname"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["user_grade"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["online"]?"在线":"离线"</echo></td>
+    
+    <td><echo>$prohibit_speech[$i]["money"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["today_LT"]</echo></td>
+    
+    <td><echo>$prohibit_speech[$i]["stop_time"]</echo></td>
+    <td><a href="/?module=macro_data&methods=open_id&user_id=<echo>$prohibit_speech[$i]['id']</echo>">解除封锁</a></td>
+  </tr>
+    </loop>
+</variable>
+</table>

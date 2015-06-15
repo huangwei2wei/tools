@@ -1,0 +1,141 @@
+<gettemplet file="default/head.html"/>
+<style>
+li {
+	float:left;
+	border:1px solid #5d9cdf;
+	background-color:#F39;
+	height:20px;
+	line-height:20px;
+	margin:3px 2px;
+	padding:0px 6px;
+}
+
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:370px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:370px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+</style>
+<!--?
+ if($_SESSION["operators_id"]==1){
+ ?--> 
+ <table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td height="31" bgcolor="#CCCCCC"><a href="/?module=boss&amp;methods=boss_list_views">【返回运营商列表】</a></td>
+   </tr>
+   <tr>
+     <td height="31" bgcolor="#CCCCCC"><a href="/?module=service_manager&methods=open_service_list&operators_id=<echo>$operators_id</echo>">开服列表</a> &nbsp;&nbsp;合服列表</td>
+   </tr>
+</table>
+<br>&nbsp;
+<!--?}?-->
+
+<table align="center" id="openserver" style="width:100%">
+  <tr>
+    <td width="20%" bgcolor="#CCCCCC" ><strong>合服ID</strong></td>
+    <td width="23%" bgcolor="#CCCCCC" ><strong>合服名称</strong></td>
+    <td width="57%" bgcolor="#CCCCCC"  ><strong>合服列表</strong></td>
+  </tr>
+  <!--?
+if($service_list){
+    foreach ($service_list as $key => $value)
+    {
+    
+  ?-->
+  <tr>
+    <td ><echo>$value['combined_service']</echo></td>
+    <td  id="<echo>$key</echo>" data="<echo>$value['combined_name']</echo>" ondblclick="editdata(this,'/?module=service_manager&methods=upservice_data','combined_name','id',<echo>$value['id']</echo>,10)"><echo>$value['combined_name']</echo></td>
+    <td >
+    <!--?
+    foreach($value['combined_service_list'] as $v)
+    {
+    	$tmpurl='/?module=service_manager&methods=del_combined_service&operators_id='.$operators_id.'&server_id='.$v.'&mainid='.$value['combined_service'];
+    	echo "<li>$v 服&nbsp;<a href=\"javascript:del_combined_service('$tmpurl');\">删</a></li>";
+    }
+    ?-->
+    <li style="background-color:#0F0"><a href="javascript:openwin('/?module=service_manager&methods=free_service_list&operators_id=<echo>$operators_id</echo>&mainid=<echo>$value['combined_service']</echo>');">添加服</a></li>
+    </td>
+  </tr>
+  <!--?
+	}
+}
+  ?-->
+  <tr>
+    <td colspan=7><echo>$pages</echo></td>
+  </tr>
+</table><div id="movediv"></div>
+<script>
+function openwin(url)
+{
+	movediv(url,'','move_div',1);	
+}
+
+function del_combined_service(url)
+{
+	ajax_ultimate(url,"del_combined_service_e","get");	
+}
+
+function del_combined_service_e()
+{
+	location.reload();	
+}
+
+select_tr("openserver")
+</script>

@@ -1,0 +1,96 @@
+\hypertarget{namespaceapi_1_1friend}{\section{api.\-friend 命名空间参考}
+\label{namespaceapi_1_1friend}\index{api.\-friend@{api.\-friend}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1friend_aea90f0cabb089c74dfeaf27fc1a4f1f3}{flist}
+\item 
+def \hyperlink{namespaceapi_1_1friend_a506edbf245a09a1b05acee05e4eee967}{add}
+\item 
+def \hyperlink{namespaceapi_1_1friend_a998bc2b134f637096d118a9038e23bf1}{delete}
+\item 
+def \hyperlink{namespaceapi_1_1friend_a65737800446036fc2cd37a88d6a18097}{act}
+\item 
+def \hyperlink{namespaceapi_1_1friend_a189bd8d0e4d01ddd3216f5bf1aa06473}{small\-\_\-room}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1friend_a39f850f8015aebef85ad6ed8be767890}{friends} = user\-\_\-friends.\-friends()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1friend_a65737800446036fc2cd37a88d6a18097}{\index{api\-::friend@{api\-::friend}!act@{act}}
+\index{act@{act}!api::friend@{api\-::friend}}
+\subsubsection[{act}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-friend.\-act (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{p, }
+\item[{}]{goal\-\_\-uid, }
+\item[{}]{act}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1friend_a65737800446036fc2cd37a88d6a18097}
+\begin{DoxyVerb}@info 操作好友
+@param int goal_uid 目标uid
+@param int act 1同意 2拒绝
+@return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1friend_a506edbf245a09a1b05acee05e4eee967}{\index{api\-::friend@{api\-::friend}!add@{add}}
+\index{add@{add}!api::friend@{api\-::friend}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-friend.\-add (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goal\-\_\-uid, }
+\item[{}]{relation}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1friend_a506edbf245a09a1b05acee05e4eee967}
+\begin{DoxyVerb}@info 添加好友
+@param integer goal_uid 目标uid
+@param integer relation 朋友关系， 1好友 2仇敌 3黑名单
+@return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1friend_a998bc2b134f637096d118a9038e23bf1}{\index{api\-::friend@{api\-::friend}!delete@{delete}}
+\index{delete@{delete}!api::friend@{api\-::friend}}
+\subsubsection[{delete}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-friend.\-delete (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goal\-\_\-uid}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1friend_a998bc2b134f637096d118a9038e23bf1}
+\begin{DoxyVerb}@info 删除好友
+@param integer goal_uid 目标uid
+@return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1friend_aea90f0cabb089c74dfeaf27fc1a4f1f3}{\index{api\-::friend@{api\-::friend}!flist@{flist}}
+\index{flist@{flist}!api::friend@{api\-::friend}}
+\subsubsection[{flist}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-friend.\-flist (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1friend_aea90f0cabb089c74dfeaf27fc1a4f1f3}
+\begin{DoxyVerb}@info 好友列表
+@return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1friend_a189bd8d0e4d01ddd3216f5bf1aa06473}{\index{api\-::friend@{api\-::friend}!small\-\_\-room@{small\-\_\-room}}
+\index{small\-\_\-room@{small\-\_\-room}!api::friend@{api\-::friend}}
+\subsubsection[{small\-\_\-room}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-friend.\-small\-\_\-room (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{p, }
+\item[{}]{goal\-\_\-uid, }
+\item[{}]{act}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1friend_a189bd8d0e4d01ddd3216f5bf1aa06473}
+\begin{DoxyVerb}@info 将好友调整为黑名单 或者陌生人
+@param int goal_uid 目标uid
+@param int act 2陌生人 3黑名单
+@return
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1friend_a39f850f8015aebef85ad6ed8be767890}{\index{api\-::friend@{api\-::friend}!friends@{friends}}
+\index{friends@{friends}!api::friend@{api\-::friend}}
+\subsubsection[{friends}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-friend.\-friends = user\-\_\-friends.\-friends()}}\label{namespaceapi_1_1friend_a39f850f8015aebef85ad6ed8be767890}

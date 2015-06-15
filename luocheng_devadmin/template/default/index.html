@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>龙吟后台管理中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="Comsenz Inc." name="Copyright" />
+<link rel="stylesheet" href="/template/default/f/css/admincp.css" type="text/css" media="all" />
+<script language="javascript" type="text/javascript" src="/template/default/f/js/jquery-1.3.2.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/function.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/public.js"></script>
+<script language="javascript" type="text/javascript" src="/template/js/common.js"></script>
+</head>
+<style type="text/css">
+html, body {
+	height: 100%;
+}
+#main {
+	height: 100%;
+}
+.style1 {
+	color: #0099CC
+}
+.lightbox {
+	width:550px;
+	background:#FFFFFF;
+	border:2px solid #ccc;
+	line-height:10px;
+	display:none;
+}
+.lightbox dt {
+	background:#f4f4f4;
+	padding:5px;
+}
+.lightbox dd {
+	padding:20px;
+	margin:0;
+}
+.duofu {
+	color: #FF9
+}
+.serverinfo {
+	position:absolute;
+	width: 65%;
+	height: 35px;
+	left: 500px;
+}
+</style>
+<body>
+<table id="frametable" cellpadding="0" cellspacing="0" width="100%" height="100%">
+  <tr>
+    <td height="45" colspan="2"><div class="mainhd">
+        <div class="nav">
+          <ul id="topmenu">
+            <li><em><a href="123" id="header_style" hidefocus="flase"  onclick="toggleMenu('style', '');">开发管理</a></em></li>
+          </ul>
+        </div>
+        
+        <!--// 其他处理//-->
+        <div class="serverinfo">
+          <div id="ctes" style="position:absolute; right:30px; height:35px; line-height:35px; z-index:999;" > 当前数据库：
+            <echo>$_SESSION["mysqldb"]</echo>
+            &nbsp;&nbsp;&nbsp;&nbsp;[<a href="/plugins/login/login_out.php" target="_parent" > 安全退出</a>]&nbsp;&nbsp; &nbsp; </div>
+        </div>
+      </div></td>
+  </tr>
+  <tr>
+    <td valign="top" width="160" class="menutd">
+    <div id="leftmenu" class="menu"> 
+        
+        <!-- *****************************************************开发管理****************************************************** -->
+        <ul id="menu_style" style="display: ">
+          <li class="s">
+            <div class="lsub desc" subid="M4b0ab715">
+              <div onClick="lsub('M4b0ab715', this.parentNode)">基表与生成</div>
+              <ol style="display:none;" id="M4b0ab715">
+                <li><a href="/?module=files&methods=base" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>基表转文件</a></li>
+                <li><a href="/?module=files&methods=zip" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>生成zip</a></li>
+                <li><a href="/?module=files&methods=csv" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>生成excel</a></li>
+                <li><a href="/?module=simulation_war" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>模拟战斗</a></li>
+                <li><a href="/?module=task&methods=task_change" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>任务转换</a></li>
+                <li><a href="/?module=task&methods=experience" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>经验配置</a></li>
+                <li><a href="/?module=macro_data&methods=gameupdate&e=list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>游戏更新</a></li>
+                <li><a href="/?module=test&methods=index" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>测试</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          <li class="s">
+            <div class="lsub desc" subid="M4b0ab123">
+              <div onClick="lsub('M4b0ab123', this.parentNode)">基表管理</div>
+              <ol style="display:none;" id="M4b0ab123">
+                <li><a href="/?module=goods&methods=base" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>物品基表管理</a></li>
+                <li><a href="/?module=goods&methods=ext&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>物品扩展表管理</a></li>
+                <li><a href="/?module=goods&methods=hero" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>武将基表管理</a></li>
+                <li><a href="/?module=goods&methods=skill" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>主动技能管理</a></li>
+                <li><a href="/?module=goods&methods=monster" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>怪物等级</a></li>
+                <li><a href="/?module=monster&methods=monster_list_views" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>怪物集合</a></li>
+                <li><a href="/?module=task&methods=detect_task" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>任务格式检测</a></li>
+                <li><a href="/?module=monster&methods=monster_list_views" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>怪物检测</a></li>
+                <li><a href="/?module=map&methods=edit" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>地图编辑</a></li>
+                <li><a href="/?module=monster&methods=monster_combat" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>副本战斗力</a></li>
+                <li><a href="/?module=test&methods=link" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>生成连接</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          <!--商城物品查询RPG-->
+          <li class="s">
+            <div class="lsub desc" subid="M4b0ab713">
+              <div onClick="lsub('M4b0ab713', this.parentNode)">商城物品查询rpG</div>
+              <ol style="display:none;" id="M4b0ab713">
+                <li><a href="/?module=mall&methods=index&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>装备</a></li>
+                <li><a href="/?module=mall&methods=index&type=2" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>材料</a></li>
+                <li><a href="/?module=mall&methods=index&type=3" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>消耗</a></li>
+                <li><a href="/?module=mall&methods=index&type=4" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>宝石</a></li>
+                <li><a href="/?module=mall&methods=index&type=5" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>宝物</a></li>
+                <li><a href="/?module=mall&methods=index&type=6" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>热卖</a></li>
+              	<li><a href="/?module=mall&methods=index&type=8" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>限时抢购</a></li>
+                <li><a href="/?module=mall&methods=index&type=12" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>碎片</a></li>
+                <li><a href="/?module=mall&methods=index&type=13" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>荣誉点</a></li>
+              </ol>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <td width="*" height="100%" align="left" valign="top">
+    	<iframe id="main" name="main" src="" marginwidth="0" framespacing="0" marginheight="0" frameborder="0" style="width:100%;height:100%x;"> </iframe>
+    </td>
+  </tr>
+</table>
+
+<div id="scrolllink" style="display: none"> <span onClick="menuScroll(1)"> <img src="/template/default/f/image/scrollu.gif"/></span> <span onClick="menuScroll(2)"> <img src="/template/default/f/image/scrolld.gif" /></span></div>
+
+<script type="text/JavaScript">
+	var cookiepre = 'awW4_2132_', cookiedomain = '', cookiepath = '/';
+	var headers = new Array('index','global','style','topic','user','portal','forum','group','extended','plugin','tools','cloud','founder','uc'), admincpfilename = '', menukey = '';
+	switchheader("style");
+	
+	function toggleMenu(key, url) 
+	{
+		switchheader(key);
+	}
+	
+	function switchheader(key) {
+		if(!key || !$('header_' + key)) {
+			return;
+		}
+		for(var k in top.headers) {
+			if($('menu_' + headers[k])) {
+				$('menu_' + headers[k]).style.display = headers[k] == key ? '' : 'none';
+			}
+		}
+		var lis = $('topmenu').getElementsByTagName('li');
+		for(var i = 0; i < lis.length; i++) {
+			if(lis[i].className == 'navon') lis[i].className = '';
+		}
+		$('header_' + key).parentNode.parentNode.className = 'navon';
+	}
+	
+	function lsub(id, obj) {
+		display(id);
+		obj.className = obj.className != 'lsub' ? 'lsub' : 'lsub desc';
+		if(obj.className != 'lsub') {
+			setcookie('cpmenu_' + id, '');
+		} else {
+			setcookie('cpmenu_' + id, 1, 31536000);
+		}
+		setMenuScroll();
+	}
+	
+	function setMenuScroll() {
+		$('frametable').style.width = document.body.offsetWidth < 1000 ? '1000px' : '100%';
+		var obj = $('menu_' + menukey);
+		if(!obj) {
+			return;
+		}
+		var scrollh = document.body.offsetHeight - 160;
+		obj.style.overflow = 'visible';
+		obj.style.height = '';
+		$('scrolllink').style.display = 'none';
+		if(obj.offsetHeight + 150 > document.body.offsetHeight && scrollh > 0) {
+			obj.style.overflow = 'hidden';
+			obj.style.height = scrollh + 'px';
+			$('scrolllink').style.display = '';
+		}
+	}
+	
+	function menuNewwin(obj) {
+		var href = obj.parentNode.href;
+		if(obj.parentNode.href.indexOf(admincpfilename + '?') != -1) {
+			href += '&frames=yes';
+		}
+		window.open(href);
+		doane();
+	}
+	
+	function menuScroll(op, e) 
+	{
+		var obj = $('menu_' + menukey);
+		var scrollh = document.body.offsetHeight - 160;
+		if(op == 1) {
+			obj.scrollTop = obj.scrollTop - scrollh;
+		} else if(op == 2) {
+			obj.scrollTop = obj.scrollTop + scrollh;
+		} else if(op == 3) {
+			if(!e) e = window.event;
+			if(e.wheelDelta <= 0 || e.detail > 0) {
+				obj.scrollTop = obj.scrollTop + 20;
+			} else {
+				obj.scrollTop = obj.scrollTop - 20;
+			}
+		}
+	}
+</script>
+</body>
+</html>

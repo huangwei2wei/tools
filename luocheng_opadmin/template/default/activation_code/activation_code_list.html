@@ -1,0 +1,51 @@
+<gettemplet file="default/head.html"/>
+
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">礼包名称</td>
+    <td  bgcolor="#CCCCCC">激活码（16位）</td>
+    <td  bgcolor="#CCCCCC">状态(正常/已使用)</td>
+    <td  bgcolor="#CCCCCC">领取人</td>
+    <td  bgcolor="#CCCCCC">礼包内容</td>
+  </tr>
+  <!--?
+  foreach($code_list[0] as $key=>$value)
+  {
+  	
+  ?-->
+  <tr>
+    <td><echo>$value["spree_name"]</echo></td>
+    <td><echo>$value["code"]</echo></td>
+    <td><echo>$value["status"]?"已使用":"正常"</echo></td>
+    <td><echo>$value["activation_user"]?$code_list[2][$value["activation_user"]]:0</echo></td>
+    <!--?
+    	if ($value["spree_data"]){
+				$value["spree_data"] = object_to_array(json_decode($value["spree_data"]));
+				
+		}
+	  if (is_array($value["spree_data"])) {
+	  	$data = "";
+	  	foreach($value["spree_data"] as $k=>$val){
+	  		foreach($val as $kk=>$vv) {
+	  		$name = $goods_list[$kk];
+	  		$data .= $name.':'.$vv.'  ';
+	  		}
+	  }
+  ?-->
+    <td><echo>$data</echo></td>
+    <!--?
+  		} else {
+  ?-->
+  	<td>null</td>
+  	<!--?
+ 	 }
+  	?-->
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<echo>$code_list[1]</echo>
+</body></html>

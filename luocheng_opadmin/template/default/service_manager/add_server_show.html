@@ -1,0 +1,40 @@
+<gettemplet file="default/head.html"/>
+<SCRIPT LANGUAGE="JavaScript">
+	function servers(obj) {
+			var mongodbs=document.getElementById("mongodbs").value.split("_");
+			document.getElementById("mongodbs").value="s_"+mongodbs[1]+"_"+obj.value;
+	}
+</script>
+<table width="100%" height="147" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"><a href="/?module=service_manager&methods=open_service_list&operators_id=<echo>$operators_id</echo>">开服列表</a></td>
+  </tr>
+  </table>
+<form method="post" action="/?module=service_manager&methods=add_server">
+  <table width="475" align="center">
+    <tr>
+      <td height="43" colspan="3" align="center" bgcolor="#CCCCCC" ><strong>游戏服添加</strong></td>
+    </tr>
+    <tr>
+      <td width="158" height="30" bgcolor="#CCCCCC" >运营商ID</td>
+      <td width="191" bgcolor="#CCCCCC" ><input type ="text" name="operators_id" value="<echo>$add_server_show['operators_id']</echo>" style="width:150px;border:1px solid #666666;text-align:center" readOnly/></td>
+      <td width="110" bgcolor="#CCCCCC" >operators_id</td>
+    </tr>
+    <tr>
+      <td height="30" bgcolor="#CCCCCC" >mongodb数据库名</td>
+      <td bgcolor="#CCCCCC" ><input id="mongodbs" type ="text" name="mongo_db" value="<echo>'s_'.$add_server_show['operators_id'].'_'.(intval($add_server_show['server_id'])+1)</echo>" style="width:150px;border:1px solid #666666;text-align:center" readOnly/></td>
+      <td bgcolor="#CCCCCC" >mongo_db</td>
+    </tr>
+    <tr>
+      <td height="30" bgcolor="#CCCCCC" >开服ID</td>
+      <td bgcolor="#CCCCCC"><input type ="text" name="server_id" onkeyup="servers(this);"  value="<echo>intval($add_server_show['server_id'])+1</echo>" style="width:150px;border:1px solid #666666;text-align:center"/></td>
+      <td bgcolor="#CCCCCC">server_id</td>
+    </tr>
+    <tr>
+      <td height="30" bgcolor="#CCCCCC">开服名称</td>
+      <td bgcolor="#CCCCCC"><input type ="text" name="server_name" value="<echo>$server_name</echo>"  style="width:150px;border:1px solid #666666;text-align:center"/></td>
+      <td bgcolor="#CCCCCC" >server_name</td>
+    </tr>
+      <td height="42" colspan=3 align="center" bgcolor="#CCCCCC" ><input type="submit" name="game_submit" value="确定添加"/></td>
+  </table>
+</form>

@@ -1,0 +1,106 @@
+\hypertarget{namespaceapi_1_1copy__map}{\section{api.\-copy\-\_\-map 命名空间参考}
+\label{namespaceapi_1_1copy__map}\index{api.\-copy\-\_\-map@{api.\-copy\-\_\-map}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_ae26486a7095180402ae256c51683ea37}{user\-\_\-corps\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_a1fbbd8ab2aa79eb95776cf411b29eab7}{corps\-\_\-act}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_aa21dfd97f11efec3c57e7d907d1d7078}{copy\-\_\-war\-\_\-drop}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_af866dabbfc330e6ac0247060e8502660}{copy\-\_\-war}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_a51d0dd9a9dcdca6626a1dbefcb5a7ded}{copy\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1copy__map_a74ed814c584100c36558cee0cc3c8782}{copy\-\_\-raids}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1copy__map_adafe0fc38f47f3c39bd580678dae0e95}{copy\-\_\-map} = user\-\_\-copy\-\_\-map.\-copy\-\_\-map()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1copy__map_a51d0dd9a9dcdca6626a1dbefcb5a7ded}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!copy\-\_\-list@{copy\-\_\-list}}
+\index{copy\-\_\-list@{copy\-\_\-list}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{copy\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-copy\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_a51d0dd9a9dcdca6626a1dbefcb5a7ded}
+\begin{DoxyVerb}* 副本列表(已经通关的) integral是评分或星级,此接口数据尚未完善
+* @return  [{"copy_id":obj["copy_id"],"integral":obj["integral"]}]
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1copy__map_a74ed814c584100c36558cee0cc3c8782}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!copy\-\_\-raids@{copy\-\_\-raids}}
+\index{copy\-\_\-raids@{copy\-\_\-raids}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{copy\-\_\-raids}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-copy\-\_\-raids (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{copy\-\_\-id, }
+\item[{}]{is\-\_\-vip = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_a74ed814c584100c36558cee0cc3c8782}
+\begin{DoxyVerb}*副本扫荡
+*@param copy_id:地图id 
+*@param is_vip:是否vip扫荡 可以连续多次扫荡
+*@retrun 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1copy__map_af866dabbfc330e6ac0247060e8502660}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!copy\-\_\-war@{copy\-\_\-war}}
+\index{copy\-\_\-war@{copy\-\_\-war}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{copy\-\_\-war}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-copy\-\_\-war (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{copy\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_af866dabbfc330e6ac0247060e8502660}
+\begin{DoxyVerb}* 副本战斗(主要做检测,战斗力是否越界)
+* @param int copy_id  副本id
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1copy__map_aa21dfd97f11efec3c57e7d907d1d7078}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!copy\-\_\-war\-\_\-drop@{copy\-\_\-war\-\_\-drop}}
+\index{copy\-\_\-war\-\_\-drop@{copy\-\_\-war\-\_\-drop}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{copy\-\_\-war\-\_\-drop}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-copy\-\_\-war\-\_\-drop (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{copy\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_aa21dfd97f11efec3c57e7d907d1d7078}
+\begin{DoxyVerb}* 进入副本 主要是确定掉落
+* @param int copy_id  副本id
+* @return  掉落情况
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1copy__map_a1fbbd8ab2aa79eb95776cf411b29eab7}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!corps\-\_\-act@{corps\-\_\-act}}
+\index{corps\-\_\-act@{corps\-\_\-act}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{corps\-\_\-act}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-corps\-\_\-act (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero, }
+\item[{}]{corps\-\_\-type, }
+\item[{}]{order = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_a1fbbd8ab2aa79eb95776cf411b29eab7}
+\begin{DoxyVerb}* 战队列表
+* @param int user_hero 战队英雄,按位置添加成数组
+* @param int|bool corps_type -1自定义 1主城 2主线副本 3精英副本 4团队副本 5普通竞技场 6魔龙岛 7英雄试炼 8材料试炼 9专属试炼 10高级竞技场 11巅峰竞技场
+* @param int order 默认0即可,但竞技场有多个,需要使用这个值作为排序,分别是0,1,2防守战队 3,4,5进攻战队 (-1自定义,这里有0,1,2)
+* @return  战队列表
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1copy__map_ae26486a7095180402ae256c51683ea37}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!user\-\_\-corps\-\_\-list@{user\-\_\-corps\-\_\-list}}
+\index{user\-\_\-corps\-\_\-list@{user\-\_\-corps\-\_\-list}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{user\-\_\-corps\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-copy\-\_\-map.\-user\-\_\-corps\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1copy__map_ae26486a7095180402ae256c51683ea37}
+\begin{DoxyVerb}* 战队列表
+* @return  战队列表
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1copy__map_adafe0fc38f47f3c39bd580678dae0e95}{\index{api\-::copy\-\_\-map@{api\-::copy\-\_\-map}!copy\-\_\-map@{copy\-\_\-map}}
+\index{copy\-\_\-map@{copy\-\_\-map}!api::copy_map@{api\-::copy\-\_\-map}}
+\subsubsection[{copy\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-copy\-\_\-map.\-copy\-\_\-map = user\-\_\-copy\-\_\-map.\-copy\-\_\-map()}}\label{namespaceapi_1_1copy__map_adafe0fc38f47f3c39bd580678dae0e95}

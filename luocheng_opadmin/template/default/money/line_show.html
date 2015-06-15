@@ -1,0 +1,40 @@
+<gettemplet file="default/head.html"/>
+<script type="text/javascript">
+function s_click(obj) {
+	var num = 0;
+	for (var i = 0; i < obj.options.length; i++) {
+		if (obj.options[i].selected == true) {
+			num++;
+		}
+	}
+	if (num == 1) {
+		var url = obj.options[obj.selectedIndex].value;
+		//window.open(url); //这里修改打开连接方式
+		location.href=url
+	}
+}
+</script>
+
+<table width="100%" border="1">
+  <tr>
+    <td width="5%" height="25" colspan="3"><form method="post" >
+        <select name="select" id="select"  onchange="s_click(this)">
+          <option selected="selected" value="/?module=money&methods=line_show&type=<echo>$get['type']</echo>&module_sub_id=0&e=del">ALL</option>
+          <option 
+          <echo>(isset($get["module_sub_id"])&& $get["module_sub_id"]==999)?'selected="selected"':''</echo>
+           value="/?module=money&methods=line_show&type=<echo>$get['type']</echo>&module_sub_id=999&e=del">充值</option>
+          <variable data="$base_module_list">
+            <loop list="$i"> <option 
+              <echo>(isset($get["module_sub_id"])&& $get["module_sub_id"]==$base_module_list[$i]['id'])?'selected="selected"':''</echo>
+               value="/?module=money&methods=line_show&type=<echo>$get["type"]</echo>&module_sub_id=<echo>$base_module_list[$i]['id']</echo>">
+              <echo>$base_module_list[$i]["module_name"]</echo>
+              </option>
+            </loop>
+          </variable>
+        </select>
+      </form></td>
+    <td width="80%">&nbsp;</td>
+  </tr>
+</table>
+<echo>$showpie3</echo>
+</body></html>

@@ -1,0 +1,75 @@
+\hypertarget{namespaceapi_1_1dragon}{\section{api.\-dragon 命名空间参考}
+\label{namespaceapi_1_1dragon}\index{api.\-dragon@{api.\-dragon}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1dragon_a3dda3161c39b3734f9d34caefece9216}{init\-\_\-dragon}
+\item 
+def \hyperlink{namespaceapi_1_1dragon_a725a71b872a21c1a7eb4e79a9200894d}{set\-\_\-checkpoint}
+\item 
+def \hyperlink{namespaceapi_1_1dragon_aa7bd2bae981d5a225bf8eb7a4d25eca9}{reset\-\_\-checkpoint}
+\item 
+def \hyperlink{namespaceapi_1_1dragon_a752ffeb9f8b4a3fa2f4fccb66f3d6501}{magic\-\_\-gas}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1dragon_a43065da32920c8618fa1ff016c3a7568}{dragon} = dragon.\-dragon()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1dragon_a3dda3161c39b3734f9d34caefece9216}{\index{api\-::dragon@{api\-::dragon}!init\-\_\-dragon@{init\-\_\-dragon}}
+\index{init\-\_\-dragon@{init\-\_\-dragon}!api::dragon@{api\-::dragon}}
+\subsubsection[{init\-\_\-dragon}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-dragon.\-init\-\_\-dragon (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{map\-\_\-id = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1dragon_a3dda3161c39b3734f9d34caefece9216}
+\begin{DoxyVerb}* 初始化魔龙岛
+@param map_id:关卡id  1-12  [1,2]表示要返回的关卡消息
+* @return 魔龙岛守关玩家 英雄战队
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1dragon_a752ffeb9f8b4a3fa2f4fccb66f3d6501}{\index{api\-::dragon@{api\-::dragon}!magic\-\_\-gas@{magic\-\_\-gas}}
+\index{magic\-\_\-gas@{magic\-\_\-gas}!api::dragon@{api\-::dragon}}
+\subsubsection[{magic\-\_\-gas}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-dragon.\-magic\-\_\-gas (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1dragon_a752ffeb9f8b4a3fa2f4fccb66f3d6501}
+\begin{DoxyVerb}* 魔气获取
+* @return: {"res": true, "msg": "atk:1.32"} hp 血量 ，"atk"  攻击力,"defense" 防御力 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1dragon_aa7bd2bae981d5a225bf8eb7a4d25eca9}{\index{api\-::dragon@{api\-::dragon}!reset\-\_\-checkpoint@{reset\-\_\-checkpoint}}
+\index{reset\-\_\-checkpoint@{reset\-\_\-checkpoint}!api::dragon@{api\-::dragon}}
+\subsubsection[{reset\-\_\-checkpoint}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-dragon.\-reset\-\_\-checkpoint (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1dragon_aa7bd2bae981d5a225bf8eb7a4d25eca9}
+\begin{DoxyVerb}* 重置通关
+* @param map_id: 关卡id
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1dragon_a725a71b872a21c1a7eb4e79a9200894d}{\index{api\-::dragon@{api\-::dragon}!set\-\_\-checkpoint@{set\-\_\-checkpoint}}
+\index{set\-\_\-checkpoint@{set\-\_\-checkpoint}!api::dragon@{api\-::dragon}}
+\subsubsection[{set\-\_\-checkpoint}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-dragon.\-set\-\_\-checkpoint (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{map\-\_\-id, }
+\item[{}]{hp = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1dragon_a725a71b872a21c1a7eb4e79a9200894d}
+\begin{DoxyVerb}* 设置通关的关卡id
+* @param map_id: 关卡id
+* @param hp: 站位对应的英雄血量 10012:500,10013:400||10012:500,10013:400
+* @return  获得的物品
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1dragon_a43065da32920c8618fa1ff016c3a7568}{\index{api\-::dragon@{api\-::dragon}!dragon@{dragon}}
+\index{dragon@{dragon}!api::dragon@{api\-::dragon}}
+\subsubsection[{dragon}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-dragon.\-dragon = dragon.\-dragon()}}\label{namespaceapi_1_1dragon_a43065da32920c8618fa1ff016c3a7568}

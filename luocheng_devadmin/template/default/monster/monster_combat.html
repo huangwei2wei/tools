@@ -1,0 +1,21 @@
+<gettemplet file="default/head.html"/>
+<table id="rechlist" width="100%" border="1">
+  <tr>
+    <td width="29%" bgcolor="#CCCCCC">城池</td>
+    <td width="30%" bgcolor="#CCCCCC">副本</td>
+    <td width="41%" bgcolor="#CCCCCC">战斗力</td>
+  </tr>
+  <variable data="$run">
+    <loop list="$i">
+  <tr>
+    <td><echo>$run[$i]["city_name"]</echo></td>
+    <td><echo>$run[$i]["monster_name"]</echo></td>
+    <td><echo>$run[$i]["monster_combat"]</echo></td>
+  </tr>
+  </loop>
+  </variable>
+</table>
+
+<script>
+select_tr("rechlist")
+</script>

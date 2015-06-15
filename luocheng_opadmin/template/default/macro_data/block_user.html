@@ -1,0 +1,66 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+<form method="post" action="/?module=macro_data&methods=add_gag">
+  <p>输入要禁言的用户昵称:
+  <input type="text" value="<echo>$user_name</echo>" name="user_name" size="50" />
+    &nbsp;禁言时间:
+    <select name="time" id="time">
+      <option selected="selected" value="99999999999">永久</option>
+      <option value="0">删除</option>
+      <option value="10800">3小时</option>
+      <option value="18000">5小时</option>
+      <option value="86400">1天</option>
+      <option value="172800">2天</option>
+      <option value="432000">5天</option>
+      <option value="1728000">20天</option>
+      <option value="2678400">1个月</option>
+      <option value="5356800">2个月</option>
+      <option value="8035200">3个月</option>
+    </select>
+    (时)
+ 
+ </p>
+  <div> <input type="submit" name="add" value="添加到禁言列表"> (多个用户昵称&quot;;&quot;隔开) 
+ </div> 
+ 
+ 
+</form>
+
+<hr>
+<table width="100%">
+  <tr>
+    <td bgcolor="#CCCCCC">用户ID</td>
+    <td bgcolor="#CCCCCC">用户昵称</td>
+    <td bgcolor="#CCCCCC">等级</td>
+    <td bgcolor="#CCCCCC">在线</td>
+    <td bgcolor="#CCCCCC">截止时间</td>
+    <td bgcolor="#CCCCCC">操作</td>
+  </tr>
+  <variable data="$prohibit_speech">
+    <loop list="$i">
+   <tr>
+    <td><echo>$prohibit_speech[$i]["user_id"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["nickname"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["user_grade"]</echo></td>
+    <td><echo>$prohibit_speech[$i]["online"]?"在线":"离线"</echo></td>
+    <td><echo>$prohibit_speech[$i]["stime"]</echo></td>
+    <td><a href="/?module=macro_data&methods=dele_gag&user_id=<echo>$prohibit_speech[$i]['user_id']</echo>">解除禁言</a></td>
+  </tr>
+    </loop>
+</variable>
+</table>

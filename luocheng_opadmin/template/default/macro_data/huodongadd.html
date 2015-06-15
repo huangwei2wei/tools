@@ -1,0 +1,82 @@
+<gettemplet file="default/head.html"/>
+<style>
+html{height:100%;}
+body{height:100%;}
+</style>
+<script>
+function addres()
+{
+	var ressum=document.getElementById("ressum");
+	var tmpres=document.getElementById("tmpres");
+	var award_res=document.getElementById("award_res");
+	if(ressum.value=="" || ressum.value==0){
+		alert("请输入数量");
+		return false;	
+	}
+	award_res.value+=tmpres.value+":0:"+ressum.value+",";
+	var tmpdata=award_res.value;
+	tmpdataarr=tmpdata.split(",");
+	var newdata=Array();
+	
+	for(var i=0;i<tmpdataarr.length;i++)
+	{
+		var nd=tmpdataarr[i].split(":");
+		if(nd.length>1){
+			newdata[nd[0]]=Array(nd[1],nd[2]);
+		}
+	}
+	var tmpstr="";
+	for(key in newdata)
+	{
+		tmpstr+=key+":"+newdata[key][0]+":"+newdata[key][1]+",";
+	}
+	award_res.value=tmpstr;
+}
+</script>
+<form name="form1" method="post" action="/?module=macro_data&methods=huodongadd_act">
+  <table width="559" height="275" border="1">
+    <tr>
+      <td width="81">条件</td>
+      <td width="462"><input type="text" name="data[condition]" id="condition">
+      <input name="data[oid]" type="hidden" id="oid" value="<echo>$oid</echo>"></td>
+    </tr>
+    <tr>
+      <td>条件备注</td>
+      <td><input type="text" name="data[condition_info]" id="condition_info"></td>
+    </tr>
+    <tr>
+      <td>奖励物品</td>
+      <td><p>
+        <input name="data[award_goods_ext_id]" type="text" id="award_goods_ext_id" size="60">
+      </p>
+      <p>选择物品，尚未实现 </p></td>
+    </tr>
+    <tr>
+      <td height="86">奖励资源</td>
+      <td><p>
+        <input name="data[award_res]" type="text" id="award_res" size="60">
+        &nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>
+          <select name="tmpres" id="tmpres">
+            <option value="jade">魂玉</option>
+            <option value="sports">声望</option>
+            <option value="energy">精力</option>
+            <option value="spar">晶石</option>
+            <option value="fe">玄铁</option>
+            <option value="copper">铜钱</option>
+            <option value="gold">金币</option>
+            <option value="exploit">军资</option>
+            <option value="blue_point">蓝将魂</option>
+            <option value="purple_point">紫将魂</option>
+            <option value="gold_point">金将魂</option>
+          </select>
+          <input name="ressum" type="text" id="ressum" value="5" size="10" />
+          <input type="button" name="button2" id="button2" value="添加"  onclick="addres()"/>
+          <br>
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>

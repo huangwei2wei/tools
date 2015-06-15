@@ -1,0 +1,78 @@
+<gettemplet file="default/head.html"/>
+<script>
+function select_monster(obj)
+{
+	url="/?module=monster&methods=get_monster_lv&id="+obj.value;
+	ajax_ultimate(url,'select_monster_');	
+}
+
+function select_monster_(msg)
+{
+	Delhtml("select5");
+	
+	var cObj = document.createElement('select');
+	cObj.name="select5";
+	cObj.id="select5";
+	document.getElementById("add_select5").appendChild(cObj);
+	addobj=document.getElementById("select5");
+	msg=json_x(msg);
+	for(i=0;i<msg.length;i++)
+	{
+		add_select_item(addobj,msg[i]["lv"],msg[i]["lv"]);	
+	}
+}
+
+function queding()
+{
+	//var url="/?module=mall&methods=addmall";
+	//ajax_ultimate(url,"queding_","post","xxform1");	
+	
+}
+
+function add_monster_id(ni)
+{
+	mselect5=document.getElementById("select5").value;
+	mselect4=document.getElementById("select4").value;
+	
+	parent.document.getElementById("pi"+ni).value=mselect4+":0:"+mselect5;
+	parent.document.getElementById("p"+ni).innerHTML=document.getElementById("select4").options[document.getElementById("select4").selectedIndex].text+"("+document.getElementById("select5").options[document.getElementById("select5").selectedIndex].text+")&nbsp;&nbsp;&nbsp;<a href=\"#\" onclick=\"removemons(<echo>$ni</echo>)\">清除</a>";
+	/*if(document.getElementById("monster_id").value.length>0)
+	{
+		document.getElementById("monster_id").value+=","+mselect4+":0:"+mselect5;
+	}else{
+		document.getElementById("monster_id").value=mselect4+":0:"+mselect5;
+	}*/
+	parent.logoutdiv('movediv');
+}
+
+
+function queding_(string)
+{
+	parent.location.reload();
+	parent.logoutdiv('movediv');
+}
+</script>
+
+<table width="100%" border="1">
+  <tr>
+    <td align="left"><form id="xxform1" name="xxform1" method="post" action="">
+        <p>怪物
+          <select name="select4" id="select4" onChange="select_monster(this)">
+            <variable data="$monster_views">
+              <loop list="$i">
+                <option value="<echo>$monster_views[$i]['id']</echo>">
+                <echo>$monster_views[$i]['name']</echo>
+                </option>
+              </loop>
+            </variable>
+          </select>
+          等级 <span id="add_select5">
+          <select name="select5" id="select5">
+          </select>
+          </span>
+          <input type="button" name="button2" id="button2" value="添加"  onclick="add_monster_id(<echo>$ni</echo>)"/>
+        </p>
+      </form></td>
+  </tr>
+</table>
+</body></html>

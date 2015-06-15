@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td width="50" height="28" colspan="2" align="center"  valign="middle" bgcolor="#CCCCCC"  ><div align="center"> <span >滚服信息</span> </div></td>
+  </tr>
+</table>
+<table width="100%" border="1">
+ <tr>
+    <td width="11%" bgcolor="#CCCCCC">总创建</td>
+    <td width="11%" bgcolor="#CCCCCC">滚服创建</td>
+    <td width="11%" bgcolor="#CCCCCC">滚服率</td>
+    <td width="11%" bgcolor="#CCCCCC">总充值人数</td>
+    <td width="11%" bgcolor="#CCCCCC">滚服充值人数</td>
+    <td width="11%" bgcolor="#CCCCCC">滚服充值率</td>
+    <td width="11%" bgcolor="#CCCCCC">总付费金额</td>
+    <td width="11%" bgcolor="#CCCCCC">滚服付费金额</td>
+    <td width="12%" bgcolor="#CCCCCC">滚服付费比例</td>
+  </tr>
+
+  <tr>
+    <td><echo>$roll_clothes[0]</echo></td>
+    <td><echo>$roll_clothes[1]</echo></td>
+    <td><echo>round($roll_clothes[1]/$roll_clothes[0],2)*100</echo>%</td>
+    <td><echo>$roll_clothes[2]</echo></td>
+    <td><echo>$roll_clothes[3]</echo></td>
+    <td><echo>round($roll_clothes[3]/$roll_clothes[2],2)*100</echo>%</td>
+    <td><echo>$roll_clothes[4]</echo></td>
+    <td><echo>$roll_clothes[5]</echo></td>
+    <td><echo>round($roll_clothes[5]/$roll_clothes[4],2)*100</echo>%</td>
+  </tr>
+</table>

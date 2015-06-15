@@ -1,0 +1,467 @@
+<gettemplet file="default/head.html"/>
+<script>
+function all_replace(str,oldstr,newstr)
+{
+	var reg=new RegExp("\\"+oldstr,"g");
+	return str.replace(reg,newstr);
+}
+
+function building_round(rounds)
+{
+	for (i=0;i<rounds;i++)
+	{
+		//$("round_list").innerHTML+=all_replace($("m1").innerHTML,"[x]",""+(i+1)+"");
+		newNode  = document.createElement("div");//创建P标签 
+		newNode.innerHTML=all_replace($("m1").innerHTML,"[x]",""+(i+1)+"");
+		$("round_list").appendChild(newNode);
+	}
+}
+
+function add_act(round_name,type_name)
+{
+	if($(type_name).value==1){
+		var m="m2";	
+	}else if($(type_name).value==2){
+		var m="m3";	
+	}else if($(type_name).value==3){
+		var m="m4";	
+	}
+	
+	
+	//$(m).innerHTML=all_replace($(m).innerHTML,"[x]","1");
+	//$(round_name).innerHTML+=$(m).innerHTML
+	
+	newNode  = document.createElement("div");//创建P标签 
+	newNode.innerHTML=$(m).innerHTML;
+	$(round_name).appendChild(newNode);  
+}
+
+function jianche(obj)
+{
+	if(obj.value==0)
+	{
+		return false;
+	}
+	
+	if($(obj.options[obj.selectedIndex].text).value==0)
+	{
+		set_select_item_selected(obj, "--");
+		alert("注意，这个武将尚未上阵");
+	}
+	
+}
+
+</script>
+<div id="m1" style="display:none;">
+  <table width="100%" border="1">
+    <tr>
+      <td width="26" rowspan="3">[x]</td>
+      <td width="1121"><table width="100%" border="1">
+          <tr>
+            <td width="14%" bgcolor="#CCCCCC">击类型</td>
+            <td width="13%" bgcolor="#CCCCCC">打击方</td>
+            <td width="26%" bgcolor="#CCCCCC">攻击位置</td>
+            <td width="19%" bgcolor="#CCCCCC">技能</td>
+            <td width="15%" bgcolor="#CCCCCC">扣血</td>
+            <td width="13%" bgcolor="#CCCCCC">暴击</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td id="s_[x]"></td>
+    </tr>
+    <tr>
+      <td><input onclick="add_act('s_[x]','s_t_[x]')" type="button" name="button4" id="button4" value="添加一行" />
+        <select name="select5" id="s_t_[x]">
+          <option value="1">战斗</option>
+          <option value="2">剧情</option>
+          <option value="3">位置高亮</option>
+        </select></td>
+    </tr>
+  </table>
+</div>
+<div id="m2" style="display:none;">
+  <table ondblclick="Delhtml(this)" width="100%" border="1">
+    <tr>
+      <td width="14%" bgcolor="#CC33FF">
+      <input name="index[]" type="hidden" value="1" id="textfield4" size="12" />
+      <select name="war_name[]" id="select8">
+          <option value="1">普通</option>
+          <option value="2">第1列</option>
+          <option value="3">第2列</option>
+          <option value="4">第3列</option>
+          <option value="5">第1行</option>
+          <option value="6">第2行</option>
+          <option value="7">第3行</option>
+          <option value="8">全部</option>
+        </select></td>
+      <td width="13%" bgcolor="#CC33FF"><select name="war_act[]" id="crit[]">
+        <option value="1">攻击方</option>
+        <option value="2">防守方</option>
+      </select></td>
+      <td width="26%" bgcolor="#CC33FF">A:<select onchange="jianche(this)" name="war_a[]" id="select9">
+          <option value="0">--</option>
+          <option value="1">A1</option>
+          <option value="2">A2</option>
+          <option value="3">A3</option>
+          <option value="4">A4</option>
+          <option value="5">A5</option>
+          <option value="6">A6</option>
+          <option value="7">A7</option>
+          <option value="8">A8</option>
+          <option value="9">A9</option>
+        </select>
+        &nbsp;&nbsp;
+        B:<select onchange="jianche(this)" name="war_d[]" id="select10">
+          <option value="0">--</option>
+          <option value="1">B1</option>
+          <option value="2">B2</option>
+          <option value="3">B3</option>
+          <option value="4">B4</option>
+          <option value="5">B5</option>
+          <option value="6">B6</option>
+          <option value="7">B7</option>
+          <option value="8">B8</option>
+          <option value="9">B9</option>
+        </select></td>
+      <td width="19%" bgcolor="#CC33FF"><select name="war_skill_id[]" id="select11">
+          <option value="0">--</option>
+          <variable data="$skill_list">
+            <loop list="$i">
+              <option value="<echo>$skill_list[$i]['id']</echo>">
+              <echo>$skill_list[$i]["name"]</echo>
+              </option>
+            </loop>
+          </variable>
+        </select></td>
+      <td width="15%" bgcolor="#CC33FF"><span style="background-color:#F00">
+        <input name="war_af[]" type="text" id="textfield4" size="12" />
+        </span></td>
+      <td width="13%" bgcolor="#CC33FF"><select name="war_crit[]" id="select12">
+          <option value="0">否</option>
+          <option value="1">是</option>
+        </select></td>
+    </tr>
+  </table>
+</div>
+<div id="m3" style="display:none;">
+  <table width="100%" border="1">
+    <tr>
+      <td width="14%" bgcolor="#00CC33">
+      <input name="index[]" type="hidden" value="2" id="textfield4" size="12" />
+      <select name="plot_name[]" id="select25">
+          <option value="9" selected="selected">剧情</option>
+        </select></td>
+      <td width="86%" colspan="4" bgcolor="#00CC33"><select name="plot_id[]" id="select26">
+          <variable data="$plot_list">
+            <loop list="$i">
+              <option value="<echo>$plot_list[$i]['id']</echo>">
+              <echo>$plot_list[$i]["id"]</echo>
+              </option>
+            </loop>
+          </variable>
+        </select></td>
+    </tr>
+  </table>
+</div>
+<div id="m4" style="display:none;">
+  <table width="100%" border="1">
+    <tr>
+      <td width="14%" bgcolor="#CC33FF">
+      <input name="index[]" type="hidden" value="3" id="textfield4" size="12" />
+      <select name="place_name[]" id="select8">
+          <option value="1">普通</option>
+          <option value="2">第1列</option>
+          <option value="3">第2列</option>
+          <option value="4">第3列</option>
+          <option value="5">第1行</option>
+          <option value="6">第2行</option>
+          <option value="7">第3行</option>
+          <option value="8">全部</option>
+        </select></td>
+      <td width="13%" bgcolor="#CC33FF"><select name="place_act[]" id="crit[]">
+        <option value="1">攻击方</option>
+        <option value="2">防守方</option>
+      </select></td>
+      <td bgcolor="#CC33FF">A:<select onchange="jianche(this)" name="place_a[]" id="select9">
+          <option value="0">--</option>
+          <option value="1">A1</option>
+          <option value="2">A2</option>
+          <option value="3">A3</option>
+          <option value="4">A4</option>
+          <option value="5">A5</option>
+          <option value="6">A6</option>
+          <option value="7">A7</option>
+          <option value="8">A8</option>
+          <option value="9">A9</option>
+        </select>
+        &nbsp;&nbsp;
+        B:<select onchange="jianche(this)" name="place_d[]" id="select10">
+          <option value="0">--</option>
+          <option value="1">B1</option>
+          <option value="2">B2</option>
+          <option value="3">B3</option>
+          <option value="4">B4</option>
+          <option value="5">B5</option>
+          <option value="6">B6</option>
+          <option value="7">B7</option>
+          <option value="8">B8</option>
+          <option value="9">B9</option>
+        </select></td>
+    </tr>
+  </table>
+</div>
+<table width="100%" border="1" style="display:none;">
+  <tr>
+    <td><textarea name="textfield2" cols="150" rows="30" id="textfield2"></textarea></td>
+  </tr>
+  <tr>
+    <td align="center"><input type="button" name="button2" id="button2" value="战报可视化" /></td>
+  </tr>
+</table>
+<form id="form1" name="form1" method="post" action="/?module=simulation_war&methods=warc">
+  <table width="100%" border="1">
+    <tr>
+      <td colspan="2">生成回合数：
+        <select name="xround" id="xround">
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CC33FF">攻击方A</td>
+      <td bgcolor="#3366FF">防守方B</td>
+    </tr>
+    <tr>
+      <td><table width="503" height="109" border="1">
+          <tr>
+            <td width="140">7：
+              <select name="A7" id="A7">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td width="161">4：
+              <select name="A4" id="A4">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td width="180">1：
+              <select name="A1" id="A1" onchange="setaf(this)">
+                <option af="0" value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+          <tr>
+            <td>8：
+              <select name="A8" id="A8">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>5：
+              <select name="A5" id="A5">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>2：
+              <select name="A2" id="A2">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+          <tr>
+            <td>9：
+              <select name="A9" id="A9">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>6：
+              <select name="A6" id="A6">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>3：
+              <select name="A3" id="A3">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+        </table></td>
+      <td align="right"><table width="503" height="109" border="1">
+          <tr>
+            <td width="140">1：
+              <select name="B1" id="B1">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td width="161">4：
+              <select name="B4" id="B4">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td width="180">7：
+              <select name="B7" id="B7">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+          <tr>
+            <td>2：
+              <select name="B2" id="B2">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>5：
+              <select name="B5" id="B5">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>8：
+              <select name="B8" id="B8">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+          <tr>
+            <td>3：
+              <select name="B3" id="B3">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>6：
+              <select name="B6" id="B6">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+            <td>9：
+              <select name="B9" id="B9">
+                <option value="0">--</option>
+                <variable data="$monster_list">
+                  <loop list="$i">
+                    <option value="<echo>$monster_list[$i]['id']</echo>">
+                    <echo>$monster_list[$i]["name"]</echo>(<echo>$monster_list[$i]['lv']</echo>)(<echo>$monster_list[$i]['af']</echo>)
+                    </option>
+                  </loop>
+                </variable>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input onclick="building_round($('xround').value)" type="button" name="button" id="button" value="生成战报" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top" id="round_list">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button3" id="button3" value="生成" /></td>
+    </tr>
+  </table>
+</form>

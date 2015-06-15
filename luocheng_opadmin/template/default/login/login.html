@@ -1,0 +1,98 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>龙吟 - 后台管理系统 - 登录界面</title>
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=1)" />
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	overflow: hidden;
+}
+.STYLE1 {
+	font-size: 12px;
+	color: blue;
+}
+.STYLE4 {
+	color: #FFFFFF;
+	font-size: 12px;
+}
+</style>
+<script language="javascript" type="text/javascript">
+function login() {
+	if (form1.UserName.value == "") {
+		alert("用户名不能为空，请输入用户名！");
+		form1.UserName.focus();
+		return false;
+	}
+	if (form1.UserPwd.value == "") {
+		alert("密码不能为空，请输入密码谢谢！");
+		form1.UserPwd.focus();
+		return false;
+	}
+	return true;
+} 
+</script>
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="035551">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="311" background="/template/default/image/login_03.gif"><table width="758" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="210" background="/template/default/image/login1.jpg">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="101"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="253" height="101" background="/template/default/image/login_06.gif">&nbsp;</td>
+                <td width="349"><form method="post" action="/?module=login&methods=loginact">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="94" height="25"><span class="STYLE4">运营商:</span></td>
+                        <td width="255" height="25">
+                          <input name="operators" type="text" class="tab_input" id="operators" style="width: 100px; height: 18px; border: solid 1px #000000; color: #666666" value="" >
+                          &nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="22"><span class="STYLE4">用户名:</span></td>
+                        <td><span class="STYLE4">
+                          <input class="tab_input" type="text" name="login_user" id="login_user" style="width: 100px;
+                                                        height: 18px; border: solid 1px #000000; color: #666666">
+                          </span></td>
+                      </tr>
+                      <tr>
+                        <td height="22"><span class="STYLE4">密&nbsp;&nbsp;&nbsp;码:</span></td>
+                        <td><input class="tab_input" type="password" value="" name="password" id="password" style="width: 100px;
+                                                        height: 18px; border: solid 1px #000000; color: #666666">
+                          &nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="25">&nbsp;</td>
+                        <td height="25"><input type="submit" name="query" value="" style="background-image: url(/template/default/image/dl.gif);
+                                                        width: 37px; height: 19px; border: 0" />
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                      <input onClick="javascript:window.close()" name="close" type="submit" value="" style="background-image: url(/template/default/image/qx.gif);
+                                                        width: 37px; height: 19px; border: 0" />                        </tr>
+                    </table>
+                </form></td>
+                <td width="156" background="/template/default/image/login_09.gif">&nbsp;</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td bgcolor="1f7d78">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="1f7d78">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

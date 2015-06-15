@@ -1,0 +1,48 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+
+
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+ <p align="center"><span class="style1">公告编辑</span></p>
+<table width="100%" border="1">
+  <tr>
+    <td align="center"bordercolor="#000000" bgcolor="#FFCC00"><a href="/?module=macro_data&methods=addnotice"><strong>添加</strong></a></td>
+    <td align="center"bordercolor="#000000" bgcolor="#0099CC"><a href="/?module=macro_data&methods=notice_list">列表</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <table width="100%" border="1"bordercolor="#000000" bgcolor="#CCCCCC">
+      <tr>
+        <td width="9%"bordercolor="#000000" bgcolor="#CCCCCC">类型</td>
+        <td width="11%">间隔时间/分</td>
+        <td width="16%">时间A</td>
+        <td width="18%">时间B</td>
+        <td width="35%">内容</td>
+        <td width="11%">操作</td>
+      </tr>
+      <tr>
+      <variable data="$prohibit_speech">
+    	<loop list="$i">
+        <td>
+        
+        <echo>$prohibit_speech[$i]["type"]</echo>
+        </td>
+        <td><echo>$prohibit_speech[$i]["interval"]</echo></td>
+        <td><echo>$prohibit_speech[$i]["time1"]</echo></td>
+        <td><echo>$prohibit_speech[$i]["time2"]</echo></td>
+        <td><echo>$prohibit_speech[$i]["info"]</echo></td>
+        <td><a href="/?module=macro_data&methods=edit_notice&id=<echo>$prohibit_speech[$i]['id']</echo>">编辑</a> 
+        <a href="/?module=macro_data&methods=del_notice&id=<echo>$prohibit_speech[$i]['id']</echo>">删除</a></td>
+      </tr>
+      </loop>
+	</variable>
+    </table>
+</table>

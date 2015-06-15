@@ -1,0 +1,20 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td height="31" bgcolor="#CCCCCC"><a href="/?module=service_manager&methods=device_monitor&operators_id=<echo>$operators_id</echo>">【返回设备监控】</a></td>
+    </tr>
+</table>
+ <br>
+ <table width="365" border="1" align="left">
+  <tr>
+    <td width="88"><a href="/?module=service_manager&methods=cpu_memory_used">当前曲线</a></td>
+    <td width="252"><form id="form1" name="form1" method="post" action="">每天曲线&nbsp;&nbsp;&nbsp;
+<input name="date" type="text" id="date" class="Wdate"  value="<echo>$date</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM'})" size="12" />
+        <input type="submit" name="button" id="button" value="查询" />
+    </form></td>
+  </tr>
+</table>
+
+<div><echo>$showstr</echo></div>
+</body>
+</html>

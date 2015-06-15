@@ -1,0 +1,82 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$_POST["time1"]</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$_POST["time2"]</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></label>
+            <label for="Platform">渠道：</label>
+	        <select name="channel_id" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($c as $key=>$value){
+							$select = "";
+    						if($_POST["channel_id"] == $value['id']){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value['id']</echo>"  <echo>$select</echo> ><echo>$value['channel_name']</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+<label for="Platform">vip激活统计</label>
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">时间</td>
+    <td  bgcolor="#CCCCCC">V1</td>
+    <td  bgcolor="#CCCCCC">V2</td>
+    <td  bgcolor="#CCCCCC">V3</td>
+    <td  bgcolor="#CCCCCC">V4</td>
+    <td  bgcolor="#CCCCCC">V5</td>
+    <td  bgcolor="#CCCCCC">V6</td>
+    <td  bgcolor="#CCCCCC">V7</td>
+    <td  bgcolor="#CCCCCC">V8</td>
+    <td  bgcolor="#CCCCCC">V9</td>
+    <td  bgcolor="#CCCCCC">V10</td>
+    <td  bgcolor="#CCCCCC">V11</td>
+    <td  bgcolor="#CCCCCC">V12</td>
+    <td  bgcolor="#CCCCCC">V13</td>
+    <td  bgcolor="#CCCCCC">V14</td>
+    <td  bgcolor="#CCCCCC">V15</td>
+    <td  bgcolor="#CCCCCC">总数</td>
+  </tr>
+   <!--?
+  	foreach ($vip_query as $key => $value)
+  	{
+  
+  	?-->
+  <tr>
+    <td><echo>date("Y-m-d", strtotime(strval($key))); </echo></td>
+    <td><echo>isset($value["data"]["vip_lv_1"])?$value["data"]["vip_lv_1"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_2"])?$value["data"]["vip_lv_2"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_3"])?$value["data"]["vip_lv_3"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_4"])?$value["data"]["vip_lv_4"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_5"])?$value["data"]["vip_lv_5"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_6"])?$value["data"]["vip_lv_6"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_7"])?$value["data"]["vip_lv_7"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_8"])?$value["data"]["vip_lv_8"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_9"])?$value["data"]["vip_lv_9"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_10"])?$value["data"]["vip_lv_10"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_11"])?$value["data"]["vip_lv_11"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_12"])?$value["data"]["vip_lv_12"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_13"])?$value["data"]["vip_lv_13"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_14"])?$value["data"]["vip_lv_14"]:0;</echo></td>
+    <td><echo>isset($value["data"]["vip_lv_15"])?$value["data"]["vip_lv_15"]:0;</echo></td>
+    <td><echo>isset($value["total_num"])?$value["total_num"]:0;</echo></td>
+  </tr>
+   <!--?
+  }
+  ?-->
+</table>
+</form>
+</body>
+</html>

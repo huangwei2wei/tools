@@ -1,0 +1,325 @@
+<gettemplet file="default/head.html"/>
+<style>
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:370px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:370px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+</style>
+<script type="text/javascript">
+function check3()
+{
+   var text3=document.getElementById("nickname");
+   var text4=document.getElementById("user_name");
+   if(text3.value==""&&text4.value=="")
+   {
+     alert("不能为空哦！请重新输入其中一项再查询。");
+   }
+}
+
+function openziwind(id)
+{
+	//small_movediv("/?module=macro_data&methods=huodongadd&id="+id,"mini_move_div",50,50,"movediv");
+	movediv("/?module=macro_data&methods=huodongadd&id="+id,"","move_div",1,40,50);	
+}
+
+function _WdatePicker(obj)
+{
+	if(document.getElementById("radio9").checked==true){
+		WdatePicker({dateFmt:'H'});
+	}else{
+		WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});
+	}
+}
+
+function selectmodule(obj)
+{
+	//截止时间
+	if(obj.value==1 || obj.value==2 || obj.value==3)
+	{
+		document.getElementById("radio10").disabled="";
+		document.getElementById("radio8").disabled="disabled";
+		document.getElementById("radio9").disabled="disabled";
+		document.getElementById("radio11").disabled="disabled";
+	}
+	
+	//时间段
+	if(obj.value==11 || obj.value==12 || obj.value==20|| obj.value==22)
+	{
+		document.getElementById("radio8").disabled="";
+		document.getElementById("radio10").disabled="disabled";
+		document.getElementById("radio9").disabled="disabled";
+		document.getElementById("radio11").disabled="disabled";	
+	}
+	
+	//永久
+	if(obj.value==21 || obj.value==23 || obj.value==24 || obj.value==25)
+	{
+		document.getElementById("radio11").disabled="";
+		document.getElementById("radio10").disabled="disabled";
+		document.getElementById("radio9").disabled="disabled";
+		document.getElementById("radio8").disabled="disabled";	
+	}
+	
+	//每天
+	if(obj.value==12 || obj.value==11)
+	{
+		document.getElementById("radio8").disabled="";
+		document.getElementById("radio10").disabled="disabled";
+		document.getElementById("radio9").disabled="";
+		document.getElementById("radio11").disabled="disabled";
+	}
+}
+
+
+function openselect()
+{
+	document.getElementById("condition_type").disabled=false;
+	document.getElementById("myform").submit();
+		
+}
+
+function delhuodong(id)
+{
+	if(confirm("删除很危险，是否确定删除！"))
+	{
+		window.location.href="/?module=macro_data&methods=delhuodong&id="+id; 
+	}
+}
+</script>
+<table width="100%" border="1">
+  <tr>
+
+  <td height="28" colspan="2" align="left"  valign="middle" bgcolor="#CCCCCC"  >&nbsp;
+  <!--?if(isset($_GET["act"])==false){?-->
+  添加活动 &nbsp;&nbsp;&nbsp;
+  <!--?}else{?-->
+   <a href="/?module=macro_data&methods=huodong">添加活动</a>
+  <!--?}?-->
+  
+   <!--?if(isset($_GET["act"])==false){?-->
+  <a href="/?module=macro_data&methods=huodong&act=list">活动列表</a></td>
+   <!--?}else{?-->
+   活动列表
+  <!--?}?-->
+  </tr>
+  <tr><td width="50%" height="529" valign="top">
+<!--?if(isset($_GET["act"])==false){?-->
+<form id="myform"  align="center" method="post" action="/?module=macro_data&methods=huodong_act">
+  <table width="100%" border="1">
+    <tr>
+      <td align="right" bgcolor="#99CC99">活动标题</td>
+      <td align="left" bgcolor="#99CC99"><input name="data[title]" type="text" id="title" value="<echo>isset($editdata)?$editdata['title']:""</echo>" size="30"></td>
+    </tr>
+    <tr>
+      <td width="200" align="right" bgcolor="#99CC99"><strong>条件类型:</strong></td>
+      <td width="654" align="left" bgcolor="#99CC99"><strong>
+        <select id="condition_type" name="data[condition_type]" onchange="selectmodule(this)" <echo>isset($editdata["condition_type"])?'disabled="disabled"':""</echo>>
+            <option value="0">----</option>
+            <!--截止-->
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==1)?"selected":""?--> value="1">竞技排名</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==2)?"selected":""?--> value="2">战力排名</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==3)?"selected":""?--> value="3">等级排名</option>
+          
+          	<!--时间段-->
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==11)?"selected":""?--> value="11">充值额</option>
+          	<option <!--?echo (isset($editdata) and $editdata["condition_type"]==12)?"selected":""?--> value="12">消费指定额</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==20)?"selected":""?--> value="20">有指定装备</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==22)?"selected":""?--> value="22">招募指定武将</option>
+            
+            <!--永久-->
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==21)?"selected":""?--> value="21">达到强化等级</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==23)?"selected":""?--> value="23">获得指定数量武将</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==24)?"selected":""?--> value="24">达到官阶等级</option>
+            <option <!--?echo (isset($editdata) and $editdata["condition_type"]==25)?"selected":""?--> value="25">达到无双等级</option>
+        </select>
+        <input name="id" type="hidden" id="id" value="<echo>isset($editdata)?$editdata['id']:""</echo>">
+      </strong></td>
+      </tr>
+
+    <tr>
+      <td height="79" align="right" bgcolor="#99CC99"><strong>周期性:</strong></td>
+      <td align="left" bgcolor="#99CC99"><p>
+        <label for="radio"> 
+          每天：<input <echo>(isset($editdata) and $editdata["cycle"]==9)?'':'disabled="disabled"'</echo> type="radio" name="data[cycle]" id="radio9" value="9" <echo>(isset($editdata) and $editdata["cycle"]==9)?"checked":""</echo> />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          时间段：<input <echo>(isset($editdata) and $editdata["cycle"]==8)?'':'disabled="disabled"'</echo> name="data[cycle]" type="radio" id="radio8" value="8" <echo>(isset($editdata) and $editdata["cycle"]==8)?"checked":""</echo> />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          截止：<input <echo>(isset($editdata) and $editdata["cycle"]==10)?'':'disabled="disabled"'</echo> name="data[cycle]" type="radio" id="radio10" value="10" <echo>(isset($editdata) and $editdata["cycle"]==10)?"checked":""</echo> />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          永久：<input <echo>(isset($editdata) and $editdata["cycle"]==11)?'':'disabled="disabled"'</echo> name="data[cycle]" type="radio" id="radio11" value="11" <echo>(isset($editdata) and $editdata["cycle"]==11)?"checked":""</echo> />
+        </label>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CC99"><strong>活动时间:</strong></td>
+      <td align="left" bgcolor="#99CC99"><input name="data[activity_time1]" type="text" id="activity_time1" class="Wdate" value="<!--?if(isset($editdata)==false){echo "";}else{if($editdata["cycle"]==9){echo $editdata['activity_time1'];}else{echo date("Y-m-d H:i:s",$editdata['activity_time1']);}}?-->"  onclick="_WdatePicker(this)" />
+        <input name="data[activity_time2]" type="text" id="activity_time2" class="Wdate" value="<!--?if(isset($editdata)==false){echo "";}else{if($editdata["cycle"]==9){echo $editdata['activity_time2'];}else{echo date("Y-m-d H:i:s",$editdata['activity_time2']);}}?-->"  onclick="_WdatePicker(this)" /></td>
+    </tr>
+        <tr>
+      <td align="right" bgcolor="#99CC99"><strong>奖励领取时间:</strong></td>
+      <td align="left" bgcolor="#99CC99"><input name="data[award_time1]" type="text" id="award_time1" class="Wdate" value="<!--?if(isset($editdata)==false){echo "";}else{if($editdata["cycle"]==9){echo $editdata['award_time1'];}else{echo date("Y-m-d H:i:s",$editdata['award_time1']);}}?-->"  onclick="_WdatePicker(this)" />
+        <input name="data[award_time2]" type="text" id="award_time2" class="Wdate" value="<!--?if(isset($editdata)==false){echo "";}else{if($editdata["cycle"]==9){echo $editdata['award_time2'];}else{echo date("Y-m-d H:i:s",$editdata['award_time2']);}}?-->"  onclick="_WdatePicker(this)" /></td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CC99"><strong>参与等级:</strong></td>
+      <td align="left" bgcolor="#99CC99"><input name="data[user_lv]" type="text" id="lv" value="<echo>isset($editdata)?$editdata['user_lv']:""</echo>" size="5"></td>
+    </tr>
+        <tr>
+      <td align="right" bgcolor="#99CC99"><strong>活动描述:</strong></td>
+      <td align="left" bgcolor="#99CC99"><textarea name="data[info]" cols="60" rows="3" id="info"><echo>isset($editdata)?$editdata['info']:""</echo></textarea></td>
+      </tr>
+    <tr>
+      <td align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <!--
+        <tr>
+      <td align="right" bgcolor="#99CCFF"><strong>条件内容:</strong></td>
+      <td bgcolor="#99CCFF"><input name="data[condition]" type="text" id="type_c" value="<echo>isset($editdata)?$editdata['condition']:""</echo>" size="10"></td>
+      </tr>
+
+    <tr>
+      <td align="right" bgcolor="#99CCFF"><strong>奖励物品:</strong></td>
+      <td bgcolor="#99CCFF">   
+        <input name="data[award_goods_ext_id]" type="text" id="max" value="<echo>isset($editdata)?$editdata['award_goods_ext_id']:""</echo>" size="40">物品扩展id：0：数量</td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="#99CCFF"><strong>奖励资源:</strong></td>
+      <td bgcolor="#99CCFF">
+        <p>
+          <input name="data[award_res]" type="text" id="res" value="<echo>isset($editdata)?$editdata['award_res']:""</echo>" size="80"> 
+          </p>
+        <p>资源字段：0：数量 energy spar  fe copper gold exploit blue_point purple_point gold_point</p></td>
+      </tr>
+-->
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="button" id="button" onclick="openselect()" value="按钮"></td>
+      </tr>
+      
+    </table>
+    </form>
+    <!--?}else{?-->
+  <table width="100%" border="1">
+    <tr>
+      <td colspan="6" align="center"><div align="center"> <strong><a href="/?module=macro_data&methods=inithuodong">初始化活动</a></strong></div></td>
+    </tr>
+    <tr>
+      <td width="7%" bgcolor="#CCCCCC">名称</td>
+      <td width="7%" bgcolor="#CCCCCC">条件类型</td>
+      <td width="10%" bgcolor="#CCCCCC">活动时间</td>
+      <td width="10%" bgcolor="#CCCCCC">领奖时间</td>
+      <td width="54%" bgcolor="#CCCCCC">子条件</td>
+      <td width="5%" bgcolor="#CCCCCC">状态/操作</td>
+    </tr>
+
+    <!--?
+    $type_name=array(8=>"时间段",9=>"每天",10=>"截止",11=>"永久");
+    foreach((array)$huodong_list as $k=>$v){
+    ?-->
+    <!--?$id=$v['id'];?-->
+    <tr>
+      <td id="a_<echo>$id</echo>" data="<echo>$v['title']</echo>"  ondblclick="editdata(this,'/?module=macro_data&methods=up02huodong','title','id',<echo>$id</echo>,<echo>strlen($v['title'])</echo>)"><echo>$v["title"]</echo></td>
+      <td height="57"><echo>$v["condition_type"]</echo><br>类型：<echo>$type_name[$v["cycle"]]</echo><br>参与等级：<echo>$v["user_lv"]</echo></td>
+      <td>
+        <p><!--?if($v["cycle"]==9){echo $v['activity_time1']."点";}else{echo date("Y-m-d H:i:s",$v['activity_time1']);}?-->
+          </p>
+        <!--?if($v["cycle"]==9){echo $v['activity_time2']."点";}else{echo date("Y-m-d H:i:s",$v['activity_time2']);}?-->
+      </td>
+      <td><p>
+        <!--?if($v["cycle"]==9){echo $v['award_time1']."点";}else{echo date("Y-m-d H:i:s",$v['award_time1']);}?--></p>
+        <!--?if($v["cycle"]==9){echo $v['award_time2']."点";}else{echo date("Y-m-d H:i:s",$v['award_time2']);}?--></td>
+      <td>
+        <table width="100%" border="1">
+          <tr>
+            <td width="13%" bgcolor="#0099FF">条件</td>
+            <td width="24%" bgcolor="#0099FF">条件描述</td>
+            <td width="27%" bgcolor="#0099FF">奖励物品</td>
+            <td width="31%" bgcolor="#0099FF">奖励资源</td>
+            <td width="5%" bgcolor="#0099FF">操作</td>
+          </tr>
+          <!--?
+          foreach((array)$v['list'] as $key=>$value){
+          $subid=$value['id'];
+          ?-->
+          <tr>
+            <td id="a_<echo>$subid</echo>" data="<echo>$value['condition']</echo>"  ondblclick="editdata(this,'/?module=macro_data&methods=up01huodong','condition','id',<echo>$subid</echo>,<echo>strlen($value['condition'])</echo>)"><echo>$value["condition"]</echo></td>
+            <td id="d_<echo>$subid</echo>" data="<echo>$value['condition_info']</echo>"  ondblclick="editdata(this,'/?module=macro_data&methods=up01huodong','condition_info','id',<echo>$subid</echo>,<echo>strlen($value['condition_info'])</echo>)"><echo>$value["condition_info"]</echo></td>
+            <td id="b_<echo>$subid</echo>" data="<echo>$value['award_goods_ext_id']</echo>"  ondblclick="editdata(this,'/?module=macro_data&methods=up01huodong','award_goods_ext_id','id',<echo>$subid</echo>,<echo>strlen($value['award_goods_ext_id'])</echo>)"><echo>$value["award_goods_ext_id"]</echo></td>
+            <td id="c_<echo>$subid</echo>" data="<echo>$value['award_res']</echo>"  ondblclick="editdata(this,'/?module=macro_data&methods=up01huodong','award_res','id',<echo>$subid</echo>,<echo>strlen($value['award_res'])</echo>)"><echo>$value["award_res"]</echo></td>
+            <td><a href="/?module=macro_data&methods=huodongdel&id=<echo>$value['id']</echo>">删</a></td>
+          </tr>
+           <!--?}?-->
+          <tr>
+            <td colspan="5" align="center"><input onClick="openziwind(<echo>$v['id']</echo>)" type="submit" name="button2" id="button2" value="添加子条件"></td>
+            </tr>
+        </table>
+     </td>
+      <td><echo>$v["status"]==0?"<a href='/?module=macro_data&methods=huodong_act_x&p=status&value=1&id=$id'>停止</a>":"<a href='/?module=macro_data&methods=huodong_act_x&p=status&value=0&id=$id'>正常</a>"</echo><br><br><a href="/?module=macro_data&methods=huodong&id=<echo>$v['id']</echo>">编辑</a><br><br><a href="javascript:void(0)" onclick="delhuodong(<echo>$v['id']</echo>)">删除</a></td>
+    </tr>
+   <!--?}?-->
+  </table>
+<!--?}?-->
+</td>
+  </tr>
+</table>
+<div id='movediv' style="display:none;"></div>

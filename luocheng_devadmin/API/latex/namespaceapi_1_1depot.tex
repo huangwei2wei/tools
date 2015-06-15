@@ -1,0 +1,108 @@
+\hypertarget{namespaceapi_1_1depot}{\section{api.\-depot 命名空间参考}
+\label{namespaceapi_1_1depot}\index{api.\-depot@{api.\-depot}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1depot_ac815e420cc6422e0d797d4288edd4da9}{getdepot}
+\item 
+def \hyperlink{namespaceapi_1_1depot_a8c40dc05c5af7f66d99cc2110a699428}{del\-\_\-goods\-\_\-depot}
+\item 
+def \hyperlink{namespaceapi_1_1depot_aa2b84ef3c7e7eba9d538c6ce9c98f57c}{pack\-\_\-to\-\_\-depot}
+\item 
+def \hyperlink{namespaceapi_1_1depot_a2837362e9e92c6385eee83744df54185}{depot\-\_\-to\-\_\-pack}
+\item 
+def \hyperlink{namespaceapi_1_1depot_a84bf01e77fbf4f9f37157a48174c6687}{depot\-\_\-page}
+\item 
+def \hyperlink{namespaceapi_1_1depot_ace9a56166bbc547a2f820cf000b4fb30}{mover\-\_\-inner}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1depot_a5f505b41d9440b584d32e3aa18d3dbd5}{depot} = udepot.\-depot()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1depot_a8c40dc05c5af7f66d99cc2110a699428}{\index{api\-::depot@{api\-::depot}!del\-\_\-goods\-\_\-depot@{del\-\_\-goods\-\_\-depot}}
+\index{del\-\_\-goods\-\_\-depot@{del\-\_\-goods\-\_\-depot}!api::depot@{api\-::depot}}
+\subsubsection[{del\-\_\-goods\-\_\-depot}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-del\-\_\-goods\-\_\-depot (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_a8c40dc05c5af7f66d99cc2110a699428}
+\begin{DoxyVerb} * 扔掉仓库里的物品
+ * 
+ * @param int goods_user_id 用户物品id\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1depot_a84bf01e77fbf4f9f37157a48174c6687}{\index{api\-::depot@{api\-::depot}!depot\-\_\-page@{depot\-\_\-page}}
+\index{depot\-\_\-page@{depot\-\_\-page}!api::depot@{api\-::depot}}
+\subsubsection[{depot\-\_\-page}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-depot\-\_\-page (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{current\-Page = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_a84bf01e77fbf4f9f37157a48174c6687}
+\begin{DoxyVerb}* @param int currentPage  当前页
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1depot_a2837362e9e92c6385eee83744df54185}{\index{api\-::depot@{api\-::depot}!depot\-\_\-to\-\_\-pack@{depot\-\_\-to\-\_\-pack}}
+\index{depot\-\_\-to\-\_\-pack@{depot\-\_\-to\-\_\-pack}!api::depot@{api\-::depot}}
+\subsubsection[{depot\-\_\-to\-\_\-pack}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-depot\-\_\-to\-\_\-pack (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{place, }
+\item[{}]{sums = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_a2837362e9e92c6385eee83744df54185}
+\begin{DoxyVerb} * 将仓库里的物品放到背包里 
+ * 
+ * @param int goods_user_id 用户物品id
+ * @param int place 位置
+ * @param int sum 数量\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1depot_ac815e420cc6422e0d797d4288edd4da9}{\index{api\-::depot@{api\-::depot}!getdepot@{getdepot}}
+\index{getdepot@{getdepot}!api::depot@{api\-::depot}}
+\subsubsection[{getdepot}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-getdepot (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_ac815e420cc6422e0d797d4288edd4da9}
+\begin{DoxyVerb} * 取得仓库列表
+ * 
+ * @param int goods_user_id 用户物品id 如果这个为空 那么就取列表否则去这个物品的详细信息\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1depot_ace9a56166bbc547a2f820cf000b4fb30}{\index{api\-::depot@{api\-::depot}!mover\-\_\-inner@{mover\-\_\-inner}}
+\index{mover\-\_\-inner@{mover\-\_\-inner}!api::depot@{api\-::depot}}
+\subsubsection[{mover\-\_\-inner}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-mover\-\_\-inner (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{lattice\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_ace9a56166bbc547a2f820cf000b4fb30}
+\begin{DoxyVerb}用户仓库内自由移动
+* @param integer goods_user_id 用户ID
+* @param integer lattice_id 要移动到的方格号
+* @return bool  true False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1depot_aa2b84ef3c7e7eba9d538c6ce9c98f57c}{\index{api\-::depot@{api\-::depot}!pack\-\_\-to\-\_\-depot@{pack\-\_\-to\-\_\-depot}}
+\index{pack\-\_\-to\-\_\-depot@{pack\-\_\-to\-\_\-depot}!api::depot@{api\-::depot}}
+\subsubsection[{pack\-\_\-to\-\_\-depot}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-depot.\-pack\-\_\-to\-\_\-depot (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{place, }
+\item[{}]{sums = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1depot_aa2b84ef3c7e7eba9d538c6ce9c98f57c}
+\begin{DoxyVerb} * 将背包里的物品放到仓库里
+ * 
+ * @param int goods_user_id 用户物品id
+ * @param int place 位置
+ * @param int sum 数量\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1depot_a5f505b41d9440b584d32e3aa18d3dbd5}{\index{api\-::depot@{api\-::depot}!depot@{depot}}
+\index{depot@{depot}!api::depot@{api\-::depot}}
+\subsubsection[{depot}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-depot.\-depot = udepot.\-depot()}}\label{namespaceapi_1_1depot_a5f505b41d9440b584d32e3aa18d3dbd5}

@@ -1,0 +1,96 @@
+<gettemplet file="default/head.html"/>
+<script type="text/javascript">
+function changeTo0(){
+		   var sa=document.getElementById("to0");
+
+	   if(sa.value=="<echo>$online_count</echo>")
+	   {
+		   sa.value="0";
+	   }
+}
+</script>
+
+<table align="center" width="100%" border="1">
+  <tr>
+    <td width="20%"><strong>注册</strong></td>
+    <td width="17%"><strong>登录</strong></td>
+    <td width="18%"><strong>总注册</strong></td>
+    <td width="27%"><strong>活跃</strong></td>
+  </tr>
+  <tr>
+    <td><echo>$login2[0]</echo></td>
+    <td><echo>$login2[1]</echo></td>
+    <td><echo>$login2[2]</echo></td>
+    <td><echo>intval((($login2[1]-$login2[0])/($login2[2]-$login2[0]))*100)</echo>%</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<table align="center" width="100%" border="1">
+  <tr>
+    <td width="10%"><strong>日期</strong></td>
+    <td width="10%"><strong>截止总注册</strong></td>
+    <td width="10%"><strong>二天登陆</strong></td>
+    <td width="10%"><strong>三天登陆</strong></td>
+    <td width="10%"><strong>四天登陆</strong></td>
+    <td width="10%"><strong>五天登陆</strong></td>
+    <td width="10%"><strong>六天登陆</strong></td>
+    <td width="10%"><strong>七天登陆</strong></td>
+  </tr>
+  <!--?
+  $i=0;
+  $todayloginmax2=0;
+  $todayloginmax3=0;
+  $todayloginmax4=0;
+  $todayloginmax5=0;
+  $todayloginmax6=0;
+  $todayloginmax7=0;
+  
+      foreach($login2x as $value)
+      {
+      	$i++;
+      	if($i<8){
+      ?-->
+  <tr>
+    <td><echo>date("Y-m-d",$value["time"])</echo></td>
+    <td><echo>$value["regmax"]</echo></td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax2"]>0)?(round(($value["todayloginmax2"]/$value["today_reg"])*100,2)):0</echo>%</td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax3"]>0)?(round(($value["todayloginmax3"]/$value["today_reg"])*100,2)):0</echo>%</td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax4"]>0)?(round(($value["todayloginmax4"]/$value["today_reg"])*100,2)):0</echo>%</td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax5"]>0)?(round(($value["todayloginmax5"]/$value["today_reg"])*100,2)):0</echo>%</td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax6"]>0)?(round(($value["todayloginmax6"]/$value["today_reg"])*100,2)):0</echo>%</td>
+    <td><echo>($value["today_reg"]>0 and $value["todayloginmax7"]>0)?(round(($value["todayloginmax7"]/$value["today_reg"])*100,2)):0</echo>%</td>
+  </tr>
+  <!--?
+ 		}
+        $todayloginmax2+=($value["today_reg"]>0 and $value["todayloginmax2"]>0)?(round(($value["todayloginmax2"]/$value["today_reg"])*100,2)):0;
+        $todayloginmax3+=($value["today_reg"]>0 and $value["todayloginmax3"]>0)?(round(($value["todayloginmax3"]/$value["today_reg"])*100,2)):0;
+        $todayloginmax4+=($value["today_reg"]>0 and $value["todayloginmax4"]>0)?(round(($value["todayloginmax4"]/$value["today_reg"])*100,2)):0;
+        $todayloginmax5+=($value["today_reg"]>0 and $value["todayloginmax5"]>0)?(round(($value["todayloginmax5"]/$value["today_reg"])*100,2)):0;
+        $todayloginmax6+=($value["today_reg"]>0 and $value["todayloginmax6"]>0)?(round(($value["todayloginmax6"]/$value["today_reg"])*100,2)):0;
+        $todayloginmax7+=($value["today_reg"]>0 and $value["todayloginmax7"]>0)?(round(($value["todayloginmax7"]/$value["today_reg"])*100,2)):0;
+      }
+      ?-->
+</table>
+
+<p>&nbsp;</p>
+<table align="center" width="100%" border="1">
+  <tr>
+    <td width="15%" height="24"><strong>二天登陆</strong></td>
+    <td width="16%"><strong>三天登陆</strong></td>
+    <td width="15%"><strong>四天登陆</strong></td>
+    <td width="17%"><strong>五天登陆</strong></td>
+    <td width="17%"><strong>六天登陆</strong></td>
+    <td width="20%"><strong>七天登陆</strong></td>
+  </tr>
+  <tr>
+    <td><echo>$i==0?0:round($todayloginmax2/$i,2)</echo>%</td>
+    <td><echo>$i==0?0:round($todayloginmax3/$i,2)</echo>%</td>
+    <td><echo>$i==0?0:round($todayloginmax4/$i,2)</echo>%</td>
+    <td><echo>$i==0?0:round($todayloginmax5/$i,2)</echo>%</td>
+    <td><echo>$i==0?0:round($todayloginmax6/$i,2)</echo>%</td>
+    <td><echo>$i==0?0:round($todayloginmax7/$i,2)</echo>%</td>
+  </tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="100%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr >
+      <td width="12%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>城市</strong></td>
+      <td width="15%" bordercolor="#000000" bgcolor="#FF00FF"><strong>竞价军团</strong></td>
+      <td width="9%" bordercolor="#000000" bgcolor="#FFCC00"><strong>战斗军团</strong></td>
+      <td width="11%" bordercolor="#000000" bgcolor="#FFCC00"><strong>占领军团</strong></td>
+      <td width="10%" bordercolor="#000000" bgcolor="#FFCC00"><strong>是否结算</strong></td>
+      <td width="10%" bordercolor="#000000" bgcolor="#FFCC00"><strong>是否完成</strong></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#FFCC00"><strong>报名列表</strong></td>
+    </tr>
+    <!--?
+function object_array($array)
+{
+   if(is_object($array))
+   {
+    $array = (array)$array;
+   }
+   if(is_array($array))
+   {
+    foreach($array as $key=>$value)
+    {
+     $array[$key] = object_array($value);
+    }
+   }
+   return $array;
+}
+
+  foreach($league_war_e as $key=>$value)
+  {
+  	$auction=json_decode($value["auction"]);
+    if(is_object($auction))
+   {
+    	$auction = (array)$auction;
+   }
+  ?-->
+    <tr>
+      <td width="12%" bordercolor="#000000" bgcolor="#990066"><echo>$value["city_name"]</echo></td>
+      <td width="15%" bordercolor="#000000" bgcolor="#990066"><!--?
+      if(is_array($auction)){
+          foreach($auction as $v)
+          {
+          		if(is_object($v))
+               {
+                    $v = (array)$v;
+               }
+            echo $v["league_name"]."<br>";
+          }
+      }
+      ?--></td>
+      <td width="9%" bordercolor="#000000" bgcolor="#990066"><!--?
+      if(count($value["war_auction"])==0){
+      	echo "无";
+      }
+      
+      if(count($value["war_auction"])==1){
+
+        $auction=object_array($auction);
+        if(is_array($auction)){
+            echo $auction[$value["war_auction"][0]]["league_name"];
+        }
+      }
+      
+      if(count($value["war_auction"])==2){
+      $auction=object_array($auction);
+        if(is_array($auction)){
+            echo $auction[$value["war_auction"][0]]["league_name"]."<br>";
+            echo $auction[$value["war_auction"][1]]["league_name"];
+        }
+      }
+      ?--></td>
+      <td width="11%" bordercolor="#000000" bgcolor="#990066"><echo>$value["occupy_league_name"]</echo></td>
+      <td width="10%" bordercolor="#000000" bgcolor="#990066"><echo>$value["settle"]==1?"已结算":"未结算"</echo></td>
+      <td width="10%" bordercolor="#000000" bgcolor="#990066"><echo>$value["e"]==1?"已完成":"未完成"</echo></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#990066"><table width="100%" border="1">
+          <!--?
+      foreach($value["war_auction"] as $v)
+      {
+      	  echo '<tr><td width="66">'.$v.'</td><td width="118">';
+          $war=object_array(json_decode($value["war"]));
+          if(is_array($war)){
+              foreach($war[$v] as $value)
+              {
+                echo $value["name"]."<br>";
+              }
+          }
+      	echo '</td></tr>';
+      }
+      ?-->
+        </table></td>
+    </tr>
+    <!--? }
+  ?-->
+  </tbody>
+</TABLE>
+</BODY></HTML>

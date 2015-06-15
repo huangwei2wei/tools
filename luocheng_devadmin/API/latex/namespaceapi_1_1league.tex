@@ -1,0 +1,289 @@
+\hypertarget{namespaceapi_1_1league}{\section{api.\-league 命名空间参考}
+\label{namespaceapi_1_1league}\index{api.\-league@{api.\-league}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1league_a4d19b76a3c9374bf2946a0740bc88f32}{league\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1league_a340bc39a431fcc21b50dcf7f9269cce9}{create\-\_\-league}
+\item 
+def \hyperlink{namespaceapi_1_1league_a7f753935ab3616b590b3ba02014a1d7a}{quit\-\_\-league}
+\item 
+def \hyperlink{namespaceapi_1_1league_a965f166d2eaf9ef318e0403feaea99f8}{member\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1league_aa92ddf01ec934e4232f76993334848f2}{up\-\_\-league}
+\item 
+def \hyperlink{namespaceapi_1_1league_a8a5832f8b895b670173703e3fc77974d}{up\-\_\-league\-\_\-member}
+\item 
+def \hyperlink{namespaceapi_1_1league_ab0a3df5e98457266dec9c66b60d9b117}{add\-\_\-member}
+\item 
+def \hyperlink{namespaceapi_1_1league_ac232afd11c08329dcf553f240c2108a7}{user\-\_\-zhiwu}
+\item 
+def \hyperlink{namespaceapi_1_1league_ac688b6e26c0b1244baa4019139faf44b}{del\-\_\-league}
+\item 
+def \hyperlink{namespaceapi_1_1league_a3a7025a95cc5de69bb7b9a1511d3911f}{lquiry}
+\item 
+def \hyperlink{namespaceapi_1_1league_ae6c1b04c62a9f6b63fd1ef69a4cb24fa}{my\-\_\-league\-\_\-info}
+\item 
+def \hyperlink{namespaceapi_1_1league_a2fe33b41b37e1c7534c5ad97cbbeea34}{get\-\_\-league\-\_\-id}
+\item 
+def \hyperlink{namespaceapi_1_1league_ab62dc98ba47fa2d8218002e5a0d712fb}{get\-\_\-league\-\_\-journal}
+\item 
+def \hyperlink{namespaceapi_1_1league_a7dafa507e3299add0b5731391113157f}{up\-\_\-contribution}
+\item 
+def \hyperlink{namespaceapi_1_1league_acbbc943ae9362c708c82c8970e43b8ab}{chat\-\_\-league}
+\item 
+def \hyperlink{namespaceapi_1_1league_a85c01bc0628ec5b5467dae5b6b0df0e0}{capital\-\_\-injection}
+\item 
+def \hyperlink{namespaceapi_1_1league_a5b1875c6ce4d851bd62dd4f46516e9e9}{hit\-\_\-golden\-\_\-eggs}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1league_a31c1e57263211dd993ab9a191f651561}{league} = base\-\_\-league.\-new\-\_\-league()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1league_ab0a3df5e98457266dec9c66b60d9b117}{\index{api\-::league@{api\-::league}!add\-\_\-member@{add\-\_\-member}}
+\index{add\-\_\-member@{add\-\_\-member}!api::league@{api\-::league}}
+\subsubsection[{add\-\_\-member}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-add\-\_\-member (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_ab0a3df5e98457266dec9c66b60d9b117}
+\begin{DoxyVerb}*
+* 申请加入军团
+* @param    integer  user_id  用户id
+* @param  integer league_id  军团的id
+* @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a85c01bc0628ec5b5467dae5b6b0df0e0}{\index{api\-::league@{api\-::league}!capital\-\_\-injection@{capital\-\_\-injection}}
+\index{capital\-\_\-injection@{capital\-\_\-injection}!api::league@{api\-::league}}
+\subsubsection[{capital\-\_\-injection}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-capital\-\_\-injection (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{m\-\_\-type}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a85c01bc0628ec5b5467dae5b6b0df0e0}
+\begin{DoxyVerb}*
+* 军团注资
+*@param   integer    user_id    用户id
+*@param   integer    m_type       贡献类型 1（10万铜钱） 2（50万铜钱） 3（100军令）
+*@return   array|False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_acbbc943ae9362c708c82c8970e43b8ab}{\index{api\-::league@{api\-::league}!chat\-\_\-league@{chat\-\_\-league}}
+\index{chat\-\_\-league@{chat\-\_\-league}!api::league@{api\-::league}}
+\subsubsection[{chat\-\_\-league}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-chat\-\_\-league (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{data}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_acbbc943ae9362c708c82c8970e43b8ab}
+\begin{DoxyVerb}*
+* 军团聊天
+*@param   integer    user_id    用户id
+*@param   integer    data       聊天内容
+*@return   array|False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a340bc39a431fcc21b50dcf7f9269cce9}{\index{api\-::league@{api\-::league}!create\-\_\-league@{create\-\_\-league}}
+\index{create\-\_\-league@{create\-\_\-league}!api::league@{api\-::league}}
+\subsubsection[{create\-\_\-league}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-create\-\_\-league (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{name}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a340bc39a431fcc21b50dcf7f9269cce9}
+\begin{DoxyVerb}*
+* 创建军团
+* @param string name 军团名称
+* @param string info 军团介绍
+* @param string affiche 军团公告信息
+* @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_ac688b6e26c0b1244baa4019139faf44b}{\index{api\-::league@{api\-::league}!del\-\_\-league@{del\-\_\-league}}
+\index{del\-\_\-league@{del\-\_\-league}!api::league@{api\-::league}}
+\subsubsection[{del\-\_\-league}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-del\-\_\-league (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_ac688b6e26c0b1244baa4019139faf44b}
+\begin{DoxyVerb}*
+* 解散军团
+* @param   integer  user_id   用户id
+* @param  integer  league_id    军团的id\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a2fe33b41b37e1c7534c5ad97cbbeea34}{\index{api\-::league@{api\-::league}!get\-\_\-league\-\_\-id@{get\-\_\-league\-\_\-id}}
+\index{get\-\_\-league\-\_\-id@{get\-\_\-league\-\_\-id}!api::league@{api\-::league}}
+\subsubsection[{get\-\_\-league\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-get\-\_\-league\-\_\-id (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a2fe33b41b37e1c7534c5ad97cbbeea34}
+\begin{DoxyVerb}*
+* 根据用户取军团id
+* @return int
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_ab62dc98ba47fa2d8218002e5a0d712fb}{\index{api\-::league@{api\-::league}!get\-\_\-league\-\_\-journal@{get\-\_\-league\-\_\-journal}}
+\index{get\-\_\-league\-\_\-journal@{get\-\_\-league\-\_\-journal}!api::league@{api\-::league}}
+\subsubsection[{get\-\_\-league\-\_\-journal}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-get\-\_\-league\-\_\-journal (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_ab62dc98ba47fa2d8218002e5a0d712fb}
+\begin{DoxyVerb}*
+* 获取军团日志
+*@param   integer    user_id    用户id
+*@param   integer    league_id  军团ID
+*@return   array|False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a5b1875c6ce4d851bd62dd4f46516e9e9}{\index{api\-::league@{api\-::league}!hit\-\_\-golden\-\_\-eggs@{hit\-\_\-golden\-\_\-eggs}}
+\index{hit\-\_\-golden\-\_\-eggs@{hit\-\_\-golden\-\_\-eggs}!api::league@{api\-::league}}
+\subsubsection[{hit\-\_\-golden\-\_\-eggs}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-hit\-\_\-golden\-\_\-eggs (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a5b1875c6ce4d851bd62dd4f46516e9e9}
+\begin{DoxyVerb}*
+* 军团砸金蛋
+*@param   integer    user_id    用户id
+*@return   array|False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a4d19b76a3c9374bf2946a0740bc88f32}{\index{api\-::league@{api\-::league}!league\-\_\-list@{league\-\_\-list}}
+\index{league\-\_\-list@{league\-\_\-list}!api::league@{api\-::league}}
+\subsubsection[{league\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-league\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{current\-Page = {\ttfamily 1}, }
+\item[{}]{members = {\ttfamily 8}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a4d19b76a3c9374bf2946a0740bc88f32}
+\begin{DoxyVerb}*
+    * 军团列表
+    * @param  integer   currentPage 当前页
+    * @param   integer   user_id   用户id
+    * @param   integer   members   每页显示多少个
+    * @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a3a7025a95cc5de69bb7b9a1511d3911f}{\index{api\-::league@{api\-::league}!lquiry@{lquiry}}
+\index{lquiry@{lquiry}!api::league@{api\-::league}}
+\subsubsection[{lquiry}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-lquiry (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{lname}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a3a7025a95cc5de69bb7b9a1511d3911f}
+\begin{DoxyVerb}*
+* 查询军团列表
+* @param  string lname    军团名称
+* @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a965f166d2eaf9ef318e0403feaea99f8}{\index{api\-::league@{api\-::league}!member\-\_\-list@{member\-\_\-list}}
+\index{member\-\_\-list@{member\-\_\-list}!api::league@{api\-::league}}
+\subsubsection[{member\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-member\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id, }
+\item[{}]{state = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a965f166d2eaf9ef318e0403feaea99f8}
+\begin{DoxyVerb}*
+* 团员列表
+* @param  integer league_id    军团的id
+* @param  integer state 状态( 1团长 2副团长 4普通成员 9申请中 0所有)
+* @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_ae6c1b04c62a9f6b63fd1ef69a4cb24fa}{\index{api\-::league@{api\-::league}!my\-\_\-league\-\_\-info@{my\-\_\-league\-\_\-info}}
+\index{my\-\_\-league\-\_\-info@{my\-\_\-league\-\_\-info}!api::league@{api\-::league}}
+\subsubsection[{my\-\_\-league\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-my\-\_\-league\-\_\-info (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_ae6c1b04c62a9f6b63fd1ef69a4cb24fa}
+\begin{DoxyVerb}*
+* 我的军团信息
+* @param  int user_id    用户id
+* @param  int league_id  军团id
+* @return array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a7f753935ab3616b590b3ba02014a1d7a}{\index{api\-::league@{api\-::league}!quit\-\_\-league@{quit\-\_\-league}}
+\index{quit\-\_\-league@{quit\-\_\-league}!api::league@{api\-::league}}
+\subsubsection[{quit\-\_\-league}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-quit\-\_\-league (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a7f753935ab3616b590b3ba02014a1d7a}
+\begin{DoxyVerb}*
+* 成员退出军团
+* @param  int user_id    用户id
+* @param  int league_id  军团id
+* @return False/True
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a7dafa507e3299add0b5731391113157f}{\index{api\-::league@{api\-::league}!up\-\_\-contribution@{up\-\_\-contribution}}
+\index{up\-\_\-contribution@{up\-\_\-contribution}!api::league@{api\-::league}}
+\subsubsection[{up\-\_\-contribution}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-up\-\_\-contribution (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{m\-\_\-type}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a7dafa507e3299add0b5731391113157f}
+\begin{DoxyVerb}*
+* 军团捐献
+*@param   integer    user_id    用户id
+*@param   integer    m_type       贡献类型 1（1万铜钱） 2（10元宝） 3（100元宝）
+*@return   array|False
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_aa92ddf01ec934e4232f76993334848f2}{\index{api\-::league@{api\-::league}!up\-\_\-league@{up\-\_\-league}}
+\index{up\-\_\-league@{up\-\_\-league}!api::league@{api\-::league}}
+\subsubsection[{up\-\_\-league}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-up\-\_\-league (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id, }
+\item[{}]{affiche}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_aa92ddf01ec934e4232f76993334848f2}
+\begin{DoxyVerb}*
+* 更新军团
+* @param  integer  league_id    军团的id
+* @param   string  info   军团简介
+* @param   string  affiche   军团公告
+* @return  array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_a8a5832f8b895b670173703e3fc77974d}{\index{api\-::league@{api\-::league}!up\-\_\-league\-\_\-member@{up\-\_\-league\-\_\-member}}
+\index{up\-\_\-league\-\_\-member@{up\-\_\-league\-\_\-member}!api::league@{api\-::league}}
+\subsubsection[{up\-\_\-league\-\_\-member}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-up\-\_\-league\-\_\-member (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{league\-\_\-id, }
+\item[{}]{m\-\_\-user\-\_\-id, }
+\item[{}]{e}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_a8a5832f8b895b670173703e3fc77974d}
+\begin{DoxyVerb}*
+* 任命操作 通过开除取消申请
+* @param    integer league_id    军团的id
+* @param    integer  m_user_id  军团成员的用户id
+* @param    integer  e     1设为团长 2设为副团长  4设为普通成员  5开除 6拒绝  0取消
+* @return  array
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1league_ac232afd11c08329dcf553f240c2108a7}{\index{api\-::league@{api\-::league}!user\-\_\-zhiwu@{user\-\_\-zhiwu}}
+\index{user\-\_\-zhiwu@{user\-\_\-zhiwu}!api::league@{api\-::league}}
+\subsubsection[{user\-\_\-zhiwu}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-league.\-user\-\_\-zhiwu (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1league_ac232afd11c08329dcf553f240c2108a7}
+\begin{DoxyVerb}*
+* 返回副团长个数sum，和当前的用户职务state
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1league_a31c1e57263211dd993ab9a191f651561}{\index{api\-::league@{api\-::league}!league@{league}}
+\index{league@{league}!api::league@{api\-::league}}
+\subsubsection[{league}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-league.\-league = base\-\_\-league.\-new\-\_\-league()}}\label{namespaceapi_1_1league_a31c1e57263211dd993ab9a191f651561}

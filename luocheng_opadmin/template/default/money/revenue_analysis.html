@@ -1,0 +1,64 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></label>
+            <label for="Platform">平台</label>
+            <select name="Platform" id="Platform">
+              <option value="0" <echo>$select_value == '0' ? 'selected' : ''</echo> >全部</option>
+              <option value="ios" <echo>$select_value == 'ios' ? 'selected' : ''</echo> >ios</option>
+              <option value="android" <echo>$select_value == 'android' ? 'selected' : ''</echo> >android</option>
+            </select>
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+<label for="Platform">收入统计</label>
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">时间</td>
+    <td  bgcolor="#CCCCCC">收入金额</td>
+    <td  bgcolor="#CCCCCC">付费人数</td>
+    <td  bgcolor="#CCCCCC">付费次数</td>
+    <td  bgcolor="#CCCCCC">日付费率</td>
+    <td  bgcolor="#CCCCCC">周付费率</td>
+    <td  bgcolor="#CCCCCC">月付费率</td>
+  </tr>
+   <!--?
+  	foreach ($revenue_analysis as $key => $value)
+  	{
+  
+  	?-->
+  <tr>
+    <td><echo>$key</echo></td>
+    <td><echo>$value["pay_money"]</echo></td>
+    <td><echo>$value["today_pay"]</echo></td>
+    <td><echo>$value["pay_times"]</echo></td>
+    <td><echo>round($value["pay_1"]*100,2)</echo>%</td>
+    <td><echo>round($value["pay_7"]*100,2)</echo>%</td>
+    <td><echo>round($value["pay_30"]*100,2)</echo>%</td>
+  </tr>
+   <!--?
+  }
+  ?-->
+</table>
+<label for="Platform">支付渠道分析</label>
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">支付渠道</td>
+    <td  bgcolor="#CCCCCC">付费百分比</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

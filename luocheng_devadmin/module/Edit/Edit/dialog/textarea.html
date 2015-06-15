@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="button.css" rel="stylesheet" type="text/css" />
+<title>多行文本框</title>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(oForm){
+	var str="<textarea type=\"text\" name=\""+oForm.n.value+"\" style=\"width:"+oForm.w.value+"px;height:"+oForm.h.value+"px\"";
+	if(oForm.disabled.checked){
+		str+=" disabled";
+	}
+	str+="/>"+oForm.v.value+"</textarea>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:2px;
+	padding:0px;
+	text-align:center;
+}
+td{
+	font-size:13px;
+}
+</style>
+</head>
+
+<body>
+<table width="294" height="122" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#009900">
+  <form>
+  <tr>
+    <td width="103" align="left" valign="middle">名称(name):</td>
+    <td width="185" align="left" valign="middle"><input name="n" type="text" class="text" id="n" size="15" /></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle">值(value):</td>
+    <td align="left" valign="middle"><textarea name="v" cols="23" rows="6" class="text"></textarea></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle">宽度:</td>
+    <td align="left" valign="middle"><input name="w" type="text" class="text" id="w" value="250" size="10" />
+    像素</td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle">高度:</td>
+    <td align="left" valign="middle"><input name="h" type="text" class="text" id="h" value="100" size="10" />
+    像素</td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle">状态:</td>
+    <td align="left" valign="middle"><input name="disabled" type="checkbox" id="disabled" value="checkbox" />
+    禁用</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="middle"><input name="Submit" type="submit" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="submit" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr></form>
+</table>
+</body>
+</html>

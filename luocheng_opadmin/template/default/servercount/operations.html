@@ -1,0 +1,85 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+  
+    <td width="12%" valign="top">
+  
+  <table width="128" border="1">
+    <!--?foreach($server_list as $value){
+    if(isset($_GET['s'])==false)
+    {
+        $_GET['s']=$value['server_id'];
+    }
+    ?-->
+    <tr>
+        <td width="118" 
+      
+      <echo>$value['server_id']==$get['server_id']?'bgcolor="#9999FF"':""</echo>
+      ><a href="/?module=servercount&methods=operations&server_id=<echo>$value['server_id']</echo>&time=<echo>$get['time']</echo>">
+      <echo>$value["server_name"]</echo>
+      </a>
+      </td>
+    
+      </tr>
+    
+    
+    <!--?
+        
+        }?-->
+  </table>
+    </td>
+  
+  
+    <td width="88%" colspan="2" valign="top"><table id="yunlist" align=center style="text-align:center;"width="100%" border="1">
+        <p></p>
+        <tbody id="tablelsw2">
+          <tr >
+            <td colspan="10"  bgcolor="#CCCCCC"><form action="/?module=servercount&methods=operations" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+                <input name="server_id" type="hidden" id="server_id" value="<echo>$get['server_id']</echo>">
+                日期：
+                <input name="time" type="text" id="time" value="<echo>$get['time']</echo>" size="40" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM'})">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" name="button2" id="button2" value="查询">
+              </form></td>
+          </tr>
+          <tr >
+            <td width="10%"  bgcolor="#CCCCCC"><strong>日期</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>新增帐号</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>登录人数</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>次日留存</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>7日留存</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>15日留存</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>30日留存</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>充值人数</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>充值次数</strong></td>
+            <td width="10%"  bgcolor="#CCCCCC"><strong>充值金额</strong></td>
+          </tr>
+          <!--?
+          foreach($operations as $value)
+          {
+          ?-->
+          <tr>
+            <td align="left" ><echo>date("Y-m-d",$value["time"])</echo></td>
+            <td align="left" ><echo>$value["today_reg"]</echo></td>
+            <td align="left" ><echo>$value["newregsum"]</echo></td>
+            <td align="left" ><echo>($value["today_reg"]>0 and $value["todayloginmax2"]>0)?(round(($value["todayloginmax2"]/$value["today_reg"])*100,2)):0</echo>
+              %</td>
+            <td align="left" ><echo>($value["today_reg"]>0 and $value["todayloginmax7"]>0)?(round(($value["todayloginmax7"]/$value["today_reg"])*100,2)):0</echo>
+              %</td>
+            <td align="left" ><echo>($value["today_reg"]>0 and $value["todayloginmax15"]>0)?(round(($value["todayloginmax15"]/$value["today_reg"])*100,2)):0</echo>
+              %</td>
+            <td align="left" ><echo>($value["today_reg"]>0 and $value["todayloginmax30"]>0)?(round(($value["todayloginmax30"]/$value["today_reg"])*100,2)):0</echo>
+              %</td>
+            <td align="left" ><echo>$value["pay_number_people"]</echo></td>
+            <td align="left" ><echo>$value["pay_number"]</echo></td>
+            <td align="left" ><echo>$value["pay_money"]/10</echo></td>
+          </tr>
+          <!--?}?-->
+        </tbody>
+      </TABLE></td>
+  </tr>
+</table>
+<script>
+select_tr("yunlist")
+</script>
+</BODY></HTML>

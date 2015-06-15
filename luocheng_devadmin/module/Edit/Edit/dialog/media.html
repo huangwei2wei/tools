@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<TITLE> 视频 </TITLE>
+<style>
+body{
+	font-size:12px;
+	background-color:#BDD9BE;
+}
+.text{
+	border:1px #94B58E solid;
+	background-color:#E1F4E8;
+}
+</style>
+<link href="button.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function checkout(){
+		var url=document.getElementById("url").value;
+		if(url==""){
+			alert('不是有效的视频地址!');
+			return;
+		}
+		var w,h;
+		w=document.getElementById("width").value;
+		h=document.getElementById("height").value;
+		var str="<EMBED src=\""+url+"\" width=\""+w+"\" height=\""+h+"\" type=\"audio/x-pn-realaudio-plugin\" autostart=\"true\" controls=\"IMAGEWINDOW,ControlPanel,StatusBar\" console=\"Clip1\"></EMBED>";
+		dialogArguments.insertHTML(str);
+		window.close();
+	}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<form>
+<FIELDSET>
+<LEGEND>视频</LEGEND>
+<div>地址:<input type="text" id="url" class="text" size=35>
+	<br>
+	尺寸:
+	宽度:<input type="text" id="width" size=5 class="text" value="300">像素
+	&nbsp;<input type="text" id="height" size=5 class="text" value="300">像素
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="确 定" class="button" onClick="checkout()">
+	&nbsp;&nbsp;<input name="button" type="reset" class="button" onClick="window.close()" value="取 消">
+</div>
+</fieldset>
+</form>
+</BODY>
+</HTML>

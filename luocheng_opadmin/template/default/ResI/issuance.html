@@ -1,0 +1,333 @@
+<gettemplet file="default/head.html"/>
+<script type="text/javascript">
+function check3()
+{
+   var text3=document.getElementById("nickname");
+   var text4=document.getElementById("user_name");
+   if(text3.value==""&&text4.value=="")
+   {
+     alert("不能为空哦！请重新输入其中一项再查询。");
+   }
+}
+
+function addres()
+{
+	var ressum=document.getElementById("ressum");
+	var tmpres=document.getElementById("tmpres");
+	var info=document.getElementById("info");
+	if(ressum.value=="" || ressum.value==0){
+		alert("请输入数量");
+		return false;	
+	}
+
+	var resdata=new Array();
+	resdata=json_x(info.value);
+	if(resdata==false){
+		resdata=new Array();
+	}
+	
+	for(var i=0;i<resdata.length;i++){
+		if(resdata[i][tmpres.value]){//如果存在，就直接在这里处理
+			resdata[i][tmpres.value]=ressum.value;
+			var jsonstr=JSON.stringify(resdata);
+			info.innerText=jsonstr;
+			return true;
+		}
+	}
+	
+	var addres=Object();
+	addres[tmpres.value]=ressum.value;
+	resdata.push(addres);
+
+	var jsonstr=JSON.stringify(resdata);
+	info.innerText=jsonstr;
+}
+
+function MatchDemo(goods_name)
+{	
+	var r, re; // 声明变量。
+	var s = goods_name;
+	re=/(\(\d+\))/gi;
+	//re = new RegExp("\(*\)","g"); // 创建正则表达式对象。
+	r = s.match(re); // 在字符串 s 中查找匹配。
+	return(r);
+}
+
+function addres1(info,tmpres,ressum)
+{
+	if(ressum.value=="" || ressum.value==0){
+		alert("请输入数量");
+		return false;	
+	}
+	
+	var resdata=new Array();
+	resdata=json_x(info.value);
+	
+	if(resdata==false){
+		resdata=new Array();
+	}
+
+	for(var i=0;i<resdata.length;i++){
+		if(resdata[i][tmpres.value]){//如果存在，就直接在这里处理
+			resdata[i][tmpres.value]=ressum.value;
+			var jsonstr=JSON.stringify(resdata);
+			info.innerText=jsonstr;
+			return true;
+		}
+	}
+	
+	var addres=Object();
+	addres[tmpres.value]=ressum.value;
+	resdata.push(addres);
+
+	var jsonstr=JSON.stringify(resdata);
+	info.innerText=jsonstr;
+	
+	
+	/*
+	var goods_name="";
+	for (var i = 0; i < tmpres.options.length; i++) {        
+        if (tmpres.options[i].value == tmpres.value) {        
+            goods_name=tmpres.options[i].text;        
+            break;        
+        }        
+    }
+	alert(tmpres.value);
+	var tmpsum=MatchDemo(goods_name);
+	if(tmpsum.length==0)
+	{
+		alert("加入的物品存在问题");
+		return false;	
+	}
+
+	tmpsum=tmpsum[0].replace("(","");
+	tmpsum=tmpsum.replace(")","");
+	
+	if(ressum.value>tmpsum)
+	{
+		alert("目前数量不能超过叠加数");
+		return false;
+	}
+	
+	var resdata=Object();
+	resdata=json_x(info.value);
+	if(resdata==false){
+		resdata=Object();
+	}
+	
+	resdata[tmpres.value]=ressum.value;
+	var jsonstr=JSON.stringify(resdata);
+	info.innerText=jsonstr;
+	*/
+}
+
+function find(sFind, sObj)   
+{   
+    var nSize = sFind.length;   
+    var nLen = sObj.length;    
+    var sCompare;   
+    
+    if(nSize <= nLen ){   
+        for(var i = 0; i <= nLen - nSize + 1; i++){   
+            sCompare = sObj.substring(i, i + nSize);   
+            if(sCompare == sFind){   
+                return i;   
+            }   
+        }   
+    }   
+    return -1;   
+}
+
+function query_goods(objSelect,obj)
+{
+	var objlen=objSelect.options.length;
+	var qtext="";
+	var qindex=0;
+
+	for (var i = 0; i < objlen; i++) {
+		qtext=objSelect.options[i].text;
+		qindex=objSelect.options[i].value;
+
+		if(find(obj.value, qtext)!=-1){
+			set_select_item(objSelect, qindex)	;
+			return true;
+		}      
+	}
+}
+
+function select_way(obj){
+	var email=document.getElementById("email");
+	var select_res=document.getElementById("select_res");
+	if(obj.value==2){
+		email.style.display="none";
+		select_res.style.display="none";
+		
+	}else{
+		email.style.cssText ="";
+		select_res.style.cssText="";
+	}
+}
+
+function select_condition(obj){
+	
+	if(obj.value==0){
+		var condition_nickname=document.getElementById("condition_nickname");
+		condition_nickname.style.cssText ="";
+		
+		var condition=document.getElementById("condition_text");
+		condition.style.display ="none";
+	}else{
+		var condition=document.getElementById("condition_text");
+		condition.style.cssText ="";
+		
+		var condition_nickname=document.getElementById("condition_nickname");
+		condition_nickname.style.display ="none";
+	}
+}
+
+function get_radio(radioname)
+{
+	robj=document.getElementsByName(radioname);
+	for(i=0;i<robj.length;i++){
+		if(robj[i].checked){
+			return robj[i].value;
+		}
+	}
+	return -1;
+}
+
+function FormSubmit()
+{
+	//初步检查数据
+	if(get_radio("way")==1){//邮件检查
+		var title=document.getElementById("title");
+		var text=document.getElementById("text");
+		if(title.value.length<3){
+			alert("邮件标题不得小于3个字符！");
+			return false;	
+		}
+		
+		if(text.value.length<5){
+			alert("邮件内容不得小于5个字符！");
+			return false;	
+		}
+	}
+	
+	//目标判断
+	if(get_radio("condition")==0){//昵称发送
+		var nickname=document.getElementById("nickname");
+		if(nickname.value.length<1){
+			alert("发送昵称不能为空！");
+			return false;	
+		}
+	}else{//区段发送
+		var lv1=document.getElementById("lv1");
+		var lv2=document.getElementById("lv2");
+		if(lv1.value>=lv2.value || lv1.value==0){
+			alert("区段格式必须第二个大于第一个，并且第一个不能为0");
+			return false;	
+		}
+	}
+	
+	//发送资源判断
+	var info=document.getElementById("info");
+	if(info.value.length<3){
+		alert("发送资源不能为空！！");
+		return false;	
+	}
+	
+	var addres=document.getElementById("addres"); 
+	if(window.confirm("请再次确定需要发送的内容！！！！！")){
+	   addres.submit();
+	}
+}
+</script>
+
+<table width="50%" border="1" align="center">
+  <tr>
+    <td height="28" align="center"  valign="middle" bgcolor="#CCCCCC"  ><div align="center"> <span style="color: rgb(0, 153, 204); font-family: 宋体, serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; display: inline !important; float: none; ">发放资源</span> </div></td>
+  </tr>
+  <tr>
+    <td width="47%" height="478" valign="top"><form action="/?module=ResI&methods=addmailRes" method="post" id="addres"  align="center">
+      <table width="100%" border="1">
+        <tr>
+          <td colspan="2"> 邮箱：<input onclick="select_way(this)" name="way" type="radio" id="way" value="1" checked="checked" />&nbsp;&nbsp;
+            背包：<input onclick="select_way(this)" type="radio" name="way" id="way" value="2" /></td>
+          </tr>
+        <tr id="email">
+          <td colspan="2"><table width="100%" border="1">
+            <tr>
+              <td width="20%">邮件标题</td>
+              <td width="80%" align="left"><input type="text" name="title" id="title" /></td>
+              </tr>
+            <tr>
+              <td>邮件内容</td>
+              <td align="left"><textarea name="text" cols="40" rows="8" id="text"></textarea></td>
+              </tr>
+            </table></td>
+          </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+          </tr>
+        <tr>
+          <td width="20%">发送目标</td>
+          <td width="80%" align="left">
+            昵称：<input onclick="select_condition(this)" type="radio" name="condition" id="condition" value="0" checked="checked"/>&nbsp;&nbsp;
+            等级段：<input onclick="select_condition(this)" name="condition" type="radio" id="condition" value="1"/>&nbsp;&nbsp;
+            竞技排名：<input onclick="select_condition(this)" type="radio" name="condition" id="condition" value="2" />&nbsp;&nbsp;
+            战力排名：<input onclick="select_condition(this)" type="radio" name="condition" id="condition" value="3" />&nbsp;&nbsp;
+            等级排名：<input onclick="select_condition(this)" type="radio" name="condition" id="condition" value="4" />&nbsp;&nbsp;
+            
+            <br />
+            <div id="condition_text" style="display:none;">
+              区段：<input name="lv1" type="text" id="lv1" size="5" />
+              -
+              <input name="lv2" type="text" id="lv2" size="5" />
+              </div>
+            <div id="condition_nickname">
+              <textarea name="nickname" cols="40" rows="5" id="nickname"></textarea> 多个逗号隔开
+              </div>
+            </td>
+          </tr>
+        <tr>
+          <td>资源</td>
+          <td align="left"><p>
+            <textarea name="info" cols="40" rows="8" id="info"></textarea>
+            </p>
+            <div id="select_res">
+              <select name="tmpres" id="tmpres">
+                <option value="diamond">钻石</option>
+                <option value="energy">体力</option>
+                <option value="copper">铜钱</option>
+                <option value="melting_count">熔炼值</option>
+                <option value="guild_id">工会币</option>
+                <option value="competitive_gold">竞技币</option>
+                <!-- <option value="gold">军令</option>-->
+                </select>
+              <input name="ressum" type="text" id="ressum" size="10" />
+              <input type="button" name="button" id="button" value="添加"  onclick="addres()"/>
+              </div>
+            <div>
+              <span class="style3">&nbsp;&nbsp;&nbsp;查询：
+                <label for="textfield"></label>
+                <input oninput="query_goods(document.getElementById('tmpgoods'),this)" name="textfield" type="text" id="textfield" size="10" /><br />
+                &nbsp;&nbsp;&nbsp;物品</span>：
+              <select name="tmpgoods" size="1" id="tmpgoods">
+                <variable data="$goods_list">
+                  <loop list="$i">
+                    <option style=<echo>$quality_color[$goods_list[$i]['quality']]</echo> value="<echo>$goods_list[$i]['goods_ext_id']</echo>">
+                      <echo>$goods_list[$i]['name']</echo>(<echo>$goods_list[$i]['start']</echo>星)</option>
+                    </loop>
+                  </variable>
+                </select>
+              <input name="goods_sum" type="text" id="goods_sum" value="1" size="10" />
+              <input type="button" name="button2" id="button2" value="添加"  onclick="addres1(document.getElementById('info'),document.getElementById('tmpgoods'),document.getElementById('goods_sum'))"/></div>
+            </td>
+          </tr>
+        <tr>
+          <td colspan="2" align="center"><input onclick="FormSubmit();" type="button" name="query2" value="确定发放" /></td>
+          </tr>
+        </table>
+    </form></td>
+  </tr>
+</table>

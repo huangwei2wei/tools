@@ -1,0 +1,17 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td height="31" bgcolor="#CCCCCC"><a href="/?module=service_manager&methods=device_monitor&operators_id=<echo>$operators_id</echo>">【返回设备监控】</a></td>
+    </tr>
+</table>
+ <br>
+ <table width="200" border="1" align="left">
+  <tr>
+    <td width="88">当前曲线</td>
+    <td width="96"><a href="/?module=service_manager&methods=cpu_memory_used_day&operators_id=<echo>$operators_id</echo>&type=<echo>$type</echo>&ip=<echo>$ip</echo>">每天曲线</a></td>
+  </tr>
+</table>
+
+<div><echo>$showline</echo></div>
+<div>&nbsp;</div>
+<div><echo>$showline30</echo></div>

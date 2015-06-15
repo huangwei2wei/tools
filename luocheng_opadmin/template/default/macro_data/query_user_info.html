@@ -1,0 +1,105 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+<script type="text/javascript">
+function check3()
+{
+   var text3=document.getElementById("nickname");
+   var text4=document.getElementById("user_name");
+
+   if(text3.value==""&&text4.value=="")
+   {
+     alert("不能为空哦！请重新输入其中一项再查询。");
+   }
+}
+</script>
+<table width="100%" border="1" align="center">
+  <tr>
+    <td  width="100%" height="30" colspan="2" >
+    <form  align="center" method="post" action="/?module=macro_data&methods=query_user_info">
+ <div align="left"><span class="style1">用户基础表</span></div>
+        &nbsp;用户昵称：
+        <input type="text" value="<!--? if(isset($nickname)) echo $nickname;?-->" name="query_nickname" id="query_nickname">
+        &nbsp;用户账号：
+        <input type="text" value="<!--? if(isset($user_name)) echo $user_name;?-->" name="query_user_name" id="query_user_name">
+        &nbsp;
+        <input onclick="check3()" type="submit" name="query" value="查询用户">
+    </form></td>
+<!-- $html .= '<tr><td colspan="2">'.$key.'(Array)</td><tr>'; -->
+</table>
+<br>
+<!--?
+if($user_info)
+{
+    $html='<form method="post" action="/?module=macro_data&methods=update_user_info">
+    <input name="table" type="hidden" id="table" value="'.$table.'" />
+    <input name="query_nickname_tmp" type="hidden" id="query_nickname_tmp" value="'.$nickname.'" />
+    <input name="query_user_name_tmp" type="hidden" id="query_user_name_tmp" value="'.$user_name.'" />
+    <table  align="center">';
+    
+    foreach ((array)$user_info[0] as $key => $value)
+    {
+        if (is_array($value))
+		{
+            
+            foreach ($value as $k => $v)
+            {
+	            if(is_array($v))
+		        {
+		            	continue;
+		        }
+	            
+                if(!isset($user_info[1]) || !isset($user_info[1][$k]))
+                {
+                    $r='readonly="readonly"';
+                }else{
+                    $r='';
+                }
+            
+            	if(!isset($user_info[1]) || !isset($user_info[1][$k])){$user_info[1][$k]="";}
+                $html .= '<tr onmouseover="this.bgColor=\'#ff0000\'" onmouseout="this.bgColor=\'#99FF33\'" bgcolor="#99FF33">';
+                $html .= '	<td>'.$key.'.'.$k.'</td>';
+                $html .= '	<td><input '.$r.' type="text" name="'.$key.'_'.$k.'" value="'.$v.'" style="width:500px;">
+                			<input type="hidden" name="'.$key.'_'.$k.'_" value="'.$v.'" style="width:500px;"></td>';
+                $html .= '<td>*'.$user_info[1][$k].'</td></tr>';
+            }
+        }else {
+        	if(!isset($user_info[1]) || !isset($user_info[1][$key]))
+            {
+            	$r='readonly="readonly"';
+            }else{
+            	$r='';
+            }
+            
+            if($key=="base_user_id" or $key=="user_id" or $key=="id"){
+            	$r='readonly="readonly"';
+            }
+            
+	       	if(!isset($user_info[1]) || !isset($user_info[1][$key])){$user_info[1][$key]="";}
+	            $html .= '<tr onmouseover="this.bgColor=\'#ff0000\'" onmouseout="this.bgColor=\'#ffffff\'">';
+	            $html .= '	<td>'.$key.'</td>';
+	            $html .= '	<td><input '.$r.' type="text" name="'.$key.'" value="'.$value.'" style="width:500px;">
+	            			<input type="hidden" name="'.$key.'_" value="'.$value.'" style="width:500px;"></td>';
+	            $html .= '<td>*'.$user_info[1][$key].'</td></tr>';
+	        }
+    }
+    
+    $html.='</table><input type="submit" name="query" value="更新数据">
+    </form >';
+    echo $html;
+
+}
+?-->

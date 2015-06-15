@@ -1,0 +1,149 @@
+\hypertarget{namespaceapi_1_1hero}{\section{api.\-hero 命名空间参考}
+\label{namespaceapi_1_1hero}\index{api.\-hero@{api.\-hero}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a4405f1ac80d211bc2ffa406989dac39f}{select\-\_\-role}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a5d3c75571b917d96c0dd093b77786034}{nickname\-\_\-up}
+\item 
+def \hyperlink{namespaceapi_1_1hero_ab0d2bb6223c08a0cfe6ade810d241dc7}{hero\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a718a58909c5d0de9ef09308a6c1fa3f4}{up\-\_\-quality}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a761112e7af7b2584e11eb2cf994a2a0f}{up\-\_\-star}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a5041ff294046dfe481dc3843ec47b18b}{call\-\_\-hero}
+\item 
+def \hyperlink{namespaceapi_1_1hero_adead7421666e1a3e8279cc1633e28ba4}{use\-\_\-experience}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a468e2dddad6f615fc81a75558c5bf080}{average\-\_\-combat}
+\item 
+def \hyperlink{namespaceapi_1_1hero_a68f0a491c12ef0af8d80f41f9a3d07b4}{exclusive\-\_\-equipment\-\_\-combat}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1hero_ae3a416896a7b1d5c6a5c11ab4bcfdb8b}{hero} = hero\-\_\-api.\-hero()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1hero_a468e2dddad6f615fc81a75558c5bf080}{\index{api\-::hero@{api\-::hero}!average\-\_\-combat@{average\-\_\-combat}}
+\index{average\-\_\-combat@{average\-\_\-combat}!api::hero@{api\-::hero}}
+\subsubsection[{average\-\_\-combat}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-average\-\_\-combat (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a468e2dddad6f615fc81a75558c5bf080}
+\begin{DoxyVerb}计算玩家前6个英雄的平均战斗力
+@param p: 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a5041ff294046dfe481dc3843ec47b18b}{\index{api\-::hero@{api\-::hero}!call\-\_\-hero@{call\-\_\-hero}}
+\index{call\-\_\-hero@{call\-\_\-hero}!api::hero@{api\-::hero}}
+\subsubsection[{call\-\_\-hero}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-call\-\_\-hero (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{hero\-\_\-ext\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a5041ff294046dfe481dc3843ec47b18b}
+\begin{DoxyVerb}*英雄召唤
+*@param hero_ext_id: 召唤英雄扩展id
+*@return dict
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a68f0a491c12ef0af8d80f41f9a3d07b4}{\index{api\-::hero@{api\-::hero}!exclusive\-\_\-equipment\-\_\-combat@{exclusive\-\_\-equipment\-\_\-combat}}
+\index{exclusive\-\_\-equipment\-\_\-combat@{exclusive\-\_\-equipment\-\_\-combat}!api::hero@{api\-::hero}}
+\subsubsection[{exclusive\-\_\-equipment\-\_\-combat}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-exclusive\-\_\-equipment\-\_\-combat (
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a68f0a491c12ef0af8d80f41f9a3d07b4}
+\begin{DoxyVerb}英雄专属装备战力统计
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_ab0d2bb6223c08a0cfe6ade810d241dc7}{\index{api\-::hero@{api\-::hero}!hero\-\_\-list@{hero\-\_\-list}}
+\index{hero\-\_\-list@{hero\-\_\-list}!api::hero@{api\-::hero}}
+\subsubsection[{hero\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-hero\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{query\-\_\-user\-\_\-id = {\ttfamily 0}, }
+\item[{}]{user\-\_\-hero\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_ab0d2bb6223c08a0cfe6ade810d241dc7}
+\begin{DoxyVerb}* 武将装备信息列表
+*
+* @param integer act_user_id     操作人id，无需传递
+* @param integer query_user_id    查询对象的用户id 可以为0 0是查询操作人自己的数据
+* @param integer user_hero_id 用户英雄ID 0查询所有
+* @return {"all": 1, "fd_user_id": 111, "sys": false, "module": "api.hero", "type": "return", "parameter": [], "fun": "hero_list", "_return": {"msg": [{"quality": 1, "experience": 0, "star": 0, "hero_ext_id": 1, "lv": 1, "property": "bg:0:1", "culture": "ad:1:1.9,ae:1:1.9,af:1:1.4", "id": 2, "skill": "1:0:10", "user_id": 111, "hero_base_id": 1}], "res": true}}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a5d3c75571b917d96c0dd093b77786034}{\index{api\-::hero@{api\-::hero}!nickname\-\_\-up@{nickname\-\_\-up}}
+\index{nickname\-\_\-up@{nickname\-\_\-up}!api::hero@{api\-::hero}}
+\subsubsection[{nickname\-\_\-up}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-nickname\-\_\-up (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{nickname}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a5d3c75571b917d96c0dd093b77786034}
+\begin{DoxyVerb}修改昵称
+@param nickname: 昵称 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a4405f1ac80d211bc2ffa406989dac39f}{\index{api\-::hero@{api\-::hero}!select\-\_\-role@{select\-\_\-role}}
+\index{select\-\_\-role@{select\-\_\-role}!api::hero@{api\-::hero}}
+\subsubsection[{select\-\_\-role}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-select\-\_\-role (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{vararr}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a4405f1ac80d211bc2ffa406989dac39f}
+\begin{DoxyVerb}* 选择角色
+* @param arr vararr 内容数组 key是字段，value是内容 {"hero_ext_id":1,"nickname":"昵称哈哈"}
+* @return {"sys": false, "all": 1, "_return": {"msg": 1031, "res": false}, "parameter": [{"hero_ext_id": 1, "nickname": "\u6635\u79f0\u54c8\u54c8"}], "fun": "select_role", "fd_user_id": 111, "module": "api.hero", "type": "return"}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a718a58909c5d0de9ef09308a6c1fa3f4}{\index{api\-::hero@{api\-::hero}!up\-\_\-quality@{up\-\_\-quality}}
+\index{up\-\_\-quality@{up\-\_\-quality}!api::hero@{api\-::hero}}
+\subsubsection[{up\-\_\-quality}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-up\-\_\-quality (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a718a58909c5d0de9ef09308a6c1fa3f4}
+\begin{DoxyVerb}* 升品质
+*
+* @param integer user_id     用户ID
+* @param integer user_hero_id    武将ID
+* @return dict
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_a761112e7af7b2584e11eb2cf994a2a0f}{\index{api\-::hero@{api\-::hero}!up\-\_\-star@{up\-\_\-star}}
+\index{up\-\_\-star@{up\-\_\-star}!api::hero@{api\-::hero}}
+\subsubsection[{up\-\_\-star}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-up\-\_\-star (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_a761112e7af7b2584e11eb2cf994a2a0f}
+\begin{DoxyVerb}* 升星
+*
+* @param integer user_id     用户ID
+* @param integer user_hero_id    武将ID
+* @return dict
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1hero_adead7421666e1a3e8279cc1633e28ba4}{\index{api\-::hero@{api\-::hero}!use\-\_\-experience@{use\-\_\-experience}}
+\index{use\-\_\-experience@{use\-\_\-experience}!api::hero@{api\-::hero}}
+\subsubsection[{use\-\_\-experience}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-hero.\-use\-\_\-experience (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{hero\-\_\-user\-\_\-id, }
+\item[{}]{goods\-\_\-user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1hero_adead7421666e1a3e8279cc1633e28ba4}
+\begin{DoxyVerb}*使用经验丹
+*@param hero_user_id    用户英雄id
+*@return dict
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1hero_ae3a416896a7b1d5c6a5c11ab4bcfdb8b}{\index{api\-::hero@{api\-::hero}!hero@{hero}}
+\index{hero@{hero}!api::hero@{api\-::hero}}
+\subsubsection[{hero}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-hero.\-hero = hero\-\_\-api.\-hero()}}\label{namespaceapi_1_1hero_ae3a416896a7b1d5c6a5c11ab4bcfdb8b}

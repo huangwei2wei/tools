@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="./public.js"></script>
+<title>无标题文档</title>
+<style>
+.a {
+	border:#ffffff solid 1px;
+	float:left;
+	cursor:pointer;
+	width:100px;
+	height:141px;
+	margin:5px;
+}
+.b {
+	border:#009 solid 1px;
+	float:left;
+	cursor:pointer;
+	width:100px;
+	height:141px;
+	margin:5px;
+}
+p {
+	margin:0px;
+	padding:0px;
+}
+</style>
+</head>
+
+<body>
+<div id="imgs" style="OVERFLOW-y:auto; height:270px; background-color:#FCF;"></div>
+<p style="clear:left;"> 占用方格号:
+  <input name="gezi" type="text" id="gezi" readonly="readonly" />
+  多个用逗号（,）隔开
+  &nbsp;&nbsp;自定义格子
+  <input name="checkbox" type="checkbox" id="checkbox" onchange="zidingyi(this)" />
+  <input type="hidden" name="building" id="building" />
+  &nbsp;&nbsp;</p>
+<select title="NPC名称" name="base_npc" id="base_npc" style="display:none">
+  <option value="a">aa</option>
+</select>
+<input onclick="tijiao()" data="" type="button" name="button" id="button" value="添加资源" />
+<span style="clear:left;">
+<input onclick="ccity()" type="button" name="button2" id="button2" value="建城" />
+</span> 
+<script>
+var urlarg=new getarg();
+var base_npc_list="";
+
+function addb(obj)
+{
+	var bres_type=parseInt(obj.getAttribute("bres_type"));
+	//取得坐标
+	if(!urlarg.edit)
+	{
+		//坐标处理
+		var gezi=parent.document.getElementById(urlarg.gezi);
+		var left=parseInt(gezi.style.left.replace("px",""));
+		var top=parseInt(gezi.style.top.replace("px",""));
+
+		var timestamp = Date.parse(new Date());
+		var str='<div bres_type="'+bres_type+'" imgp="'+obj.id+'" data="[data]" id="'+timestamp+'" ondblclick="sel(this)" style="background-image:url(./bres/png/[N].png);position:absolute; left:'+left+'px; top:'+top+'px; width:'+obj.width+'px; height:'+obj.height+'px;" dataw="0" datah="0" ></div>'; 
+		
+		document.getElementById("button").setAttribute("data",str);
+	}
+	
+	//选中表色处理
+	var imgs=document.getElementById("imgs");
+	var tag=imgs.getElementsByTagName("div");
+	for(var i=0;i<tag.length;i++){if(tag[i].style.height!="120px"){tag[i].className="a";}}
+	
+	if(obj.parentElement.parentElement.className=="a"){obj.parentElement.parentElement.className="b";}
+	
+	//选中对象确定
+	document.getElementById("building").value=obj.id;
+	
+	//确定按钮
+	if(bres_type==0)
+	{
+		document.getElementById("button").style.display="none";
+		document.getElementById("button2").style.display="block";
+		document.getElementById("base_npc").style.display="block";
+		
+		var objSelect=document.getElementById("base_npc");
+		
+		 var length = objSelect.options.length - 1;    
+   		 for(var i = length; i >= 0; i--){objSelect.options[i] = null;}
+		
+		var npclist=json_x(base_npc_list);
+		
+		for(var i=0;i<npclist.length;i++)
+		{
+			add_select_item(objSelect, npclist[i].name, npclist[i].id);
+		}
+		
+	}else{
+		document.getElementById("button").style.display="block";
+		document.getElementById("button2").style.display="none";
+		document.getElementById("base_npc").style.display="none";
+	}
+	
+}
+
+function zidingyi(obj)
+{
+	if(obj.checked)
+	{
+		document.getElementById("gezi").readOnly=false;
+	}else{
+		document.getElementById("gezi").readOnly=true;
+	}
+}
+
+function tijiao()
+{
+	if(!urlarg.edit)
+	{
+		var html=document.getElementById("button").getAttribute("data");
+		if(!html){alert("请选择要加入的对象！！");return ;}
+		var gezi=document.getElementById("gezi").value;
+		gezi=gezi.replace("，",",");
+		
+		html=html.replace("[data]",gezi);
+		html=html.replace("[N]",document.getElementById("building").value);
+		
+		parent.document.getElementById("building").innerHTML+=html;
+		ajax_ultimate("./res.php?e=addbres&bres_id="+document.getElementById("building").value+"&gezi="+document.getElementById("gezi").value+"&map_id="+parent.document.getElementById("map_id").value);
+	}else{
+		var gezi=document.getElementById("gezi").value;
+		gezi=gezi.replace("，",",");
+		var objimg=parent.document.getElementById(urlarg.imgdivid);
+		
+		objimg.style.backgroundImage = "url(./bres/png/"+document.getElementById("building").value+".png)";
+		
+		objimg.setAttribute("imgp",document.getElementById("building").value);
+		objimg.setAttribute("data",gezi);
+		ajax_ultimate("./res.php?e=editbres&bres_id="+document.getElementById("building").value+"&gezi="+document.getElementById("gezi").value+"&data_map_id="+urlarg.data_map_id+"&map_id="+parent.document.getElementById("map_id").value);
+		
+	}
+	
+	var gezis=gezi.split(",");
+	for(var i=0;i<gezis.length;i++)
+	{
+		if(parent.document.getElementById(gezis[i]))
+		{
+			parent.document.getElementById(gezis[i]).style.backgroundImage = "url(b.png)";
+		}
+	}
+	
+	parent.logoutdiv('movediv');
+}
+
+ajax_ultimate("./res.php?e=bres","bres");
+function bres(string)
+{
+	var tmp="";
+	var data="";
+	var html='<div class="a"><div style="height:120px;"><img onclick="addb(this)" bres_type="[bres_type]" id="[ids]" src="./bres/png/[id].png" /></div><p align="center" style="background-color:#CCF;">[name]</p></div>';
+	string=json_x(string);
+	for(var i=0;i<string.length;i++)
+	{
+		tmp=html;
+		tmp=tmp.replace("[id]",string[i]["id"]);
+		tmp=tmp.replace("[ids]",string[i]["id"]);
+		tmp=tmp.replace("[name]",string[i]["name"]);
+		tmp=tmp.replace("[bres_type]",string[i]["type"]);
+		data+=tmp;
+	}
+	document.getElementById("imgs").innerHTML=data;
+	starts();
+}
+
+function starts()
+{
+	if(urlarg.edit==1)
+	{
+		if(urlarg.imgdivid)
+		{
+			document.getElementById("gezi").value=parent.document.getElementById(urlarg.imgdivid).getAttribute("data");
+			//选中表色处理
+			var imgs=document.getElementById("imgs");
+			var tag=imgs.getElementsByTagName("div");
+			for(var i=0;i<tag.length;i++){if(tag[i].style.height!="120px"){tag[i].className="a";}}
+			document.getElementById(parent.document.getElementById(urlarg.imgdivid).getAttribute("imgp")).parentElement.parentElement.className="b";
+			document.getElementById("building").value=parent.document.getElementById(urlarg.imgdivid).getAttribute("imgp");
+		}
+	}else{
+		if(urlarg.gezi)
+		{
+			document.getElementById("gezi").value=urlarg.gezi;
+		}
+		ajax_ultimate("./res.php?e=base_npc","starts_");
+	}
+}
+
+
+function starts_(string)
+{
+	base_npc_list=string;
+}
+
+function ccity()
+{
+	var map_id=parent.document.getElementById("map_id").value;
+	var grid=document.getElementById("gezi").value;
+	var tmpbase_npc=document.getElementById("base_npc").value;
+	
+	ajax_ultimate("./res.php?e=ccity&map_id="+map_id+"&grid="+grid+"&base_npc="+tmpbase_npc,"ccity_");
+}
+
+function ccity_(string)
+{
+	string=json_x(string);
+	if(string.res)
+	{
+		var gezis=string.msg.split(",");
+		
+		for(var i=0;i<gezis.length;i++)
+		{
+			if(parent.document.getElementById(gezis[i]))
+			{
+				parent.document.getElementById(gezis[i]).style.backgroundImage = "url(b.png)";
+			}
+		}
+	}else{
+		alert(string.msg);	
+	}
+	parent.logoutdiv('movediv');
+}
+</script>
+</body>
+</html>

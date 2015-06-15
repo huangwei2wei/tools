@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>test</title>
+</head>
+
+<body>
+<div id="tmp_open" style="width:800px; height:450px; background-color:#9C0; position:absolute; left: 204px; top: 26px;">
+	<div style="position:absolute; width:20px; height:20px; left: 780px; top: -1px;">X</div>
+    <div style="padding:5px;">dsfdsfasf</div>
+</div>
+<!-- 
+仅支持 FF
+<script>document.getElementByIdx("Layer1").style.opacity = "0.5";</script>
+
+IE Only
+<script>document.getElementByIdx("Layer1").style.filter = "alpha(opacity=50%)";</script>
+-->
+<script>
+function set_alpha(id,alpha)
+{   
+	document.getElementById(id).setAttribute("style","-moz-opacity:1;filter:alpha(opacity=100);opacity:1;"+document.getElementById(id).getAttribute("style"));
+	if(document.getElementById(id).filters && document.getElementById(id).filters.alpha)
+	{
+		//alert("ie");
+		document.getElementById(id).style.filter="Alpha(Opacity="+(alpha*100)+")";  
+	}else if(document.getElementById(id).style.opacity){
+		//alert("google");
+		document.getElementById(id).style.opacity=alpha;
+	}else if(document.getElementById(id).style.MozOpacity){
+		//alert("ff");
+		document.getElementById(id).style.MozOpacity=alpha;
+	}
+}
+set_alpha("tmp_open",0.6);
+</script>
+</body>
+</html>

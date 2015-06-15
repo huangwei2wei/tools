@@ -1,0 +1,162 @@
+\hypertarget{namespaceapi_1_1equip}{\section{api.\-equip 命名空间参考}
+\label{namespaceapi_1_1equip}\index{api.\-equip@{api.\-equip}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a154eff1cef4e172ca8e2f6425be80788}{equip\-\_\-list}
+\item 
+def \hyperlink{namespaceapi_1_1equip_aac689e501e3de3b42a8a3e3213b6d6aa}{up\-\_\-equip}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a86f8c9dd010cd325da8f948e82604dc1}{merger\-\_\-goods}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a7e4e08afa63aa2925d9043c695ff4aa5}{strengthen\-\_\-goods}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a1ca8bfd9d501861672f285284e66edfb}{upgrade\-\_\-goods}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a739f8dc246794305a6286aecc33cb976}{melting\-\_\-goods}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a9c68476295fa5c9585a42e2e90d8152a}{uninstall\-\_\-user}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a3d9eaf1bda4a4a074cc5add8c0e9acf1}{uninstall\-\_\-equip}
+\item 
+def \hyperlink{namespaceapi_1_1equip_a42998316229c974d0bdd780c1c78af9c}{compose}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1equip_a892512a763e8add6a99b993ad5295e06}{equip\-\_\-api} = \-\_\-equip\-\_\-api.\-equip\-\_\-api()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1equip_a42998316229c974d0bdd780c1c78af9c}{\index{api\-::equip@{api\-::equip}!compose@{compose}}
+\index{compose@{compose}!api::equip@{api\-::equip}}
+\subsubsection[{compose}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-compose (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a42998316229c974d0bdd780c1c78af9c}
+\begin{DoxyVerb}* 装备碎片合成阵型
+*
+* @param integer user_id        用户ID
+* @param integer goods_user_id   装备碎片ID
+* @return obj
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a154eff1cef4e172ca8e2f6425be80788}{\index{api\-::equip@{api\-::equip}!equip\-\_\-list@{equip\-\_\-list}}
+\index{equip\-\_\-list@{equip\-\_\-list}!api::equip@{api\-::equip}}
+\subsubsection[{equip\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-equip\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a154eff1cef4e172ca8e2f6425be80788}
+\begin{DoxyVerb}* 武将装备信息列表
+*
+* @param integer user_id     用户ID
+* @param integer user_hero_id 用户英雄ID
+* @return {"type": "return", "fun": "equip_list", "_return": {"msg": [], "res": true}, "all": 1, "sys": false, "fd_user_id": 111, "parameter": [], "module": "api.equip"}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a739f8dc246794305a6286aecc33cb976}{\index{api\-::equip@{api\-::equip}!melting\-\_\-goods@{melting\-\_\-goods}}
+\index{melting\-\_\-goods@{melting\-\_\-goods}!api::equip@{api\-::equip}}
+\subsubsection[{melting\-\_\-goods}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-melting\-\_\-goods (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-goods, }
+\item[{}]{is\-\_\-backpack\-\_\-goods, }
+\item[{}]{place\-\_\-id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a739f8dc246794305a6286aecc33cb976}
+\begin{DoxyVerb}@装备熔炼
+@param user_goods: 要熔炼的装备id {"1100":1,"1001"：3}
+@param is_backpack_goods:1 表示背包物品 2 表示穿戴上的物品
+@return: 现有的熔炼数{"sys": false, "all": 1, "fun": "melting_goods", "module": "api.equip", "fd_user_id": 111, "_return": {"msg": 1025, "res": false}, "parameter": [10], "type": "return"}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a86f8c9dd010cd325da8f948e82604dc1}{\index{api\-::equip@{api\-::equip}!merger\-\_\-goods@{merger\-\_\-goods}}
+\index{merger\-\_\-goods@{merger\-\_\-goods}!api::equip@{api\-::equip}}
+\subsubsection[{merger\-\_\-goods}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-merger\-\_\-goods (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-ext\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a86f8c9dd010cd325da8f948e82604dc1}
+\begin{DoxyVerb}@装备合成
+@param goods_ext_id: 要合成的装备扩展id
+@param boolean true|false {"sys": false, "type": "return", "parameter": [212], "module": "api.equip", "all": 1, "_return": {"res": false, "msg": 1023}, "fun": "merger_goods", "fd_user_id": 111}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a7e4e08afa63aa2925d9043c695ff4aa5}{\index{api\-::equip@{api\-::equip}!strengthen\-\_\-goods@{strengthen\-\_\-goods}}
+\index{strengthen\-\_\-goods@{strengthen\-\_\-goods}!api::equip@{api\-::equip}}
+\subsubsection[{strengthen\-\_\-goods}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-strengthen\-\_\-goods (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-goods\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a7e4e08afa63aa2925d9043c695ff4aa5}
+\begin{DoxyVerb}@装备强化
+@param user_goods_id: 要强化的装备id
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a3d9eaf1bda4a4a074cc5add8c0e9acf1}{\index{api\-::equip@{api\-::equip}!uninstall\-\_\-equip@{uninstall\-\_\-equip}}
+\index{uninstall\-\_\-equip@{uninstall\-\_\-equip}!api::equip@{api\-::equip}}
+\subsubsection[{uninstall\-\_\-equip}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-uninstall\-\_\-equip (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-hero\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a3d9eaf1bda4a4a074cc5add8c0e9acf1}
+\begin{DoxyVerb}* 一键卸载
+* @param int user_hero_id 武将ID
+* @return arr
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a9c68476295fa5c9585a42e2e90d8152a}{\index{api\-::equip@{api\-::equip}!uninstall\-\_\-user@{uninstall\-\_\-user}}
+\index{uninstall\-\_\-user@{uninstall\-\_\-user}!api::equip@{api\-::equip}}
+\subsubsection[{uninstall\-\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-uninstall\-\_\-user (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{lattice\-\_\-id, }
+\item[{}]{hero\-\_\-user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a9c68476295fa5c9585a42e2e90d8152a}
+\begin{DoxyVerb}* 卸载物品装备-返回的数据结构在[uninstall_user.xml]里查看
+* @param integer goods_user_id  用户物品ID
+* @param integer lattice_id 将物品卸载到这个方格号中 0为自动寻找方格
+* @param integer hero_user_id 英雄ID
+* @return boolean  true|false
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_aac689e501e3de3b42a8a3e3213b6d6aa}{\index{api\-::equip@{api\-::equip}!up\-\_\-equip@{up\-\_\-equip}}
+\index{up\-\_\-equip@{up\-\_\-equip}!api::equip@{api\-::equip}}
+\subsubsection[{up\-\_\-equip}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-up\-\_\-equip (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{goods\-\_\-user\-\_\-id, }
+\item[{}]{user\-\_\-hero\-\_\-id, }
+\item[{}]{place}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_aac689e501e3de3b42a8a3e3213b6d6aa}
+\begin{DoxyVerb}* 穿戴物品装备
+* @param integer equip_place 装备穿戴位置 equip1:头盔,equip2：衣服,equip3：鞋子,equip4： 战魂,equip5： 饰品 ,equip6： 专属 7 , 8
+* @param integer goods_user_id 用户物品ID
+* @param integer user_hero_id 用户英雄ID
+* @return bool 返回值 ：true|false{"all": 1, "sys": false, "type": "return", "module": "api.equip", "parameter": [9, 10], "_return": {"msg": 1010, "res": false}, "fun": "up_equip", "fd_user_id": 111}
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1equip_a1ca8bfd9d501861672f285284e66edfb}{\index{api\-::equip@{api\-::equip}!upgrade\-\_\-goods@{upgrade\-\_\-goods}}
+\index{upgrade\-\_\-goods@{upgrade\-\_\-goods}!api::equip@{api\-::equip}}
+\subsubsection[{upgrade\-\_\-goods}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-equip.\-upgrade\-\_\-goods (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{user\-\_\-goods\-\_\-id, }
+\item[{}]{user\-\_\-hero\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1equip_a1ca8bfd9d501861672f285284e66edfb}
+\begin{DoxyVerb}@专属装备升星
+@param user_goods_id: 要升星的装备id
+@param user_hero_id:  英雄ｉｄ
+@return: {"all": 1, "type": "return", "sys": false, "fd_user_id": 111, "fun": "upgrade_goods", "_return": {"res": false, "msg": 1025}, "parameter": [4, 10], "module": "api.equip"}
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1equip_a892512a763e8add6a99b993ad5295e06}{\index{api\-::equip@{api\-::equip}!equip\-\_\-api@{equip\-\_\-api}}
+\index{equip\-\_\-api@{equip\-\_\-api}!api::equip@{api\-::equip}}
+\subsubsection[{equip\-\_\-api}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-equip.\-equip\-\_\-api = \-\_\-equip\-\_\-api.\-equip\-\_\-api()}}\label{namespaceapi_1_1equip_a892512a763e8add6a99b993ad5295e06}

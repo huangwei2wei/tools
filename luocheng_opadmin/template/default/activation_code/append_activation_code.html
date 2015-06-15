@@ -1,0 +1,56 @@
+<gettemplet file="default/head.html"/>
+<script>function addres1(info,tmpres,ressum)
+{
+	if(ressum.value=="" || ressum.value==0){
+		alert("请输入数量");
+		return false;	
+	}
+	
+	var resdata=new Array();
+	resdata=json_x(info.value);
+	
+	if(resdata==false){
+		resdata=new Array();
+	}
+
+	for(var i=0;i<resdata.length;i++){
+		if(resdata[i][tmpres.value]){//如果存在，就直接在这里处理
+			resdata[i][tmpres.value]=ressum.value;
+			var jsonstr=JSON.stringify(resdata);
+			info.innerText=jsonstr;
+			return true;
+		}
+	}
+	
+	var addres=Object();
+	addres[tmpres.value]=ressum.value;
+	resdata.push(addres);
+
+	var jsonstr=JSON.stringify(resdata);
+	info.innerText=jsonstr;
+}
+
+</script>
+</head>
+
+<body>
+<p align="center" style="text-align:center;">追加激活码 </p>
+<div align="center">
+<form id="xxform1" name="xxform1" method="post" action="">
+  <table width="48%" border="1">
+    <tr>
+      <td align="left">礼包名称:<input name="spree_name" type="text" id="spree_name"  disabled size="15" value="<echo>$spree_name</echo>"/></td>
+    </tr>
+    <tr>
+      <td align="left">
+            追加数量：<input name="append_num" type="text" id="append_num" size="15" />
+        </td>
+    </tr>
+    <tr>
+      <td align="center"><input  type="submit" name="button" id="button" value="生成" /></td>
+    </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>

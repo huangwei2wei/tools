@@ -1,0 +1,27 @@
+<gettemplet file="default/head.html"/>
+<p> </p>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <tr >
+    <td width="20%" bordercolor="#000000" bgcolor="#40c0ff"><strong>昵称</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>军令</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>铜币</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><strong>等级</strong></td>
+  </tr>
+  
+  <!--?
+  foreach($globlist as $value)
+  {
+  ?-->
+  <tr>
+    <td width="20%" bordercolor="#000000" bgcolor="#40c0ff"><echo>$value['name']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>$value['gold']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>$value['copper']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><echo>$value['user_lv']</echo></td>
+  </tr>
+  <tr> </tr>
+  
+  <!--? }
+  ?-->
+</TABLE>
+<echo>$pa</echo>
+</BODY></HTML>

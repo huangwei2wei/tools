@@ -1,0 +1,27 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td width="11%">任务</td>
+    <td width="16%">任务经验</td>
+    <td width="15%">副本</td>
+    <td width="15%">副本经验</td>
+    <td width="20%">用户等级</td>
+    <td width="23%">用户经验</td>
+  </tr>
+  <!--?
+  foreach($echodata as $value){
+  ?-->
+  <tr>
+    <td><echo>$value["task_name"]</echo></td>
+    <td id="<echo>$value['id']</echo>_mo" data="<?php echo $value['task_exp']?>" ondblclick="editdata(this,'/?module=task&methods=upexp','1','id',<?php echo $value['id']?>,50)"><echo>$value["task_exp"]</echo></td>
+    <td><echo>$value["copy_name"]</echo></td>
+    <td><echo>$value["copy_exp"]</echo></td>
+    <td><echo>$value["user_lv"]</echo></td>
+    <td><echo>$value["user_exp"]</echo></td>
+  </tr>
+    <!--?
+    }
+  ?-->
+  </table>
+</body>
+</html>

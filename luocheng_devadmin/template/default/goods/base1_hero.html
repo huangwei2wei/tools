@@ -1,0 +1,10 @@
+<gettemplet file="default/head.html"/>
+ <form method="post" action="/?module=goods&methods=hero">
+	输入英雄ID:<input type="text" value="<echo>$post['w_id']</echo>" name="w_id"/>
+	输入英雄名称:<input type="text" value="<echo>$post['w_name']</echo>" name="w_name"/>
+
+<input type="submit" name="query" value="查询英雄"/>
+<a href="/?module=goods&amp;methods=hero_addshow">添加</a>
+<input type="hidden" name="submittype" value="分辨初次加载页面"/>
+</form>
+<echo>$html</echo>

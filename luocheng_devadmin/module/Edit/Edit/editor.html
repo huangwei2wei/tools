@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script language="javascript" src="format.js"></script>
+<script language="javascript">
+
+//控制编辑器的尺寸
+function setWH(bool){
+    var ace_obj=document.getElementById("ace");
+	var objs=[document.getElementById("design"),document.getElementById("textCode"),document.getElementById("preview")];
+	var obj=parent.document.getElementById("editt");
+	var h=parseInt(objs[0].style.height);//文本框
+	var ph=parseInt(obj.height);         //iframe框
+	if(bool){
+			for(var i=0;i<3;i++){
+				objs[i].style.height=Number(h)+150+"px";  //文本框
+			}
+            obj.style.height=Number(ph)+150+"px";         //iframe框
+	}else{
+		if(h>239){
+			for(var i=0;i<3;i++){
+				objs[i].style.height=Number(h)-150+"px";  //文本框
+			}
+			obj.style.height=Number(ph)-150+"px";         //iframe框
+		}
+	}
+	
+}
+
+
+function fSetBorderMouseOut(obj) {
+	obj.style.border="none";
+}
+
+function fSetBorderMouseDown(obj) {
+	obj.style.borderRight="1px #F3F8FC solid";
+	obj.style.borderBottom="1px #F3F8FC solid";
+	obj.style.borderTop="1px #cccccc solid";
+	obj.style.borderLeft="1px #cccccc solid";
+}
+function fSetBorderMouseOver(obj) {
+	obj.style.borderRight="1px solid #aaa";
+	obj.style.borderBottom="1px solid #aaa";
+	obj.style.borderTop="1px solid #fff";
+	obj.style.borderLeft="1px solid #fff";
+} 
+function init(){
+	window.frames["design"].document.designMode="on";
+	var sSearch=location.search;
+	var offset=sSearch.indexOf("id=");
+	if(offset==-1){
+		alert('请传入调用参数ID，即隐藏的内容表单项ID');
+	}else{
+		offset+=3;
+		var id=sSearch.substring(offset);
+		var ids=id.split('&');
+		var obj=parent.document.getElementById(ids[0]);
+		var heig=ids[1].split('=');
+		document.getElementById('textCode').style.height=heig[1]+"px";
+		document.getElementById('preview').style.height=heig[1]+"px";
+		document.getElementById('design').style.height=heig[1]+"px";
+		var f=window.frames["design"];
+		f.document.write(obj.value);
+		f.document.close();
+		var oForm=obj.form;		
+		oForm.onsubmit=function(){  //提交事件
+			var db=window.frames["design"].document.body;
+			var str=db.style.backgroundColor;
+			obj.value=db.innerHTML;
+		}
+	}
+}
+
+</script>
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin:0px;	
+}
+
+.code{
+	/*width:100%;	
+	height:600px;*/
+}
+.parent
+{
+	position:relative;
+}
+.child
+{
+	display:none;
+	position:absolute;
+	top:25px;
+	left:0px;
+	z-Index:1;
+	border:1px solid green;
+}
+.button{
+	border:1px solid #999999;
+	background-image:url(img/bg.gif);
+}
+-->
+</style>
+<script>
+function a(){
+	var db=window.frames["design"];
+	var s=db.getSelection();
+	alert(s.anchorNode.childNodes[s.anchorOffset]);
+}
+</script>
+</head>
+
+<body onload="init()">
+<input name="ace" type="hidden" id="ace" />
+<TABLE width="100%" border=0 align="center" cellPadding=0 cellSpacing=0 onclick="event.cancelBubble=true;" style="BORDER-RIGHT: #c5c5c5 1px solid; BORDER-TOP: #c5c5c5 1px solid; BORDER-LEFT: #c5c5c5 1px solid; BORDER-BOTTOM: #c5c5c5 1px solid;width:100%;" oncontextmenu="return false;">
+  
+  <tr style="background-image:url(img/bg.gif);">
+    <td width="42" align="center"><img src="img/indent.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="左缩进" onclick="format('indent')"/></td>
+    <td width="42" height="25" align="center"><img src="img/outdent.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="右缩进" onclick="format('outdent')"/></td>
+    <td width="42" align="center"><img src="img/justifyleft.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="左对齐" onclick="format('justifyleft')"/></td>
+	<td width="42" align="center"><img src="img/justifycenter.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="居中对齐" onclick="format('justifycenter')"/></td>
+    <td width="42" align="center"><img src="img/justifyright.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="右对齐" onclick="format('justifyright')"/></td>
+    <td width="42" align="center"><span class="parent"><img src="img/bgcolor.gif" width="21" height="21" title="背景颜色" onclick="showColorMenu(this.parentNode,event)" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)"/></span></td>    
+    <td width="42" align="center" class="parent"><img src="img/forecolor.gif" width="21" height="21" title="字体颜色"  onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" onclick="showColorMenu(this.parentNode,event)"/></td>
+    <td width="42" align="center" class="parent"><img src="img/BackColor.gif" width="21" height="21" title="字体背景颜色" onclick="showColorMenu(this.parentNode,event)" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)"/></td>
+	<td width="42" align="center" class="parent"><img src="img/img.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="图片" onclick="showImageMenu(this.parentNode)"/></td>
+	<td width="42" align="center" class="parent"><img src="img/flash.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="FLASH" onclick="showFlashMenu(this.parentNode)"/></td>
+    <td width="42" align="center"><img src="img/emot.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="表情" onclick="showFaceMenu(this.parentNode)"/></td>
+    <td width="48" align="center"><img src="img/form.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入表单" onclick="insertForm(this.parentNode)"/></td>
+    
+    <td width="48" align="center"><img src="img/radio.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="单选框" onclick="insertRadio(this.parentNode)"/></td>
+    <td width="48" align="center"><img src="img/checkbox.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="复选框" onclick="insertCheckBox(this.parentNode)"/></td>
+    <td width="48" align="center"><img src="img/textfield.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="单行文本框" onclick="insertInputText(this.parentNode)"/></td>
+    <td width="42" align="center"><img src="img/textarea.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="多行文本框" onclick="insertTextArea(this.parentNode)"/></td>
+    <td width="42" align="center"><img src="img/select.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="下拉列表" onclick="insertSelect(this.parentNode)"/></td>
+    <td align="center" width="47"><img src="img/button.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入按钮" onclick="insertButton(this.parentNode)"/></td>
+  </tr>
+  <tr style="background-image:url(img/bg.gif);">
+  	<td align="center" valign="middle"><img src="img/bold.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="粗体" onclick="format('Bold')"/></td>
+    <td align="center" valign="middle"><img src="img/italic.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="斜体" onclick="format('Italic')"/></td>
+    <td height="25" align="center" valign="middle"><img src="img/underline.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="下划线" onclick="format('underline')"/></td>
+    <td align="center" valign="middle"><img src="img/strikethrough.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="删除线" onclick="format('strikethrough')"/></td>
+    <td align="center" valign="middle"><span class="parent"><img src="img/cut.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="剪切" onclick="format('Cut')"/></span></td>
+    <td align="center" valign="middle"><span class="parent"><img src="img/delete.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="删除" onclick="format('Delete')"/></span></td>
+    <td align="center" valign="middle"><span class="parent"><img src="img/copy.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="复制" onclick="format('Copy')"/></span></td>
+    <td align="center" valign="middle" class="parent"><img src="img/paste.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="粘贴" onclick="format('Paste')"/></td>
+    <td align="center" valign="middle" class="parent"><img src="img/insertorderedlist.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="序号排列" onclick="format('insertorderedlist')"/></td>
+    <td align="center" valign="middle" class="parent"><img src="img/insertunorderedlist.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="项目排列" onclick="format('insertunorderedlist')"/></td>
+   <td align="center"><img src="img/pagination.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入分页符" onclick="pagination()"/></td>
+    <td colspan="4" align="center" valign="middle" class="parent"><select name="select" style="width:120px;" onchange="setFaceFamily(this)">
+      <option value="">字体...</option>
+      <option value="宋体">宋体</option>
+      <option value="黑体">黑体</option>
+      <option value="楷体">楷体</option>
+      <option value="隶书">隶书</option>
+      <option value="幼圆">幼圆</option>
+      <option value="华文彩云">华文彩云</option>
+      <option value="Verdana">Verdana</option>
+      <option value="Arial">Arial</option>
+      <option value="Arial Narrow">Arial Narrow</option>
+      <option value="Arial Black">Arial Black</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Courier">Courier</option>
+      <option value="System">System</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Verdana">Verdana</option>
+    </select></td>
+    <td colspan="2" align="center" valign="middle"><select name="select2" style="width:50px;" onchange="setFaceSize(this)">
+      <option>字号</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+    </select></td>
+    <td align="center" valign="middle" width="47"><span class="parent"><img src="img/RemoveFormat.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="删除文本格式" onclick="format('RemoveFormat')"/></span></td>
+  </tr>
+  <tr style="background-image:url(img/bg.gif);">
+    <td align="center"><img src="img/newpage.gif" width="21" height="20" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="新建" onclick="newPage()"/></td>
+    <td height="25" align="center"><span class="parent"><img src="img/quote.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入引用样式" onclick="insertQuote()"/></span></td>
+    <td align="center"><img src="img/file.gif" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" width="21" height="21" title="插入其它文件" onclick="showFileMenu(this.parentNode)"/></td>
+    <td align="center"><img src="img/Media.gif" width="21" height="21"  onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入媒体" onclick="showMediaMenu(this.parentNode)"/></td>
+    <td align="center"><img src="img/createlink.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="超级链接" onclick="createLink()"/></td>
+    <td align="center"><img src="img/unlink.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="取消超级链接" onclick="format('unlink')"/></td>
+    <td align="center" class="parent"><img src="img/table.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入表格" onclick="insertTable(this.parentNode)"/></td>
+    <td align="center" class="parent"><img src="img/fieldset.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="栏目框" onclick="showFieldSetMenu(this.parentNode)"/></td>
+    <td align="center" class="parent"><img src="img/Marquee.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入字幕" onclick="showMarqueeMenu(this.parentNode)"/></td>
+    <td align="center" class="parent"><img src="img/InsertHorizontalRule.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入水平线" onclick="format('InsertHorizontalRule')"/></td>
+    <td align="center"><img src="img/undo.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="撤消" onclick="format('Undo')"/></td>
+    <td align="center"><span class="parent"><img src="img/redo.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="恢复" onclick="format('Redo')"/></span></td>
+    <td align="center"><img src="img/selectall.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="全选" onclick="format('selectall')"/></td>
+    <td align="center"><span class="parent"><img src="img/symbol.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入特殊字符" onclick="showSymbolMenu(this.parentNode)"/></span></td>
+    <td align="center"><img src="img/subscript.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="下标" onclick="format('subscript')"/></td>
+    <td align="center"><img src="img/superscript.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="上标" onclick="format('superscript')"/></td>
+    <td align="center"><span class="parent"><img src="img/date.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入当前日期" onclick="insertTime(true)"/></span></td>
+    <td align="center" width="47"><span class="parent"><img src="img/time.gif" width="21" height="21" onmousedown="fSetBorderMouseDown(this)" onmouseover="fSetBorderMouseOver(this)" onmouseout="fSetBorderMouseOut(this)" title="插入当前时间" onclick="insertTime(false)"/></span></td>
+  </tr>
+  <tr style="background-image:url(img/bg.gif);">
+    <td height="25" colspan="18" align="center" style="padding:0px;margin:0px;"><textarea id="textCode" class="code" style="width:99%;padding:0px;margin:0px;display:none;border:1px solid #999999;" onchange="window.frames['design'].document.body.innerHTML=this.value;"></textarea>
+	<iframe src="preview.html" name="preview" id="preview" class="code" frameborder="0" marginheight="0" marginwidth="0" style="width:99%;border:1px solid #999999;display:none;padding:0px;margin:0px;"></iframe>
+	<iframe src="code.html" name="design" id="design" class="code" frameborder="0" marginheight="0" marginwidth="0" style="width:99%;border:1px solid #999999;padding:0px;margin:0px;"></iframe></td>
+  </tr>
+  
+  <tr style="background-image:url(img/bg.gif);height:30px;">
+    <td height="25" colspan="14" align="left" valign="middle" style="padding-left:12px;"><input name="Submit2" type="submit" class="button" value="代 码" onclick="setMode('Code',this)" id="bntCode"/>
+    <input name="Submit22" type="submit" class="button" value="设 计" onclick="setMode('Design',this)" id="bntDesign"/>
+    <input name="Submit222" type="submit" class="button" value="预 览" onclick="setMode('Preview',this)" id="bntPreview"/></td>
+    <td height="25" align="right" valign="middle" colspan="4" style="padding-right:10px;"><img src="img/sizeplus.gif" width="21" height="21" style="cursor:pointer;" onclick="setWH(true)"/>&nbsp;<img src="img/sizeminus.gif" style="cursor:pointer;" onclick="setWH(false)"/></td>
+  </tr>
+</table>
+</body>
+</html>

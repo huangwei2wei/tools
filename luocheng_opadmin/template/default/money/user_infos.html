@@ -1,0 +1,80 @@
+<gettemplet file="default/head.html"/>
+<div>
+<table width="924" border="1" align="left">
+  <tr>
+    <td width="914"><form id="form1" name="form1" method="post" action="">
+      <input name="name" type="text" id="name" value="<echo>isset($_POST['name'])?$_POST['name']:''</echo>" size="70" />
+      <input type="submit" name="button" id="button" value="提交" /> 用逗号(,)分割
+    </form></td>
+  </tr>
+</table>
+</div>
+<div style="width:100%;height:350px; overflow:scroll; border:1px solid;">
+<table border="1" align="left">
+  <tr>
+  <!--?
+  foreach($user_info as $value){
+  ?-->
+    <td><table width="256" border="0" cellpadding="0" cellspacing="1"  bgcolor="#deeffa">
+  <tr>
+    <td width="24%" bgcolor="#CCCCCC">新老用户</td>
+    <td width="76%" bgcolor="#FFFFFF">
+    <!--?
+  echo (isset($value["user_info"]["old_server"]) and $value["user_info"]["old_server"]>0)?$value["user_info"]["old_server"]:'新用户';
+  ?-->
+  </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">昵称</td>
+    <td bgcolor="#FFFFFF" ><echo>$value["user_hero"]["name"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">等级</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_hero"]["lv"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">注册日期</td>
+    <td bgcolor="#FFFFFF"><!--?
+  echo date("Y-m-d:H:i:s",$value["user_info"]["createtime"]);
+  ?--></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">登录次数</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_info"]["login_sum"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">武将数</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_hero_count"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">物品数</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_goods_count"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">总充值额</td>
+    <td bgcolor="#FFFFFF"><echo>$value["pay_log_count"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余军令</td>
+    <td bgcolor="#FFFFFF"><echo>intval($value["user_info"]["gold"])</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余铜币</td>
+    <td bgcolor="#FFFFFF"><echo>intval($value["user_info"]["copper"])</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">剩余精力</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_info"]["energy"]</echo></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">竞技排名</td>
+    <td bgcolor="#FFFFFF"><echo>$value["user_info"]["sports_rank"]</echo></td>
+  </tr>
+</table></td>
+  <!--?}?-->
+  </tr>
+</table>
+</div>
+
+</body>
+</html>

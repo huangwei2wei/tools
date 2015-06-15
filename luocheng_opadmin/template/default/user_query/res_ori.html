@@ -1,0 +1,124 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="94%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr >
+      <td colspan="5" bordercolor="#000000" bgcolor="#CCCCCC"><form name="form1" method="post" action="">
+          用户名：
+          <input name="user_name" type="text" id="user_name" value="<echo>$_POST['user_name']</echo>" size="40">
+          &nbsp;&nbsp;&nbsp;
+          类型：
+          <select name="types" id="types">
+            <option  
+            <echo>$_POST['types']==0?"selected":""</echo>
+             value="0">所有
+            </option>
+            <option 
+            <echo>$_POST['types']==1?"selected":""</echo>
+             value="1">gold元宝
+            </option>
+            <option 
+            <echo>$_POST['types']==2?"selected":""</echo>
+             value="2">copper铜币
+            </option>
+            <option 
+            <echo>$_POST['types']==3?"selected":""</echo>
+             value="3">sports声望
+            </option>
+            <option 
+            <echo>$_POST['types']==4?"selected":""</echo>
+             value="4">jade将玉
+            </option>
+            <option 
+            <echo>$_POST['types']==5?"selected":""</echo>
+             value="5">exploit军资
+            </option>
+            <option 
+            <echo>$_POST['types']==6?"selected":""</echo>
+             value="6">energy精力
+            </option>
+            <option 
+            <echo>$_POST['types']==7?"selected":""</echo>
+             value="7">spar晶石
+            </option>
+            <option 
+            <echo>$_POST['types']==8?"selected":""</echo>
+             value="8">fe玄铁
+            </option>
+            <option 
+            <echo>$_POST['types']==9?"selected":""</echo>
+             value="9">blue_point蓝魂
+            </option>
+            <option 
+            <echo>$_POST['types']==10?"selected":""</echo>
+             value="10">purple_point紫魂
+            </option>
+            <option 
+            <echo>$_POST['types']==11?"selected":""</echo>
+             value="11">gold_point金魂
+            </option>
+          </select>
+          &nbsp;&nbsp;加减：
+          <select name="act" id="act">
+            <option 
+            <echo>$_POST['act']=="+"?"selected":""</echo>
+             value="+">+
+            </option>
+            <option 
+            <echo>$_POST['act']=="-"?"selected":""</echo>
+             value="-">-
+            </option>
+          </select>
+          &nbsp;&nbsp;
+          <input type="submit" name="button" id="button" value="查询">
+        </form></td>
+    </tr>
+    <tr >
+      <td width="14%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>模块</strong></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>资源类型</strong></td>
+      <td width="22%" bordercolor="#000000" bgcolor="#FFCC00">时间</td>
+      <td width="23%" bordercolor="#000000" bgcolor="#FFCC00">操作等级</td>
+      <td width="21%" bordercolor="#000000" bgcolor="#FFCC00">数量</td>
+    </tr>
+    <!--?
+$money_type=array(
+1=>"gold元宝",
+2=>"copper铜币",
+3=>"sports声望",
+4=>"jade将玉",
+5=>"exploit军资",
+6=>"energy精力",
+7=>"spar晶石",
+8=>"fe玄铁",
+9=>"blue_point蓝魂",
+10=>"purple_point紫魂",
+11=>"gold_point金魂"
+);
+
+foreach($res_ori as $value){?-->
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><!--?
+      if(isset($module_name_list[$value["module_sub_id"]])){
+      	echo $module_name_list[$value["module_sub_id"]];
+      }else{
+      	if($value["module_sub_id"]==999)
+        {
+        	echo "充值";
+        }else{
+            if($value["module_sub_id"]==0){
+            	echo "未知";
+            }else{
+                echo $value["module_sub_id"];
+            }
+        }
+      }
+      ?--></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>isset($money_type[$value["money_type"]])?$money_type[$value["money_type"]]:"未知"</echo></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$value["user_lv"]</echo></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$value["money"]</echo></td>
+    </tr>
+    <!--?}?-->
+  </tbody>
+</TABLE>
+</BODY></HTML>

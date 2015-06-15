@@ -1,0 +1,44 @@
+<gettemplet file="default/head.html"/>
+<table align="center" width="100%" border="1">
+  <tr>
+    <td colspan="3"><form align="center" action="/?module=macro_data&methods=query_info" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+        <p>武将名称：
+          <input name="name" type="text" id="name" value="<echo>$_POST['name']</echo>">
+          （多个请用都好隔开）
+          &nbsp;&nbsp;时间
+          <input type="text" name="time" id="time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+          <input type="submit" name="button" id="button" value="提交">
+          <input name="e" type="hidden" id="e" value="1">
+        </p>
+      </form>
+      </td>
+  </tr>
+  <tr>
+    <td width="16%"><strong>用户昵称</strong></td>
+    <td width="84%"><strong>（武将）名称</strong></td>
+  </tr>
+  <!--?
+      foreach((array)$query_info as $key=>$value)
+	  {
+	  ?-->
+  <tr>
+    <td><echo>$value[0]</echo></td>
+    <td><!--?
+      foreach((array)$value[1] as $k=>$v)
+	  {
+	  ?-->
+      
+      <echo>$v[0]</echo>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <echo>$v[1]</echo>
+      <br>
+      
+      <!--?
+	  }
+	  ?--></td>
+  </tr>
+  <!--?
+	  }
+	  ?-->
+</table>
+</BODY></HTML>

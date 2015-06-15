@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" type="text/javascript" src="/template/default/f/js/function.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/public.js"></script>
+<title>无标题文档</title>
+<style>
+ul{ margin:0px; padding:0px;}
+ul li{float:left; font-size:12px; background-color:#865326; cursor:pointer; margin:5px;}
+body {
+	background-color:#e5f2fb;
+}
+</style>
+
+</head>
+<body style="margin:0px;" >
+
+<ul id="server_list"></ul>
+<script>
+
+var url="/?module=server&methods=lists";
+
+ajax_ultimate(url,"serverlist");
+
+function serverlist(string)
+{
+	string=json_x(string);
+	serhtml=""
+	for(var i=0;i<string.length;i++)
+	{
+		serhtml+='<ul style="list-style-type:none"><li title="['+string[i].server_id+'服]" onClick="switchs('+string[i].server_id+')"><font color="#FFFFFF">'+string[i].server_name.replace("双线","")+'</font></li></ul>';
+		}
+	
+	$("server_list").innerHTML=serhtml;
+}
+
+function switchs(server_id)
+{
+		var url2="/?module=server&methods=up_server_id&server_id="+server_id;
+		ajax_ultimate(url2,"serverlist2");
+}
+
+function serverlist2(string)
+{
+	string=json_x(string);
+	if(string["e"]=="ok")
+	{
+		parent.location.reload();
+	}else{
+		alert("失败");
+	}
+}
+
+</script>
+
+</body>
+</html>

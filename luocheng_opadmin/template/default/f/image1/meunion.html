@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>成年男人玩的游戏</title>
+<style>
+.float1{float:left;width:auto;height:auto;}
+.float2{float:right;width:auto;height:auto;}
+.cr{clear:both}
+*{ margin:0px; padding:0px;}
+ul li{ list-style-type: none; }
+body{ background:#000000; font-size:12px;}
+#warp{ margin:0 auto; width:1000px; height:600px;}/*bg*/
+.login-left{ float:left; padding-left:10px;}
+.login-right{  margin-left:0px; margin-top:40px;}
+.login-right p{ margin:2px 0; *margin:3px 0;}
+.login-list{ margin-top:40px; _margin-top:30px; padding:10px;}
+.login-title{ text-align:center; padding-top:10px; height:35px;}
+.login-zi{ width:80px; float:left; text-align:right; color:red;  padding-top:3px; font-size:14px;}
+.login-input input{ width:145px; height:20px; border:#0066FF 1px solid;}
+.login-zhusi{ padding-left:85px; width:250px; line-height:18px; color:#903f23;}
+.login-btn{ padding-left:80px;}
+.links{ padding-left:85px; padding-top:10px;}
+.links a{ color:red; margin-right:10px;}
+/*定位*/
+.kuang{ position:relative; }
+#PRO_overlay{position: absolute;z-index:100;top: 0px;left: 0px;background-color:#333;filter: alpha(opacity=70);-moz-opacity: 0.7;opacity: 0.7;}
+.login_form{ position:absolute;background:url(images/kuang02.jpg) no-repeat; width:395px; height:270px; left:305px; top:152px; z-index:2; }
+
+.reg{width:400px;margin-top:-30px;}
+.reg td{height:35px;line-height:24px;}
+
+/*注册页面 开始*/
+.kuang{width:190px;height:18px;line-height:18px;}
+.t1{width:70px;height:28px;line-height:28px;color:#fff;text-align:right;font-size:12px;font-weight:bold;}
+.t2{width:190px;height:28px;color:#217bd7;text-align:left;font-size:12px;}
+.t3{width:60px;height:28px;text-align:left;}
+.tbtn{text-align:center;margin-top:10px;margin-left:-60px;}
+
+.n_enter{display:block;border:1px solid red;}
+
+
+.reg_true{width:auto;border:1px blue solid;}
+.truebox{width:18px;text-align:left;}
+.falsebox{width:110px;height:24px;text-align:left;}
+.false_pic{width:20px;height:24px;}
+.false_text{width:70px;height:24px;color:#f653ec;}
+.t_button{width:181px;height:42px;background:url(images/t_reg.jpg);vertical-align:middle;border:none;cursor:hand;}
+
+
+.t6{color:#2c68a7;}
+/*注册页面 结束*/
+</style>
+
+<script type="text/javascript" language="javascript" src="images/j.js"></script>
+<script type="text/javascript" language="javascript">
+<!--
+var reMethod = "GET",pwdmin = 6;
+-->
+</script>
+<script type="text/javascript" language="javascript" src='images/reg_new.js'></script>
+<!--<link href="form_check/style.css" rel="stylesheet" type="text/css">-->
+
+<script language="javascript" type="text/javascript" src="form_check/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="form_check/jquery.corners.min.js"></script>
+<script language="javascript" type="text/javascript" src="form_check/jquery.validator.reg.js"></script>
+
+<script language="javascript" type="text/javascript" src="form_check/reg.js"></script>
+<link href="form_check/type.css" rel="stylesheet" type="text/css" />
+<link href="form_check/reg.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript"> 
+//标题闪
+var step=0; 
+var _title=document.title;
+var space='';
+for(var i=0;i<=_title.length;i++)space+='　';
+function flash_title()
+ {
+  step++
+  if (step==3) {step=1}
+  if (step==1) {document.title=space}
+  if (step==2) {document.title=_title}
+  setTimeout("flash_title()",500);
+}
+flash_title();
+//标题闪
+</script>
+
+</head>
+<body onmousedown="document.getElementById('prodiv').style.display='block'">
+<script type="text/javascript">
+function PRO_show(e)//显示
+{ 
+    if(document.getElementById(e)==null)
+    {
+        return ;
+    }
+    var selects = document.getElementsByTagName('select');
+    for(i = 0; i < selects.length; i++) 
+    { 
+        selects[i].style.visibility = "hidden"; 
+    } 
+
+    PRO_layout(e);
+    //window.onresize = function(){BOX_layout(e);} //改变窗体重新调整位置
+    //window.onscroll = function(){BOX_layout(e);} //滚动窗体重新调整位置
+
+	
+	
+	
+}
+
+function PRO_layout(e)//调整位置
+{ 
+    var a = document.getElementById(e);
+
+    if (document.getElementById('PRO_overlay')==null)//判断是否新建遮掩层
+    {
+     
+        var overlay = document.createElement("div");
+        overlay.setAttribute('id','PRO_overlay');
+		
+		document.body.appendChild(overlay);
+    }
+	
+	
+    a.style.zIndex=1;
+    a.style.display="";
+    
+}
+
+</script>
+<div id="warp" onclick="document.getElementById('prodiv').style.display='block'">
+	<div class="kuang">
+	<div class="login_form" id="prodiv" style="display:none" >
+	  <div class="login-list">
+            	
+<div class="login-right">
+	<!--注册内容开始-->
+         <form name="form2"  id="regform"  action="../astd2_reg.php" method="post" >
+        <input type="hidden" name="promotion" id="promotion" value="meunion" /> 
+		<input type="hidden" name="promoKey" id="promoKey" value="meunion" />
+        <input type="hidden" name="tourls" id="tourls" value="logint" />
+        <input type="hidden" name="s_uid" id="s_uid"  value="" />
+                            <div class="reg ">
+                            
+                            <table  width="99%" border="0" cellspacing="0" align="center" style="">
+                            
+                            <tr>
+                            <td class="t1" >用户名:&nbsp;</td>
+                            <td class="t2">
+                             <input type="text" class="kuang"  onblur="this.className='kuang'" onfocus="this.className='kuang'" onKeyUp="this.value=this.value.replace('&','').replace('<','').replace('>','')"  name="userid" require="true" datatype="userid|ajax" min="6" max="12" url="../reg_userid.php" msg="6-16字符"/>
+                            </td>
+                            <td  class="t3" >
+                             <div class="cr">
+                             
+                                <div id="success_userid" class="truebox"  style="display:none;"> <span><img src="form_check/images/fzcg_dh[1].gif" /></span> </div>
+                                
+                            <div class="error_userid falsebox" style="position: relative;display:none;">
+                              <div class="float1 false_pic"> <span><img src="form_check/images/th_ju[1].gif" /></span></div>
+                               
+                               <div class="float1 false_text" id="error_userid">
+                                 <div id="error_userid"></div>
+                                  <!--<span class="clue_btm"></span>-->
+                                </div>
+                              
+                            </div>
+                            
+                             </div>
+                            </td>  
+                            </tr>
+                           
+                            
+                            <tr>
+                            <td class="t1">密码:&nbsp;</td>
+                            <td class="t2">
+                            <input type="password" class="kuang"  onblur="this.className='kuang'" onfocus="this.className='kuang'" name="userpwd" id="userpwd"  require="true" value="" datatype="limit" min="6" max="16" msg="6-16字符"/>
+                            
+                            </td>
+                            
+                            <td class="t3" >
+                            <div class="cr">
+                                <div id="success_userpwd"  class="truebox" style="display:none;"> <span><img src="form_check/images/fzcg_dh[1].gif" /></span> </div>
+                                
+                                <div class="error_userpwd falsebox" style="position: relative;display:none;">
+                                
+                                  <div class="float1 false_pic"> <span><img src="form_check/images/th_ju[1].gif" /></span> </div>                                 
+                                    
+                                      <div class="float1 false_text" id="error_userpwd">
+                                      <!--<span class="clue_btm"></span>-->
+                                       </div>                               
+                                  
+                                  
+                                </div>
+                            </div>       
+                            </td>
+                            
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                            <td  class="t1">确认密码:&nbsp;</td>
+                            <td>
+                             <input type="password" class="kuang"  onblur="this.className='kuang'" onfocus="this.className='kuang'" name="userpwdok" require="true" value="" datatype="repeat" to="userpwd" msg="输入不一致！"/>
+                            
+                            
+                            </td>
+                            <td>
+                         	<div class="cr">
+                                <div id="success_userpwdok"  style="display:none;"> <span><img src="form_check/images/fzcg_dh[1].gif" /></span> </div>
+                                <div class="r error_userpwdok falsebox" style="position: relative;display:none;">
+                                
+                                  <div class="float1 false_pic"> <span><img src="form_check/images/th_ju[1].gif" /></span></div>                                    
+                                  <div class="float1 false_text" id="error_userpwdok"></div>
+                                      
+                                  
+                                
+                              </div> 
+                                
+                             </td>                    
+                            </tr>
+                            
+                             
+                          <!--  <tr>
+                            <td  class="t1">邮箱:&nbsp;</td>
+                            <td>
+                             <input type="text" class="kuang"  onblur="this.className='kuang'" onfocus="this.className='kuang'" name="email" require="true" value="" datatype="email|ajax" url="reg_email.php" msg="取回密码唯一凭证！|邮箱已被注册!"/>
+                            
+                            </td>
+                            <td  id="_userid">
+                            <div class="cr" id="sf1">
+                                <div id="success_email" style="display:none;"> <span><img src="form_check/images/fzcg_dh[1].gif" /></span> </div>
+                                <div class="error_email falsebox" style="position: relative;display:none;">
+                                
+                                  <div class="float1 false_pic"> <span><img src="form_check/images/th_ju[1].gif" /></span></div>                                    
+                                  <div class="float1 false_text" id="error_email"></div>
+                                    
+                                  
+                                </div>
+                              </div>
+                            
+                            </td>                          
+                            </tr>-->
+                              
+                            
+                            <tr>
+                            <td colspan="3">
+                            
+                            <div class="tbtn">                          
+                            <input id="button" name="button" type="submit" value="" selecttrea="true" class="t_button"   /> <br><a href="http://www.56uu.com/as/login.html" target="_blank" style="color:#CCC">已有帐号登录</a><br><br>
+                            <!--<input name="agree" type="checkbox" id="agree" checked="checked" /> 我已经看过并同意 <a href="http://xzxd.kugame.cn/lay.html" target="_blank" style="color:#116791">《翁般扎用户服务协议》</a>-->
+                            </div>
+                            
+                            </td>
+                                                  
+                            </tr>
+                            </table>
+
+                          </div>
+                          
+                          </form>
+                     <!--注册内容结束-->
+        </div>
+      </div>
+    </div>
+	<div class="index-swf" style="text-align:center;margin:0 auto;">
+	  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="1000" height="600" id="flash_contant" name="flash_contant">
+        <param name="movie" value="index.swf" />
+        <param name="quality" value="high" />
+        <param name="wmode" value="transparent" />
+        <param name="wmode" value="opaque" />
+        <param name="menu" value="false" />
+        <param name="AllowScriptAccess" value="always" />
+        <embed src="index.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="600" wmode="transparent" name="flash_contant"></embed>
+      </object>
+	</div>
+</div>
+</div>
+<script language = javascript>
+function krinit(){
+	if(!krp){return false};
+document.getElementById("s_uid").value = krp; 
+krfra=document.createElement("iframe");
+krfra.style.display="none";
+//krfra.src="../stats.php?ResoureOne="+krp+"&AdID="+AdID+"&ChannelID="+ChannelID;krfra.style.display="none";
+if(krie){krdb.insertBefore(krfra);
+}else{
+	krdb.appendChild(krfra);};
+	
+	};
+//FromWebId 
+function kr_getQueryStringRegExp(kr_name){
+	var reg = new RegExp("(^|\\?|&)"+ kr_name +"=([^&]*)(\\s|&|$)", "i");
+	if (reg.test(location.href)) return unescape(RegExp.$2.replace(/\+/g, " ")); return ""; 
+}
+var krdb=document.body,krw=window,krp=kr_getQueryStringRegExp('s_uid'),krie,ChannelID='xlm',AdID=23;
+if(krw.attachEvent){krie=true;krw.attachEvent("onload",krinit);}else{krw.addEventListener("load",krinit,false);}
+function killErrors() 
+{ 
+return true; 
+}   
+window.onerror = killErrors; 
+</script>
+
+<script src="http://s16.cnzz.com/stat.php?id=2344014&web_id=2344014&show=pic" language="JavaScript"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bordercolor="#CCCCCC">
+    <tr class="back_tr" bgcolor="#CCCCCC">
+      <td width="9%" >注册总人数：</td>
+      <td width="13%"><echo>$reg_user_sum</echo>
+        人</td>
+      <td width="10%">总创号人数：</td>
+      <td width="16%"><echo>$c_user_sum</echo>
+        人</td>
+      <td width="10%" >总在线人数：</td>
+      <td><echo>$online_count</echo>
+        人 </td>
+    </tr>
+  </table>
+  <br>
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bordercolor="#CCCCCC">
+    <tr>
+      <td width="799" align="center" bgcolor="#CCCCCC"><div >
+          <div align="left">请选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+              <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+          </div>
+        </div></td>
+    </tr>
+    <tr>
+      <td align="left" colspan="2" bgcolor="#CCCCCC">
+      <table id="reglist" width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr  class="back_tr">
+            <td  width="8%"><strong>日期</strong></td>
+            <td  width="3%"><strong>新增激活数</strong></td>
+            <td  width="3%"><strong>新增注册账户数（去重）</strong></td>
+            <td  width="3%"><strong>注册转化率</strong></td>
+            <td  width="3%"><strong>次日设备留存率</strong></td>
+            <td  width="4%"><strong>3日设备留存率</strong></td>
+            <td  width="4%"><strong>4日设备留存率</strong></td>
+            <td  width="4%"><strong>5日设备留存率</strong></td>
+            <td  width="4%"><strong>6日设备留存率</strong></td>
+            <td  width="4%"><strong>7日设备留存率</strong></td>
+            <td  width="4%"><strong>15日设备留存率</strong></td>
+            <td  width="4%"><strong>30日设备留存率</strong></td>
+          </tr>
+          <!--?
+    $zt=0;
+    $todaycount=0;
+    foreach($get_data as $key=>$value){
+    ?-->
+          <tr>
+            <td><strong><echo>date("Y-m-d", strtotime(strval($value["today"]))); </echo></td>
+            <td><strong><echo>$value["activation"] </echo></td>
+            <td><strong><echo>$value["today_reg"] </echo></td>
+            <td width="5%"  ><strong><echo>($value["activation"]==0)?0:round($value["activation_login"]/$value["activation"],3)*100 </echo>%</strong> </strong></td>
+            
+              <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax2"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+      <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax3"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+            <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax4"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+       <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax5"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+       <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax6"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+      <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax7"]/$value["today_login_count"],3)*100   </echo>%</strong> </strong></td>
+      <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax15"]/$value["today_login_count"],3)*100  </echo>%</strong> </strong></td>
+      <td width="5%"  ><strong><echo>($value["today_login_count"]==0)?0:round($value["todayloginmax30"]/$value["today_login_count"],3)*100  </echo>%</strong> </strong></td>
+
+          </tr>
+          <!--?
+    }
+    ?-->
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<script>
+select_tr("reglist")
+</script>
+</BODY></HTML>

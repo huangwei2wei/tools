@@ -1,0 +1,111 @@
+<gettemplet file="default/head.html"/>
+<form id="form1" name="form1" method="post" action="">
+  地图ID
+  <select onchange="areatohuabu(this)" name="map_id" id="map_id">
+    <option value="0">请选择</option>
+    <option value="1">世界1</option>
+    <option value="2">世界2</option>
+    <option value="3">世界3</option>
+    <option value="4">世界4</option>
+    <option value="5">世界5</option>
+    <option value="6">世界6</option>
+  </select>
+</form>
+<div id="building" style="float:left; width:100%; height:800px; overflow:hidden; position:relative; background-color:#6FF;">
+<div style="position:absolute; width:100px; height:100px; left: 216px; top: 138px;"></div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+var rDrag = {
+	o:null,
+	
+	init:function(o){
+		o.onmousedown = this.start;
+	},
+	start:function(e){
+		var o;
+		e = rDrag.fixEvent(e);
+               e.preventDefault && e.preventDefault();
+               rDrag.o = o = this;
+		o.x = e.clientX - rDrag.o.offsetLeft;
+                o.y = e.clientY - rDrag.o.offsetTop;
+		document.onmousemove = rDrag.move;
+		document.onmouseup = rDrag.end;
+	},
+	move:function(e){
+		e = rDrag.fixEvent(e);
+		var oLeft,oTop;
+		oLeft = e.clientX - rDrag.o.x;
+		oTop = e.clientY - rDrag.o.y;
+		rDrag.o.style.left = oLeft + 'px';
+		rDrag.o.style.top = oTop + 'px';
+	},
+	end:function(e){
+		e = rDrag.fixEvent(e);
+		//alert("/?module=map&methods=edit_upxy&map_id="+rDrag.o.id+"&xy="+rDrag.o.style.left+":"+rDrag.o.style.top);
+		ajax_ultimate("/?module=map&methods=edit_upxy&map_id="+rDrag.o.id+"&xy="+rDrag.o.style.left+":"+rDrag.o.style.top);
+		rDrag.o = document.onmousemove = document.onmouseup = null;
+	},
+    fixEvent: function(e){
+        if (!e) {
+            e = window.event;
+            e.target = e.srcElement;
+            e.layerX = e.offsetX;
+            e.layerY = e.offsetY;
+        }
+        return e;
+    }
+}
+
+function areatohuabu(obj)
+{
+	document.getElementById("building").innerHTML="";
+	var map_id=document.getElementById("map_id").value;
+
+	document.getElementById("building").style.backgroundImage = "url(/template/default/f/image/map/"+map_id+".jpg)";
+	document.getElementById("building").style.backgroundRepeat="repeat";
+	//地图大小处理
+	var img = new Image();
+	img.onload = function(){
+		document.getElementById("building").style.width=this.width+"px";
+		document.getElementById("building").style.height=this.height+"px";
+		ajax_ultimate("/?module=map&methods=edit_get_map_1&&map_id="+map_id,"areatohuabu_","","",map_id);
+	}
+	img.src ="/template/default/f/image/map/"+obj.value+".jpg";
+}
+
+function areatohuabu_(string,map_id)
+{
+	var maxs=Array(
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),Array("78px","48px"),Array("61px","47px")),
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),5,6,Array("61px","47px"),Array("61px","47px")),
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),5,6,7,8,Array("78px","48px"),Array("61px","47px")),
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),5,6,7,8,9,10,Array("78px","48px"),Array("61px","47px")),
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),5,6,7,8,9,10,11,12,Array("78px","48px"),Array("61px","47px")),
+			Array(Array("95px","61px"),Array("81px","61px"),Array("75px","60px"),Array("73px","45px"),Array("62px","55px"),5,6,7,8,9,10,11,12,13,14,Array("78px","48px"),Array("61px","47px"))
+	);
+	
+	//alert(string);
+	var building=document.getElementById("building");
+	string=json_x(string);
+	for(var i=0;i<string.length;i++)
+	{
+		///template/default/f/image/map/icon/1.png
+		var tmpdiv=document.createElement("div");
+		tmpdiv.id=string[i]["id"];
+		tmpdiv.style.position="absolute";
+		tmpdiv.style.width=maxs[map_id-1][parseInt(string[i]["icon"])-1][0];
+		tmpdiv.style.height=maxs[map_id-1][parseInt(string[i]["icon"])-1][1];
+		tmpdiv.style.backgroundImage = "url(/template/default/f/image/map/icon/"+map_id+"/"+string[i]["icon"]+".png)";
+		var xy=string[i]["icon_xy"].split(":");
+		tmpdiv.style.left=xy[0]+"px";
+		tmpdiv.style.top=xy[1]+"px";
+		tmpdiv.innerHTML=string[i]["name"];  
+		rDrag.init(tmpdiv);
+		building.appendChild(tmpdiv);  
+	}
+	
+}
+</script>
+</body>
+</html>

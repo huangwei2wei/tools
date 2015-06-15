@@ -1,0 +1,732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>后台管理中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="Comsenz Inc." name="Copyright" />
+<link rel="stylesheet" href="/template/default/f/css/admincp.css" type="text/css" media="all" />
+<script language="javascript" type="text/javascript" src="/template/default/f/js/jquery-1.3.2.js"></script>
+<script language="javascript" type="text/javascript" src="/template/js/common.js" ></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/function.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/public.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/CJL.0.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="/template/default/f/js/AlertBox.js"></script>
+<script>
+var url="/?module=server&methods=server_info";
+ajax_ultimate(url,"serverlist");
+
+function serverlist(string)
+{
+	string=json_x(string);
+	if(string["e"]=="ok")
+	{
+		$("server_info").innerHTML=string["name"]+": "+string["company"]+":"+"&nbsp;"+"["+string["server_id"]+"] 服  :"+string["server_name"]+"&nbsp;";
+	}else{
+			alert("数据问题,请推出重新登陆");
+	}
+}		
+</script>
+</head>
+<style type="text/css">
+html, body {
+	height: 100%;
+}
+#main {
+	height: 100%;
+}
+.style1 {
+	color: #0099CC
+}
+.lightbox {
+	width:550px;
+	background:#FFFFFF;
+	border:2px solid #ccc;
+	line-height:10px;
+	display:none;
+}
+.lightbox dt {
+	background:#f4f4f4;
+	padding:5px;
+}
+.lightbox dd {
+	padding:20px;
+	margin:0;
+}
+.duofu {
+	color: #FF9
+}
+.serverinfo {
+	position:absolute;
+	width: 65%;
+	height: 35px;
+	left: 500px;
+}
+</style>
+<!-- 
+<body  onResize=javascript:parent.carnoc.location.reload()>
+-->
+<body>
+<table id="frametable" cellpadding="0" cellspacing="0" width="100%" height="100%">
+  <tr>
+    <td height="45" colspan="2"><div class="mainhd">
+        <div class="nav">
+          <ul id="topmenu">
+            <!--?
+        if($_SESSION["purview"]==99)
+        {
+        ?-->
+            <li><em><a href="" id="header_op" hidefocus="true"  onclick="toggleMenu('op', '');doane(event);">运营商管理</a></em></li>
+            <!--?} ?--> 
+            <!--?
+        if($_SESSION["purview"]==1 or $_SESSION["purview"]==3 or $_SESSION["purview"]==99)
+        {
+        ?-->
+            <li><em><a href="" id="header_index" hidefocus="true"  onclick="toggleMenu('index', '');doane(event);">运营管理</a></em></li>
+            <!--?}?--> 
+            
+            <!--?
+if($_SESSION["purview"]==2 or $_SESSION["purview"]==3 or $_SESSION["purview"]==99)
+{
+?-->
+            <li><em><a href="" id="header_global" hidefocus="true"  onclick="toggleMenu('global', '');doane(event);">财务管理</a></em></li>
+            <!--?
+}
+?-->
+          </ul>
+          <div class="currentloca">
+            <p id="admincpnav"> </p>
+          </div>
+          <div class="navbd"></div>
+        </div>
+        
+        <!--// 其他处理//-->
+        <div class="serverinfo">
+          <div id="ctes" style="position:absolute; right:30px; height:35px; line-height:35px; z-index:999;" >
+            <input title="<echo>$_SESSION['operators']</echo>" type="button" value="游戏服" id="idBoxOpen4"  style="cursor:pointer"/>
+            当前数据库：
+            <echo>$_SESSION["mysqldb"]</echo>
+            &nbsp;&nbsp;&nbsp;&nbsp;[<a href="/template/default/login/login_out.php" target="_parent" > 安全退出</a>]&nbsp;&nbsp; &nbsp; </div>
+          <!-- ******************************************连服****************************************** -->
+          <div style="position:absolute; left:0px; height:35px;line-height:35px;" align="left" id="server_info"></div>
+        </div>
+      </div></td>
+  </tr>
+  <tr>
+    <td valign="top" width="160" class="menutd"><div id="leftmenu" class="menu"> 
+        <!--?
+        if($_SESSION["purview"]==99)
+        {
+        ?-->
+        <ul id="menu_op" style="display:none; ">
+         <li class="s">
+            <div class="lsub" subid="Ma8925b1">
+              <div onClick="lsub('Ma8925b1', this.parentNode)">开服管理</div>
+              <ol style="display:block" id="Ma8925b1">
+                <li><a href="/?module=boss&methods=boss_list_views" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>运营商</a></li>
+                <li><a href="/?module=files&methods=initialization" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>游戏初始化</a></li>
+                <li><a href="/?module=macro_data&methods=signhuodong" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>全服签到活动导入</a>
+                
+              </ol>
+            </div>
+          </li>
+        </ul>
+        <!--?}?--> 
+        <!--?
+if($_SESSION["purview"]==99 or $_SESSION["purview"]==1 or $_SESSION["purview"]==3)
+{
+?-->
+		<ul id="menu_index" style="display:none; ">
+			<!-- 运营商管理 -->
+            <li><a href="/?module=user&methods=one" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>游戏总览</a></li>
+			<li><a href="/?module=service_manager&methods=open_service_list&operators_id=<echo>$_SESSION['userid']</echo>" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>开服列表</a></li>
+            <li><a href="/?module=service_manager&methods=device_monitor&operators_id=<echo>$_SESSION['userid']</echo>" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>设备监控</a></li>
+			<li><a href="/?module=activation&methods=user_code" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>封测激活码</a></li>
+			
+           <li class="s">
+            <div class="lsub desc" subid="Ma5f6dayygl">
+              <div onClick="lsub('Ma5f6dayygl', this.parentNode)">运营管理</div>
+              <ol style="display:none;" id="Ma5f6dayygl">
+               	<li><a href="/?module=user_query&methods=queryPlayer" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家查询</a> </li>
+                <li><a href="/?module=user" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>新增玩家</a> </li>
+                <li><a href="/?module=money&methods=game_player_pay&type=1" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家付费</a> </li>
+                
+                <li><a href="/?module=user&methods=user_habit" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>用户习惯</a> </li>
+                <li><a href="/?module=user_query&methods=mPlayerQuery" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>设备相关</a> </li>
+                
+                <li><a href="/?module=user&methods=iuser_count" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>等级分析</a></li>
+                <li><a href="/?module=user_query&methods=userLvFb" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>等级分布</a></li>
+                <li><a href="/?module=user_query&methods=userLS" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>流失分析</a> </li>
+                <li><a href="/?module=user_query&methods=vip_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>vip激活统计</a></li>
+                <li><a href="/?module=user_query&methods=diamond_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>钻石结余</a></li>
+                
+                <li><a href="/?module=user&methods=taskstop" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>任务分析</a></li>
+                <li><a href="/?module=user&methods=checkpoint" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>关卡分析</a></li>
+                <li><a href="/?module=money&methods=revenue_analysis" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>收入分析</a></li>
+                <li><a href="/?module=money&methods=resource_consumption" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>资源消耗</a></li>
+
+                <li><a href="/?module=money&methods=user_recharge_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>用户充值清单</a></li>
+                <li><a href="/?module=service_manager&methods=open_server_statistics&operators_id=<echo>$_SESSION['userid']</echo>" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>分服统计</a></li>
+                <li><a href="/?module=macro_data&methods=notice_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>海外市场数据统计</a></li>
+              	<li><a href="/?module=user&methods=user_online_duration" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>用户在线时长</a></li>
+                <li><a href="/?module=user&methods=novice_progress" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>新手进度</a></li>
+                <li><a href="/?module=money&methods=recharge_ranking" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>充值排行榜</a></li>
+                <li><a href="/?module=money&methods=recharge_money_analyze" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>充值金额段分析</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f6dasctg">
+              <div onClick="lsub('Ma5f6dasctg', this.parentNode)">市场推广</div>
+              <ol style="display:none;" id="Ma5f6dasctg">
+                <li><a href="/?module=user&methods=get_data1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>联运渠道数据统计</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f625b1">
+              <div onClick="lsub('Ma5f625b1', this.parentNode)">角色管理</div>
+              <ol style="display:none" id="Ma5f625b1">
+                <li><a href="/?module=macro_data&methods=query_user_info" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>用户数据修改</a></li>
+                <li><a href="/?module=macro_data&methods=iplist" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>封IP</a></li>
+                <li><a href="/?module=macro_data&methods=id_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>封ID</a></li>
+                <li><a href="/?module=macro_data&methods=gag_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>禁言用户</a></li>
+                <li><a href="/?module=ResI&methods=Resi" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>资源发放</a></li>
+                <li><a href="/?module=macro_data&methods=deleteuser" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>删除用户</a></li>
+                <li><a href="/?module=macro_data&methods=querynickname" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>昵称查询用户名</a>
+                <li><a href="/?module=macro_data&methods=roll_clothes" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>滚服信息</a>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f6dawQW">
+              <div onClick="lsub('Ma5f6dawQW', this.parentNode)">公告与过滤</div>
+              <ol style="display:none;" id="Ma5f6dawQW">
+                <!--li><a href="/?module=macro_data&methods=key_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="屏蔽关键字"></em>词语过滤</a></li-->
+                <li><a href="/?module=macro_data&methods=notice_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>公告编辑</a></li>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Maty625jd1">
+              <div onClick="lsub('Maty625jd1', this.parentNode)">模块设置</div>
+              <ol style="display:none" id="Maty625jd1">
+                <li><a href="/?module=macro_data&methods=huodong" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>运营活动设置</a>
+                <li><a href="/?module=macro_data&methods=richanghuodong" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>日常活动设置</a>
+                <li><a href="/?module=macro_data&methods=err_data" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>错误日志</a>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f625jd1">
+              <div onClick="lsub('Ma5f625jd1', this.parentNode)">玩家查询</div>
+              <ol style="display:none" id="Ma5f625jd1">
+                <li><a href="/?module=goods&methods=res_track_module&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>资源追踪 new</a></li>
+                <li><a href="/?module=goods&methods=goods_track_module&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>物品追踪 new</a></li>
+                <li><a href="/?module=macro_data&methods=hero_log" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>武将日志</a> </li>
+ <!--               <li><a href="/?module=user&methods=operators_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>活动发奖查询</a></li>-->
+                <li><a href="/?module=user_query&methods=goods_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>物品查询</a></li>
+                <li><a href="/?module=macro_data&methods=user_goods_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>用户物品查询[背包]</a> </li>
+                <li><a href="/?module=macro_data&methods=query_info" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家物品武将[全服]</a> </li>
+                <li><a href="/?module=user_query&methods=consumer_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家消费明细</a></li>
+                <li><a href="/?module=user_query&methods=league_list_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>公会队员列表</a></li>
+                <!--<li><a href="/?module=user_query&methods=module_update_query" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>模块更新查询</a></li>
+                <li><a href="/?module=user_query&methods=invite_user" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>邀请查询</a> </li>
+                <li><a href="/?module=macro_data&methods=errgem" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>宝石错误</a> </li>
+                <li><a href="/?module=user_query&methods=login_award" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>登录奖励查询</a> </li>
+                <li><a href="/?module=macro_data&methods=email_list" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>建议邮件</a> </li>-->
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f6daw1">
+              <div onClick="lsub('Ma5f6daw1', this.parentNode)">人物统计</div>
+              <ol style="display:none;" id="Ma5f6daw1">
+                <li><a href="/?module=user" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>注册统计</a></li>
+                <li><a href="/?module=user&methods=show_line" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>在线曲线图</a></li>
+                <li><a href="/?module=user&methods=login2" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>二次登录率</a></li>
+                <li><a href="/?module=user&methods=user_map" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>分布统计</a></li>
+                <li><a href="/?module=user&methods=taskstop" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>任务停留情况</a></li>
+                <li><a href="/?module=user&methods=ranking&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>实时排行</a></li>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f6dawv">
+              <div onClick="lsub('Ma5f6dawv', this.parentNode)">等级统计</div>
+              <ol style="display:none;" id="Ma5f6dawv">
+                <li><a href="/?module=user&methods=iuser_count" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>表格图</a></li>
+                <li><a href="/?module=user&methods=show_pie3" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>曲线图</a></li>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f625b2">
+              <div onClick="lsub('Ma5f625b2', this.parentNode)">玩家状态</div>
+              <ol style="display:none;" id="Ma5f625b2">
+                <li><a href="/?module=user_query&methods=user_active" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>活跃</a> </li>
+                <li><a href="/?module=player&methods=play_active&type=1" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>每天登陆的玩家</a></li>
+                <li><a href="/?module=player&methods=play_active&type=2" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>每周登录的玩家</a></li>
+                <li><a href="/?module=player&methods=play_active&type=3" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>1个月前登录的玩家</a></li>
+                <li><a href="/?module=player&methods=play_active&type=4" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>3个月前登录的玩家</a></li>
+                <li><a href="/?module=player&methods=play_active&type=5" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>可清除的玩家</a></li>
+                <li><a href="/?module=player&methods=play_rmb" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>人民币玩家</a></li>
+              </ol>
+            </div>
+          </li>
+        </ul>
+        <!--?
+}
+?--> 
+        <!-- ******************************************************财务管理***************************************************************** --> 
+        
+        <!--?
+if($_SESSION["purview"]==99 or $_SESSION["purview"]==2 or $_SESSION["purview"]==3)
+{
+?-->
+        <ul id="menu_global" style="display:none">
+          <li><a href="/?module=servercount&methods=operations" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>运营汇总</a></li>
+          <li><a href="/?module=servercount&methods=pay" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>充值汇总</a></li>
+          <li><a href="/?module=server_analysis&methods=analysis" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>开服分析</a></li>
+          <li><a href="/?module=servercount&methods=spread" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>推广费录入</a></li>
+          
+          <!--金额管理系统-->
+          <li class="s">
+            <div class="lsub desc" subid="M4b0cz3713">
+              <div onClick="lsub('M4b0cz3713', this.parentNode)">充值查询</div>
+              <ol style="display:none;" id="M4b0cz3713">
+                <li><a href="/?module=money&methods=recharge_line_day" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>充值情况</a> </li>
+                <li><a href="/?module=money&methods=queryrecharge" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家充值查询</a> </li>
+                <li><a href="/?module=money&methods=newrechargelist" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家充值详情</a> </li>
+                <li><a href="/?module=money&methods=rechargelvlist" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家等级消费情况</a> </li>
+                <li><a href="/?module=money&methods=rechargelv100" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>竞技场100名充值情况</a> </li>
+                <li><a href="/?module=money&methods=rechargeuserlvlist" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家等级充值情况</a> </li>
+                <li><a href="/?module=user_query&methods=userdate" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>日期用户分析</a> </li>
+                <li><a href="/?module=money&methods=user_infos" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家对比</a> </li>
+                <li><a href="/?module=money&methods=analog_recharge" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>模拟充值</a> </li>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" s ubid="admin123">
+              <div onClick="lsub('admin123', this.parentNode)">金额增减饼型图</div>
+              <ol style="display:none;" id="admin123">
+                <li><a href="/?module=money&methods=pies&type=gold&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>金币饼型</a></li>
+                <li><a href="/?module=money&methods=pies&type=2&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>铜币饼型</a></li>
+                <li><a href="/?module=money&methods=pies&type=energy&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>体力饼型</a></li>
+                <li><a href="/?module=money&methods=pies&type=3&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>声望饼型</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          <!--金额增减曲线图-->
+          <li class="s">
+            <div class="lsub desc" subid="M4b0a3713">
+              <div onClick="lsub('M4b0a3713', this.parentNode)">金额增减曲线图</div>
+              <ol style="display:none;" id="M4b0a3713">
+                <li><a href="/?module=money&methods=line_show&type=1&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>金币曲线</a> </li>
+                <li><a href="/?module=money&methods=line_show&type=2&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>铜币曲线</a> </li>
+                <li><a href="/?module=money&methods=line_show&type=6&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>精力曲线</a> </li>
+                <li><a href="/?module=money&methods=line_show&type=3&e=del" hidefocus="true" target="main"> <em onClick="menuNewwin(this)" title="新窗口打开"></em>声望曲线</a> </li>
+              </ol>
+            </div>
+          </li>
+          <li class="s">
+            <div class="lsub desc" subid="Ma5f6dafg">
+              <div onClick="lsub('Ma5f6dafg', this.parentNode)">模块分析</div>
+              <ol style="display:none;" id="Ma5f6dafg">
+                <li><a href="/?module=user&methods=show_pie2" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>模块操作饼型图</a></li>
+                <li><a href="/?module=user&methods=actlog" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>玩家操作日志</a></li>
+                <li><a href="/?module=user&methods=globlist" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>本服最高资源情况</a></li>
+              </ol>
+            </div>
+          </li>
+          
+          <!--商城物品查询RPG-->
+          <li class="s">
+            <div class="lsub desc" subid="M4b0ab713">
+              <div onClick="lsub('M4b0ab713', this.parentNode)">商城物品查询rpG</div>
+              <ol style="display:none;" id="M4b0ab713">
+                <li><a href="/?module=mall&methods=index&type=6" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>热卖</a></li>
+                <li><a href="/?module=mall&methods=index&type=8" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>现实抢购</a></li>
+                <li><a href="/?module=mall&methods=sell_situation" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>出售物品情况</a></li>
+                <li><a href="/?module=db&methods=index" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>数据库</a></li>
+                <li><a href="/?module=test&methods=index" hidefocus="true" target="main"><em onClick="menuNewwin(this)" title="新窗口打开"></em>test</a></li>
+              </ol>
+            </div>
+          </li>
+        </ul>
+        <!--?
+}
+?--> 
+      </div>
+      <script>
+window.onload=function()
+{
+  var objFrame=document.getElementById("main").contentWindow;
+  objFrame.document.body.style.backgroundColor="White";
+   // welcome!;
+}
+</script>
+    <td width="*" height="100%" align="left" valign="top"   ><iframe id="main" name="main" src="" marginwidth="0" framespacing="0" marginheight="0" frameborder="0" style="width:100%;height:100%x;"> </iframe></td>
+  </tr>
+</table>
+<div id="scrolllink" style="display: none"> <span onClick="menuScroll(1)"> <img src="/template/default/f/image/scrollu.gif"/></span> <span onClick="menuScroll(2)"> <img src="/template/default/f/image/scrolld.gif" /></span> </div>
+<div id="cpmap_menu" class="custom" style="display: none">
+  <div class="cmain" id="cmain"></div>
+  <div class="cfixbd"></div>
+</div>
+<script type="text/JavaScript">
+	var cookiepre = 'awW4_2132_', cookiedomain = '', cookiepath = '/';
+	var headers = new Array('op','index','global','style','topic','user','portal','forum','group','extended','plugin','tools','cloud','founder','uc'), admincpfilename = '', menukey = '';
+	function switchheader(key) {
+		if(!key || !$('header_' + key)) {
+			return;
+		}
+		for(var k in top.headers) {
+			if($('menu_' + headers[k])) {
+				$('menu_' + headers[k]).style.display = headers[k] == key ? '' : 'none';
+			}
+		}
+		var lis = $('topmenu').getElementsByTagName('li');
+		for(var i = 0; i < lis.length; i++) {
+			if(lis[i].className == 'navon') lis[i].className = '';
+		}
+		$('header_' + key).parentNode.parentNode.className = 'navon';
+	}
+	var headerST = null;
+	function previewheader(key) {
+		if(key) {
+			headerST = setTimeout(function() {
+				for(var k in top.headers) {
+					if($('menu_' + headers[k])) {
+						$('menu_' + headers[k]).style.display = headers[k] == key ? '' : 'none';
+					}
+				}
+				var hrefs = $('menu_' + key).getElementsByTagName('a');
+				for(var j = 0; j < hrefs.length; j++) {
+					hrefs[j].className = '';
+				}
+			}, 1000);
+		} else {
+			clearTimeout(headerST);
+		}
+	}
+	function toggleMenu(key, url) {
+		menukey = key;
+		switchheader(key);
+		if(url) {
+			parent.main.location = admincpfilename + '?action=' + url;
+			var hrefs = $('menu_' + key).getElementsByTagName('a');
+			for(var j = 0; j < hrefs.length; j++) {
+				hrefs[j].className = j == (key == 'plugin' ? 1 : 0) ? 'tabon' : '';
+			}
+		}
+		if(key == 'uc') {
+			parent.main.location = $('header_uc').href + '&a=main&iframe=1';
+		}
+		setMenuScroll();
+	}
+	function setMenuScroll() {
+		$('frametable').style.width = document.body.offsetWidth < 1000 ? '1000px' : '100%';
+		var obj = $('menu_' + menukey);
+		if(!obj) {
+			return;
+		}
+		var scrollh = document.body.offsetHeight - 160;
+		obj.style.overflow = 'visible';
+		obj.style.height = '';
+		$('scrolllink').style.display = 'none';
+		if(obj.offsetHeight + 150 > document.body.offsetHeight && scrollh > 0) {
+			obj.style.overflow = 'hidden';
+			obj.style.height = scrollh + 'px';
+			$('scrolllink').style.display = '';
+		}
+	}
+	function resizeHeadermenu() {
+		var lis = $('topmenu').getElementsByTagName('li');
+		var maxsize = $('frameuinfo').offsetLeft - 160, widths = 0, moi = -1, mof = '';
+		if($('menu_mof')) {
+			$('topmenu').removeChild($('menu_mof'));
+		}
+		if($('menu_mof_menu')) {
+			$('append_parent').removeChild($('menu_mof_menu'));
+		}
+		for(var i = 0; i < lis.length; i++) {
+			widths += lis[i].offsetWidth;
+			if(widths > maxsize) {
+				lis[i].style.visibility = 'hidden';
+				var sobj = lis[i].childNodes[0].childNodes[0];
+				if(sobj) {
+					mof += '<a href="'+ sobj.getAttribute('href') + '" onclick="$(\'' + sobj.id + '\').onclick()">&rsaquo; ' + sobj.innerHTML + '</a><br style="clear:both" />';
+				}
+			} else {
+				lis[i].style.visibility = 'visible';
+			}
+		}
+		if(mof) {
+			for(var i = 0; i < lis.length; i++) {
+				if(lis[i].style.visibility == 'hidden') {
+					moi = i;
+					break;
+				}
+			}
+			mofli = document.createElement('li');
+			mofli.innerHTML = '<em><a href="javascript:;">&raquo;</a></em>';
+			mofli.onmouseover = function () { showMenu({'ctrlid':'menu_mof','pos':'43'}); }
+			mofli.id = 'menu_mof';
+			$('topmenu').insertBefore(mofli, lis[moi]);
+			mofmli = document.createElement('li');
+			mofmli.className = 'popupmenu_popup';
+			mofmli.style.width = '150px';
+			mofmli.innerHTML = mof;
+			mofmli.id = 'menu_mof_menu';
+			mofmli.style.display = 'none';
+			$('append_parent').appendChild(mofmli);
+		}
+	}
+	function menuScroll(op, e) {
+		var obj = $('menu_' + menukey);
+		var scrollh = document.body.offsetHeight - 160;
+		if(op == 1) {
+			obj.scrollTop = obj.scrollTop - scrollh;
+		} else if(op == 2) {
+			obj.scrollTop = obj.scrollTop + scrollh;
+		} else if(op == 3) {
+			if(!e) e = window.event;
+			if(e.wheelDelta <= 0 || e.detail > 0) {
+				obj.scrollTop = obj.scrollTop + 20;
+			} else {
+				obj.scrollTop = obj.scrollTop - 20;
+			}
+		}
+	}
+	function menuNewwin(obj) {
+		var href = obj.parentNode.href;
+		if(obj.parentNode.href.indexOf(admincpfilename + '?') != -1) {
+			href += '&frames=yes';
+		}
+		window.open(href);
+		doane();
+	}
+	function initCpMenus(menuContainerid) {
+		var key = '', lasttabon1 = null, lasttabon2 = null, hrefs = $(menuContainerid).getElementsByTagName('a');
+		for(var i = 0; i < hrefs.length; i++) {
+			if(menuContainerid == 'leftmenu' && 'action=index'.indexOf(hrefs[i].href.substr(hrefs[i].href.indexOf(admincpfilename + '?') + admincpfilename.length + 1)) != -1) {
+				if(lasttabon1) {
+					lasttabon1.className = '';
+				}
+				if(hrefs[i].parentNode.parentNode.tagName == 'OL') {
+					hrefs[i].parentNode.parentNode.style.display = '';
+					hrefs[i].parentNode.parentNode.parentNode.className = 'lsub desc';
+					key = hrefs[i].parentNode.parentNode.parentNode.parentNode.parentNode.id.substr(5);
+				} else {
+					key = hrefs[i].parentNode.parentNode.id.substr(5);
+				}
+				hrefs[i].className = 'tabon';
+				lasttabon1 = hrefs[i];
+			}
+			if(!hrefs[i].getAttribute('ajaxtarget')) hrefs[i].onclick = function() {
+				if(menuContainerid != 'custommenu') {
+					var lis = $(menuContainerid).getElementsByTagName('li');
+					for(var k = 0; k < lis.length; k++) {
+						if(lis[k].firstChild && lis[k].firstChild.className != 'menulink') {
+							if(lis[k].firstChild.tagName != 'DIV') {
+								lis[k].firstChild.className = '';
+							} else {
+								var subid = lis[k].firstChild.getAttribute('sid');
+								if(subid) {
+									var sublis = $(subid).getElementsByTagName('li');
+									for(var ki = 0; ki < sublis.length; ki++) {
+										if(sublis[ki].firstChild && sublis[ki].firstChild.className != 'menulink') {
+											sublis[ki].firstChild.className = '';
+										}
+									}
+								}
+							}
+						}
+					}
+					if(this.className == '') this.className = menuContainerid == 'leftmenu' ? 'tabon' : '';
+				}
+				if(menuContainerid != 'leftmenu') {
+					var hk, currentkey;
+					var leftmenus = $('leftmenu').getElementsByTagName('a');
+					for(var j = 0; j < leftmenus.length; j++) {
+						if(leftmenus[j].parentNode.parentNode.tagName == 'OL') {
+							hk = leftmenus[j].parentNode.parentNode.parentNode.parentNode.parentNode.id.substr(5);
+						} else {
+							hk = leftmenus[j].parentNode.parentNode.id.substr(5);
+						}
+						if(this.href.indexOf(leftmenus[j].href) != -1) {
+							if(lasttabon2) {
+								lasttabon2.className = '';
+							}
+							leftmenus[j].className = 'tabon';
+							if(leftmenus[j].parentNode.parentNode.tagName == 'OL') {
+								leftmenus[j].parentNode.parentNode.style.display = '';
+								leftmenus[j].parentNode.parentNode.parentNode.className = 'lsub desc';
+							}
+							lasttabon2 = leftmenus[j];
+							if(hk != 'index') currentkey = hk;
+						} else {
+							leftmenus[j].className = '';
+						}
+					}
+					if(currentkey) toggleMenu(currentkey);
+					hideMenu();
+				}
+			}
+		}
+		return key;
+	}
+	function lsub(id, obj) {
+		display(id);
+		obj.className = obj.className != 'lsub' ? 'lsub' : 'lsub desc';
+		if(obj.className != 'lsub') {
+			setcookie('cpmenu_' + id, '');
+		} else {
+			setcookie('cpmenu_' + id, 1, 31536000);
+		}
+		setMenuScroll();
+	}
+	var header_key = initCpMenus('leftmenu');
+	toggleMenu(header_key ? header_key : 'index');
+	function initCpMap() {
+		var ul, hrefs, s = '', count = 0;
+		for(var k in headers) {
+			if(headers[k] != 'index' && headers[k] != 'uc') {
+				s += '<tr><td valign="top"><h4>' + $('header_' + headers[k]).innerHTML + '</h4></td><td valign="top">';
+				ul = $('menu_' + headers[k]);
+				if(!ul) {
+					continue;
+				}
+				hrefs = ul.getElementsByTagName('a');
+				for(var i = 0; i < hrefs.length; i++) {
+					s += '<a href="' + hrefs[i].href + '" target="' + hrefs[i].target + '" k="' + headers[k] + '">' + hrefs[i].innerHTML + '</a>';
+				}
+				s += '</td></tr>';
+				count++;
+			}
+		}
+		var width = 720;
+		s = '<div class="cnote" style="width:' + width + 'px"><span class="right"><a href="###" class="flbc" onclick="hideMenu();return false;"></a></span><h3>管理中心导航</h3></div>' +
+			'<div class="cmlist" style="width:' + width + 'px;height: 410px"><table id="mapmenu" cellspacing="0" cellpadding="0">' + s +
+			'</table></div>';
+		$('cmain').innerHTML = s;
+		$('cmain').style.width = (width > 1000 ? 1000 : width) + 'px';
+	}
+	initCpMap();
+	initCpMenus('mapmenu');
+	var cmcache = false;
+	function showMap() {
+		showMenu({'ctrlid':'cpmap','evt':'click', 'duration':3, 'pos':'00'});
+	}
+	function resetEscAndF5(e) {
+		e = e ? e : window.event;
+		actualCode = e.keyCode ? e.keyCode : e.charCode;
+		if(actualCode == 27) {
+			if($('cpmap_menu').style.display == 'none') {
+				showMap();
+			} else {
+				hideMenu();
+			}
+		}
+		if(actualCode == 116 && parent.main) {
+			parent.main.location.reload();
+			if(document.all) {
+				e.keyCode = 0;
+				e.returnValue = false;
+			} else {
+				e.cancelBubble = true;
+				e.preventDefault();
+			}
+		}
+	}
+	function uc_left_menu(uc_menu_data) {
+		var leftmenu = $('menu_uc');
+		leftmenu.innerHTML = '';
+		var html_str = '';
+		for(var i=0;i<uc_menu_data.length;i+=2) {
+			html_str += '<li><a href="'+uc_menu_data[(i+1)]+'" hidefocus="true" onclick="uc_left_switch(this)" target="main"><em onclick="menuNewwin(this)" title="新窗口打开"></em>'+uc_menu_data[i]+'</a></li>';
+		}
+		leftmenu.innerHTML = html_str;
+	}
+	var uc_left_last = null;
+	function uc_left_switch(obj) {
+		if(uc_left_last) {
+			uc_left_last.className = '';
+		}
+		obj.className = 'tabon';
+		uc_left_last = obj;
+	}
+	function uc_modify_sid(sid) {
+		$('header_uc').href = 'http://localhost/uc_server/admin.php?m=frame';
+	}
+
+	_attachEvent(document.documentElement, 'keydown', resetEscAndF5);
+	_attachEvent(window, 'resize', setMenuScroll, document);
+	_attachEvent(window, 'resize', resizeHeadermenu, document);
+	if(BROWSER.ie){
+		$('leftmenu').onmousewheel = function(e) { menuScroll(3, e) };
+	} else {
+		$('leftmenu').addEventListener("DOMMouseScroll", function(e) { menuScroll(3, e) }, false);
+	}
+	resizeHeadermenu();
+</script>
+<dl align="center" id="idBox4" class="lightbox">
+  <dt  align="left"id="idBoxTitle4"><b>请选择游戏服</b></dt>
+  <dd>
+    <iframe id="idFixed4" src="/template/default/top.html" marginwidth="0" framespacing="0" marginheight="0" frameborder="0" style="width:100%;height:200px;"> </iframe>
+    <input type="button" value=" 关闭 " id="idBoxClose4"  style="cursor:pointer"/>
+  </dd>
+</dl>
+<script>
+	(function(){
+	//拖动弹窗
+	var ab = new AlertBox("idBox4"), box = ab.box, x, y, flag = "page";	
+	$$("idBoxClose4").onclick = function(){ ab.close(); }
+	$$("idBoxOpen4").onclick = function(){
+			box.style.left =$$("ctes").offsetLeft+$$("idBoxOpen4").offsetLeft+225 + "px";
+			box.style.top = $$("idBoxOpen4").offsetTop+20 + "px";
+			ab.show();
+		}
+	
+
+		$$("idFixed4").onclick = function(){
+			if(ab.center){
+				ab.center = false;
+
+				this.value = "游戏服";
+			} else {
+				ab.center = true;
+
+				this.value = "取消定位";
+			}
+			ab.show();
+	}
+	
+	//拖动
+	$$E.addEvent($$("idBoxTitle4"), "mousedown", Start);
+	function Start(e) {
+		$$E.addEvent(document, "mousemove", Move);
+		$$E.addEvent(document, "mouseup", Stop);
+		x = e[flag + "X"] - box.offsetLeft;
+		y = e[flag + "Y"] - box.offsetTop;
+		ab.show();
+	}
+	function Move(e) {
+		box.style.left = e[flag + "X"] - x + "px";
+		box.style.top = e[flag + "Y"] - y + "px";
+	}
+	function Stop() {
+		$$E.removeEvent(document, "mousemove", Move);
+		$$E.removeEvent(document, "mouseup", Stop);
+		ab.show();
+	}
+	
+	})()
+	</script>
+</body>
+</html>

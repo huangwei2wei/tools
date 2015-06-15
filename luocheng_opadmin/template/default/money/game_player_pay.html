@@ -1,0 +1,160 @@
+<gettemplet file="default/head.html"/>
+
+<table width="100%" border="1">
+  <tr>
+    <td><div align="center">
+    <!--?
+    $parameter_url=array();
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=1","name"=>"基本");
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=2","name"=>"首付道具");
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=3","name"=>"首付等级");
+    $parameter_url[]=array("url"=>"/?module=money&methods=".$obj->get['methods']."&type=4","name"=>"首付游戏时长");
+    $typename="基本";
+    if($obj->get['type']==1){
+    	$typename="基本";
+    }elseif($obj->get['type']==2){
+   	 	$typename="首付道具";
+    }elseif($obj->get['type']==3){
+   	 	$typename="首付等级";
+    }elseif($obj->get['type']==4){
+   	 	$typename="首付游戏时长";
+    }
+    echo create_url($parameter_url,$typename);
+    ?-->
+</div></tr>
+</table>
+<br>
+<!--?if($_GET["type"]==1){?-->
+<table id="rechlist" width="100%" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+    <td colspan="26" bgcolor="#FFFFFF">
+      <form id="form1" name="form1" method="post" action="">
+    日期：
+    <input name="time1" type="text" id="time1" size="12" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/> 
+    -
+    <input name="time2" type="text" id="time2" size="12" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>&nbsp;&nbsp;&nbsp;</label>
+            <label for="Platform"></label>
+            
+	        平台：<select name="mobile_platforms" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($d as $key=>$value){
+							$select = "";
+    						if($_POST["mobile_platforms"] == $value){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value</echo>"  <echo>$select</echo> ><echo>$value</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+            <label>
+    &nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="提交" />
+    </form></td>
+  </tr>
+  <tr>
+    <td width="9%" bgcolor="#CCCCCC"><strong>日期</strong></td>
+    <td width="10%" bgcolor="#CCCCCC"><strong>新增付费用户</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>累计付费用户</strong></td>
+    
+    <td width="9%" bgcolor="#CCCCCC"><strong>总体付费率</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>首日付费率</strong></td>
+    <td width="8%" bgcolor="#CCCCCC"><strong>7日付费率</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>30日付费率</strong></td>
+    
+    <td width="5%" bgcolor="#CCCCCC"><strong>日ARPG</strong></td>
+    <td width="5%" bgcolor="#CCCCCC"><strong>7日ARPG</strong></td>
+    <td width="5%" bgcolor="#CCCCCC"><strong>月ARPG</strong></td>
+    
+    <td width="5%" bgcolor="#CCCCCC"><strong>日ARPPU</strong></td>
+    <td width="5%" bgcolor="#CCCCCC"><strong>7日ARPPU</strong></td>
+    <td width="5%" bgcolor="#CCCCCC"><strong>月ARPPU</strong></td>
+  </tr>
+  <!--?
+  foreach($PaySituation as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><!--?echo $value["today"];?--></td>
+    <td><!--?echo $value["reg_pay_number_people"];?--></td>
+    <td><!--?echo $value["pay_number_people"];?--></td>
+    
+    <td><echo>($value["today_reg"]==0)?0:round($value["pay_number_people"]/$value["today_reg"],3)*100 </echo></td>
+    <td><echo>($value["pay_number_people"]==0)?0:round($value["reg_pay_number_people"]/$value["pay_number_people"],3)*100 </echo></td>
+    <td><echo>($value["pay_number_people"]==0)?0:round($value["today_pay_count7"]/$value["pay_number_people"],3)*100 </echo></td>
+    <td><echo>($value["pay_number_people"]==0)?0:round($value["today_pay_count30"]/$value["pay_number_people"],3)*100 </echo></td>
+    
+    <td><!--?echo $value["today_reg"]==0?0:round($value["pay_money"]/$value["today_reg"],2);?--></td>
+    <td><!--?echo $value["today_pay_count7"]==0?0:round($value["today_pay7"]/$value["today_pay_count7"],2);?--></td>
+    <td><!--?echo $value["today_pay_count30"]==0?0:round($value["today_pay30"]/$value["today_pay_count30"],2);?--></td>
+    
+    <td><!--?echo $value["pay_number_people"]==0?0:round($value["pay_money"]/$value["pay_number_people"],2);?--></td>
+    <td><!--?echo $value["today_pay_count7"]==0?0:round($value["today_pay7"]/$value["today_pay_count7"],2);?--></td>
+    <td><!--?echo $value["today_pay_count30"]==0?0:round($value["today_pay30"]/$value["today_pay_count30"],2);?--></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<!--?}elseif($_GET["type"]==2){?-->
+<table width="100%" border="1">
+<!--?
+  foreach($ShoufuProps["list"] as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td width="10%"><!--?echo $key;?--></td>
+    <td width="90%"><table width="<!--?echo $value/$ShoufuProps['max']*100;?-->%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="221" bgcolor="#0066FF">数量：<!--?echo $value;?-->&nbsp;&nbsp;&nbsp;百分比:<!--?echo round($value/$ShoufuProps['max']*100,2);?-->%</td>
+        </tr>
+    </table></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<!--?}elseif($_GET["type"]==3){?-->
+<table width="100%" border="1">
+<!--?
+  foreach($ShoufuLv["list"] as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td width="10%">LV:<!--?echo $key;?--></td>
+    <td width="90%"><table width="<!--?echo $value/$ShoufuLv['max']*100;?-->%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="221" bgcolor="#0066FF">数量：<!--?echo $value;?-->&nbsp;&nbsp;&nbsp;百分比:<!--?echo round($value/$ShoufuLv['max']*100,2);?-->%</td>
+        </tr>
+    </table></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<!--?}elseif($_GET["type"]==4){?-->
+<table width="100%" border="1">
+<!--?
+  foreach($ShoufuGameTime["list"] as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td width="10%"><!--?echo round($key/60);?-->分</td>
+    <td width="90%"><table width="<!--?echo $value/$ShoufuGameTime['max']*100;?-->%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="221" bgcolor="#0066FF">数量：<!--?echo $value;?-->&nbsp;&nbsp;&nbsp;百分比:<!--?echo round($value/$ShoufuGameTime['max']*100,2);?-->%</td>
+        </tr>
+    </table></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<!--?}?-->
+<script>
+select_tr("rechlist")
+</script>
+</body>
+</html>

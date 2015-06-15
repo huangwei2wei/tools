@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>按钮</title>
+<link href="button.css" rel="stylesheet" type="text/css" />
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(oForm){
+	var text,n,type;
+	text=oForm.text.value;
+	n=oForm.n.value;
+	var obj=oForm.type;
+	type=obj.options[obj.selectedIndex].value;
+	var str="<input type='"+type+"' value='"+text+"' name='"+n+"'/>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+</head>
+
+<body>
+<table width="231" height="134" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#009900">
+  <form>
+  <tr>
+    <td width="72">标签:</td>
+    <td width="159"><input name="text" type="text" class="text" id="text" size="15" /></td>
+  </tr>
+  <tr>
+    <td>名称:</td>
+    <td><input name="n" type="text" class="text" id="n" size="15" /></td>
+  </tr>
+  <tr>
+    <td>类型:</td>
+    <td><select name="type" id="type">
+      <option value="button">button</option>
+      <option value="submit">submit</option>
+      <option value="reset">reset</option>
+    </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input name="Submit" type="button" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="button" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr></form>
+</table>
+</body>
+</html>

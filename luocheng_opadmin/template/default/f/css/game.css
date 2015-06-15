@@ -1,0 +1,35 @@
+body{margin:4px;font-size: 10pt; background-image: url(/template/default/f/image/back.gif);} 
+table{background-image: url(/template/default/f/image/back.gif);}
+table { border:1px #666 solid; border-collapse:collapse;}
+ table td { border-bottom:1px #666 solid; border-right:1px #666 solid;}
+.back_td{background-image: url(/template/default/f/image/back1.gif);}
+.back_tr{background:url('/template/default/f/image/back1.gif');height:30;}
+
+ul {list-style:none;}
+
+/*分页样式*/
+#pagelist {
+	width:100%;
+	/*margin:5px auto;*/
+	/*padding:6px 0px;*/
+	height:20px;
+	font-size:12px;
+	font-family:Verdana;
+}
+#pagelist ul li {
+	float:left;
+	border:1px solid #5b5b5b;
+	height:20px;
+	line-height:20px;
+	margin:0px 2px;
+	padding:0px 6px;
+}
+#pagelist ul li a, .pageinfo {
+	cursor:pointer;
+	text-decoration:none;
+	color:#0066FF;
+	display:block;
+}
+.pageinfo {color:#757575;}
+.current { background:#FF99FF; display:block; padding:0px 6px; font-weight:bold;}
+/*分页样式END*/

@@ -1,0 +1,30 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" height="28" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="1">
+  <tr>
+    <td width="10%"><strong>ID</strong></td>
+    <td width="30%"><strong>活动</strong></td>
+    <td width="30%"><strong>时间</strong></td>
+    <td width="10%"><strong>双倍奖励</strong></td>
+    <td width="20%"><strong>操作</strong></td>
+  </tr>
+  <variable data="$query_data[0]">
+    <loop list="$i">
+      <tr>
+        <td><echo>$query_data[0][$i]["id"]</echo></td>
+        <td><echo>$query_data[0][$i]["name"]</echo></td>
+        <td><echo>$query_data[0][$i]["time"]</echo></td>
+        <td><echo>(isset($query_data[1]["double_activities"]) && isset($query_data[1]["double_activities"][$query_data[0][$i]["id"]]) && $query_data[1]["double_activities"][$query_data[0][$i]["id"]]==1)?"是":"否"</echo></td>
+        <td><!--?if(isset($query_data[1]["double_activities"]) && isset($query_data[1]["double_activities"][$query_data[0][$i]["id"]])  && $query_data[1]["double_activities"][$query_data[0][$i]["id"]]==1){?--> 
+          <a href="/?module=macro_data&methods=richanghuodong&e=0&id=<echo>$query_data[0][$i]['id']</echo>">取消双倍奖励</a> 
+          <!--?}else{?--> 
+          <a href="/?module=macro_data&methods=richanghuodong&e=1&id=<echo>$query_data[0][$i]['id']</echo>">双倍奖励</a> 
+          <!--?}?--></td>
+      </tr>
+    </loop>
+  </variable>
+</table>

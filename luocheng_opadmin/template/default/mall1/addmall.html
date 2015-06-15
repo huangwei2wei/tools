@@ -1,0 +1,73 @@
+<gettemplet file="default/head.html"/>
+<script>
+var tttttt=new Array();
+<echo>$scriptarr</echo>
+function xuanshe(obj)
+{
+	var wupid=$("wupid").value;
+	if(obj.value==1)
+	{
+		$("money_kk").value=tttttt[wupid][0];
+	}
+	
+	if(obj.value==2)
+	{
+		$("money_kk").value=tttttt[wupid][1];
+	}
+	
+	if(obj.value==3)
+	{
+		$("money_kk").value=tttttt[wupid][2];
+	}
+	$("ttttype").value=tttttt[wupid][3];
+}
+
+function queding()
+{
+	var url="/?module=mall1&methods=addmall";
+	ajax_ultimate(url,"queding_","post","xxform1");	
+}
+
+function queding_(string)
+{
+	parent.location.reload();
+	parent.logoutdiv('movediv');
+}
+</script>
+
+<table width="100%" border="1">
+  <tr>
+    <td align="left">
+    <form id="xxform1" name="xxform1" method="post" action="">
+        <p>请选择物品：
+          <select  name="wupid" id="wupid">
+            <variable data="$getextgoods">
+              <loop list="$i">
+                <option value="<echo>$getextgoods[$i]['goods_ext_id']</echo>">
+                <echo>$getextgoods[$i]["goods_name"]</echo>
+                </option>
+              </loop>
+            </variable>
+          </select>
+        </p>
+        
+        <p>价格类型：
+          <select onChange="xuanshe(this)" name="jiaget" id="jiaget">
+            <option value="1">元宝</option>
+            <option value="2">金币</option>
+            <option value="3">将玉</option>
+          </select>
+          <input type="hidden" name="ttttype" id="ttttype" value="<echo>$ttttype</echo>"/>
+          <input name="mall_id" type="hidden" id="mall_id" value="<echo>$mall_id</echo>" />
+        </p>
+        <p>价格：
+          <input type="text" name="money_kk" id="money_kk" />
+        </p>
+        <p>
+          <input onclick="queding()" type="button" name="button" id="button" value="按钮" />
+        </p>
+      </form></td>
+  </tr>
+</table>
+</body>
+</html>

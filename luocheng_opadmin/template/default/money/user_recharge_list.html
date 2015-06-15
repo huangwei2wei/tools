@@ -1,0 +1,49 @@
+<gettemplet file="default/head.html"/>
+ 
+<table width="100%" border="1">
+  <tr>
+    <td colspan="4" bgcolor="#CCCCCC"><form id="form1" name="form1" method="post" action="/?module=money&methods=user_recharge_list">
+        <label for="Platform"></label>
+        <select name="Platform" id="Platform">
+              <option value="1" selected="selected">角色名</option>
+              <option value="2">充值流水号</option>
+              <option value="3" >用户账号ID</option>
+            </select>
+        <input type="text" name="nickname" id="nickname" value="<?=$_POST["nickname"]?>"/>
+        <input type="submit" name="button" id="button" value="搜索" />
+    </form></td>
+  </tr>
+   <tr>
+    <td  bgcolor="#CCCCCC">充值流水号</td>
+    <td  bgcolor="#CCCCCC">用户账号ID</td>
+    <td  bgcolor="#CCCCCC">角色名</td>
+    <td  bgcolor="#CCCCCC">充值时间</td>
+    <td  bgcolor="#CCCCCC">充值金额</td>
+    <td  bgcolor="#CCCCCC">充值方式</td>
+    <td  bgcolor="#CCCCCC">充值状态</td>
+    <td  bgcolor="#CCCCCC">重发</td>
+  </tr>
+  <!--?
+  $i = 0;
+  foreach($user_recharge_list[0] as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><echo>$value["billno"]</echo></td>
+    <td><echo>$value["openid"]</echo></td>
+    <td><echo>$value["nickname"]</echo></td>
+    <td><echo>date("Y-m-d H:i",$value["ts"])</echo></td>
+    <td><echo>$value["money"]</echo></td>
+    <td>null</td>
+    <td>null</td>
+    <td>null</td>
+  </tr>
+  <!--?
+  	$i++;
+  }
+  ?-->
+
+</table>
+<echo>$user_recharge_list[1]</echo>
+</body>
+</html>

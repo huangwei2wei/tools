@@ -1,0 +1,348 @@
+<gettemplet file="default/head.html"/>
+<SCRIPT LANGUAGE="JavaScript"> 
+<!-- 
+var record = 30;//每页显示多少条记录 
+var count = 120;//记录总数 
+var pageTotal = ((count+record-1)/record)|0;//总页数 
+var pagenum = 1;//将要显示的页码 
+
+Cookie = { 
+ Set : function (){ 
+  var name = arguments[0], value = escape(arguments[1]), days = 365, path = "/"; 
+  if(arguments.length > 2) days = arguments[2]; 
+  if(arguments.length > 3) path = arguments[3]; 
+  with(new Date()){ 
+   setDate(getDate()+days); 
+   days=toUTCString(); 
+  } 
+  document.cookie = "{0}={1};expires={2};path={3}".format(name, value, days, path); 
+ }, 
+ Get : function (){ 
+  var returnValue=document.cookie.match(new RegExp("[\b\^;]?" + arguments[0] + "=([^;]*)(?=;|\b|$)","i")); 
+  return returnValue?unescape(returnValue[1]):returnValue; 
+ } 
+} 
+String.prototype.format = function(){ 
+    var tmpStr = this; 
+    var iLen = arguments.length; 
+    for(var i=0;i<iLen;i++){ 
+        tmpStr = tmpStr.replace(new RegExp("\\{" + i + "\\}", "g"), arguments[i]); 
+    } 
+    return tmpStr; 
+} 
+function setPagenum(){//整理Cookie 
+    pagenum = Cookie.Get("pagenum"); 
+    if(pagenum=="" || pagenum<1){ 
+        pagenum=1; 
+    } 
+} 
+
+setPagenum(); 
+
+//重新整理当前页码，如果页面小于1，则赋值为1，如果大于总页数，则等于总页数 
+coordinatePagenum(pagenum); 
+
+//根据当前要显示的页码取得当前面里第一条记录的号码 
+var pageBegin = (record*(pagenum-1)+1)|0; 
+
+//根据当前要显示的页码取得当前面里最后一条记录的号码 
+var pageEnd = record*pagenum; 
+
+function showhiddenRecord(pagenum){ 
+    number.innerHTML=pagenum; 
+    if(pagenum<=1){ 
+        theFirstPage.innerHTML="第一页"; 
+        thePrePage.innerHTML="上一页"; 
+    }else{ 
+        theFirstPage.innerHTML="<a href=\"javascript:firstPage()\">第一页</a>"; 
+        thePrePage.innerHTML="<a href=\"javascript:prePage()\">上一页</a>"; 
+    } 
+    if(pagenum>=pageTotal){ 
+        theNextPage.innerHTML="下一页"; 
+        theLastPage.innerHTML="最后一页"; 
+    }else{ 
+        theNextPage.innerHTML="<a href=\"javascript:nextPage()\">下一页</a>"; 
+        theLastPage.innerHTML="<a href=\"javascript:lastPage()\">最后一页</a>"; 
+    } 
+    document.getElementById('goto').value=pagenum; 
+    //根据当前要显示的页码取得当前面里第一条记录的号码 
+    pageBegin = (record*(pagenum-1)+1)|0; 
+
+    //根据当前要显示的页码取得当前面里最后一条记录的号码 
+    pageEnd = record*pagenum; 
+    for(var i=1;i<=count;i++){ 
+        if(i>=pageBegin && i<=pageEnd){ 
+            mytable.rows[i].style.display=""; 
+        }else{ 
+            mytable.rows[i].style.display="none"; 
+        } 
+    } 
+    Cookie.Set("pagenum", pagenum); 
+} 
+
+function firstPage(){ 
+    pagenum=1; 
+    showhiddenRecord(pagenum); 
+} 
+
+function lastPage(){ 
+    showhiddenRecord(pageTotal); 
+} 
+
+//重新整理当前页码，如果页面小于1，则赋值为1，如果大于总页数，则等于总页数 
+function coordinatePagenum(num){ 
+    if(num<1){ 
+        num="1"; 
+    }else if(num>pageTotal){ 
+        num=pageTotal; 
+    } 
+} 
+
+function prePage(){ 
+    pagenum--; 
+    coordinatePagenum(pagenum); 
+    showhiddenRecord(pagenum); 
+} 
+
+function nextPage(){ 
+    pagenum++; 
+    coordinatePagenum(pagenum); 
+    showhiddenRecord(pagenum); 
+} 
+
+function gotoPage(num){ 
+    coordinatePagenum(pagenum); 
+    showhiddenRecord(num); 
+} 
+//--> 
+</SCRIPT> 
+
+<table align=center style="text-align:center;"width="80%" border="1">
+<p></p>
+       <tr>
+          <td align="center" colspan="100%" bgcolor="#977C00">人物等级统计</td>
+        </tr>
+<tr >
+    <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>用户等级</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>人数</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><strong>所占所有用户比例</strong></td>
+  </tr>
+
+ <!--?
+  foreach($retval as $value)
+  {
+
+               if($value["lv"]==1)
+				{
+					  $value["lv"]="1";
+				}elseif($value["lv"]==2)
+				{
+				    $value["lv"]="2";
+				}elseif($value["lv"]==3)
+				{
+				    $value["lv"]="3";
+				}elseif($value["lv"]==4)
+				{
+				    $value["lv"]="4";
+				}elseif($value["lv"]==5)
+				{
+				    $value["lv"]="5";
+				}elseif($value["lv"]==6)
+				{
+				    $value["lv"]="6";
+				}elseif($value["lv"]==7)
+				{
+				    $value["lv"]="7";
+				}elseif($value["lv"]==8)
+				{
+				    $value["lv"]="8";
+				}elseif($value["lv"]==9)
+				{
+				    $value["lv"]="9";
+				}elseif($value["lv"]==10)
+				{
+				    $value["lv"]="10";
+				}elseif($value["lv"]==11)
+				{
+				    $value["lv"]="11";
+				}elseif($value["lv"]==12)
+				{
+				    $value["lv"]="12";
+				}elseif($value["lv"]==13)
+				{
+				    $value["lv"]="13";
+				}elseif($value["lv"]==14)
+				{
+				    $value["lv"]="14";
+				}elseif($value["lv"]==15)
+				{
+				    $value["lv"]="15";
+				}elseif($value["lv"]==16)
+				{
+				    $value["lv"]="16";
+				}elseif($value["lv"]==17)
+				{
+				    $value["lv"]="17";
+				}elseif($value["lv"]==18)
+				{
+				    $value["lv"]="18";
+				}elseif($value["lv"]==19)
+				{
+				    $value["lv"]="19";
+				}elseif($value["lv"]==20)
+				{
+				    $value["lv"]="20";
+				}elseif($value["lv"]==21)
+				{
+				    $value["lv"]="21";
+				}elseif($value["lv"]==22)
+				{
+				    $value["lv"]="22";
+				}elseif($value["lv"]==23)
+				{
+				    $value["lv"]="23";
+				}elseif($value["lv"]==24)
+				{
+				    $value["lv"]="24";
+				}elseif($value["lv"]==25)
+				{
+				    $value["lv"]="25";
+				}elseif($value["lv"]==26)
+				{
+				    $value["lv"]="26";
+				}elseif($value["lv"]==27)
+				{
+				    $value["lv"]="27";
+				}elseif($value["lv"]==28)
+				{
+				    $value["lv"]="28";
+				}elseif($value["lv"]==29)
+				{
+				    $value["lv"]="29";
+				}elseif($value["lv"]==30)
+				{
+				    $value["lv"]="30";
+				}
+				
+				
+				elseif($value["lv"]==31)
+				{
+				    $value["lv"]="31";
+				}elseif($value["lv"]==32)
+				{
+				    $value["lv"]="32";
+				}elseif($value["lv"]==33)
+				{
+				    $value["lv"]="33";
+				}elseif($value["lv"]==34)
+				{
+				    $value["lv"]="34";
+				}elseif($value["lv"]==35)
+				{
+				    $value["lv"]="35";
+				}elseif($value["lv"]==36)
+				{
+				    $value["lv"]="36";
+				}elseif($value["lv"]==37)
+				{
+				    $value["lv"]="37";
+				}elseif($value["lv"]==38)
+				{
+				    $value["lv"]="38";
+				}elseif($value["lv"]==39)
+				{
+				    $value["lv"]="39";
+				}elseif($value["lv"]==40)
+				{
+				    $value["lv"]="40";
+				}elseif($value["lv"]==41)
+				{
+				    $value["lv"]="41";
+				}elseif($value["lv"]==42)
+				{
+				    $value["lv"]="42";
+				}elseif($value["lv"]==43)
+				{
+				    $value["lv"]="43";
+				}elseif($value["lv"]==44)
+				{
+				    $value["lv"]="44";
+				}elseif($value["lv"]==45)
+				{
+				    $value["lv"]="45";
+				}elseif($value["lv"]==46)
+				{
+				    $value["lv"]="46";
+				}elseif($value["lv"]==47)
+				{
+				    $value["lv"]="47";
+				}elseif($value["lv"]==48)
+				{
+				    $value["lv"]="江东03";
+				}elseif($value["lv"]==49)
+				{
+				    $value["lv"]="49";
+				}elseif($value["lv"]==50)
+				{
+				    $value["lv"]="50";
+				}elseif($value["lv"]==51)
+				{
+				    $value["lv"]="51";
+				}elseif($value["lv"]==52)
+				{
+				    $value["lv"]="52";
+				}elseif($value["lv"]==53)
+				{
+				    $value["lv"]="53";
+				}elseif($value["lv"]==54)
+				{
+				    $value["lv"]="54";
+				}elseif($value["lv"]==55)
+				{
+				    $value["lv"]="55";
+				}elseif($value["lv"]==56)
+				{
+				    $value["lv"]="56";
+				}elseif($value["lv"]==57)
+				{
+				    $value["lv"]="57";
+				}elseif($value["lv"]==58)
+				{
+				    $value["lv"]="58";
+				}elseif($value["lv"]==59)
+				{
+				    $value["lv"]="59";
+				}elseif($value["lv"]==60)
+				{
+				    $value["lv"]="60";
+				}else
+				{
+				$value["lv"]="等级高于60级或是0级";
+				
+				} 
+  ?-->
+    <tr>
+    <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><echo>$value['lv']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>$value['total']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><echo>(round($value['total']/$user_lv_list["count"],3)*100)</echo>%</td>
+  </tr>    
+ <tr> </tr>  
+  
+  <!--? }
+  ?-->
+</TABLE> 
+<center> 
+共 4 页 30条/页 当前第 <span id="number">1</span> 页 
+<span id="theFirstPage"><a href="javascript:firstPage()">第一页</a></span> 
+<span id="thePrePage"><a href="javascript:prePage()">上一页</a></span> 
+<span id="theNextPage"><a href="javascript:nextPage()">下一页</a></span> 
+<span id="theLastPage"><a href="javascript:lastPage()">最后一页</a></span> 
+转到第<select onChange="gotoPage(this.value)" name="goto"> 
+<option value=1>1</option> 
+<option value=2>2</option> 
+<option value=3>3</option> 
+<option value=4>4</option> 
+</select>页 
+</center> 
+</BODY> 
+</HTML>

@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1">
+  <tr>
+    <td colspan="4">列表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/?module=login&methods=addpurview&view_id=<echo>$get['view_id']</echo>">添加</a></td>
+  </tr>
+  <tr>
+  <td width="30%" bgcolor="#9999FF"><strong>运营商</strong></td>
+    <td width="30%" bgcolor="#9999FF"><strong>管理员</strong></td>
+    <td width="30%" bgcolor="#9999FF"><strong>权限</strong></td>
+    <td width="10%" bgcolor="#9999FF"><strong>操作</strong></td>
+  </tr>
+  <!--?foreach($purview as $key=>$value){
+  $value=(array)$value;
+  ?-->
+  <tr>
+  	<td><echo>$operators["operators"]</echo></td>
+    <td><echo>$key</echo></td>
+    <td>
+    <!--?
+    if($value["purview"]==0)echo "超级管理员";
+    if($value["purview"]==1)echo "运营管理";
+    if($value["purview"]==2)echo "产品管理";
+    if($value["purview"]==3)echo "开发管理";
+  ?-->    
+    </td>
+    <td><a href="/?module=login&methods=delpurview&view_id=<echo>$operators['id']</echo>&purview=<echo>$key</echo>">删除</a></td>
+  </tr>
+  <!--?}?-->
+</table>
+</body>
+</html>

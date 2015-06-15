@@ -1,0 +1,62 @@
+<gettemplet file="default/head.html"/>
+
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">请选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>&nbsp;&nbsp;&nbsp;</label>
+            <label for="Platform"></label>
+           
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+</form>
+
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">日期</td>
+    <td  bgcolor="#CCCCCC">0-29min</td>
+    <td  bgcolor="#CCCCCC">30-59min</td>
+    <td  bgcolor="#CCCCCC">60-89min</td>
+    <td  bgcolor="#CCCCCC">90-119min</td>
+    <td  bgcolor="#CCCCCC">120-149min</td>
+    <td  bgcolor="#CCCCCC">150-179min</td>
+    <td  bgcolor="#CCCCCC">180-240min</td>
+    <td  bgcolor="#CCCCCC">240min以上</td>
+  </tr>
+  <!--?
+
+  foreach($online_duration as $key=>$value)
+  {
+  	$total_num = 0;
+  	$num = 0;
+  	for($i=0;$i<48;$i++) {
+  		if ($i>=7) {
+  			$num += ($value["phase_".$i]?$value["phase_".$i]:0);
+  		}
+  		$total_num += ($value["phase_".$i]?$value["phase_".$i]:0);
+  	}
+  ?-->
+  <tr>
+    <td><echo>substr($value["date"],0,4)."-".substr($value["date"],4,2)."-".substr($value["date"],6,2)</echo></td>
+    <td><echo>($value["phase_0"]?$value["phase_0"]:0).' : '.($total_num?round(($value["phase_0"]?$value["phase_0"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_1"]?$value["phase_1"]:0).' : '.($total_num?round(($value["phase_1"]?$value["phase_1"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_2"]?$value["phase_2"]:0).' : '.($total_num?round(($value["phase_2"]?$value["phase_2"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_3"]?$value["phase_3"]:0).' : '.($total_num?round(($value["phase_3"]?$value["phase_3"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_4"]?$value["phase_4"]:0).' : '.($total_num?round(($value["phase_4"]?$value["phase_4"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_5"]?$value["phase_5"]:0).' : '.($total_num?round(($value["phase_5"]?$value["phase_5"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($value["phase_6"]?$value["phase_6"]:0).' : '.($total_num?round(($value["phase_6"]?$value["phase_6"]:0)/$total_num*100,2):0)</echo>%</td>
+    <td><echo>($num?$num:0).' : '.($total_num?round(($num?$num:0)/$total_num*100,2):0)</echo>%</td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+
+</body></html>

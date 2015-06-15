@@ -1,0 +1,48 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr>
+      <td align="center" colspan="100" bgcolor="#977C00"><form name="form1" method="post" action="">
+          昵称：
+          <input name="nickname" type="text" id="nickname" value="<echo>$_POST['nickname']</echo>">
+          &nbsp;&nbsp;&nbsp;
+          <input type="submit" name="button" id="button" value="提交">
+        </form></td>
+    </tr>
+    <tr >
+      <td width="33%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>模块</strong></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#FF00FF"><strong>金额</strong></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#FFCC00"><strong>时间</strong></td>
+    </tr>
+    <!--?
+  foreach((array)$consumer_query as $value1)
+  {
+      foreach($value1 as $value)
+      {
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#99CCFF"><!--?
+      if(isset($module_name_list[$value["module_sub_id"]])){
+      	echo $module_name_list[$value["module_sub_id"]];
+      }else{
+      	if($value["module_sub_id"]==999)
+        {
+        	echo "充值";
+        }else{
+            if($value["module_sub_id"]==0){
+            	echo "未知";
+            }else{
+                echo $value["module_sub_id"];
+            }
+        }
+      }
+      ?--></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#99CCFF"><echo>$value["money"]</echo></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#99CCFF"><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+    </tr>
+    <!--? }}
+  ?-->
+  </tbody>
+</TABLE>
+</BODY></HTML>

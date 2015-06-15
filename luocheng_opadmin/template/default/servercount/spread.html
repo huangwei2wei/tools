@@ -1,0 +1,52 @@
+<gettemplet file="default/head.html"/>
+
+<!--?if($_GET["add"]==1){?-->
+
+<p><a href="/?module=servercount&methods=spread">推广费用列表</a></p>
+<form name="form1" method="post" action="">
+  <table width="400" border="1" align="center">
+    <tr>
+      <td colspan="2" align="center"><echo>isset($_GET['timecount'])?'更新录入':'推广录入'</echo></td>
+    </tr>
+    <tr>
+      <td width="39">日期</td>
+      <td width="106"><input name="timecount" type="text" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyyMMdd'})" id="timecount" value="<echo>isset($_GET['timecount'])?$_GET['timecount']:0</echo>">
+        <input name="_timecount" type="hidden" id="_timecount" value="<echo>isset($_GET['timecount'])?$_GET['timecount']:0</echo>"></td>
+    </tr>
+    <tr>
+      <td>金额</td>
+      <td><input name="money" type="text" id="money" value="<echo>isset($_GET['money'])?$_GET['money']:0</echo>"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<!--?}else{?-->
+<p><a href="/?module=servercount&methods=spread&add=1">推广费用录入</a></p>
+<table align=center style="text-align:center;"width="100%" border="1">
+  <tbody id="tablelsw2">
+    <tr >
+      <td width="524" bordercolor="#000000" bgcolor="#CCCCCC"><strong>日期</strong></td>
+      <td width="559" bordercolor="#000000" bgcolor="#FFCC00"><strong>推广金额</strong></td>
+      <td width="559" bordercolor="#000000" bgcolor="#FFCC00"><strong>操作</strong></td>
+    </tr>
+    <!--?foreach($spreadlist as $value){
+    ?-->
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$value['timecount']</echo></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><echo>$value['money']</echo></td>
+      <td align="left" bordercolor="#000000" bgcolor="#9999FF"><a href="/?module=servercount&methods=spread&add=1&timecount=<echo>$value['timecount']</echo>&money=<echo>$value['money']</echo>">编辑</a></td>
+    </tr>
+    <!--? }?-->
+    <tr>
+      <td align="left" bordercolor="#000000" bgcolor="#FF66FF"><strong>总充值</strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#FF66FF"><strong>
+        <echo>$huizong</echo>
+        </strong></td>
+      <td align="left" bordercolor="#000000" bgcolor="#FF66FF">&nbsp;</td>
+    </tr>
+  </tbody>
+</TABLE>
+<!--?}?-->
+</BODY></HTML>

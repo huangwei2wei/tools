@@ -1,0 +1,31 @@
+<gettemplet file="default/head.html"/>
+<table width="98%" border="1"  style="border-collapse: collapse; border-style: dotted; border-width: 0px"  bordercolor="#000000" cellspacing="0" cellpadding="2">
+  <tr>
+    <td height=30 colspan=7 bgcolor="#CC6699" align="center"><span class="style1" > </span></td>
+  </tr>
+  <tr>
+    <td width="14%" align=center>用户ID号</td>
+    <td width="16%" align=center>昵称</td>
+    <td width="14%" align=center>等级</td>
+    <td width="14%" align=center>登陆次数</td>
+    <td width="14%" align=center>下线日期</td>
+    <td width="14%" align=center>已有X天未登录</td>
+    <td width="14%" align=center>操作</td>
+  </tr>
+	<!--? foreach((array)$data as $value){?-->
+      <tr>
+        <td><echo>$value["user_id"]</echo></td>
+        <td><echo>$value["name"]</echo></td>
+        <td><echo>$value["lv"]</echo></td>
+        <td><echo>$value[login_sum]</echo></td>
+        <td><echo>date("Y-m-d",$value["downtime"])</echo></td>
+        <td><echo>ceil((time()-$value["downtime"])/86400)</echo></td>
+        <td><a href="/?module=macro_data&methods=query_user_info&nickname=<echo>$value['name']</echo>&query=1" target="_blank">编辑</a></td>
+      </tr>
+	<!--?}?-->
+</table>
+</form>
+<dt align="center">
+  <echo>$pa</echo>
+</dt>
+</BODY></HTML>

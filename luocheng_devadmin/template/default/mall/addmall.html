@@ -1,0 +1,67 @@
+<gettemplet file="default/head.html"/>
+<script>
+var js_goods_type=new Array();
+<echo>$scriptarr</echo>
+
+function select_money_type(obj)
+{
+	$("money_kk").value=1;
+}
+
+function select_goods_type(obj)
+{
+	/*var wupid=obj.value;
+	$("ttttype").value=js_goods_type[wupid];*/
+}
+
+function queding()
+{
+	var url="/?module=mall&methods=addmall";
+	ajax_ultimate(url,"queding_","post","xxform1");	
+}
+
+function queding_(string)
+{
+	parent.location.reload();
+	parent.logoutdiv('movediv');
+}
+</script>
+
+<table width="100%" border="1">
+  <tr>
+    <td align="left"><form id="xxform1" name="xxform1" method="post" action="">
+        <p>请选择物品：
+          <select onChange="select_goods_type(this)"  name="wupid" id="wupid">
+            <option value="0">请选择物品</option>
+            <variable data="$getextgoods">
+              <loop list="$i">
+                <option value="<echo>$getextgoods[$i]['goods_ext_id']</echo>">
+                <echo>$getextgoods[$i]["goods_name"]</echo>
+                </option>
+              </loop>
+            </variable>
+          </select>
+        <!--?if($ttttype==8){echo '总数量:<input name="sum" type="text" id="sum" value="10" size="5" />&nbsp;&nbsp;用户可购买数量:<input name="stint_sum" type="text" id="stint_sum" value="2" size="5" />&nbsp;&nbsp;概率:<input name="rand_p" type="text" id="rand_p" value="0.02" size="8" />';}?--></p>
+        <p>价格类型：
+          <select onChange="select_money_type(this)" name="jiaget" id="jiaget">
+            <option value="0">请选择货币类型</option>
+            <option value="1">元宝</option>
+            <option value="2">铜币</option>
+            <option value="4">将玉</option>
+            <option value="5">军资</option>
+            <option value="9">蓝虎符</option>
+            <option value="10">紫虎符</option>
+            <option value="11">金虎符</option>
+            <option value="12">碎片</option>
+            <option value="13">荣誉点</option>
+          </select>
+          <input name="ttttype" type="hidden" id="ttttype" value="<echo>$ttttype</echo>" />
+          <input name="mall_id" type="hidden" id="mall_id" value="<echo>$mall_id</echo>" />
+          价格：
+          <input type="text" name="money_kk" id="money_kk" />
+          <input onClick="queding()" type="button" name="button" id="button" value="添加" />
+        </p>
+      </form></td>
+  </tr>
+</table>
+</body></html>

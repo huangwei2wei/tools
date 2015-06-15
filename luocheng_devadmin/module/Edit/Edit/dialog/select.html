@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="button.css" rel="stylesheet" type="text/css" />
+<title>下拉列表</title>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var currentRow=null;
+function ok(oForm){
+	var str="<input type=\"text\" name=\""+oForm.n.value+"\" value=\""+oForm.v.value+"\"";
+	if(oForm.disabled.checked){
+		str+=" disabled";
+	}
+	str+="/>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+function add(oForm){
+	var val,txt,row,cell1,cell2,cell3;
+	val=oForm.v.value;
+	txt=oForm.t.value;
+	if(txt==""){
+		alert('text不可为空!');
+		oForm.t.focus();
+		return;
+	}
+	row=document.createElement("tr");
+	cell1=document.createElement("td");
+	cell2=document.createElement("td");
+	cell3=document.createElement("td");
+	cell1.innerHTML="<input type='radio' name='_abc'>";
+	row.appendChild(cell1);
+	cell2.innerHTML=val;
+	row.appendChild(cell2);
+	cell3.innerHTML=txt;
+	cell3.style.paddingLeft="10px";
+	row.appendChild(cell3);	
+	row.style.cursor="pointer";
+	row.onclick=function(){
+		if(currentRow!=null){
+			currentRow.style.backgroundColor="";
+		}
+		currentRow=row;
+		currentRow.style.backgroundColor="#80949F";		
+	}
+	document.getElementById("list").appendChild(row);
+}
+function dec(){
+	if(currentRow==null){
+		return;
+	}
+	document.getElementById("list").removeChild(currentRow);
+}
+
+function moveRow(direction){
+	if(currentRow==null)	return;
+	var obj,cell1,cell2,cell3;
+	if(direction=="up"){
+		obj=currentRow.previousSibling;
+		if(obj==obj.parentNode.getElementsByTagName("tr")[0])		return;
+	}
+	else{
+		obj=currentRow.nextSibling;
+		if(obj==null)		return;
+	}
+	var b=currentRow.childNodes[0].childNodes[0].checked;
+	var newRow=document.createElement("tr");
+	cell1=document.createElement("td");
+	cell2=document.createElement("td");
+	cell3=document.createElement("td");
+	cell3.style.paddingLeft="10px";
+	cell1.innerHTML=currentRow.childNodes[0].innerHTML;
+	cell2.innerHTML=currentRow.childNodes[1].innerHTML;
+	cell3.innerHTML=currentRow.childNodes[2].innerHTML;
+	newRow.appendChild(cell1);
+	newRow.appendChild(cell2);
+	newRow.appendChild(cell3);
+	newRow.style.cursor="pointer";
+	newRow.onclick=function(){
+		if(currentRow!=null){
+			currentRow.style.backgroundColor="";
+		}
+		currentRow=newRow;
+		currentRow.style.backgroundColor="#80949F";
+	}
+	if(direction=="down"){
+		if(obj.nextSibling==null){
+			document.getElementById("list").appendChild(newRow);
+		}
+		else{
+			document.getElementById("list").insertBefore(newRow,obj.nextSibling);
+		}			
+	}
+	else{
+		document.getElementById("list").insertBefore(newRow,obj);
+	}
+	dec();
+	currentRow=newRow;
+	currentRow.style.backgroundColor="#80949F";
+	currentRow.childNodes[0].childNodes[0].checked=b;
+}
+
+function ok(oForm){
+	var str="<select name='"+oForm.n.value+"'>";
+	var obj=document.getElementById("list").getElementsByTagName("tr");
+	var len=obj.length;
+	for(var i=1;i<obj.length;i++){
+		str+="<option value='"+obj[i].childNodes[1].childNodes[0].nodeValue+"'";
+		if(obj[i].childNodes[0].childNodes[0].checked){
+			str+=" selected";
+		}
+		str+=">"+obj[i].childNodes[2].childNodes[0].nodeValue+"</option>";
+	}
+	str+="</select>";
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+</head>
+
+<body>
+<table width="350" height="122" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#009900" style="border-collapse: collapse"><form>
+  <tr>
+    <td width="343">名称(name):
+    <input name="n" type="text" class="text" id="n" size="15" /></td>
+  </tr>
+  <tr>
+    <td>列表:<br />
+      value:
+      <input name="v" type="text" class="text" id="v" size="10" />
+      text:
+      <input name="t" type="text" class="text" id="t" size="10" />
+      <input name="Submit3" type="button" class="button" style="width:22px;" onclick="add(this.form)" value="+"/>
+      <input name="Submit4" type="button" class="button" style="width:22px;" onclick="dec()" value="-"/>
+      <br><br>
+	  <table border="0" cellspacing="0" width="350" style="table-layout :fixed;" id="ta">
+	  <tbody id="list">
+  <tr>
+    <td width="50">状态</td>
+    <td width="150">value</td>
+    <td width="150" style="padding-left:10px;">text</td>
+  </tr></tbody>
+</table>
+<div>
+  <input name="Submit5" type="button" class="button" onclick="moveRow('up')" value="↑"/>
+  <input name="Submit6" type="button" class="button" onclick="moveRow('down')" value="↓"/>
+</div>
+	  
+	  </td>
+  </tr>
+  <tr style="border-top:0px;">
+    <td align="center" valign="middle"><input name="Submit" type="button" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="button" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr>
+  </form>
+</table>
+</body>
+</html>

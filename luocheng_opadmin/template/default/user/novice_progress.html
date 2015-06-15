@@ -1,0 +1,53 @@
+<gettemplet file="default/head.html"/>
+
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">请选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>&nbsp;&nbsp;&nbsp;</label>
+            <label for="Platform"></label>
+           
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+</form>
+
+<table width="100%" border="1">
+   <tr>
+    <td width="9%"  bgcolor="#CCCCCC">编号</td>
+    <td width="24%"  bgcolor="#CCCCCC">步骤</td>
+    <td width="19%"  bgcolor="#CCCCCC">总人数</td>
+    <td width="16%"  bgcolor="#CCCCCC">流失人数</td>
+    <td width="20%"  bgcolor="#CCCCCC">重试人数</td>
+    <td width="12%"  bgcolor="#CCCCCC">流失率</td>
+  </tr>
+  <!--?
+
+  foreach($datalist as $key=>$value)
+  {
+  if($value["total_reg"]==0){
+  	$l=0;
+  }else{
+  	$l=round($value["Outflow3"]/$value["total_reg"],4)*100;
+  }
+  ?-->
+  <tr>
+    <td><echo>$key</echo></td>
+    <td><echo>$value["step_name"]</echo></td>
+    <td><echo>$value["total"]</echo></td>
+    <td><echo>$value["Outflow3"]</echo></td>
+    <td><echo>$value["preclude_total"]-$value["total"]</echo></td>
+    <td><echo>$l</echo>%</td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+
+</body></html>

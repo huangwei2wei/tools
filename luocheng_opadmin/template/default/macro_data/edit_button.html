@@ -1,0 +1,66 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+ <div align="center"><span class="style1">公告编辑</span></div>
+<form id="form2" name="form2" method="post" action="">
+        <table width="515" border="1" align="center">
+          <tr>
+            <td width="111">类型</td>
+            <td width="388">
+            <select name="type" id="type" >
+              <option  <!--? if($info_["type"]=="顶端公告"){echo "selected";}?--> value="顶端公告" >顶端公告</option>
+              <option <!--? if($info_["type"]=="聊天公告"){echo "selected";}?--> value="聊天公告">聊天公告</option>
+              <option <!--? if($info_["type"]=="右侧公告"){echo "selected";}?--> value="右侧公告">右侧公告</option>
+           </select> 
+              <input name="id" type="hidden" id="id" value="<echo>$info_['id']</echo>" />
+            </td>
+          </tr>
+          
+         <tr>
+            <td>时间间隔</td>
+            <td>
+            <input name="interval" type="text" id="textfield3" value="<echo>$info_['interval']</echo>" /> *分钟</td>
+         </tr>
+         
+        <tr>
+            <td>时间A</td>
+            <td><input name="time1" type="text" id="time1"  class="Wdate" value="<echo>$info_['time1']</echo>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /> 
+            </td>
+          </tr>
+          
+          <tr> 
+            <td>时间B</td>
+            <td><input name="time2" type="text" id="time2" class="Wdate" value="<echo>$info_['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+            </td>
+          </tr>
+          
+          <tr>
+            <td>内容</td>
+            <td><textarea name="info" cols="50" rows="5" id="textfield6"><echo>$info_['info']</echo></textarea></td>
+          </tr>
+          
+          <tr> 
+            <td colspan="2" align="center">
+            <input type="submit" name="button2" id="button2" value="提交" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="button"onclick="location.href='/?module=macro_data&methods=notice_list'" value="返回" />
+            </td>
+          </tr>
+        </table>
+</form>
+</body>
+</html>

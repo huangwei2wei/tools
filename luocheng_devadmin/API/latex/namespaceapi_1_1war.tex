@@ -1,0 +1,104 @@
+\hypertarget{namespaceapi_1_1war}{\section{api.\-war 命名空间参考}
+\label{namespaceapi_1_1war}\index{api.\-war@{api.\-war}}
+}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceapi_1_1war_a094b5ead8e193f4dea39c432166db503}{test\-\_\-start}
+\item 
+def \hyperlink{namespaceapi_1_1war_a28978e73db622577422216b171b74d00}{copy\-\_\-start}
+\item 
+def \hyperlink{namespaceapi_1_1war_a0f4f2c80a1fec70945ae255d5b86d599}{reg\-\_\-raid}
+\item 
+def \hyperlink{namespaceapi_1_1war_a6860fc981b6a111fa763fcb36d9a6803}{raid}
+\item 
+def \hyperlink{namespaceapi_1_1war_ae19b62f2cb0f6f24ead024a236c89def}{stop\-\_\-raid}
+\end{DoxyCompactItemize}
+\subsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceapi_1_1war_acf4f0adf976d198c5eac411d9d5bbbe5}{pve\-\_\-war} = user\-\_\-pve\-\_\-war.\-war()
+\item 
+tuple \hyperlink{namespaceapi_1_1war_ae54fd1efdd0587ecbd6a788b662d497a}{role} = base\-\_\-role.\-user\-\_\-info()
+\item 
+tuple \hyperlink{namespaceapi_1_1war_af9485067edcb8ab2a1319223851a5535}{email} = base\-\_\-email.\-email()
+\end{DoxyCompactItemize}
+
+
+\subsection{函数说明}
+\hypertarget{namespaceapi_1_1war_a28978e73db622577422216b171b74d00}{\index{api\-::war@{api\-::war}!copy\-\_\-start@{copy\-\_\-start}}
+\index{copy\-\_\-start@{copy\-\_\-start}!api::war@{api\-::war}}
+\subsubsection[{copy\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-war.\-copy\-\_\-start (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{map\-\_\-list\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1war_a28978e73db622577422216b171b74d00}
+\begin{DoxyVerb}* 副本战斗
+* @param int map_list_id  要攻击的地图列表ID
+* @return  防御部队具体数据 
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1war_a6860fc981b6a111fa763fcb36d9a6803}{\index{api\-::war@{api\-::war}!raid@{raid}}
+\index{raid@{raid}!api::war@{api\-::war}}
+\subsubsection[{raid}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-war.\-raid (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{map\-\_\-id, }
+\item[{}]{raidsum}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1war_a6860fc981b6a111fa763fcb36d9a6803}
+\begin{DoxyVerb}* 扫荡
+* @param int map_id  地图ID
+* @param int raidsum  扫荡次数
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1war_a0f4f2c80a1fec70945ae255d5b86d599}{\index{api\-::war@{api\-::war}!reg\-\_\-raid@{reg\-\_\-raid}}
+\index{reg\-\_\-raid@{reg\-\_\-raid}!api::war@{api\-::war}}
+\subsubsection[{reg\-\_\-raid}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-war.\-reg\-\_\-raid (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id, }
+\item[{}]{map\-\_\-id, }
+\item[{}]{imax}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1war_a0f4f2c80a1fec70945ae255d5b86d599}
+\begin{DoxyVerb}* 注册扫荡
+* @param int map_id  地图ID
+* @param int imax  扫荡次数
+* @return  
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1war_ae19b62f2cb0f6f24ead024a236c89def}{\index{api\-::war@{api\-::war}!stop\-\_\-raid@{stop\-\_\-raid}}
+\index{stop\-\_\-raid@{stop\-\_\-raid}!api::war@{api\-::war}}
+\subsubsection[{stop\-\_\-raid}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-war.\-stop\-\_\-raid (
+\begin{DoxyParamCaption}
+\item[{}]{user\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1war_ae19b62f2cb0f6f24ead024a236c89def}
+\begin{DoxyVerb}* 停止扫荡
+* @return
+\end{DoxyVerb}
+ \hypertarget{namespaceapi_1_1war_a094b5ead8e193f4dea39c432166db503}{\index{api\-::war@{api\-::war}!test\-\_\-start@{test\-\_\-start}}
+\index{test\-\_\-start@{test\-\_\-start}!api::war@{api\-::war}}
+\subsubsection[{test\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}def api.\-war.\-test\-\_\-start (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{typest, }
+\item[{}]{monster\-\_\-list\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{namespaceapi_1_1war_a094b5ead8e193f4dea39c432166db503}
+\begin{DoxyVerb}* 战斗测试（测试期间生效）
+* @param int typest  模式，True 直接怪物集合ID ，False 副本信息ID
+* @param int monster_list_id  要攻击的地图列表ID
+* @return  防御部队具体数据 
+\end{DoxyVerb}
+ 
+
+\subsection{变量说明}
+\hypertarget{namespaceapi_1_1war_af9485067edcb8ab2a1319223851a5535}{\index{api\-::war@{api\-::war}!email@{email}}
+\index{email@{email}!api::war@{api\-::war}}
+\subsubsection[{email}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-war.\-email = base\-\_\-email.\-email()}}\label{namespaceapi_1_1war_af9485067edcb8ab2a1319223851a5535}
+\hypertarget{namespaceapi_1_1war_acf4f0adf976d198c5eac411d9d5bbbe5}{\index{api\-::war@{api\-::war}!pve\-\_\-war@{pve\-\_\-war}}
+\index{pve\-\_\-war@{pve\-\_\-war}!api::war@{api\-::war}}
+\subsubsection[{pve\-\_\-war}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-war.\-pve\-\_\-war = user\-\_\-pve\-\_\-war.\-war()}}\label{namespaceapi_1_1war_acf4f0adf976d198c5eac411d9d5bbbe5}
+\hypertarget{namespaceapi_1_1war_ae54fd1efdd0587ecbd6a788b662d497a}{\index{api\-::war@{api\-::war}!role@{role}}
+\index{role@{role}!api::war@{api\-::war}}
+\subsubsection[{role}]{\setlength{\rightskip}{0pt plus 5cm}tuple api.\-war.\-role = base\-\_\-role.\-user\-\_\-info()}}\label{namespaceapi_1_1war_ae54fd1efdd0587ecbd6a788b662d497a}

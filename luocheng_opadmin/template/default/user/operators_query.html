@@ -1,0 +1,143 @@
+<gettemplet file="default/head.html"/>
+<table align="center"width="100%" border="1">
+  <tr>
+    <td width="78" colspan="100%" align="center" bgcolor="#977C00">精彩活动</td>
+  </tr>
+</table>
+<table align="center" width="100%" border="1">
+  <tr>
+    <td colspan="4"><form align="center" action="/?module=user&methods=operators_query" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+        &nbsp;&nbsp;
+        <select name="type" id="type">
+          <option value="7" 
+          <echo>$_POST['type']==7?"selected":""</echo>
+          >精彩活动
+          </option>
+          <option value="6" 
+          <echo>$_POST['type']==6?"selected":""</echo>
+          >阵营奖励
+          </option>
+          <option value="12" 
+          <echo>$_POST['type']==12?"selected":""</echo>
+          >boss奖励
+          </option>
+          <option value="8" 
+          <echo>$_POST['type']==8?"selected":""</echo>
+          >军团战奖励
+          </option>
+          <option value="11" 
+          <echo>$_POST['type']==11?"selected":""</echo>
+          >登录奖励
+          </option>
+          <option value="4" 
+          <echo>$_POST['type']==4?"selected":""</echo>
+          >竞技排行奖励
+          </option>
+          <option value="2" 
+          <echo>$_POST['type']==2?"selected":""</echo>
+          >玩家信件
+          </option>
+          <option value="1" 
+          <echo>$_POST['type']==1?"selected":""</echo>
+          >系统信件
+          </option>
+          <option value="9" 
+          <echo>$_POST['type']==9?"selected":""</echo>
+          >客服奖励
+          </option>
+        </select>
+        &nbsp;&nbsp;
+        昵称：
+        <input name="name" type="text" id="name" value="<echo>$_POST['name']</echo>">
+        <input type="submit" name="button" id="button" value="提交">
+      </form></td>
+  </tr>
+  <!--?if($_POST['type']==7){?-->
+  <tr>
+    <td width="30%"><strong>活动</strong></td>
+    <td width="30%"><strong>子项</strong></td>
+    <td width="15%"><strong>发奖时间</strong></td>
+    <td width="15%"><strong>允许领取奖励时间</strong></td>
+    <td width="10%"><strong>领取状态</strong></td>
+  </tr>
+  <!--?
+      foreach((array)$operators_query as $key=>$value)
+	  {
+	  ?-->
+  <tr>
+    <td><echo>$value["title"]</echo>
+      &nbsp;(id:
+      <echo>$value["id"]</echo>
+      )</td>
+    <td><echo>$value["condition_info"]</echo></td>
+    <td><echo>date("Y-m-d H:i:s",$value["send_time"])</echo></td>
+    <td><echo>$value["info"]["cycle"]==9?$value["info"]["award_time1"]:date("Y-m-d H:i:s",$value["info"]["award_time1"])</echo>
+      <br>
+      <echo>$value["info"]["cycle"]==9?$value["info"]["award_time2"]:date("Y-m-d H:i:s",$value["info"]["award_time2"])</echo></td>
+    <td><!--?
+        if($value["read_state"]==0)echo "未领";
+        if($value["read_state"]==1)echo "已领";
+        if($value["read_state"]==2)echo "已领";
+        if($value["read_state"]==-1)echo "删除";
+        ?--></td>
+  </tr>
+  <!--?
+	  }
+	  ?--> 
+  <!--?}else{?-->
+  <tr>
+    <td width="40%"><strong>标题</strong></td>
+    <td width="20%"><strong>信息</strong></td>
+    <td width="10%"><strong>发奖时间</strong></td>
+    <td width="10%"><strong>领取状态</strong></td>
+  </tr>
+  <!--?
+      foreach((array)$operators_query as $key=>$value)
+	  {
+	  ?-->
+  <tr>
+    <td><echo>$value["title"]</echo>
+      &nbsp;(id:
+      <echo>$value["id"]</echo>
+      )</td>
+    <td><!--?
+        if($_POST['type']==4 or $_POST['type']==6 or $_POST['type']==9 or $_POST['type']==12 ){
+            if(is_string($value["info"])){
+            	$value["info"]=(array)json_decode($value["info"]);
+             }
+             
+             if(is_object($value["info"])){
+                foreach((array)$value["info"] as $k=>$v)
+                {
+                    if($k!="title")echo $k.":".$v."<br>";
+                }
+            }else{
+            	for($i=0;$i<count($value["info"]);$i++)
+                {
+                	foreach((array)$value["info"][$i] as $k=>$v)
+                    {
+                        if($k!="title")echo $k.":".$v."<br>";
+                    }
+                }
+            }
+      }else{
+            if(is_array($value["info"])){
+                $value["info"]=json_encode($value["info"]);
+            }
+      		echo $value["info"];
+      }
+	  ?--></td>
+    <td><echo>date("Y-m-d H:i:s",$value["send_time"])</echo></td>
+    <td><!--?
+        if($value["read_state"]==0)echo "未读";
+        if($value["read_state"]==1)echo "已读";
+        if($value["read_state"]==2)echo "已领";
+        if($value["read_state"]==-1)echo "删除";
+        ?--></td>
+  </tr>
+  <!--?
+	  }
+	  ?--> 
+  <!--?}?-->
+</table>
+</BODY></HTML>

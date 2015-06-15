@@ -1,0 +1,190 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="button.css" rel="stylesheet" type="text/css" />
+<title>字幕</title>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+window.onload=function(){
+	if(document.all){
+		document.getElementById("text").value=dialogArguments.frames["design"].document.selection.createRange().text;
+	}
+}
+function ok(obj){
+	var text=obj.text.value;
+	if(text==""){
+		alert("文本不能为空!");
+		obj.text.focus();
+		return;
+	}
+	var direction,scrolldelay,scrollamount,behavior,align,width,height,loop,mouse,strHTML;
+	direction=obj.a[0].checked?"direction=\"left\"":"direction=\"right\"";
+	scrolldelay="scrolldelay=\""+obj.scrolldelay.value+"\"";
+	scrollamount="scrollamount=\""+obj.scrollamount.value+"\"";
+	behavior="behavior=\"";
+	if(obj.b[0].checked){
+		behavior="";
+	}
+	else
+	if(obj.b[1].checked){
+		behavior+="slide\"";
+	}
+	else{
+		behavior+="alternate\"";
+	}
+	align="align=\"";
+	if(obj.c[0].checked){
+		align="";
+	}
+	else
+	if(obj.c[1].checked){
+		align+="middle\"";
+	}
+	else{
+		behavior+="bottom\"";
+	}
+	if(obj.width.value==""){
+		width="";
+	}
+	else{
+		width="width=\""+obj.width.value+"\"";
+	}
+	if(obj.height.value==""){
+		height="";
+	}
+	else{
+		height="height=\""+obj.height.value+"\"";
+	}
+	if(obj.d[0].checked){
+		loop="";
+	}		
+	else{
+		loop="loop=\""+obj.loop.value+"\"";
+	}
+	if(obj.mouse.checked){
+		mouse="onmouseover=\"this.stop();\" onmouseout=\"this.start();\"";
+	}
+	else{
+		mouse="";
+	}
+	strHTML="<marquee "+scrollamount+" "+scrolldelay+" "+align+" "+loop+" "+width+" "+height+" "+direction+" "+behavior+mouse+">";
+	strHTML+=text;
+	strHTML+="</marquee>";
+	//alert(strHTML);
+	if(document.all){
+		dialogArguments.insertHTML(strHTML);
+	}
+	else{
+		opener.insertHTML(strHTML);
+		alert('该字幕只有预览时才可见!');
+	}
+	window.close();
+}
+//-->
+</SCRIPT>
+</head>
+
+<body>
+<table width="430" height="197" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#009900" style="border-collapse: collapse">
+  <form>
+  <tr>
+    <td height="28" colspan="2">文本:
+    <input name="text" type="text" class="text" id="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td width="173" align="center" valign="middle"><table width="100%" height="26%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="41%" align="left"><strong>方向:</strong></td>
+        <td width="59%" align="left"><strong>速度:</strong></td>
+      </tr>
+      <tr>
+        <td align="left"><input name="a" type="radio" value="radiobutton" checked="checked" />
+          左</td>
+        <td align="left">延迟:
+          <input name="scrolldelay" type="text" class="text" id="scrolldelay" value="90" size="5" /></td>
+      </tr>
+      <tr>
+        <td align="left"><input type="radio" name="a" value="radiobutton" />
+          右</td>
+        <td align="left">数量:
+          <input name="scrollamount" type="text" class="text" id="scrollamount" value="6" size="5" /></td>
+      </tr>
+    </table></td>
+    <td width="241"><table width="241" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="103" align="left"><strong>表现方式:</strong></td>
+        <td width="138" align="left"><strong>文本对齐方式:</strong></td>
+      </tr>
+      <tr>
+        <td align="left"><input name="b" type="radio" value="radiobutton" checked="checked" />
+          滚动条</td>
+        <td align="left"><input name="c" type="radio" value="radiobutton" checked="checked" />
+          顶边对齐</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="radio" name="b" value="radiobutton" />
+          幻灯片</td>
+        <td align="left"><input type="radio" name="c" value="radiobutton" />
+          垂直对齐</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="radio" name="b" value="radiobutton" />
+          交替</td>
+        <td align="left"><input type="radio" name="c" value="radiobutton" />
+          底边对齐</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="2"><strong>大小:</strong></td>
+        </tr>
+      <tr>
+        <td width="32%">宽度:</td>
+        <td width="68%"><input name="width" type="text" class="text" id="width" size="5" />
+          px</td>
+      </tr>
+      <tr>
+        <td>高度:</td>
+        <td><input name="height" type="text" class="text" id="height" size="5" />
+          px</td>
+      </tr>
+    </table></td>
+    <td><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="2"><strong>重复:</strong></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input name="d" type="radio" value="radiobutton" checked="checked" />          
+          连续</td>
+      </tr>
+      <tr>
+        <td width="50%"><input type="radio" name="d" value="radiobutton" />
+          <input name="loop" type="text" class="text" id="loop" size="5" />
+          次</td>
+        <td width="50%"><input name="mouse" type="checkbox" id="mouse" value="checkbox" checked>
+          响应鼠标</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="middle"><input name="Submit" type="button" class="button" onClick="ok(this.form)" value="确 定"/>
+      &nbsp;&nbsp;
+    <input name="Submit2" type="button" class="button" onClick="window.close()" value="取 消"/></td>
+  </tr>
+  </form>
+</table>
+</body>
+</html>

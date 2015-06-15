@@ -1,0 +1,76 @@
+<gettemplet file="default/head.html"/>
+<form name="form1" method="post" action="">
+  <table width="486" border="1" align="center">
+    <tr>
+      <td width="64">注册日期</td>
+      <td width="177"><input name="time1" type="text" id="time1" class="Wdate" value="<echo>$_POST['time1']</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="175"><input name="time2" type="text" id="time2" class="Wdate" value="<echo>$_POST['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd '})" /></td>
+      <td width="42"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr >
+      <td colspan="3" bordercolor="#000000" bgcolor="#CCCCCC">大R充值</td>
+    </tr>
+    <tr >
+      <td width="33%" bordercolor="#000000" bgcolor="#9933CC"><strong>昵称</strong></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9933CC"><strong>充值总金额</strong></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#9933CC"><strong>注册时间</strong></td>
+    </tr>
+    <!--?
+$maxmoney=0;
+  foreach($userdate[0] as $key=>$value)
+  {
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF"><echo>$userdate[2][$value["user_id"]]</echo></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF"><echo>$value["money"]/10</echo></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#9999FF"><echo>date("Y-m-d H:i:s",$value["createtime"])</echo></td>
+    </tr>
+    <!--? 
+ $maxmoney+=$value["money"];
+ }
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF">&nbsp;</td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF">总金额：
+        <echo>$maxmoney</echo></td>
+      <td width="34%" bordercolor="#000000" bgcolor="#9999FF">&nbsp;</td>
+    </tr>
+  </tbody>
+</TABLE>
+<p>&nbsp;</p>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <p></p>
+  <tbody id="tablelsw2">
+    <tr >
+      <td colspan="3" bordercolor="#000000" bgcolor="#CCCCCC">非R等级情况</td>
+    </tr>
+    <tr >
+      <td width="33%" bordercolor="#000000" bgcolor="#9933CC"><strong>等级</strong></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9933CC"><strong>数量</strong></td>
+    </tr>
+    <!--?
+   $max=0;
+  foreach($userdate[1] as $key=>$value)
+  {
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF"><echo>$key</echo></td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF"><echo>$value</echo></td>
+    </tr>
+    <!--? 
+ $max+=$value;
+ }
+  ?-->
+    <tr>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF">&nbsp;</td>
+      <td width="33%" bordercolor="#000000" bgcolor="#9999FF">总人数：
+        <echo>$max</echo></td>
+    </tr>
+  </tbody>
+</TABLE>
+</BODY></HTML>

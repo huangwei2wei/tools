@@ -1,0 +1,67 @@
+<gettemplet file="default/head.html"/>
+  <SCRIPT LANGUAGE="JavaScript">
+	<!-- Begin
+	function getRandomNum(lbound, ubound) {
+		return (Math.floor(Math.random() * (ubound - lbound)) + lbound);
+	}
+	function getRandomChar(number, lower, upper, other, extra) {
+		var numberChars = "0123456789";
+		var lowerChars = "abcdefghiJKLMNOPQrstuvwxyz";
+		var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var charSet = extra;
+		if (number == true)
+		charSet += numberChars;
+		if (lower == true)
+		charSet += lowerChars;
+		if (upper == true)
+		charSet += upperChars;
+		if (other == true)
+		charSet += otherChars;
+		return charSet.charAt(getRandomNum(0, charSet.length));
+	}
+	function getPassword(length, extraChars, firstNumber, firstLower, firstUpper, firstOther,
+		latterNumber, latterLower, latterUpper, latterOther) {
+		var rc = "";
+		if (length > 0)
+			rc = rc + getRandomChar(firstNumber, firstLower, firstUpper, firstOther, extraChars);
+		for (var idx = 1; idx < length; ++idx) {
+			rc = rc + getRandomChar(latterNumber, latterLower, latterUpper, latterOther, extraChars);
+		}
+		return rc;
+	}
+	
+	function servers(obj) {
+			var mongodbs=document.getElementById("mongodbs").value.split("_");
+			document.getElementById("mongodbs").value="s_"+mongodbs[1]+"_"+obj.value;
+	}
+	// End -->
+	</script>
+ <form method="post" action="/?module=boss&methods=game_fu">
+ <p></p>
+
+<input type="hidden" name="submittype" value="分辨初次加载页面"/>
+</form>
+
+<echo>$html</echo>
+
+ <center>
+	<table width=80% border=0>
+	<tr align=center>
+	<td>
+	<form name="myform">
+
+
+	<tr align=center>
+	<td>
+	<div align="center">随机密码:
+	<input type=text name=password size=20>
+	
+	<input type=button value="产生密码" onClick="document.myform.password.value =getPassword(16,'',true,true,false,false,true,true,false,false)"/>
+	</div>
+	</form>
+
+	</td>
+	</tr>
+	</table>
+	</center>
+

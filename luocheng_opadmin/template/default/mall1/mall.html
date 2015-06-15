@@ -1,0 +1,145 @@
+<gettemplet file="default/head.html"/>
+<style>
+p{ margin:0px; padding:0px;}
+.divkk{border:1px dashed #000;}
+/*=========弹出框=========*/
+/*系统*/
+/*头部背景*/
+.movediv {
+	background:url(/template/default/aa_images/img/sys/move/bg2.jpg) repeat-x;
+}
+/*整个背景*/
+#movediv_ {
+	overflow:hidden;
+}
+/* 用户自定义*/
+.move_div {
+	Z-INDEX: 999;
+	position:absolute; /*width:624px; height:415px;*/
+	width:625px;
+	height:420px;
+	margin:40px 0 0 40px;
+}
+/*=========弹出窗=========*/
+.frame {
+	width:625px;
+	height:420px;
+}
+.frame-a {
+	width:625px;
+	height:4px;
+}
+.frame-a div {
+	height:30px;
+	float:left;
+}
+.frame-a .w24 {
+	width:4px;
+}
+.frame-a .f-am1 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/top-2bg.gif);
+}
+.frame-a .f-am2 {
+	width:617px;
+	background-image:url(./template/default/aa_images/frame/min/bot-2bg.gif);
+}
+.frame-b {
+	width:625px; /*height:383px;*/
+	height:370px;
+}
+.frame-b .f-bl, .frame-b .f-br, .f-bm {  /*height:383px;*/
+	height:370px;
+	float:left;
+}
+.f-bl {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-l.gif);
+}
+.f-br {
+	width:4px;
+	background-image:url(./template/default/aa_images/frame/min/mid-r.gif);
+}
+.f-bm {
+	width:617px;
+	background-color:#ffffff;
+}
+</style>
+
+<table width="69%" border="1">
+  <tr>
+    <td align="center"><strong>
+      <echo>$arr[$_GET["type"]]</echo>
+    </strong></td>
+  </tr>
+  <tr>
+    <td height="304" valign="top">
+    <div style="height:200px; width:850px;">
+    <!--?
+    for($i=0;$i<17;$i++)
+    {
+    	if(isset($mall[$i]) && $mall[$i]["goods_ext_id"]>0)
+        {
+    ?-->
+    	<div class="divkk" style="width:210px; height:90px; float:left; margin:5px;">
+        <div style="float:left;"><img src="/res/goods_images/90/<echo>$mall[$i]['goods_id']</echo>.jpg" alt="" name="ss" width="90" height="90" id="ss" /></div>
+        <div style="float:left; width:200px;">
+          <p>&nbsp; 名称:<echo>$mall[$i]['goods_name']</echo></p>
+          <p>
+            &nbsp;类:<select onblur="updata_tmp(this,<echo>$mall[$i]['mall_id']</echo>,'money_type')" name="select" id="select">
+    <option  <!--? echo $mall[$i]['money_type']==1?"selected":"";?--> value="1">元宝</option>
+    <option <!--? echo  $mall[$i]['money_type']==2?"selected":"";?--> value="2">金币</option>
+    <option <!--? echo $mall[$i]['money_type']==3?"selected":"";?--> value="3">将玉</option>
+            </select></p>
+            <p>&nbsp;价: <input onblur="updata_tmp(this,<echo>$mall[$i]['mall_id']</echo>,'money')" name="textfield" type="text" id="textfield" value="<echo>$mall[$i]['money']</echo>" size="5" />
+            </p>
+              <p align="right"><a href="#" onclick="delegoods(<echo>$mall[$i]['mall_id']</echo>)">清除</a></p>
+        </div>
+    	</div>
+    <!--?
+    	}else{?-->
+        <div  class="divkk" style="width:200px; height:90px; float:left; margin:5px;"><a href="#" onclick="addmall(<echo>$mall[$i]['mall_id']</echo>)">添加</a></div>
+        <!--?}
+    }
+    ?-->
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td height="47" align="center" valign="middle"><echo>$p</echo></td>
+  </tr>
+</table>
+<div id='movediv' style="display:none;"></div>
+<script>
+function updata_tmp(obj,id,tab)
+{
+	var url="/?module=mall1&methods=upmall&id="+id+"&field="+tab+"&value="+obj.value;
+	ajax_ultimate(url,"updata_tmp_","get");	
+}
+
+function updata_tmp_(string)
+{
+	if(string)
+	{
+		//alert("保存成功");
+	}else{
+		//alert("保存失败");
+	}
+}
+
+function addmall(mall_id)
+{
+	movediv("/?module=mall1&methods=uiaddmall&type=<echo>$type</echo>&mall_id="+mall_id,"","move_div",1);
+}
+
+function delegoods(gid)
+{
+	var url="/?module=mall1&methods=delmall&gid="+gid;
+	ajax_ultimate(url,"delegoods_","get");	
+}
+
+function delegoods_(string)
+{
+	location.reload();	
+}
+</script>

@@ -1,0 +1,69 @@
+<gettemplet file="default/head.html"/>
+<p>
+<!--?
+$parameter_url=array();
+$parameter_url[]=array("url"=>"/?module=".$obj->get['module']."&methods=goods_track_module&type=1","name"=>"模块发放");
+$parameter_url[]=array("url"=>"/?module=".$obj->get['module']."&methods=goods_track_user&type=2","name"=>"物品情况");
+echo create_url($parameter_url,$obj->get['type']==1?"模块发放":"物品情况");
+?-->
+</p>
+<form id="form1" name="form1" method="post" action="">
+<table width="100%" border="1">
+  <tr>
+    <td width="6%">搜索</td>
+    <td>&nbsp;&nbsp;用户昵称:
+		<input name="nickname" type="text" id="nickname" value="<echo>isset($_POST['nickname'])?$_POST['nickname']:''</echo>" size="12" /> 
+&nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="查询" /></td>
+    </tr>
+</table>
+</form>
+<table width="100%" border="1" id="reglist">
+  <tr>
+    <td width="20%" bgcolor="#CCCCCC">物品</td>
+    <td width="67%"  bgcolor="#CCCCCC"><table width="100%" border="1">
+      <tr>
+        <td width="25%" bgcolor="#CCCCCC">模块</td>
+        <td width="25%" bgcolor="#CCCCCC">时间</td>
+        <td width="25%" bgcolor="#CCCCCC">数量</td>
+        <td width="25%" bgcolor="#CCCCCC">状态</td>
+      </tr>
+    </table></td>
+    <td width="13%"  bgcolor="#CCCCCC">理论数量/实际数量</td>
+  </tr>
+  <!--?
+  $i=0;
+  foreach((array)$rundata[0] as $key=>$value)
+  {
+      if(in_array($key,array("青龙","白虎","朱雀","玄武","麒麟")))
+      {
+        continue;
+      }
+      $i++;
+  ?-->
+  <tr bgcolor="<echo>$i%2==0?'#E6E6E6':'#ffffff'</echo>">
+    <td ><echo>$key</echo></td>
+    <td  >
+      <table width="100%" border="1">
+        <!--?
+          foreach($value["list"] as $v)
+          {
+          	$info=isset($v["info"])?$v["info"]:"";
+        ?-->
+        <tr>
+          <td width="25%"><echo>isset($modulename[$v["module_sub_id"]])?$modulename[$v["module_sub_id"]]:$v["module_sub_id"]</echo></td>
+          <td width="25"><echo>date("Y-m-d H:i:s",$v["time"])</echo></td>
+          <td width="25%"><echo>$v["max"]</echo></td>
+          <td width="25%"><echo>$v["e"].$info</echo></td>
+        </tr>
+        <!--?}?-->
+      </table>
+    </td>
+    <td ><echo>$value["theory_count"]</echo>/<echo>isset($rundata[1][$key])?$rundata[1][$key]:0</echo></td>
+  </tr>
+  <!--?}?-->
+</table>
+<script>
+select_tr("reglist")
+</script>
+

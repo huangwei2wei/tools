@@ -1,0 +1,45 @@
+<gettemplet file="default/head.html"/>
+<style type="text/css">
+  #container {
+	width : 600px ;
+	height: <echo>count($queryPlayer)>4? count($queryPlayer)*100: 400</echo>px ;
+	margin: 8px auto;
+  }
+</style>
+
+
+  <table align=center style="text-align:center;"width="80%" border="1">
+    <p></p>
+    <table id="reglist" width="100%" border="0" cellpadding="0" cellspacing="1">
+      <tr>
+        <td align="center" colspan="101" bgcolor="#977C00">
+        <form name="form1" method="post" action="">
+	        平台：<select name="mobile_platforms" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($d as $key=>$value){
+							$select = "";
+    						if($_POST["mobile_platforms"] == $value){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value</echo>"  <echo>$select</echo> ><echo>$value</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+				<input type="submit" name="button" id="button" value="查询">
+				
+          </form>
+          </td>
+      </tr>
+      <tr >
+      </tr>
+  </table>
+<table width="100%">
+<tr>
+  <td align="center" width="100%"><echo>$userLvFb</echo></td>
+</tr>
+</table>
+</BODY>
+</HTML>

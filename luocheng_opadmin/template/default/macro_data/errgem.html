@@ -1,0 +1,112 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+    	background-image: url(/template/default/money/back.gif);
+} 
+.input_on{ 
+    padding:2px 8px 0pt 3px; 
+    height:18px; 
+    border:1px solid #999; 
+    background-color:#FFFFCC; 
+} 
+.input_off{ 
+    padding:2px 8px 0pt 3px; 
+    height:18px; 
+    border:1px solid #CCC; 
+    background-color:#FFF; 
+} 
+.input_move{ 
+    padding:2px 8px 0pt 3px; 
+    height:18px; 
+    border:1px solid #999; 
+    background-color:#FFFFCC; 
+} 
+.input_out{ 
+    /*height:16px;默认高度*/ 
+    padding:2px 8px 0pt 3px; 
+    height:18px; 
+    border:1px solid #CCC; 
+    background-color:#FFF; 
+} 
+/*form*/ 
+ul.input_test{ 
+    margin:20px auto 0 auto; 
+    width:500px; 
+    list-style-type:none; 
+} 
+ul.input_test li{ 
+    width:500px; 
+    height:22px; 
+    margin-bottom:10px; 
+} 
+.input_test label{ 
+    float:left; 
+    padding-right:10px; 
+    width:100px; 
+    line-height:22px; 
+    text-align:right; 
+    font-size:1.4em; 
+} 
+.input_test p{ 
+    float:left; 
+    _margin-top:-1px; 
+} 
+.input_test span{ 
+    float:left; 
+    padding-left:10px; 
+    line-height:22px; 
+    text-align:left; 
+    font-size:1.2em; 
+    color:#999; 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+.it_s { display:table; border:1px solid #979797}
+.it1,.it2 { border:1px solid #fff; background:#fff none repeat scroll 0 0}
+.it1 { border:1px solid #fff;}
+.it2 { border-left:1px solid #000; border-top:1px solid #000}
+
+.test {
+   height: 16px;
+   width: 120px;
+}
+</style> 
+<script type="text/javascript">
+function check3()
+{
+   var text3=document.getElementById("nickname");
+   var text4=document.getElementById("user_name");
+   if(text3.value==""&&text4.value=="")
+   {
+     alert("不能为空哦！请重新输入其中一项再查询。");
+   }
+}
+</script>
+	<table width="100%" border="1">
+  <tr>
+
+  <td height="28" colspan="2" align="center"  valign="middle" bgcolor="#CCCCCC"  >
+	    <div align="center">
+        <span style="color: rgb(0, 153, 204); font-family: 宋体, serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; display: inline !important; float: none; ">删除用户</span> </div>
+		</td>
+  </tr>
+
+  <tr><td width="50%" height="95" valign="top">
+
+<form  align="center" method="post" action="/?module=macro_data&methods=errgem">
+  <p align="center"><span class="style3">用户昵称</span>：<input type="text3" value="" name="nickname" id="nickname">
+    &nbsp;
+    <input type="submit" name="query" value="修复" />
+</p>
+</form>
+</td>
+  </tr>
+</table>

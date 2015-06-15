@@ -1,0 +1,161 @@
+/*
+* 客服中心CSS
+* http://www.56uu.local/?m=kf
+* 修改日期 2011-4-22
+*/
+.gamecenter_kf{
+	width:672px;
+	height:auto;
+	float:left;
+}
+.kf_top{
+	width:672px;
+	height:6px;
+	float:left;
+	background:url(../image/top_bg.jpg) no-repeat;
+}
+.kf_center{
+	width:672px;
+	float:left;
+	background:url(../image/x_bg.jpg) repeat-y;
+	text-align:left;
+}
+.kf_but{
+	width:672px;
+	height:6px;
+	float:left;
+	background:url(../image/but_bg.jpg) no-repeat;
+}
+.kfhr{
+	width:672px;
+	height:3px;
+	background:url(../image/text_but.jpg) no-repeat;
+}
+/* 客服图标 */
+.zizhu,.tijiao,.vipkf{
+	padding-left:14px;
+	padding-top:5px;
+	clear:both;
+}
+.tijiao,.vipkf{
+	padding-top:20px;
+}
+/* 客服内容 */
+.kf_ask,.kf_tijiao,.kf_vipkf{
+	padding-left:14px;
+	width:672px;
+}
+.kf_ask ul{
+	padding-left:20px;
+}
+.kf_ask li{
+	float:left;
+	width:300px;
+	line-height:30px;
+	margin-right:15px;
+	border-bottom:1px #FDDC89 dashed;
+}
+.search li a:hover{
+	font-size:14px;
+}
+.askbox{
+	float:left;
+	width:270px;
+	margin:20px;
+}
+.askbox .asktitle{
+	font-weight:bold;
+	font-size:14px;
+	color:#505050;
+}
+.askbox .asktitle a{
+	font-size:14px;
+	font-weight:bold;
+}
+.asktitle a:hover{
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.askbox .askimg{
+	width:76px;
+	height:67px;
+	float:left;
+}
+.askbox p{
+	font-size:13px;
+	color:#505050;
+}
+.vipbg{
+	width:607px;
+	height:207px;
+	margin:20px;
+}
+.vipleft{
+	background:url(../image/vipleft.jpg) no-repeat;
+	width:10px;
+	height:207px;
+	float:left;
+}
+.vipcont{
+	background:url(../image/vipcont.jpg) repeat-x;
+	width:582px;
+	height:207px;
+	float:left;
+	text-align:center;
+}
+.vipright{
+	background:url(../image/vipright.jpg) no-repeat;
+	width:15px;
+	height:207px;
+	float:left;
+}
+/* 在线客服 */
+.kefu{
+	padding-bottom:10px;
+}
+.kefu_top{
+}
+.kefu_con{
+	width:268px;
+	height:120px;
+	background:url(../image/kf_con.jpg) repeat-y;
+}
+.kefu_but{
+	width:268px;
+	height:15px;
+	background:url(../image/kf_but.jpg) no-repeat;
+}
+/* 网上银行开通流程 */
+.wspay{
+}
+.wspay .wspay_top{
+}
+.wspay .wspay_con{
+	width:268px;
+	height:220px;
+	background:url(../image/wspay_con.jpg) repeat-y;
+}
+.wspay_con .more_pay{
+	padding-top:8px;
+	color:#FF7300;
+	text-decoration:none;
+}
+.wspay_con img{
+	padding-top:8px;
+}
+.wspay .wspay_but{
+	width:268px;
+	height:15px;
+	background:url(../image/wspay_but.jpg) no-repeat;
+}
+.wspay_con ul{
+	margin-left:15px;
+}
+.wspay_con li{
+	line-height:25px;
+	font-size:13px;
+}
+.wspay_con li a{
+	font-size:13px;
+}

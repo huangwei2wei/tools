@@ -1,0 +1,36 @@
+<gettemplet file="default/head.html"/>
+<style> 
+body, td{ 
+    font-size: 10pt; 
+} 
+a:link { 
+    color: #FF0000; 
+} 
+a:visited { 
+    color: #FF0000; 
+} 
+a:hover { 
+    color: #006600; 
+} 
+.style1 {color: #0099CC}
+</style> 
+
+
+<table width="100%">
+  <tr>
+    <td width="14%" bgcolor="#CCCCCC">错误key</td>
+    <td width="13%" bgcolor="#CCCCCC">错误数量</td>
+    <td width="16%" bgcolor="#CCCCCC">最后时间</td>
+    <td width="57%" bgcolor="#CCCCCC">错误value</td>
+  </tr>
+  <variable data="$err_data">
+    <loop list="$i">
+   <tr>
+    <td><echo>$err_data[$i]["key"]</echo></td>
+    <td><echo>$err_data[$i]["count"]</echo></td>
+    <td><echo>date("Y-m-d H:i:s",$err_data[$i]["time"])</echo></td>
+    <td><echo>$err_data[$i]["value"]</echo></td>
+  </tr>
+    </loop>
+</variable>
+</table>

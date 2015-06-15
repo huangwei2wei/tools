@@ -1,0 +1,111 @@
+<gettemplet file="default/head.html"/>
+<div class="top950">
+	<div class="logo float_l"><img src="/template/default/aa_images/all/logo.png" width="200" height="60" alt="看客网" /></div>
+    <div class="login float_l">
+    	<form class="form1" name="form1" method="post" action="">
+        	用户名： <input width="84" height="16" line-height="16" type="text" name="textfield" id="textfield" />&nbsp;&nbsp;
+            密码：<input width="84" height="16" line-height="16" type="text" name="textfield2" id="textfield2" />
+            <input style="border:0; margin:0;" class="login_but but-w42" type="submit" name="button" value="" />
+            <input style="border:0; margin:0;" class="enrol_but but-w42" type="submit" name="button" value="" />
+		</form>
+    </div>
+</div>
+
+<!--end head-->
+<gettemplet file="default/head.html"/>
+
+<div class="h6"></div>
+
+<!-- info -->
+<div class="reg-2 auto">
+    <div class="hot-bg" style="width:950px; margin-bottom:20px;">
+        <div class="hot-bg-bt" style="color:#034679;">欢迎注册看客网</div>
+    </div>
+    <div class="reg">
+        <form class="form1" name="reg_form" id="reg_form" method="post" action="/index.php?module=reg&methods=regact">
+        <div class="reg-1">
+        	<div class="float_l reg-1a">用户名：</div>
+            <div class="float_l"><input width="150" height="20" line-height="20" type="text" name="user_name" id="user_name" /></div>
+        </div>
+        <div class="reg-1">
+        	<div class="float_l reg-1a">密&nbsp;&nbsp;&nbsp;&nbsp;码：</div>
+            <div class="float_l"><input width="150" height="20" line-height="20" type="password" name="pwd" id="pwd" /></div>
+        </div>
+        <div class="reg-1">
+        	<div class="float_l reg-1a">确认密码：</div>
+            <div class="float_l"><input width="150" height="20" line-height="20" type="password" name="pwd" id="pwd" /></div>
+        </div>
+        <div class="reg-1">
+       	  <div class="float_l reg-1a">性&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
+            <div class="float_l" style="width:75px;" >
+              <input type="radio" name="sex" id="radio" value="1" />
+          &nbsp;男<label for="agreement"></label></div>
+            <div class="float_l" style="width:75px;">
+              <input type="radio" name="sex" id="radio2" value="2" />
+         &nbsp;女<label for="agreement"></label></div>
+         <div class="float_l" style="width:75px;">
+              <input name="sex" type="radio" id="radio2" value="3" checked="checked" />
+         &nbsp;保密<label for="agreement"></label></div>
+           
+         <input type="hidden" name="lat" id="lat" />
+         <input type="hidden" name="lng" id="lng" />
+        </div>
+        <div class="reg-1">
+        	<div class="float_l reg-1a">工作地住址：</div>
+            <div class="float_l"><input name="all_address" type="text" id="all_address" value="<echo>$address</echo>" width="350" height="20" line-height="20" /></div>
+            <div class="float_l bold"><a href="#">【谷歌选址】</a></div>
+            <div id="map_canvas" style="display:none"></div> 
+          <input type="hidden" name="city" id="city" />
+          <input type="hidden" name="district" id="district" />
+          <input type="hidden" name="address" id="address" />
+        </div>
+        <div class="reg-1" style="height:200px;">
+        	<div class="float_l reg-1a">协&nbsp;&nbsp;&nbsp;&nbsp;议：</div>
+        <div class="float_l" style="width:508px; height:200px;">
+            	<div style="width:508px; height:6px; background:url(/template/default/aa_images/centre/input-mid.png)">
+                	<div class="float_l"><img src="/template/default/aa_images/centre/input-left.png" /></div>
+                    <div class="float_r"><img src="/template/default/aa_images/centre/input-right.png" /></div>
+                </div>
+                <div class="confer-rn">1、服务条款的确认和接纳
+　　百度在此特别提醒您，在您使用百度空间服务前请确实仔细阅读本协议（未成年人审阅时应得到法定监护人的陪同），如果您对本协议的任何条款及/或将来随时修改、补充的条款有异议，您可选择不使用百度空间服务；当您点选同意键或定制、使用、接受百度空间服务时即视为您已仔细阅读本条款，同意接受本服务条款的所有规范包括接受百度对服务条款随时所做的任何修改，并愿受其拘束。
+
+　　这些条款可由百度随时更新，且毋须另行通知。服务条款一旦发生变更, 百度将在网页上公布修改内容。</div>
+                <div style="width:508px; height:6px;">
+                	<div class="float_l"><img src="/template/default/aa_images/centre/input-left1.png" /></div>
+                    <div class="float_l confer-line" ></div>
+                    <div class="float_r"><img src="/template/default/aa_images/centre/input-right1.png" /></div>
+                </div>
+            </div>
+         </div>
+         <div class="confer-1"><input name="agreement" type="checkbox" class="bor0" id="agreement" value="ok" checked="checked" />同意协议</div>
+         <div style="margin-left:300px;"><input class="ok" onclick="regact()" style="border:0; margin:0; cursor:pointer;" type="button" name="button" value="" /></div>
+        
+		</form>
+    
+    </div>
+</div>
+<script>
+initialize();
+</script>
+<gettemplet file="default/foot.html"/>
+<!--start foot-->
+<div id="foot">
+  <div id="footlinks">
+    <p>当前时区 GMT+8, 现在时间是 2011-5-8 15:22 <br />
+      <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备05002321号</a> / 京ICP证 060692 号 / 电子公告服务(BBS)审批[2006]字第386号</p>
+    <p><a href="http://bbs.blueidea.com/member.php?action=clearcookies&amp;formhash=a7b9c4ed">清除 Cookies</a> - <a href="http://www.blueidea.com/common/mail2master.asp">联系我们</a> - <a href="http://www.blueidea.com/" target="_blank">blueidea.com</a> - <a href="http://bbs.blueidea.com/archiver/" target="_blank">Archiver</a> - <a href="http://bbs.blueidea.com/wap/" target="_blank">WAP</a> - <span onclick="window.scrollTo(0,0);">TOP</span></p>
+  </div>
+  <div id="footleft">
+  	<div id="footimg">
+		<a href="http://www.discuz.net/" target="_blank" title="Powered by Discuz!"><img src="http://bbs.blueidea.com/images/default/discuz_icon.gif" border="0" alt="Discuz!" /></a>
+	</div>
+    <div id="footpowered">
+        Powered by <strong><a href="http://www.discuz.net/" target="_blank">Discuz!</a></strong> <em>6.1.0</em> © 1999-2010 <a href="http://www.blueidea.com/" target="_blank">Blueidea.com.</a>
+      <br>
+        Processed in 0.058510 second(s), 6 queries, Gzip enabled.
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

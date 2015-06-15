@@ -1,0 +1,55 @@
+<gettemplet file="default/head.html"/>
+<p> </p>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <tr>
+    <td align="center" colspan="100%" bgcolor="#977C00">人物分布统计</td>
+  </tr>
+  <tr >
+    <td width="20%" bordercolor="#000000" bgcolor="#40c0ff"><strong>地图名</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>人数</strong></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><strong>所占所有用户比例</strong></td>
+  </tr>
+  
+  <!--?
+  foreach($retval as $value)
+  {
+	if(isset($base_map[1][$value["in_map"]]))
+    {
+    	$value["map_name"]=$base_map[1][$value["in_map"]]["info"];
+    }else{
+    	$value["map_name"]=$value["in_map"];
+    }
+  ?-->
+  <tr>
+    <td width="20%" bordercolor="#000000" bgcolor="#40c0ff"><echo>$value['map_name']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>$value['total']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><echo>(round($value['total']/$maxre,4)*100)</echo>
+      %</td>
+  </tr>
+  
+  <!--? 
+  }
+  ?-->
+  <tr>
+    <td align="center" colspan="100%" bgcolor="#977C00">以下是主城相关</td>
+  </tr>
+  <!--? 
+  foreach($main_map as $value)
+  {
+  	if(isset($base_map[0][$value["in_map"]]))
+    {
+    	$value["map_name"]=$base_map[0][$value["in_map"]]["name"];
+    }else{
+    	$value["map_name"]=$value["in_map"];
+    }
+  ?-->
+  <tr>
+    <td width="20%" bordercolor="#000000" bgcolor="#00FFFF"><echo>$value['map_name']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FFFFCC"><echo>$value['total']</echo></td>
+    <td width="20%" bordercolor="#000000" bgcolor="#FF99FF"><echo>(round($value['total']/$maxre,4)*100)</echo>
+      %</td>
+  </tr>
+  <!--? } ?-->
+</TABLE>
+<echo>$pa</echo>
+</BODY></HTML>

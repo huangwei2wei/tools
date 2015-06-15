@@ -1,0 +1,81 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="80%" border="1" id="idshow">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr>
+      <td align="center" colspan="101"><form name="form1" method="post" action="">
+          昵称：
+          <input name="nickname" type="text" id="nickname" value="<echo>$_POST['nickname']</echo>">
+          &nbsp;&nbsp;物品名：
+          <input name="goods_name" type="text" id="goods_name" value="<echo>$_POST['goods_name']</echo>">
+          &nbsp;&nbsp;
+          <input type="submit" name="button" id="button" value="提交">
+        </form></td>
+    </tr>
+    <tr >
+      <td width="22%"  bgcolor="#CCCCCC"><strong>物品名称</strong></td>
+      <td width="25%"  bgcolor="#CCCCCC"><strong>数量</strong></td>
+      <td width="25%"  bgcolor="#CCCCCC"><strong>时间</strong></td>
+      <td width="28%"  bgcolor="#CCCCCC"><strong>状态</strong></td>
+    </tr>
+    <tr>
+      <td colspan="4" bordercolor="#000000" bgcolor="#00FF66"><strong>用户存在的</strong></td>
+    </tr>
+    <!--?
+  foreach((array)$goods_query[0] as $value)
+  {
+  ?-->
+    <tr  bgcolor="#00FF66">
+      <td width="22%"><echo>$value["goods_usre_name"]</echo> (<echo>$value["goods_user_id"]</echo>)</td>
+      <td width="25%"><echo>$value["max"]</echo></td>
+      <td width="25%"><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+      <td width="28%"><echo>$value["e"]</echo></td>
+    </tr>
+    <!--? }
+  ?-->
+    
+    <tr>
+      <td height="50" colspan="4" >&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="4"  bgcolor="#FF99FF"><strong>用户删除情况</strong></td>
+    </tr>
+    <!--?
+  foreach((array)$goods_query[1] as $value)
+  {
+  ?-->
+    <tr bgcolor="#FF99FF">
+      <td width="22%" ><echo>$value["goods_usre_name"]</echo> (<echo>$value["goods_user_id"]</echo>)</td>
+      <td width="25%" ><echo>$value["max"]</echo></td>
+      <td width="25%" ><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+      <td width="28%" ><echo>$value["e"]</echo></td>
+    </tr>
+    <!--? }
+  ?-->
+    <tr>
+      <td height="50" colspan="4" >&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="4"  bgcolor="#CCCCCC"><strong>物品日志</strong></td>
+    </tr>
+    
+    <!--?
+  foreach((array)$goods_query[2] as $value)
+  {
+  ?-->
+    <tr>
+      <td width="22%" ><echo>$value["goods_usre_name"]</echo>
+        &nbsp;
+        (<echo>$value["goods_user_id"]</echo>)</td>
+      <td width="25%" ><echo>$value["max"]</echo></td>
+      <td width="25%" ><echo>date("Y-m-d H:i:s",$value["time"])</echo></td>
+      <td width="28%" ><echo>$value["e"]</echo></td>
+    </tr>
+    <!--? }
+  ?-->
+  </tbody>
+</TABLE>
+<script>
+select_tr("idshow")
+</script>
+</BODY></HTML>

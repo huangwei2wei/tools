@@ -1,0 +1,48 @@
+<gettemplet file="default/head.html"/>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <p></p>
+  <tbody id="tablelsw">
+    <tr>
+      <td align="center" colspan="103" bgcolor="#977C00"><form name="form1" method="post" action="">
+          <table width="100%" border="1">
+            <tr>
+              <td width="6%">昵称</td>
+              <td width="29%"><input name="nickname" type="text" id="nickname" value="<echo>isset($_POST['nickname'])?$_POST['nickname']:''</echo>"></td>
+              <td width="5%">类型：</td>
+              <td width="60%"><select name="teb" id="teb">
+                  <option  
+                  <echo>(isset($_POST['teb']) and $_POST['teb']=='log_goods_act')?'selected':''</echo>
+                   value="log_goods_act">物品
+                  </option>
+                  <option 
+                  <echo>(isset($_POST['teb']) and $_POST['teb']=='log_money_act')?'selected':''</echo>
+                   value="log_money_act">资源
+                  </option>
+                </select>
+                <input type="submit" name="button" id="button" value="提交"></td>
+            </tr>
+          </table>
+        </form></td>
+    </tr>
+    <tr >
+      <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><strong>时间</strong></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>物品名/资源名</strong></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><strong>数量</strong></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><strong>状态</strong></td>
+    </tr>
+    
+    <!--?
+  foreach($actlog as $value)
+  {
+  ?-->
+    <tr>
+      <td width="20%" bordercolor="#000000" bgcolor="#CCCCCC"><echo>date("Y-m-d H:i:s",$value['time'])</echo></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>($tab=="log_money_act")?$value['money_type']:$value['goods_ext_id']</echo></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FFCC00"><echo>($tab=="log_money_act")?$value['money']:$value['max']</echo></td>
+      <td width="20%" bordercolor="#000000" bgcolor="#FF00FF"><echo>$value['e']</echo></td>
+    </tr>
+    <!--? }
+  ?-->
+  </tbody>
+</TABLE>
+</BODY></HTML>

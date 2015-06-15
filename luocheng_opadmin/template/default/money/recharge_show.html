@@ -1,0 +1,75 @@
+<gettemplet file="default/head.html"/>
+<table id="rechlist" width="100%" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+    <td colspan="11" bgcolor="#FFFFFF"><a href="/?module=money&methods=recharge_line_day">当前</a> 每日 <a href="/?module=money&methods=recharge_m">每月</a>
+    <br>
+    <form id="form1" name="form1" method="post" action="">
+    列表 <a href="/?module=money&methods=recharge_line" target="_blank">曲线</a>&nbsp;&nbsp;日期：
+    <input name="time1" type="text" id="time1" size="12" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM'})"/> 
+    -
+    <input name="time2" type="text" id="time2" size="12" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM'})"/>
+    &nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="提交" /></form></td>
+  </tr>
+  <tr>
+    <td width="10%" bgcolor="#CCCCCC"><strong>日期</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>充值次数</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>老用户充值次数</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>老用户次数占比</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>金额</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>老用户充值金额</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>老用户充值额占比</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>ARPU</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>转化率</strong></td>
+    <td width="9" bgcolor="#CCCCCC"><strong>推广费</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>当天净利润</strong></td>
+  </tr>
+  <!--?
+  $old_zmoney=0;
+  $put_in=0;
+  foreach($recharge_list as $key=>$value)
+  {
+  	$day=substr($key,0,4)."-".substr($key,4,2)."-".substr($key,6,2);
+  ?-->
+  <tr>
+    <td><echo>$day</echo></td>
+    <td><echo>$value[0]</echo></td>
+    <td><echo>$value[3]</echo></td>
+    <td><echo>round($value[3]/$value[0],2)*100</echo>%</td>
+    <td><echo>$value[1]</echo></td>
+    <td><echo>$value[2]</echo></td>
+    <td><echo>round($value[2]/$value[1],2)*100</echo>%</td>
+    <td><echo>round($value[1]/$value[0],0)</echo></td>
+    <td><echo>isset($reg_base_count[$day])?round($value[1]/$reg_base_count[$day],4):0</echo></td>
+    <td><echo>isset($put_in_sum[$key])?$put_in_sum[$key]:0</echo></td>
+    <td><echo>$value[1]-(isset($put_in_sum[$key])?$put_in_sum[$key]:0)</echo></td>
+  </tr>
+  <!--?
+  $put_in+=isset($put_in_sum[$key])?$put_in_sum[$key]:0;
+  $old_zmoney+=$value[2];
+  }
+  ?-->
+  <tr>
+    <td colspan="2" bgcolor="#FF66FF"><strong>总充值次数：
+        <echo>$_recharge_list["p_sum"]</echo>
+    </strong></td>
+    <td bgcolor="#FF66FF"><strong>总充值人数：
+        <echo>$_recharge_list["user_sum"]</echo>
+    </strong></td>
+    <td bgcolor="#FF66FF">&nbsp;</td>
+    <td bgcolor="#FF66FF"><strong>总充值金额：
+        <echo>$_recharge_list["zmoney"]</echo>
+    </strong></td>
+    <td colspan="2" bgcolor="#FF66FF"><strong>老用户总充值金额：
+        <echo>$old_zmoney</echo>
+    </strong></td>
+    <td colspan="4" bgcolor="#FF66FF"><strong>净利润：
+        <echo>$_recharge_list["zmoney"]-$put_in</echo>
+    </strong></td>
+  </tr>
+</table>
+<script>
+select_tr("rechlist")
+</script>
+</body>
+</html>

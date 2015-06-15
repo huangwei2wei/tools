@@ -1,0 +1,33 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1" id="reglist">
+  <tr>
+    <td width="12%" bgcolor="#CCCCCC">日期</td>
+    <td width="20%" bgcolor="#CCCCCC">用户ID</td>
+    <td width="29%" bgcolor="#CCCCCC">昵称</td>
+    <td width="21%" bgcolor="#CCCCCC">金额</td>
+    <td width="18%" bgcolor="#CCCCCC">是否在线</td>
+  </tr>
+  <!--?
+  foreach($moneylist as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><echo>date("Y-m-d H:i:s",$value["ts"])</echo></td>
+    <td><a href="/?module=money&methods=user_info&user_name=<echo>$value['openid']</echo>" title="查看此人详细信息" target="_blank">
+      <echo>$value["openid"]</echo>
+    </a></td>
+    <td><echo>isset($heroname[$value["openid"]])?$heroname[$value["openid"]]:""</echo></td>
+    <td><echo>$value["money"]/10</echo></td>
+    <td><echo>$online[$value["openid"]]==1?"是":"否"</echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+<echo>$p</echo>
+<script>
+select_tr("reglist")
+</script>
+
+</body>
+</html>

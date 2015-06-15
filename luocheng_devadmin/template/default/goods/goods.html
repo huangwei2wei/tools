@@ -1,0 +1,18 @@
+<gettemplet file="default/head.html"/>
+<style>
+
+.style1 {color: red}
+
+</style>
+<p></p>
+ <form method="post" action="/?module=goods&methods=base">
+输入物品ID:<input type="text" value="<echo>$post['g_id']</echo>" name="g_id"/>
+
+    
+输入物品名:<input type="text" value="<echo>$post['g_name']</echo>" name="g_name"/>
+
+<input type="submit" name="query" value="查询物品"/>
+<a class="style1" href="/?module=goods&amp;methods=addshow">添加</a>
+<input type="hidden" name="submittype" value="分辨初次加载页面"/>
+</form>
+<echo>$html</echo>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="button.css" rel="stylesheet" type="text/css" />
+<title>表格</title>
+<style>
+body{
+	font-size:13px;
+	background-color:#BDD9BE;
+	margin:0px;
+	padding:0px;
+}
+td{
+	font-size:13px;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(oForm){
+	var row,cell,width,border,space,padding,title;
+	row=oForm.row.value;
+	cell=oForm.cell.value;
+	border=oForm.border.value;
+	space=oForm.space.value;
+	padding=oForm.padding.value;
+	title=oForm.title.value;
+	width=oForm.w.value;
+	if(isNaN(row)){
+		alert('行数必须为数字!');
+		return;
+	}
+	if(isNaN(cell)){
+		alert('列数必须为数字!');
+		return;
+	}
+	if(isNaN(border)){
+		alert('边框必须为数字!');
+		return;
+	}
+	if(isNaN(space)){
+		alert('边距必须为数字!');
+		return;
+	}
+	if(isNaN(padding)){
+		alert('间距必须为数字!');
+		return;
+	}
+	if(isNaN(width)){
+		alert('宽度必须为数字!');
+		return;
+	}
+	var str="<table border='"+border+"' cellpadding='"+padding+"' cellspacing='"+space+"' width='"+width+"'>";
+	if(title!=""){
+		str+="<caption>"+title+"</caption>";
+	}
+	for(var i=1;i<=row;i++){
+		str+="<tr>\n";
+		for(var j=1;j<=cell;j++){
+			str+="\t<td>&nbsp;</td>\n";
+		}
+		str+="\n</tr>\n";
+	}
+	if(document.all){
+		dialogArguments.insertHTML(str);
+	}
+	else{
+		opener.insertHTML(str);
+	}
+	window.close();
+}
+//-->
+</script>
+</head>
+
+<body>
+<table width="256" height="206" border="1" cellpadding="0" cellspacing="0" bordercolor="#009900" style="border-collapse: collapse"><form>
+  <tr>
+    <td width="71">行数:</td>
+    <td width="185"><input name="row" type="text" class="text" id="row" size="8" /></td>
+  </tr>
+  <tr>
+    <td>列数:</td>
+    <td><input name="cell" type="text" class="text" id="cell" size="8"/></td>
+  </tr>
+  <tr>
+    <td>宽度:</td>
+    <td><input name="w" type="text" class="text" id="w" value="200" size="8"/>
+    px</td>
+  </tr>
+  <tr>
+    <td>边框:</td>
+    <td><input name="border" type="text" class="text" id="border" value="1" size="8"/>
+    px</td>
+  </tr>
+  <tr>
+    <td>边距:</td>
+    <td><input name="space" type="text" class="text" id="space" value="0" size="8"/></td>
+  </tr>
+  <tr>
+    <td>间距:</td>
+    <td><input name="padding" type="text" class="text" id="padding" value="0" size="8"/></td>
+  </tr>
+  <tr>
+    <td>标题:</td>
+    <td><input name="title" type="text" class="text" id="title" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input name="Submit" type="button" class="button" onclick="ok(this.form)" value="确 定"/>
+    &nbsp;&nbsp;
+    <input name="Submit2" type="button" class="button" onclick="window.close()" value="取 消"/></td>
+  </tr></form>
+</table>
+</body>
+</html>

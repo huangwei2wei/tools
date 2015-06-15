@@ -1,0 +1,59 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$time1</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$time2</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></label>
+            渠道：<select name="channel_id" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($c as $key=>$value){
+							$select = "";
+    						if($_POST["channel_id"] == $value['id']){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value['id']</echo>"  <echo>$select</echo> ><echo>$value['channel_name']</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+            <label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+<label for="Platform">充值金额段分析</label>
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">充值金额</td>
+    <td  bgcolor="#CCCCCC">充值人数</td>
+    <td  bgcolor="#CCCCCC">占比</td>
+  </tr>
+   <!--?
+   	$ind = 0;
+  	foreach ($recharge_money_analyze[0] as $key => $value)
+  	{
+  		
+  	?-->
+  <tr>
+    <td><echo>$key</echo></td>
+    <td><echo>$value?$value:0</echo></td>
+    <td><echo>round($recharge_money_analyze[1]?$value/$recharge_money_analyze[1]*100:0, 2)</echo>%</td>
+  </tr>
+   <!--?
+  }
+  ?-->
+  <tr>
+    <td><echo>合计</echo></td>
+    <td><echo>$recharge_money_analyze[1]</echo></td>
+    <td>100%</td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

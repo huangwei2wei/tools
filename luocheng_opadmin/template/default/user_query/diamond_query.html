@@ -1,0 +1,40 @@
+<gettemplet file="default/head.html"/>
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="3"><div align="left">选择日期:
+            <label>
+              <input name="time1" type="text" id="time1" value="<echo>$_POST["time1"]</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+              -
+            <input name="time2" type="text" id="time2" value="<echo>$_POST["time2"]</echo>" class="Wdate"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></label>
+              <input type="submit" name="button" id="button" value="查询" />
+            </label>
+      </div></td>
+  </tr>
+</table>
+<label for="Platform">vip激活统计</label>
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC">时间</td>
+    <td  bgcolor="#CCCCCC">消耗总钻石</td>
+    <td  bgcolor="#CCCCCC">获得总钻石</td>
+    <td  bgcolor="#CCCCCC">钻石结余率</td>
+  </tr>
+   <!--?
+  	foreach ($diamond_query as $key => $value)
+  	{
+  
+  	?-->
+  <tr>
+    <td><echo>date("Y-m-d", strtotime($value["date"])); </echo></td>
+    <td><echo>isset($value["use"])?$value["use"]:0;</echo></td>
+    <td><echo>isset($value["get"])?$value["get"]:0;</echo></td>
+    <td><echo> $value["get"]>0 ? round(($value["get"]-$value["use"])/ $value["get"],2) :0;</echo>%</td>
+  </tr>
+   <!--?
+  }
+  ?-->
+</table>
+</form>
+</body>
+</html>

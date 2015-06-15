@@ -1,0 +1,60 @@
+<gettemplet file="default/head.html"/>
+<table width="100%" border="1" align="center">
+  <tr>
+    <td colspan="2" align="center">分析开服的在线，注册，充值数据的关系</td>
+  </tr>
+  <tr>
+    <td width="12%" align="right">分析条件：</td>
+    <td width="88%">
+      <form id="form2" name="form2" method="post" action="">
+        <input name="analysis" type="text" id="analysis" value="<echo>isset($_POST['analysis'])?$_POST['analysis']:''</echo>" size="60" />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开服第
+          <input name="time" type="text" id="time" value="<echo>isset($_POST['time'])?$_POST['time']:1</echo>" size="5" />
+          天
+          &nbsp;&nbsp;
+          <input type="submit" name="button2" id="button2" value="分析" />
+        <br>
+        如：1,2,3表示要分析1，2，3服的数据，后是分析哪一天的数据
+    </form></td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="1" align="center" id="datalist">
+  <tr>
+    <td width="9%" bgcolor="#CCCCCC"><strong>服ID</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>查询日期</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>最高在线/平均在线</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>注册</strong></td>
+    <td width="9%" bgcolor="#CCCCCC">注册在线比</td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>当天总充值</strong></td>
+    <td width="9%" bgcolor="#CCCCCC">在线充值比</td>
+    <td width="9%" bgcolor="#FF0000">注册充值比 ARPU</td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>当天新注册充值</strong></td>
+    <td width="9%" bgcolor="#CCCCCC"><strong>当天老用户充值</strong></td>
+    <td width="10%" bgcolor="#CCCCCC"><strong>新用户充值金额占比</strong></td>
+  </tr>
+  <!--?
+  foreach($analysis_data as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><echo>$key</echo></td>
+    <td><echo>date("Y-m-d",$value["open_server_date"])</echo></td>
+    <td><echo>$value["online"]</echo>&nbsp;(<echo>round($value["average_online"],2)</echo>)</td>
+    <td><echo>$value["base_user_reg_max"]</echo></td>
+    <td><echo>round($value["base_user_reg_max"]/$value["online"],2)</echo></td>
+    <td><echo>$value["money_count"]/10</echo></td>
+    <td><echo>round($value["money_count"]/$value["average_online"],2)/10</echo></td>
+    <td><echo>round($value["money_count"]/$value["base_user_reg_max"],2)</echo></td>
+    <td><echo>$value["today_money"]/10</echo></td>
+    <td><echo>$value["money"]/10</echo></td>
+    <td><echo>round($value["today_money"]/$value["money_count"],4)*100</echo>%</td>
+  </tr>
+  <!--? }
+  ?-->
+</table>
+<echo>$showstr</echo>
+<script>
+select_tr("datalist")
+</script>
+</BODY></HTML>

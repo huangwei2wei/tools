@@ -1,0 +1,84 @@
+<gettemplet file="default/head.html"/>
+
+<form align="center"action="" method="post" enctype="application/x-www-form-urlencoded" name="form1" id="form1">
+<table width="100%" border="0" align="center">
+  <tr>
+    <td colspan="3"><div align="left">
+    <label for="Platform">选择类型</label>
+     <select name="Platform" id="Platform">
+          <option value="1" <echo>$select_value == '1' ? 'selected' : ''</echo> > 网关 </option>
+          <option value="2" <echo>$select_value == '2' ? 'selected' : ''</echo> > 路由 </option>
+          <option value="3" <echo>$select_value == '3' ? 'selected' : ''</echo> >  节点 </option>
+      </select>
+       <label>
+           <input type="submit" name="button" id="button" value="查询" />
+       </label>
+      </div></td>
+  </tr>
+</table>
+
+<label>网关监控</label>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+   		<td  bgcolor="#CCCCCC" ><strong>日期</strong></td>
+      	<td  bgcolor="#CCCCCC" ><strong>ip</strong></td>
+    	<td  bgcolor="#CCCCCC" ><strong>cpu使用率</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>内存使用率</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>总在线人数</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>端口在线</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>网卡流出量</strong></td>
+    	<td bgcolor="#CCCCCC"  ><strong>网卡流入量</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>tcp连接数</strong></td>
+    	<td  bgcolor="#CCCCCC"  ><strong>操作</strong></td>
+    </tr>
+    	<!--?
+        if (is_array($gateway_listen_list))
+	    {
+			foreach ($gateway_listen_list as $key => $value)
+			{
+    			$num = 0;
+    			$total_online = 0;
+				foreach ($value['online'] as $k => $val)
+				{
+					$total_online += $val;
+					$num += 1;
+				}
+        ?-->
+  <tr>
+    <td rowspan='<echo>$num</echo>'><echo>substr($value['YmdHM'],0,4)."-".substr($value['YmdHM'],4,2)."-".substr($value['YmdHM'],6,2)." ".substr($value['YmdHM'],8,2).":".substr($value['YmdHM'],10,2)</echo></td>
+    <td rowspan='<echo>$num</echo>'><echo>$value['ip']</echo></td>
+    <td rowspan='<echo>$num</echo>'><echo>round($value['CPU']*100, 2)</echo>%</td>
+    <td rowspan='<echo>$num</echo>'><echo>round($value['MemUsed_Ratio']*100,2)</echo>%</td>
+    <td rowspan='<echo>$num</echo>'><echo>$total_online</echo></td>
+    <!--?
+    
+    		if (count($value['online']))
+	    	{
+				foreach ($value['online'] as $k1 => $val1)
+				{
+					$port_online = $k1.":".$val1;
+        ?-->
+    <td ><echo>$port_online</echo></td>
+     <!--?
+       			}
+       		}
+       		else {
+       		
+       		 ?-->
+       		 <td >0:0</td>
+       		<!--?
+       		}
+        ?-->
+    <td rowspan='<echo>$num</echo>'><echo>$value['LAN_traffic_send']>=1024.0?number_format($value['LAN_traffic_send']/1024.0, 3,'.','').' mb':round($value['LAN_traffic_send'], 0).' kb'</echo></td>
+    <td rowspan='<echo>$num</echo>'><echo>$value['LAN_traffic_recv']>=1024.0?number_format($value['LAN_traffic_recv']/1024.0, 3,'.','').' mb':round($value['LAN_traffic_recv'], 0).' kb'</echo></td>
+    <td rowspan='<echo>$num</echo>'><echo>$value['TCP_COUNT']</echo></td>
+    <td >
+    <a href="/?module=service_manager&methods=cpu_memory_used&operators_id=<echo>$operators_id</echo>&type=<echo>$value['type']</echo>&ip=<echo>$value['ip']</echo>">查看曲线图</a>
+   	</td>
+    </tr>
+    <!--?
+       }
+			}
+        ?-->
+</table>
+</form>

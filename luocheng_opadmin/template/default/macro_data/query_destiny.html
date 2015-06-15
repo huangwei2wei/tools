@@ -1,0 +1,44 @@
+<gettemplet file="default/head.html"/>
+<p> </p>
+<table align=center style="text-align:center;"width="80%" border="1">
+  <tr>
+    <td align="center" colspan="103" bgcolor="#977C00"><form name="form1" method="post" action="">
+        天命查询：
+        <input name="name" type="text" id="name" value="<echo>$post['name']</echo>">
+        <input type="submit" name="button" id="button" value="提交">
+      </form></td>
+  </tr>
+  <tr >
+    <td width="29%" bordercolor="#000000" bgcolor="#40c0ff"><strong>玩家注册名</strong></td>
+    <td width="21%" bordercolor="#000000" bgcolor="#FFCC00"><strong>天命名称</strong></td>
+    <td width="27%" bordercolor="#000000" bgcolor="#FFCC00"><strong>天命属性等级</strong></td>
+    <td width="14%" bordercolor="#000000" bgcolor="#00CC00"><strong>充值金额</strong></td>
+    <td width="9%" bordercolor="#000000" bgcolor="#FF00FF"><strong>用户等级</strong></td>
+  </tr>
+  <tr>
+    <td width="29%"  bordercolor="#000000" bgcolor="#40c0ff"><echo>$query_destiny['regname']</echo></td>
+    <td height="23" colspan="2" bordercolor="#000000" bgcolor="#FFCC00"><table width="100%" border="1">
+        <variable data="$query_destiny['destiny']">
+          <loop list="$i">
+            <tr>
+              <td width="47%"><echo>$query_destiny['destiny'][$i]['goods_name']</echo></td>
+              <td width="53%"><!--?
+    $property=arrayed($query_destiny['destiny'][$i]['property']);
+    foreach($property as $key=>$value)
+    {
+    	if($key!="ay" and $key!="bn"){
+            $tmp=explode("@",$value[1]);
+            echo $key."： ".$tmp[0]."级   品质：".$tmp[1]."<br>"; 
+        }
+   }
+    ?--></td>
+            </tr>
+          </loop>
+        </variable>
+      </table></td>
+    <td width="14%" bordercolor="#000000" bgcolor="#00CC00"><echo>$query_destiny['money']</echo></td>
+    <td width="9%"  bordercolor="#000000" bgcolor="#FF00FF"><echo>$query_destiny['lv']</echo></td>
+  </tr>
+</TABLE>
+</BODY>
+</HTML>

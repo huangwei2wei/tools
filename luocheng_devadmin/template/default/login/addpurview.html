@@ -1,0 +1,36 @@
+<gettemplet file="default/head.html"/>
+<form name="form1" method="post" action="">
+
+<table width="100%" border="1">
+  <tr>
+    <td colspan="3"><a href="/?module=login&methods=purview&view_id=<echo>$get['view_id']</echo>">列表</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加</td>
+  </tr>
+
+  <tr>
+  	<td width="15%" align="right" bgcolor="#9999FF"><strong>管理员：</strong></td>
+    <td width="45%"><input type="text" name="user" id="user"></td>
+    <td width="30%"></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#9999FF"><strong>密码：</strong></td>
+    <td><input type="password" name="pwd" id="pwd"></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td align="right" bgcolor="#9999FF"><strong>权限：</strong></td>
+    <td><select name="purview" id="purview">
+      <option value="0">超级管理员</option>
+      <option value="1">运营管理</option>
+      <option value="2">产品管理</option>
+      <option value="3">开发管理</option>
+    </select></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td colspan="3" align="center"><input type="submit" name="button" id="button" value="提交"></td>
+  </tr>
+
+</table>
+</form>
+</body>
+</html>

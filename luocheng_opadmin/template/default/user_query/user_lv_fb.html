@@ -1,0 +1,49 @@
+<gettemplet file="default/head.html"/>
+<style type="text/css">
+  #container {
+	width : 600px ;
+	height: <echo>count($queryPlayer)>4? count($queryPlayer)*100: 400</echo>px ;
+	margin: 8px auto;
+  }
+</style>
+
+
+  <table align=center style="text-align:center;"width="80%" border="1">
+    <p></p>
+    <table id="reglist" width="100%" border="0" cellpadding="0" cellspacing="1">
+      <tr>
+        <td align="center" colspan="101" bgcolor="#977C00">
+        <form name="form1" method="post" action="">
+              日期:<input name="time1" type="text" id="time1" class="Wdate" value="<echo>$_POST['time1']</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd '})" />
+      --
+      <input name="time2" type="text" id="time2" class="Wdate" value="<echo>$_POST['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd '})" />
+	        渠道：<select name="channel_id" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($c as $key=>$value){
+							$select = "";
+    						if($_POST["channel_id"] == $value['id']){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value['id']</echo>"  <echo>$select</echo> ><echo>$value['channel_name']</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+	  
+				<input type="submit" name="button" id="button" value="查询">
+          </form>
+          </td>
+      </tr>
+      <tr >
+      </tr>
+ 
+  </table>
+<table width="100%">
+<tr>
+  <td align="center" width="100%"><echo>$userLvFb</echo></td>
+</tr>
+</table>
+</BODY>
+</HTML>

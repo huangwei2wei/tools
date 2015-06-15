@@ -1,0 +1,40 @@
+<gettemplet file="default/head.html"/>
+<form id="form1" name="form1" method="post" action="">
+<table width="100%" border="1">
+  <tr>
+    <td width="6%">搜索</td>
+    <td> 
+      用户昵称:
+		<input name="nickname" type="text" id="nickname" value="<echo>isset($_POST['nickname'])?$_POST['nickname']:''</echo>" size="12" /> 
+<input name="time1" type="text" class="Wdate"  id="time1" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<echo>isset($_POST['time1'])?$_POST['time1']:date('Y-m-d',time())</echo>" size="12"/>
+&nbsp;&nbsp;
+<input name="time2" type="text" class="Wdate"  id="time2" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<echo>isset($_POST['time2'])?$_POST['time2']:date('Y-m-d',time())</echo>" size="12"/>
+<input type="submit" name="button" id="button" value="查询" /></td>
+    </tr>
+</table>
+</form>
+<table width="100%" border="1">
+  <tr>
+    <td width="10%" bgcolor="#CCCCCC">发送时间</td>
+    <td width="5%" bgcolor="#CCCCCC">接收者</td>
+    <td width="5%" bgcolor="#CCCCCC">发送者</td>
+    <td width="80%"  bgcolor="#CCCCCC">内容</td>
+    <td width="5%"  bgcolor="#CCCCCC">状态</td>
+    <td width="5%"  bgcolor="#CCCCCC">操作</td>
+  </tr>
+  <!--?
+  // 0为未读，1为已读 ,2已领取,-1删除
+  $status=array(0=>"未读",1=>"已读",2=>"已领取",-1=>"删除");
+  foreach($email as $value){
+  	$info=isset($value["info"])?$value["info"]:"";
+  ?-->
+  <tr>
+    <td><echo>date("Y-m-d H:i:s",$value["send_time"])</echo></td>
+    <td ><echo>$value["nickName"]</echo></td>
+    <td ><echo>$value["sendnickName"]</echo></td>
+  	<td ><echo>$value["title"]</echo></td>
+    <td ><echo>$status [$value["read_state"]]</echo></td>
+    <td ><a a href="/?module=macro_data&methods=send_email&playerId=<echo>$value['send_id']</echo>" hidefocus="true" >回复</a></td>
+  </tr>
+  <!--?}?-->
+</table>

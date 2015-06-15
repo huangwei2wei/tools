@@ -1,0 +1,30 @@
+<gettemplet file="default/head.html"/>
+<script language="JavaScript" type="text/javascript" src="/template/default/f/js/My97DatePicker/WdatePicker.js">
+</script>
+<script type="text/javascript" src="http://s1.bdstatic.com/r/www/cache/global/js/common-2.0.js"></script>
+
+
+
+<style>
+
+.style1 {color: red}
+
+</style>
+<p></p>
+
+ <form  id="form2" name="form2" method="post" action="/?module=goods&methods=monster">
+输入ID:<input  type="text"  value="<echo>$post['m_id']</echo>" name="m_id" />
+
+输入怪物名字:<input type="text"  value="<echo>$post['m_name']</echo>" name="m_name"  />
+
+<input   type="submit" id="sh" name="query" value="查询物品"  />
+</span>
+
+
+
+
+<a class="style1" href="/?module=goods&amp;methods=monster_addshow">【添加】</a>
+
+<input type="hidden" name="submittype" value="分辨初次加载页面"/>
+</form>
+<echo>$html</echo>

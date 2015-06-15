@@ -1,0 +1,67 @@
+<gettemplet file="default/head.html"/>
+<style type="text/css">
+  #container {
+	width : 600px ;
+	height: <echo>count($queryPlayer)>4? count($queryPlayer)*100: 400</echo>px ;
+	margin: 8px auto;
+  }
+</style>
+
+<form name="form1" method="post" action="">
+  <table align=center style="text-align:center;"width="80%" border="1">
+      <tr>
+        <td align="center" colspan="101" bgcolor="#977C00">
+              显示类型:<select name="v_type">
+              	<option value="mobile_model"<!--?  if($_POST["v_type"]=="mobile_model"){  echo "selected='selected'"; } ?--> >型号</option>
+                <option value="mobile_platforms"<!--?  if($_POST["v_type"]=="mobile_platforms"){  echo "selected='selected'"; } ?--> >系统</option>
+                <option value="mobile_resolution"<!--?  if($_POST["v_type"]=="mobile_resolution"){  echo "selected='selected'"; } ?--> >分辨率</option>
+            </select>
+              日期:<input name="time1" type="text" id="time1" class="Wdate" value="<echo>$_POST['time1']</echo>"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd '})" />--<input name="time2" type="text" id="time2" class="Wdate" value="<echo>$_POST['time2']</echo>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd '})" />
+			</select>
+	        平台：<select name="mobile_platforms" >
+	        		<option value="All"><echo>所有</echo></option>
+	                  <!--?
+						foreach($d as $key=>$value){
+							$select = "";
+    						if($_POST["mobile_platforms"] == $value){
+    							$select = "selected='selected'";
+    						}
+					?-->
+	                		<option value="<echo>$value</echo>"  <echo>$select</echo> ><echo>$value</echo></option>
+	                   <!--?
+								}
+						?-->
+			</select>
+            <input type="submit" name="button" id="button" value="提交">
+          </td>
+      </tr>
+  </table>
+</form>
+　
+<table width="100%" border="1">
+   <tr>
+    <td  bgcolor="#CCCCCC"><!--?  echo $vType[$_POST["v_type"]]; ?--> 　</td>
+    <td  bgcolor="#CCCCCC">数量</td>
+    <td  bgcolor="#CCCCCC">比例</td>
+  </tr>
+  <!--?
+  $v_type = "mobile_model";
+  if($_POST["v_type"]){
+  	$v_type = $_POST["v_type"];
+  }
+  foreach($data as $key=>$value)
+  {
+  ?-->
+  <tr>
+    <td><echo>$value[$v_type]</echo></td>
+    <td><echo>$value["num"]</echo></td>
+    <td><echo>$value["total"]?round($value["num"]/$value["total"],4):0  </echo></td>
+  </tr>
+  <!--?
+  }
+  ?-->
+</table>
+
+
+</BODY>
+</HTML>
